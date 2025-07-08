@@ -1,16 +1,25 @@
-## Hi there 👋
+# beckerbyte – Portfolio-Website
 
-<!--
-**beckerbyte/beckerbyte** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Willkommen auf meiner persönlichen Portfolio-Seite.  
+Ich bin Julian Becker – angehender Fachinformatiker mit Fokus auf Technologie, Code und digitale Lösungen.
 
-Here are some ideas to get you started:
+## 🚀 Projektübersicht
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+Diese Website zeigt:
+- Wer ich bin
+- Was ich kann
+- Wo du mich findest
+
+## 🛠️ Technologien
+
+- HTML5
+- CSS3
+- Git & GitHub Pages
+
+## 🌐 Live-Demo
+
+👉 [Jetzt ansehen](https://github.com/yourusername/beckerbyte)  
+👉 oder deployed unter: `https://yourusername.github.io/beckerbyte`
+
+## 📂 Projektstruktur
+
