@@ -23,3 +23,22 @@ Diese Website zeigt:
 
 ## 📂 Projektstruktur
 
+```
+beckerbyte/
+├── index.html
+├── assets/
+│   ├── css/
+│   └── img/
+└── README.md
+```
+
+## 🧠 Ziele
+
+- Tech-Sichtbarkeit aufbauen  
+- GitHub-Profil professionell wirken lassen  
+- Einstieg in Webentwicklung dokumentieren
+
+## 📫 Kontakt
+
+📧 julian.becker123@gmail.com  
+🔗 [LinkedIn Profil](https://www.linkedin.com/in/julian-becker-8125b42b7/)
