@@ -18,8 +18,8 @@ Diese Website zeigt:
 
 ## 🌐 Live-Demo
 
-👉 [Jetzt ansehen](https://github.com/yourusername/beckerbyte)  
-👉 oder deployed unter: `https://yourusername.github.io/beckerbyte`
+👉 [Jetzt ansehen](https://github.com/beckerbyte/beckerbyte)  
+👉 oder deployed unter: `https://beckerbyte.github.io/beckerbyte`
 
 ## 📂 Projektstruktur
 
