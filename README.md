@@ -42,3 +42,5 @@ beckerbyte/
 
 📧 julian.becker123@gmail.com  
 🔗 [LinkedIn Profil](https://www.linkedin.com/in/julian-becker-8125b42b7/)
+<img src="https://img.icons8.com/color/24/000000/discord-logo.png" alt="Discord" style="vertical-align: middle;"/> `beckerbyte#0001`  
+🆔 Discord ID: `270226761256534027`
