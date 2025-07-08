@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>beckerbyte – Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html, body { cursor: none; }
+    input, textarea { cursor: text; }
+    .cursor-base, .cursor-ring {
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 50;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .cursor-base {
+      width: 6px; height: 6px;
+      background: #fff;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .cursor-ring {
+      width: 32px; height: 32px;
+      border: 1.5px solid #fff;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .cursor-hover .cursor-ring {
+      transform: translate(-50%, -50%) scale(1.75);
+      border-color: #999;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-black text-white font-mono">
+  <div id="bg" class="fixed inset-0 -z-10"></div>
+  <div class="cursor-base hidden md:block" id="cursorDot"></div>
+  <div class="cursor-ring hidden md:block" id="cursorRing"></div>
+
+  <main class="container mx-auto px-6 md:px-12 lg:px-24 space-y-24 py-24">
+    <section class="min-h-screen flex flex-col justify-center">
+      <h1 class="text-4xl md:text-7xl font-extrabold leading-tight tracking-tight uppercase">Code<br class="hidden md:block"/> is My Craft.</h1>
+    </section>
+
+    <section id="services" class="space-y-6">
+      <h2 class="text-3xl md:text-5xl font-bold uppercase">Services</h2>
+      <div class="grid md:grid-cols-3 gap-8 pt-8">
+        <div class="border-t-2 border-white pt-4">
+          <h3 class="text-xl font-semibold uppercase">Web&nbsp;Dev</h3>
+          <p class="pt-2 text-sm">Static & dynamic sites, performance‑first.</p>
+        </div>
+        <div class="border-t-2 border-white pt-4">
+          <h3 class="text-xl font-semibold uppercase">Automation</h3>
+          <p class="pt-2 text-sm">Scripts & pipelines that save time.</p>
+        </div>
+        <div class="border-t-2 border-white pt-4">
+          <h3 class="text-xl font-semibold uppercase">Consulting</h3>
+          <p class="pt-2 text-sm">Strategic tech guidance for SMBs.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="space-y-6">
+      <h2 class="text-3xl md:text-5xl font-bold uppercase">Projects</h2>
+      <div class="grid md:grid-cols-3 gap-8 pt-8">
+        <div class="group border border-white p-4 hover:bg-white hover:text-black transition-colors">
+          <img src="A_grayscale_digital_graphic_design_image_features_.png" alt="Project Alpha" class="w-full aspect-video object-cover mb-4" />
+          <h3 class="text-lg font-semibold uppercase">Project Alpha</h3>
+          <p class="text-sm">E‑commerce site rebuilt for 2× speed.</p>
+        </div>
+        <div class="group border border-white p-4 hover:bg-white hover:text-black transition-colors">
+          <img src="A_grayscale_digital_illustration_features_the_mess.png" alt="Project Beta" class="w-full aspect-video object-cover mb-4" />
+          <h3 class="text-lg font-semibold uppercase">Project Beta</h3>
+          <p class="text-sm">Automated data ETL reducing manual work by 70 %.</p>
+        </div>
+        <div class="group border border-white p-4 hover:bg-white hover:text-black transition-colors">
+          <img src="project_gamma_resized.png" alt="Project Gamma" class="w-full aspect-video object-cover mb-4" />
+          <h3 class="text-lg font-semibold uppercase">Project Gamma</h3>
+          <p class="text-sm">Static Jamstack portfolio with CI/CD.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="space-y-4 py-24 border-t-2 border-white">
+      <h2 class="text-2xl md:text-4xl font-bold uppercase">Contact</h2>
+      <p class="text-lg">Let’s build something.<br/>
+        <a href="mailto:julian.becker123@gmail.com" class="underline hover:text-gray-400">julian.becker123@gmail.com</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="text-center py-8 text-xs text-gray-400 uppercase tracking-widest">© 2025 Julian Becker • beckerbyte</footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+  <script>
+    (function() {
+      const isTouch = window.matchMedia('(pointer: coarse)').matches;
+      if (isTouch) return;
+      const dot = document.getElementById('cursorDot');
+      const ring = document.getElementById('cursorRing');
+      dot.style.display = ring.style.display = 'block';
+      let x = window.innerWidth / 2, y = window.innerHeight / 2;
+      window.addEventListener('mousemove', e => { x = e.clientX; y = e.clientY; });
+      const render = () => {
+        dot.style.transform = `translate(${x}px,${y}px)`;
+        ring.style.transform = `translate(${x}px,${y}px)`;
+        requestAnimationFrame(render);
+      };
+      render();
+      document.querySelectorAll('a, button, .group').forEach(el => {
+        el.addEventListener('mouseenter', () => ring.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => ring.classList.remove('cursor-hover'));
+      });
+    })();
+
+    let vantaEffect = null;
+    function initVanta() {
+      if (vantaEffect || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      vantaEffect = VANTA.WAVES({
+        el: '#bg',
+        mouseControls: true,
+        touchControls: false,
+        gyroControls: false,
+        color: 0x555555,
+        backgroundColor: 0x000000,
+        minHeight: 200.00,
+        minWidth: 200.00
+      });
+    }
+    function destroyVanta() {
+      if (vantaEffect) { vantaEffect.destroy(); vantaEffect = null; }
+    }
+    if ('requestIdleCallback' in window) { requestIdleCallback(initVanta); } else { setTimeout(initVanta, 0); }
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) destroyVanta(); else initVanta();
+    });
+  </script>
+</body>
+</html>
