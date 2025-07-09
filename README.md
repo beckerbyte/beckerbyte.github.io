@@ -1,45 +1,43 @@
-beckerbyte – Portfolio
+# beckerbyte – Portfolio
 
-Hi, ich bin Julian Becker.
+**Hi, ich bin Julian Becker.**  
 Angehender Fachinformatiker mit Fokus auf Technologie, Code und digitale Lösungen. Diese Seite zeigt, was ich mache, was ich kann und wo man mich findet.
 
-🚀 Projekte
+## 🚀 Projekte
+
 Diese Website liefert:
+- Eine Übersicht über mein Profil
+- Tech-Stack und Arbeitsweise
+- Kontakt- und Profil-Links
 
-Eine Übersicht über mein Profil
+## 🛠️ Technologien
 
-Tech-Stack und Arbeitsweise
+- HTML5  
+- CSS3  
+- Git & GitHub Pages  
 
-Kontakt- und Profil-Links
+## 🌐 Live-Demo
 
-🛠️ Technologien
-HTML5
+▶️ [beckerbyte.github.io](https://beckerbyte.github.io/)
 
-CSS3
+## 📁 Struktur
 
-Git & GitHub Pages
-
-🌐 Live-Demo
-▶️ beckerbyte.github.io
-
-📁 Struktur
-css
-Kopieren
-Bearbeiten
 beckerbyte/
 ├── index.html
 ├── assets/
-│   ├── css/
-│   └── img/
+│ ├── css/
+│ └── img/
 └── README.md
-🎯 Ziele
-Sichtbarkeit im Tech-Umfeld erhöhen
 
-GitHub-Profil professionell positionieren
 
-Lernfortschritt in Webentwicklung dokumentieren
+## 🎯 Ziele
 
-📬 Kontakt
-📧 julian.becker123@gmail.com
-🔗 [LinkedIn Profil](https://www.linkedin.com/in/julian-becker-8125b42b7/)
-[![Discord](https://img.icons8.com/color/24/000000/discord-logo.png) CLICK ME](https://discord.com/users/270226761256534027)
+- Sichtbarkeit im Tech-Umfeld erhöhen  
+- GitHub-Profil professionell positionieren  
+- Lernfortschritt in Webentwicklung dokumentieren  
+
+## 📬 Kontakt
+
+📧 julian.becker123@gmail.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/julian-becker-8125b42b7/)  
+💬 [Discord](https://discord.com/users/270226761256534027)
