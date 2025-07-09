@@ -20,10 +20,9 @@ Diese Website liefert:
 
 ▶️ [beckerbyte.github.io](https://beckerbyte.github.io/)
 
-
-
-```markdown
 ## 📁 Struktur
+
+```bash
 beckerbyte/
 ├── index.html
 ├── assets/
@@ -31,16 +30,14 @@ beckerbyte/
 │   └── img/
 └── README.md
 
+🎯 Ziele
+Sichtbarkeit im Tech-Umfeld erhöhen
 
+GitHub-Profil professionell positionieren
 
-## 🎯 Ziele
+Lernfortschritt in Webentwicklung dokumentieren
 
-- Sichtbarkeit im Tech-Umfeld erhöhen  
-- GitHub-Profil professionell positionieren  
-- Lernfortschritt in Webentwicklung dokumentieren  
-
-## 📬 Kontakt
-
-📧 julian.becker123@gmail.com  
-🔗 [LinkedIn](https://www.linkedin.com/in/julian-becker-8125b42b7/)  
-💬 [Discord](https://discord.com/users/270226761256534027)
+📬 Kontakt
+📧 julian.becker123@gmail.com
+🔗 LinkedIn
+💬 Discord
