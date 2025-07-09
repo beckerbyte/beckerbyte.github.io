@@ -22,15 +22,15 @@ Diese Website liefert:
 
 
 
+```markdown
 ## 📁 Struktur
-
-```bash
 beckerbyte/
 ├── index.html
 ├── assets/
 │   ├── css/
 │   └── img/
 └── README.md
+
 
 
 ## 🎯 Ziele
