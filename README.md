@@ -20,18 +20,15 @@ Diese Website liefert:
 
 ▶️ [beckerbyte.github.io](https://beckerbyte.github.io/)
 
+
+```markdown
 ## 📁 Struktur
-
+```bash
 beckerbyte/
-
 ├── index.html
-
 ├── assets/
-
-│ ├── css/
-
-│ └── img/
-
+│   ├── css/
+│   └── img/
 └── README.md
 
 
