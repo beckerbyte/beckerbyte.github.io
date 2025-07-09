@@ -29,6 +29,7 @@ beckerbyte/
 │   ├── css/
 │   └── img/
 └── README.md
+```
 
 🎯 Ziele
 Sichtbarkeit im Tech-Umfeld erhöhen
