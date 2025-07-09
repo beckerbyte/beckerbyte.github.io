@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>beckerbyte – Code & Vision</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Global Styles -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/img/favicon-v2.png" type="image/png"/>
+</head>
+<body class="min-h-screen bg-black text-white font-mono fade-in">
+
+<!-- Background Effect -->
+<div class="fixed inset-0 -z-10" id="bg"></div>
+
+<!-- Custom Cursor -->
+<div class="cursor-base hidden md:block" id="cursorDot"></div>
+<div class="cursor-ring hidden md:block" id="cursorRing"></div>
+
+<!-- Navigation -->
+<nav class="fixed top-4 left-1/2 -translate-x-1/2 transform z-50">
+  <div class="flex space-x-6 bg-black bg-opacity-60 backdrop-blur-md px-6 py-2 rounded-full shadow-lg">
+    <button class="text-white font-semibold hover:text-gray-300 focus:outline-none" onclick="switchTab('home')">Home</button>
+    <button class="text-white font-semibold hover:text-gray-300 focus:outline-none" onclick="switchTab('skills')">Erfahrungen</button>
+  </div>
+</nav>
+
+<!-- Header -->
+<header class="fixed top-4 left-6 z-50 transition-all duration-500">
+  <img src="assets/img/header.png" alt="beckerbyte logo" class="h-36 md:h-48 lg:h-56 xl:h-64 hover:scale-105 hover:drop-shadow-[0_0_8px_#fff]/80 transition"/>
+</header>
+
+<main class="container mx-auto px-6 md:px-12 lg:px-24 space-y-24 py-24 tab-container">
+  <div id="tab-home">
+    <section class="min-h-screen flex flex-col justify-center">
+      <h1 class="text-4xl md:text-7xl font-extrabold leading-tight tracking-tight uppercase">Code<br class="hidden md:block"/> is My Craft.</h1>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="relative py-24">
+      <span class="absolute left-1/2 -translate-x-1/2 h-full w-px bg-gray-700"></span>
+      <div class="space-y-24 max-w-2xl mx-auto">
+
+        <div class="card fade-in timeline-item" data-year="2025">
+          <h3 class="text-4xl font-bold mb-6 text-center">2025</h3>
+          <article class="flex flex-col md:flex-row items-center md:space-x-8">
+            <div class="text-left md:text-right md:w-1/2 space-y-2">
+              <h4 class="text-2xl font-semibold uppercase">Fachinformatik Umschulung</h4>
+              <p class="text-sm">Berufliche Neuorientierung & Spezialisierung in Anwendungsentwicklung.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="card fade-in timeline-item" data-year="2023">
+          <h3 class="text-4xl font-bold mb-6 text-center">2023</h3>
+          <article class="flex flex-col md:flex-row items-center md:space-x-8">
+            <img src="assets/img/vscode-logo.png" alt="VS Code" class="w-full md:w-1/2 rounded-lg shadow-lg mb-6 md:mb-0"/>
+            <div class="text-left md:text-right md:w-1/2 space-y-2">
+              <h4 class="text-2xl font-semibold uppercase">VS Code</h4>
+              <p class="text-sm">Regelmäßige Arbeit mit Visual Studio Code.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="card fade-in timeline-item" data-year="2021">
+          <h3 class="text-4xl font-bold mb-6 text-center">2021</h3>
+          <article class="flex flex-col md:flex-row items-center md:space-x-8">
+            <div class="text-left md:text-right md:w-1/2 space-y-2">
+              <h4 class="text-2xl font-semibold uppercase">Adobe After Effects</h4>
+              <p class="text-sm">Motion Graphics & Video Post-Production.</p>
+            </div>
+            <img src="assets/img/after-effects-logo.png" alt="Adobe After Effects" class="w-full md:w-1/2 rounded-lg shadow-lg mb-6 md:mb-0"/>
+          </article>
+        </div>
+
+        <div class="text-center text-gray-400 italic timeline-item fade-in" data-year="2019">
+          <h3 class="text-4xl font-bold mb-6">2019</h3>
+          <p>Frühere Projekte …</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="space-y-4 py-24 border-t-2 border-white">
+      <h2 class="text-2xl md:text-4xl font-bold uppercase">Kontakt</h2>
+      <p class="text-lg">Let’s build something.<br/>
+        <a class="underline hover:text-gray-400" href="mailto:julian.becker123@gmail.com">julian.becker123@gmail.com</a>
+      </p>
+    </section>
+  </div>
+
+  <!-- SKILLS-TAB -->
+  <section id="tab-skills" class="hidden space-y-6 py-24">
+    <h2 class="text-3xl md:text-5xl font-bold uppercase">Skills</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-8">
+      <div class="card flex items-center space-x-4"><img src="assets/img/sap-logo.png" alt="SAP ERP" class="w-12 h-12 object-contain"/><span>SAP ERP</span></div>
+      <div class="card flex items-center space-x-4"><img src="assets/img/flexus-logo.png" alt="Flexus" class="w-12 h-12 object-contain"/><span>Flexus Mobile Solutions</span></div>
+      <div class="card flex items-center space-x-4"><img src="assets/img/tailwind-logo.png" alt="Tailwind" class="w-12 h-12 object-contain"/><span>Tailwind CSS</span></div>
+      <div class="card flex items-center space-x-4"><img src="assets/img/after-effects-logo.png" alt="AE" class="w-12 h-12 object-contain"/><span>Adobe After Effects</span></div>
+      <div class="card flex items-center space-x-4"><img src="assets/img/vscode-logo.png" alt="VS Code" class="w-12 h-12 object-contain"/><span>Visual Studio Code</span></div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="text-center py-8 text-xs text-gray-400 tracking-widest">
+  <div>© 2025 Julian Becker • beckerbyte</div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+<script>
+const bg = document.getElementById('bg');
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  VANTA.NET({ el: bg, mouseControls: true, touchControls: false, gyroControls: false, color: 0x555555, backgroundColor: 0x000000, points: 10.0, maxDistance: 20.0, spacing: 18.0 });
+}
+</script>
+<script>
+document.querySelectorAll('.timeline-item').forEach(el => {
+  const observer = new IntersectionObserver(([e]) => {
+    e.target.classList.toggle('opacity-0', !e.isIntersecting);
+    e.target.classList.toggle('translate-y-8', !e.isIntersecting);
+  }, { threshold: 0.25 });
+  observer.observe(el);
+});
+</script>
+<script>
+function switchTab(id) {
+  document.getElementById('tab-home').classList.toggle('hidden', id !== 'home');
+  document.getElementById('tab-skills').classList.toggle('hidden', id !== 'skills');
+}
+</script>
+</body>
+</html>
