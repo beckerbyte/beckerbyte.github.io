@@ -23,10 +23,15 @@ Diese Website liefert:
 ## 📁 Struktur
 
 beckerbyte/
+
 ├── index.html
+
 ├── assets/
+
 │ ├── css/
+
 │ └── img/
+
 └── README.md
 
 
