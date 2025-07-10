@@ -27,12 +27,73 @@
 </header>
 
 <main class="container mx-auto px-6 md:px-12 lg:px-24 py-24 space-y-24 tab-container">
-  <!-- Content unverändert -->
+  <div id="tab-home">
+    <section class="min-h-screen flex items-center">
+      <h1 class="text-4xl md:text-7xl font-extrabold uppercase leading-tight">Code<br class="hidden md:block" /> is My Craft.</h1>
+    </section>
+
+    <section id="projects" class="relative py-24">
+      <span class="absolute left-1/2 -translate-x-1/2 h-full w-px bg-gray-700"></span>
+      <div class="space-y-24 max-w-2xl mx-auto">
+        <div class="card fade-in">
+          <h3 class="text-4xl font-bold mb-6 text-center">2025</h3>
+          <div class="flex flex-col md:flex-row items-center md:space-x-8">
+            <div class="text-left md:text-right md:w-1/2 space-y-2">
+              <h4 class="text-2xl font-semibold uppercase">Fachinformatik Umschulung</h4>
+              <p class="text-sm">Berufliche Neuorientierung & Spezialisierung in Systemintegration.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <h3 class="text-4xl font-bold mb-6 text-center">2023</h3>
+          <div class="flex flex-col md:flex-row items-center md:space-x-8">
+            <img src="./assets/img/vscode-logo.png" alt="VS Code" class="w-full md:w-1/2 rounded-lg mb-6 md:mb-0 shadow" />
+            <div class="text-left md:text-right md:w-1/2 space-y-2">
+              <h4 class="text-2xl font-semibold uppercase">VS Code</h4>
+              <p class="text-sm">Regelmäßige Arbeit mit Visual Studio Code.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <h3 class="text-4xl font-bold mb-6 text-center">2021</h3>
+          <div class="flex flex-col md:flex-row items-center md:space-x-8">
+            <div class="text-left md:text-right md:w-1/2 space-y-2">
+              <h4 class="text-2xl font-semibold uppercase">Adobe After Effects</h4>
+              <p class="text-sm">Motion Graphics & Video Post-Production.</p>
+            </div>
+            <img src="./assets/img/after-effects-logo.png" alt="AE" class="w-full md:w-1/2 rounded-lg mb-6 md:mb-0 shadow" />
+          </div>
+        </div>
+        <div class="fade-in text-center text-gray-400 italic">
+          <h3 class="text-4xl font-bold mb-6">2019</h3>
+          <p>Frühere Projekte …</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-24 border-t border-white space-y-4">
+      <h2 class="text-2xl md:text-4xl font-bold uppercase">Kontakt</h2>
+      <p class="text-lg">Let’s build something.<br>
+        <a class="underline hover:text-gray-400" href="mailto:julian.becker123@gmail.com">julian.becker123@gmail.com</a>
+      </p>
+    </section>
+  </div>
+
+  <section id="tab-skills" class="hidden space-y-6 py-24">
+    <h2 class="text-3xl md:text-5xl font-bold uppercase">Skills</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-8">
+      <div class="card fade-in flex items-center space-x-4"><img src="./assets/img/sap-logo.png" class="w-12 h-12 object-contain" /><span>SAP ERP</span></div>
+      <div class="card fade-in flex items-center space-x-4"><img src="./assets/img/flexus-logo.png" class="w-12 h-12 object-contain" /><span>Flexus Mobile Solutions</span></div>
+      <div class="card fade-in flex items-center space-x-4"><img src="./assets/img/tailwind-logo.png" class="w-12 h-12 object-contain" /><span>Tailwind CSS</span></div>
+      <div class="card fade-in flex items-center space-x-4"><img src="./assets/img/after-effects-logo.png" class="w-12 h-12 object-contain" /><span>Adobe After Effects</span></div>
+      <div class="card fade-in flex items-center space-x-4"><img src="./assets/img/vscode-logo.png" class="w-12 h-12 object-contain" /><span>Visual Studio Code</span></div>
+    </div>
+  </section>
 </main>
 
 <footer class="text-center py-8 text-xs text-gray-400 tracking-widest flex flex-col items-center space-y-4">
   <div class="flex space-x-6">
-    <!-- Social Icons unverändert -->
+    <!-- Social Icons -->
   </div>
   <div>© 2025 Julian Becker • beckerbyte</div>
 </footer>
@@ -49,7 +110,7 @@ document.querySelectorAll('.fade-in').forEach(el => {
   const obs = new IntersectionObserver(([entry], observer) => {
     if (entry.isIntersecting) {
       el.classList.remove('opacity-0');
-      el.classList.add('fade-in-static'); // fix: keine ungültige Tailwind-Animation
+      el.classList.add('fade-in-static');
       observer.unobserve(el);
     }
   }, { threshold: 0.2 });
