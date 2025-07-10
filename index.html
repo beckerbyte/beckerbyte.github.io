@@ -255,7 +255,7 @@ document.addEventListener("scroll", () => {
   const elements = document.querySelectorAll(".parallax");
   elements.forEach(el => {
     const speed = parseFloat(el.getAttribute("data-speed")) || 0.5;
-    el.style.transform = `translateY(${window.scrollY * speed}px)`;
+    el.style.transform = translateY(${window.scrollY * speed}px);
   });
 });
 </script>
