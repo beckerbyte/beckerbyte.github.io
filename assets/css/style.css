@@ -36,3 +36,5 @@
   transform: translateY(0);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
+<link rel="stylesheet" href="assets/css/animated-cursor.css">
+
