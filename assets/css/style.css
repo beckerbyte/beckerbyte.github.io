@@ -8,15 +8,16 @@
 
 .dark-theme {
   --bg: #121212;
-  --text: #f0f0f0;
+  --text: #eaeaea;
   --accent: #00c4ff;
-  --card-bg: rgba(255, 255, 255, 0.02);
+  --card-bg: rgba(255, 255, 255, 0.08);
   --shadow: 0 0 12px rgba(255, 255, 255, 0.1);
 }
 
 body {
   background-color: var(--bg);
   color: var(--text);
+  text-shadow: 0 0 2px rgba(0,0,0,0.5);
   font-family: 'Inter', sans-serif;
   transition: background 0.3s ease, color 0.3s ease;
 }
@@ -25,6 +26,7 @@ body {
 /* Card-Komponente */
 .card {
   background-color: var(--card-bg);
+  backdrop-filter: blur(6px);
   border-radius: 0.75rem;
   padding: 1.5rem;
   box-shadow: var(--shadow);
@@ -61,6 +63,7 @@ input, textarea {
   border: none;
   border-bottom: 2px solid var(--text);
   color: var(--text);
+  text-shadow: 0 0 2px rgba(0,0,0,0.5);
   padding: 0.5rem;
   transition: border-color 0.3s ease;
 }
@@ -90,6 +93,7 @@ p {
   line-height: 1.6;
   font-size: 1rem;
   color: var(--text);
+  text-shadow: 0 0 2px rgba(0,0,0,0.5);
 }
 
 /* ----------------------------------------------- */
