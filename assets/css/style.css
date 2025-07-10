@@ -1,140 +1,9 @@
-:root {
-  --bg: #f9f9f9;
-  --text: #111;
-  --accent: #0077ff;
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --shadow: 0 0 12px rgba(0, 0, 0, 0.3);
-}
-
-.dark-theme {
-  --bg: #121212;
-  --text: #f0f0f0;
-  --accent: #00c4ff;
-  --card-bg: rgba(255, 255, 255, 0.02);
-  --shadow: 0 0 12px rgba(255, 255, 255, 0.1);
-}
-
-body {
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-/* ----------------------------------------------- */
-/* Card-Komponente */
 .card {
-  background-color: var(--card-bg);
+  background-color: #1a1a1a;
+  color: white;
   border-radius: 0.75rem;
   padding: 1.5rem;
-  box-shadow: var(--shadow);
-  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-}
-
-/* ----------------------------------------------- */
-/* Buttons */
-button {
-  background-color: var(--accent);
-  color: #fff;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.25s ease-in-out;
-}
-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* ----------------------------------------------- */
-/* Inputs & Forms */
-input, textarea {
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid var(--text);
-  color: var(--text);
-  padding: 0.5rem;
-  transition: border-color 0.3s ease;
-}
-input:focus, textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-}
-
-/* ----------------------------------------------- */
-/* Grid-System */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
-/* ----------------------------------------------- */
-/* Typografie */
-h1, h2, h3 {
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-h1 {
-  font-size: clamp(2rem, 5vw, 4rem);
-}
-p {
-  line-height: 1.6;
-  font-size: 1rem;
-  color: var(--text);
-}
-
-/* ----------------------------------------------- */
-/* Scroll Fade-In Animation */
-.fade-in {
-  opacity: 0;
-  animation: fadeIn 0.8s ease-out forwards;
-}
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-/* Optional: Parallax-Effekt mit Pseudo */
-.card::before {
-  content: "";
-  position: absolute;
-  top: -10%;
-  left: -10%;
-  width: 120%;
-  height: 120%;
-  background: radial-gradient(var(--accent), transparent 70%);
-  opacity: 0.05;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* Optional: Dark-Mode Toggle Button Style */
-.theme-toggle {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 1000;
-  padding: 0.5rem;
-  background: var(--card-bg);
-  border: 1px solid var(--accent);
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-/* Card-Komponente für visuelle Abhebung */
-.card {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
   transition: transform 0.2s ease-in-out;
 }
 
@@ -142,7 +11,7 @@ p {
   transform: scale(1.02);
 }
 
-/* Fade-in Effekt für dynamischen Einstieg */
+/* Fade-in Effekt */
 .fade-in {
   opacity: 0;
   animation: fadeIn 0.8s ease-out forwards;
@@ -154,26 +23,28 @@ p {
   }
 }
 
-/* Gemeinsamer Fade-Out Effekt */
+/* Fade-Out */
 .fade-out {
   opacity: 0 !important;
   transform: translateY(-20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* Rückkehr zur Sichtbarkeit (optional für manuelles Resetting) */
+/* Sichtbar machen */
 .fade-in-static {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* Custom Cursor Styling */
+/* Cursor ausblenden */
 body {
   cursor: none;
+  background-color: black;
+  color: white;
 }
 
-/* Custom Cursor */
+/* Animierter Custom Cursor */
 #cursor {
   position: fixed;
   top: 0;
