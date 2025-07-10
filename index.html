@@ -119,5 +119,34 @@ function switchTab(id) {
   document.getElementById("tab-skills").classList.toggle("hidden", id !== "skills");
 }
 </script>
+
+<script>
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const logo = document.querySelector('header');
+  const headline = document.querySelector('h1');
+  const timelineCards = document.querySelectorAll('.card');
+
+  const fadeThreshold = 100;
+
+  if (scrollY > fadeThreshold) {
+    logo.classList.add('fade-out');
+    headline.classList.add('fade-out');
+  } else {
+    logo.classList.remove('fade-out');
+    headline.classList.remove('fade-out');
+  }
+
+  timelineCards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.8) {
+      card.classList.remove('opacity-0');
+      card.classList.add('animate-fade-in');
+    }
+  });
+});
+</script>
+
 </body>
 </html>
+
