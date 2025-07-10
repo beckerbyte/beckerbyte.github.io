@@ -27,7 +27,7 @@
 </header>
 
 <main class="container mx-auto px-6 md:px-12 lg:px-24 py-24 space-y-24 tab-container">
-  <div id="tab-home">
+  <div id="home">
     <section class="min-h-screen flex items-center">
       <h1 class="text-4xl md:text-7xl font-extrabold uppercase leading-tight">Code<br class="hidden md:block" /> is My Craft.</h1>
     </section>
@@ -40,7 +40,7 @@
           <div class="flex flex-col md:flex-row items-center md:space-x-8">
             <div class="text-left md:text-right md:w-1/2 space-y-2">
               <h4 class="text-2xl font-semibold uppercase">Fachinformatik Umschulung</h4>
-              <p class="text-sm">Berufliche Neuorientierung & Spezialisierung in Systemintegration.</p>
+              <p class="text-sm">Berufliche Neuorientierung & Spezialisierung in Anwendungsentwicklung.</p>
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@
     </section>
   </div>
 
-  <section id="tab-skills" class="hidden space-y-6 py-24">
+  <section id="skills" class="hidden space-y-6 py-24">
     <h2 class="text-3xl md:text-5xl font-bold uppercase">Skills</h2>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-8">
       <div class="card fade-in flex items-center space-x-4"><img src="./assets/img/sap-logo.png" class="w-12 h-12 object-contain" /><span>SAP ERP</span></div>
@@ -160,8 +160,8 @@ window.addEventListener('scroll', () => {
 
 <script>
 function showTab(id) {
-  document.getElementById("tab-home").classList.toggle("hidden", id !== "home");
-  document.getElementById("tab-skills").classList.toggle("hidden", id !== "skills");
+  document.getElementById("home").classList.toggle("hidden", id !== "home");
+  document.getElementById("skills").classList.toggle("hidden", id !== "skills");
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -177,3 +177,4 @@ window.addEventListener('hashchange', () => {
 
 </body>
 </html>
+
