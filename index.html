@@ -100,20 +100,6 @@ VANTA.NET({ el: "#bg", color: 0x555555, backgroundColor: 0x000000, points: 10.0,
 </script>
 
 <script>
-document.querySelectorAll('.fade-in').forEach(el => {
-  el.classList.add('opacity-0');
-  const obs = new IntersectionObserver(([entry], observer) => {
-    if (entry.isIntersecting) {
-      el.classList.remove('opacity-0');
-      el.classList.add('animate-fade-in');
-      observer.unobserve(el);
-    }
-  }, { threshold: 0.2 });
-  obs.observe(el);
-});
-</script>
-
-<script>
 function switchTab(id) {
   document.getElementById("tab-home").classList.toggle("hidden", id !== "home");
   document.getElementById("tab-skills").classList.toggle("hidden", id !== "skills");
