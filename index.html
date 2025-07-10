@@ -260,21 +260,6 @@ document.addEventListener("scroll", () => {
 });
 </script>
 
-<button id="theme-toggle" class="fixed bottom-4 right-4 z-50 bg-gray-800 text-white p-2 rounded-full shadow hover:bg-gray-700 transition">
-🌓
-</button>
-<script>
-const btn = document.getElementById("theme-toggle");
-btn.addEventListener("click", () => {
-  const html = document.documentElement;
-  html.classList.toggle("dark");
-  localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
-});
-if (localStorage.getItem("theme") === "dark") {
-  document.documentElement.classList.add("dark");
-}
-</script>
-
 </body>
 
 
