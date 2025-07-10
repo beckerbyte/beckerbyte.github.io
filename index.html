@@ -13,16 +13,17 @@
 
 <div id="bg" class="fixed inset-0 -z-10"></div>
 
+
 <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 transform">
   <div class="flex space-x-6 bg-black bg-opacity-60 backdrop-blur-md px-6 py-2 rounded-full shadow-lg">
-    <button class="text-white font-semibold hover:text-gray-300" onclick="switchTab('home')">Home</button>
-    <button class="text-white font-semibold hover:text-gray-300" onclick="switchTab('skills')">Erfahrungen</button>
+    <a href="#home" class="text-white font-semibold hover:text-gray-300">Home</a>
+    <a href="#skills" class="text-white font-semibold hover:text-gray-300">Erfahrungen</a>
   </div>
 </nav>
 
-<header class="fixed top-4 left-6 z-50 transition-all duration-500">
-  <img src="assets/img/header.png" alt="Logo" class="h-36 md:h-48 lg:h-56 xl:h-64 hover:scale-105 transition" />
-</header>
+
+<header class="fixed top-4 left-6 z-50 transition-all duration-500"><a href="#home"><img src="assets/img/header.png" alt="Logo" class="h-36 md:h-48 lg:h-56 xl:h-64 hover:scale-105 transition" />
+</a></header>
 
 <main class="container mx-auto px-6 md:px-12 lg:px-24 py-24 space-y-24 tab-container">
   <div id="tab-home">
@@ -100,11 +101,20 @@ VANTA.NET({ el: "#bg", color: 0x555555, backgroundColor: 0x000000, points: 10.0,
 </script>
 
 <script>
-function switchTab(id) {
-  document.getElementById("tab-home").classList.toggle("hidden", id !== "home");
-  document.getElementById("tab-skills").classList.toggle("hidden", id !== "skills");
-}
+document.querySelectorAll('.fade-in').forEach(el => {
+  el.classList.add('opacity-0');
+  const obs = new IntersectionObserver(([entry], observer) => {
+    if (entry.isIntersecting) {
+      el.classList.remove('opacity-0');
+      el.classList.add('animate-fade-in');
+      observer.unobserve(el);
+    }
+  }, { threshold: 0.2 });
+  obs.observe(el);
+});
 </script>
+
+
 
 
 <script>
@@ -138,6 +148,23 @@ window.addEventListener('scroll', () => {
 </script>
 
 
+
+<script>
+function showTab(id) {
+  document.getElementById("tab-home").classList.toggle("hidden", id !== "home");
+  document.getElementById("tab-skills").classList.toggle("hidden", id !== "skills");
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = location.hash.replace('#', '') || 'home';
+  showTab(hash);
+});
+
+window.addEventListener('hashchange', () => {
+  const hash = location.hash.replace('#', '') || 'home';
+  showTab(hash);
+});
+</script>
+
 </body>
 </html>
-
