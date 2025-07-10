@@ -36,5 +36,31 @@
   transform: translateY(0);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
+
 <link rel="stylesheet" href="assets/css/animated-cursor.css">
+
+body {
+  cursor: none;
+}
+
+/* Custom Cursor */
+#cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border: 2px solid white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease-out;
+  animation: cursorPulse 1.2s infinite;
+}
+
+@keyframes cursorPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.4); }
+}
 
