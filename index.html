@@ -25,6 +25,7 @@
   </style>
 </head>
 <body class="bg-black text-white font-mono">
+  <div id="cursor"></div>
 
 <div id="bg" class="fixed inset-0 -z-10"></div>
 
@@ -255,11 +256,12 @@ document.addEventListener("scroll", () => {
   const elements = document.querySelectorAll(".parallax");
   elements.forEach(el => {
     const speed = parseFloat(el.getAttribute("data-speed")) || 0.5;
-    el.style.transform = translateY(${window.scrollY * speed}px);
+    el.style.transform = `translateY(${window.scrollY * speed}px)`;
   });
 });
 </script>
 
+  <script src="assets/js/animated-cursor.js"></script>
 </body>
 
 
