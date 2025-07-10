@@ -43,7 +43,13 @@
 
 <main class="container mx-auto px-6 md:px-12 lg:px-24 py-24 space-y-24 tab-container">
   <div id="home">
-    <section class="min-h-screen flex items-center">
+    
+<section class="min-h-screen flex items-center">
+  <h1 class="text-4xl md:text-7xl font-extrabold uppercase leading-tight">
+    <span id="typewriter"></span>
+  </h1>
+</section>
+
       <h1 class="text-4xl md:text-7xl font-extrabold uppercase leading-tight">Code<br class="hidden md:block" /> is My Craft.</h1>
     </section>
 
@@ -104,7 +110,9 @@
       <div class="card fade-in flex items-center space-x-4"><img src="./assets/img/vscode-logo.png" class="w-12 h-12 object-contain" /><span>Visual Studio Code</span></div>
     </div>
   </section>
+
 </main>
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
@@ -191,6 +199,80 @@ window.addEventListener('scroll', () => {
     }
   });
 });
+</script>
+
+
+<script>
+document.querySelectorAll('.fade-in').forEach(el => {
+  el.classList.add('opacity-0', 'translate-y-4');
+  const observer = new IntersectionObserver(([entry], obs) => {
+    if (entry.isIntersecting) {
+      el.classList.remove('opacity-0', 'translate-y-4');
+      el.classList.add('transition-all', 'duration-1000');
+      obs.unobserve(entry.target);
+    }
+  }, { threshold: 0.2 });
+  observer.observe(el);
+});
+</script>
+
+<script>
+const phrases = ["Code", "Design", "Systeme", "Lösungen"];
+let i = 0;
+let currentText = "";
+let deleting = false;
+
+function type() {
+  const target = document.getElementById("typewriter");
+  const word = phrases[i % phrases.length];
+
+  if (!deleting) {
+    currentText = word.substring(0, currentText.length + 1);
+  } else {
+    currentText = word.substring(0, currentText.length - 1);
+  }
+
+  target.innerHTML = currentText + "<span class='border-r-2 border-white animate-pulse ml-1'></span>";
+
+  let timeout = deleting ? 80 : 120;
+
+  if (!deleting && currentText === word) {
+    timeout = 1000;
+    deleting = true;
+  } else if (deleting && currentText === "") {
+    deleting = false;
+    i++;
+    timeout = 500;
+  }
+
+  setTimeout(type, timeout);
+}
+document.addEventListener("DOMContentLoaded", type);
+</script>
+
+<script>
+document.addEventListener("scroll", () => {
+  const elements = document.querySelectorAll(".parallax");
+  elements.forEach(el => {
+    const speed = parseFloat(el.getAttribute("data-speed")) || 0.5;
+    el.style.transform = `translateY(${window.scrollY * speed}px)`;
+  });
+});
+</script>
+
+<button id="theme-toggle" class="fixed bottom-4 right-4 z-50 bg-gray-800 text-white p-2 rounded-full shadow hover:bg-gray-700 transition">
+🌓
+</button>
+<script>
+const btn = document.getElementById("theme-toggle");
+btn.addEventListener("click", () => {
+  const html = document.documentElement;
+  html.classList.toggle("dark");
+  localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
+});
+if (localStorage.getItem("theme") === "dark") {
+  document.documentElement.classList.add("dark");
+}
 </script>
 
 </body>
