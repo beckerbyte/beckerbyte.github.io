@@ -120,11 +120,13 @@ function switchTab(id) {
 }
 </script>
 
+
 <script>
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
   const logo = document.querySelector('header');
   const headline = document.querySelector('h1');
+  const nav = document.querySelector('nav');
   const timelineCards = document.querySelectorAll('.card');
 
   const fadeThreshold = 100;
@@ -132,9 +134,11 @@ window.addEventListener('scroll', () => {
   if (scrollY > fadeThreshold) {
     logo.classList.add('fade-out');
     headline.classList.add('fade-out');
+    nav.classList.add('fade-out');
   } else {
     logo.classList.remove('fade-out');
     headline.classList.remove('fade-out');
+    nav.classList.remove('fade-out');
   }
 
   timelineCards.forEach(card => {
@@ -146,6 +150,7 @@ window.addEventListener('scroll', () => {
   });
 });
 </script>
+
 
 </body>
 </html>
