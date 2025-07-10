@@ -1,103 +1,21 @@
-/* === Base Reset === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-/* === Root Colors (Dark/Light Mode Support) === */
-:root {
-  --bg: #0d1117;
-  --text: #e6edf3;
-  --accent: #2f81f7;
-  --card-bg: #161b22;
-  --border: #30363d;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg: #ffffff;
-    --text: #1c1c1c;
-    --accent: #007bff;
-    --card-bg: #f2f2f2;
-    --border: #cccccc;
-  }
-}
-
-/* === Body / Layout === */
-body {
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  padding: 2rem;
-  max-width: 900px;
-  margin: auto;
-}
-
-/* === Typography === */
-h1, h2, h3 {
-  font-weight: 600;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
-  color: var(--text);
-}
-
-p {
-  margin-bottom: 1rem;
-}
-
-a {
-  color: var(--accent);
-  text-decoration: none;
-  transition: 0.2s ease-in-out;
-}
-
-a:hover {
-  opacity: 0.8;
-  transform: translateY(-1px);
-}
-
-/* === Code Blocks / Pre === */
-pre {
-  background: var(--card-bg);
-  padding: 1rem;
-  border-radius: 6px;
-  overflow-x: auto;
-  border: 1px solid var(--border);
-  margin-bottom: 1.5rem;
-}
-
-/* === Cards (z. B. für Projektboxen) === */
+/* Card-Komponente für visuelle Abhebung */
 .card {
-  background: var(--card-bg);
-  border-radius: 8px;
-  padding: 1rem;
-  margin: 1.5rem 0;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  border: 1px solid var(--border);
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out;
 }
 
-/* === Container Helper === */
-.container {
-  padding: 1rem;
+.card:hover {
+  transform: scale(1.02);
 }
 
-/* === Responsive === */
-@media (max-width: 768px) {
-  body {
-    padding: 1rem;
-    font-size: 0.95rem;
-  }
-  h1 {
-    font-size: 1.8rem;
-  }
-}
-
-/* === Fade-In Animation === */
+/* Fade-in Effekt für dynamischen Einstieg */
 .fade-in {
   opacity: 0;
-  animation: fadeIn 1s ease-in-out forwards;
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
 @keyframes fadeIn {
