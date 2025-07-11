@@ -1,30 +1,84 @@
 <!DOCTYPE html>
 <html lang="de" class="scroll-smooth">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Projekte – beckerbyte</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="./assets/img/favicon-v2.png" type="image/png"/>
 </head>
 <body class="bg-black text-white font-mono">
-  <main class="container mx-auto px-6 md:px-12 lg:px-24 py-24 space-y-16">
-    <h1 class="text-4xl md:text-6xl font-extrabold uppercase mb-8">Projekte</h1>
+  <div id="cursor"></div>
+  <div id="bg" class="fixed inset-0 -z-10"></div>
 
-    <section class="space-y-12">
-      <div class="border-l-4 border-gray-600 pl-6">
-        <h2 class="text-2xl font-bold">🛠️ <a href="https://github.com/beckerbyte/invoice-parser" target="_blank" class="underline hover:text-gray-400">invoice-parser</a></h2>
-        <p class="text-gray-300 mt-2">Tool zur Extraktion von Rechnungsdaten mittels regulärer Ausdrücke und PDF-Parsing. Fokus: Automatisierung manueller Buchhaltungsschritte.</p>
+  <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 transform">
+    <div class="flex space-x-6 bg-black bg-opacity-60 backdrop-blur-md px-6 py-2 rounded-full shadow-lg">
+      <a href="index.html#home" class="text-white font-semibold hover:text-gray-300">Home</a>
+      <a href="index.html#skills" class="text-white font-semibold hover:text-gray-300">Erfahrungen</a>
+      <a href="projekte.html" class="text-white font-semibold hover:text-gray-300">Projekte</a>
+    </div>
+  </nav>
+
+  <header class="fixed top-4 left-6 z-50 transition-all duration-500">
+    <a href="index.html#home">
+      <img src="./assets/img/header.png" alt="Logo" class="h-36 md:h-48 lg:h-56 xl:h-64 hover:scale-105 transition" />
+    </a>
+  </header>
+
+  <main class="container mx-auto px-6 md:px-12 lg:px-24 py-32 space-y-24">
+    <section>
+      <h1 class="text-4xl md:text-6xl font-extrabold uppercase leading-tight">Projekte</h1>
+    </section>
+
+    <section class="space-y-24">
+      <div class="card fade-in space-y-4">
+        <h2 class="text-2xl font-bold uppercase">🌐 <a href="https://github.com/beckerbyte/beckerbyte.github.io" target="_blank" class="underline hover:text-gray-400">beckerbyte.github.io</a></h2>
+        <p class="text-gray-300">Die persönliche Portfolio-Seite – vollständig responsive, gebaut mit Tailwind CSS, Vanilla JS und Vanta.js. Fokus: visuelle Klarheit, Performance, eigene Identität im Netz.</p>
       </div>
 
-      <div class="border-l-4 border-gray-600 pl-6">
-        <h2 class="text-2xl font-bold">📈 <a href="https://github.com/beckerbyte/data-dashboard" target="_blank" class="underline hover:text-gray-400">data-dashboard</a></h2>
-        <p class="text-gray-300 mt-2">Interaktives Dashboard zur Visualisierung von CSV-Daten mit D3.js. Fokus: Datentransparenz und Nutzerinteraktion.</p>
+      <div class="card fade-in space-y-4">
+        <h2 class="text-2xl font-bold uppercase">🧠 <a href="https://github.com/beckerbyte/Text-Analyzer" target="_blank" class="underline hover:text-gray-400">Text-Analyzer</a></h2>
+        <p class="text-gray-300">Ein einfaches Python-Skript zur lexikalischen Textanalyse. Zählt Wörter, Zeichen, Satzzeichen und liefert Basisstatistiken – CLI-basiert, wartbar, direkt einsetzbar.</p>
       </div>
     </section>
 
-    <div class="pt-12">
-      <a href="index.html" class="text-sm text-gray-400 underline hover:text-gray-300">← Zurück zur Startseite</a>
+    <div class="text-center pt-12">
+      <a href="index.html#home" class="underline text-sm text-gray-400 hover:text-gray-300">← Zurück zur Startseite</a>
     </div>
   </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <script>
+    VANTA.NET({
+      el: "#bg",
+      color: 0x555555,
+      backgroundColor: 0x000000,
+      points: 10.0,
+      maxDistance: 20.0,
+      spacing: 18.0,
+      mouseControls: true,
+      touchControls: false,
+      gyroControls: false
+    });
+  </script>
+
+  <script>
+    document.querySelectorAll('.fade-in').forEach(el => {
+      el.classList.add('opacity-0', 'translate-y-4');
+      const observer = new IntersectionObserver(([entry], obs) => {
+        if (entry.isIntersecting) {
+          el.classList.remove('opacity-0', 'translate-y-4');
+          el.classList.add('transition-all', 'duration-1000');
+          obs.unobserve(entry.target);
+        }
+      }, { threshold: 0.2 });
+      observer.observe(el);
+    });
+  </script>
+
+  <script src="assets/js/animated-cursor.js"></script>
 </body>
 </html>
