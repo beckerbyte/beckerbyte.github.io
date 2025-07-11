@@ -1,0 +1,20 @@
+
+<svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="orange" stroke-width="2">
+  <rect x="30" y="60" width="80" height="60" rx="6" ry="6" fill="#1a1a1a" stroke="#888"/>
+  <text x="40" y="95" fill="white" font-family="monospace" font-size="14">&lt;/&gt;</text>
+
+  <circle cx="200" cy="90" r="30" stroke="#888" fill="#1a1a1a"/>
+  <path d="M200 70 L200 50" stroke="orange">
+    <animate attributeName="d" dur="2s" repeatCount="indefinite"
+      values="M200 70 L200 50; M200 70 L200 55; M200 70 L200 50" />
+  </path>
+  <circle cx="200" cy="50" r="4" fill="orange">
+    <animate attributeName="cy" dur="2s" repeatCount="indefinite"
+      values="50;55;50" />
+  </circle>
+
+  <line x1="110" y1="90" x2="170" y2="90" stroke="orange">
+    <animate attributeName="x2" dur="2s" repeatCount="indefinite"
+      values="170;175;170" />
+  </line>
+</svg>
