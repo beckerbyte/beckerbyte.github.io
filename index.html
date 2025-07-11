@@ -23,6 +23,13 @@
       display: inline-block;
     }
   </style>
+
+<style>
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+</style>
 </head>
 <body class="bg-black text-white font-mono">
   <div id="cursor"></div>
@@ -49,20 +56,6 @@
           <span id="typewriter"></span>
         </h1>
       </section>
-
-      
-  <section id="skills" class="hidden space-y-6 py-24">
-    <h2 class="text-3xl md:text-5xl font-bold uppercase">Skills</h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-8">
-      <div class="card fade-in flex items-center space-x-4"><img src="./assets/img/sap-logo.png" class="w-12 h-12 object-contain" /><span>SAP ERP</span></div>
-      <div class="card fade-in flex items-center space-x-4"><img src="./assets/img/flexus-logo.png" class="w-12 h-12 object-contain" /><span>Flexus Mobile Solutions</span></div>
-      <div class="card fade-in flex items-center space-x-4"><img src="./assets/img/tailwind-logo.png" class="w-12 h-12 object-contain" /><span>Tailwind CSS</span></div>
-      <div class="card fade-in flex items-center space-x-4"><img src="./assets/img/after-effects-logo.png" class="w-12 h-12 object-contain" /><span>Adobe After Effects</span></div>
-      <div class="card fade-in flex items-center space-x-4"><img src="./assets/img/vscode-logo.png" class="w-12 h-12 object-contain" /><span>Visual Studio Code</span></div>
-    </div>
-  </section>
-
-</main>
 
       <h1 class="text-4xl md:text-7xl font-extrabold uppercase leading-tight">Code<br class="hidden md:block" /> is My Craft.</h1>
 
@@ -235,5 +228,52 @@
       observer.observe(el);
     });
   </script>
+
+<script>
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const logo = document.querySelector('header');
+  const headline = document.querySelector('h1');
+  const nav = document.querySelector('nav');
+  const timelineCards = document.querySelectorAll('.card');
+
+  const fadeThreshold = 100;
+
+  if (scrollY > fadeThreshold) {
+    logo.classList.add('fade-out');
+    headline.classList.add('fade-out');
+    nav.classList.add('fade-out');
+  } else {
+    logo.classList.remove('fade-out');
+    headline.classList.remove('fade-out');
+    nav.classList.remove('fade-out');
+  }
+
+  timelineCards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.8) {
+      card.classList.remove('opacity-0');
+      card.classList.add('fade-in-static');
+    }
+  });
+});
+</script>
+
+<script>
+function showTab(id) {
+  document.getElementById("home").classList.toggle("hidden", id !== "home");
+  document.getElementById("skills").classList.toggle("hidden", id !== "skills");
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = location.hash.replace('#', '') || 'home';
+  showTab(hash);
+});
+
+window.addEventListener('hashchange', () => {
+  const hash = location.hash.replace('#', '') || 'home';
+  showTab(hash);
+});
+</script>
 </body>
 </html>
