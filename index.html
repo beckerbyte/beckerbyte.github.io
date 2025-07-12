@@ -272,42 +272,46 @@ document.addEventListener("DOMContentLoaded", () => {
 </section>
 <!-- 🔹 📬 Kontaktbereich -->
 
-<section class="py-24 px-6 max-w-2xl mx-auto">
-  <h2 class="text-3xl font-bold uppercase mb-6">Kontakt</h2>
-  <form action="https://formspree.io/f/meokydvg" method="POST" class="space-y-4">
-    <input type="hidden" name="_redirect" value="https://www.beckerbyte.com/">
+<form
+  action="https://formspree.io/f/meokydvg"
+  method="POST"
+  class="space-y-4"
+>
+  <input type="hidden" name="_redirect" value="https://www.beckerbyte.com/">
 
-    <div class="flex flex-col">
-      <label for="email" class="mb-1 font-semibold">Deine Email</label>
-      <input type="email" name="email" id="email" required
-        class="p-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300" />
-    </div>
+  <div class="flex flex-col">
+    <label for="email" class="mb-1 font-semibold">Deine Email</label>
+    <input type="email" name="email" id="email" required
+      class="p-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300" />
+  </div>
 
-    <div class="flex flex-col">
-      <label for="message" class="mb-1 font-semibold">Nachricht</label>
-      <textarea name="message" id="message" rows="5" required
-        class="p-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300 resize-none"></textarea>
-    </div>
+  <div class="flex flex-col">
+    <label for="message" class="mb-1 font-semibold">Nachricht</label>
+    <textarea name="message" id="message" rows="5" required
+      class="p-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300 resize-none"></textarea>
+  </div>
 
-    <div class="text-sm text-gray-400">
-      <label for="privacy" class="inline-flex items-center">
-        <div class="text-sm text-gray-400">
-  <label for="privacy" class="inline-flex items-center">
-    <input type="checkbox" id="privacy" name="privacy" required class="mr-2 accent-green-500" />
-    Ich akzeptiere die <a href="datenschutz.html" target="_blank" class="underline hover:text-green-400 transition">Datenschutzerklärung</a>.
-  </label>
-</div>
+  <div class="text-sm text-gray-400">
+    <label class="inline-flex items-start space-x-2">
+      <input type="checkbox" required class="mt-1 accent-green-500" />
+      <span>
+        Ich akzeptiere die
+        <a href="datenschutz.html" target="_blank"
+          class="underline hover:text-green-400 transition">Datenschutzerklärung</a>.
+      </span>
+    </label>
+  </div>
 
-    <div style="display:none;">
-      <input type="text" name="_gotcha" />
-    </div>
+  <div style="display:none;">
+    <input type="text" name="_gotcha" />
+  </div>
 
-    <button type="submit"
-      class="px-6 py-2 bg-green-500 hover:bg-green-400 text-black font-bold rounded-lg transition duration-300 transform hover:scale-105">
-      Nachricht senden
-    </button>
-  </form>
-</section>
+  <button type="submit"
+    class="px-6 py-2 bg-green-500 hover:bg-green-400 text-black font-bold rounded-lg transition duration-300 transform hover:scale-105">
+    Nachricht senden
+  </button>
+</form>
+
 
 
 <!-- 🔹 🧠 Skills-Bereich -->
