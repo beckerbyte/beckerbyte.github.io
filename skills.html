@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 
 <div class="card fade-in flex items-center space-x-4">
-  <img src="./assets/img/javascript-logo.png" alt="JavaScript Logo" class="w-12 h-12 object-contain"/>
-  <span>JavaScript</span>
+<img alt="JavaScript Logo" class="w-12 h-12 object-contain" src="./assets/img/javascript-logo.png"/>
+<span>JavaScript</span>
 </div>
-
-<html lang="de"><head>
+<html class="scroll-smooth" lang="de">
+<!-- 🔷 HEAD-BEREICH: Meta, Title, CSS, Icons -->
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>beckerbyte – Code &amp; Vision</title>
@@ -33,21 +34,111 @@
   transition: opacity 0.5s ease-out;
 }
 </style>
-</head><body class="bg-black text-white font-mono"><div id="cursor"></div><div class="fixed inset-0 -z-10" id="bg"></div><nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 transform"><div class="flex space-x-6 bg-black bg-opacity-60 backdrop-blur-md px-6 py-2 rounded-full shadow-lg"><a class="text-white font-semibold hover:text-gray-300" href="index.html">Home</a><a class="text-white font-semibold hover:text-gray-300" href="skills.html">Erfahrungen</a><a class="text-white font-semibold hover:text-gray-300" href="projekte.html">Projekte</a></div></nav><header class="fixed top-4 left-6 z-50 transition-all duration-500">
+</head>
+<!-- 🔷 BODY beginnt: Hauptstruktur -->
+<body class="bg-black text-white font-mono">
+<div id="cursor"></div>
+<!-- 🔹 🌐 VANTA.NET Hintergrund -->
+<div class="fixed inset-0 -z-10" id="bg"></div>
+<!-- 🔹 📌 Navigation -->
+<nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 transform">
+<div class="flex space-x-6 bg-black bg-opacity-60 backdrop-blur-md px-6 py-2 rounded-full shadow-lg"><a class="text-white font-semibold hover:text-gray-300" href="index.html">Home</a><a class="text-white font-semibold hover:text-gray-300" href="skills.html">Erfahrungen</a><a class="text-white font-semibold hover:text-gray-300" href="projekte.html">Projekte</a></div>
+</nav>
+<!-- 🔹 🖼️ Logo Header -->
+<header class="fixed top-4 left-6 z-50 transition-all duration-500">
 <a href="#home">
 <img alt="Logo" class="h-36 md:h-48 lg:h-56 xl:h-64 hover:scale-105 transition" src="./assets/img/header.png"/>
 </a>
-</header><main class="container mx-auto px-6 md:px-12 lg:px-24 py-24 space-y-24"><section class="space-y-6 py-24" id="skills">
-<h2 class="text-3xl md:text-5xl font-bold uppercase">Skills</h2>
-<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-8">
-<div class="card fade-in flex items-center space-x-4"><img class="w-12 h-12 object-contain" src="./assets/img/sap-logo.png"/><span>SAP ERP</span></div>
-<div class="card fade-in flex items-center space-x-4"><img class="w-12 h-12 object-contain" src="./assets/img/flexus-logo.png"/><span>Flexus Mobile Solutions</span></div>
-<div class="card fade-in flex items-center space-x-4"><img class="w-12 h-12 object-contain" src="./assets/img/tailwind-logo.png"/><span>Tailwind CSS</span></div>
-<div class="card fade-in flex items-center space-x-4"><img class="w-12 h-12 object-contain" src="./assets/img/after-effects-logo.png"/><span>Adobe After Effects</span></div>
-<div class="card fade-in flex items-center space-x-4"><img class="w-12 h-12 object-contain" src="./assets/img/vscode-logo.png"/><span>Visual Studio Code</span></div>
-<div class="card fade-in flex items-center space-x-4"><img class="w-12 h-12 object-contain" src="./assets/img/html-logo.png"/><span>HTML</span></div>
-<div class="card fade-in flex items-center space-x-4"><img class="w-12 h-12 object-contain" src="./assets/img/css-logo.png"/><span>CSS</span></div><div class="card fade-in flex items-center space-x-4"><img class="w-12 h-12 object-contain" src="./assets/img/javascript-logo.png"/><span>JavaScript</span></div></div>
-</section><a class="inline-block mt-12 text-green-400 hover:text-green-300 underline" href="index.html">← Zurück zur Startseite</a></main><footer class="text-center py-8 text-xs text-gray-400 tracking-widest flex flex-col items-center space-y-4">
+</header>
+<!-- 🔷 MAIN-BEREICH: Inhalt -->
+<main class="container mx-auto px-6 md:px-12 lg:px-24 py-24 space-y-24 tab-container">
+<div id="home">
+<!-- 🔹 ⌨️ Intro Sektion mit Typewriter -->
+<section class="min-h-screen flex items-center">
+<h1 class="text-4xl md:text-7xl font-extrabold uppercase leading-tight">
+<span id="typewriter"></span>
+</h1>
+</section>
+<h1 class="text-4xl md:text-7xl font-extrabold uppercase leading-tight">Code<br class="hidden md:block"/> is My Craft.</h1>
+<!-- 🔹 📅 Projekte Timeline -->
+<h2 class="text-3xl font-bold uppercase mb-6">For you.</h2>
+<section class="relative py-24" id="projects">
+<span class="absolute left-1/2 -translate-x-1/2 h-full w-px bg-gray-700 pointer-events-none z-0"></span>
+<div class="space-y-24 max-w-4xl mx-auto px-4">
+<div class="card fade-in">
+<h3 class="text-4xl font-bold mb-6 text-center">2025</h3>
+<div class="flex flex-col md:flex-row items-center md:space-x-8">
+<div class="text-left md:text-right basis-1/2 space-y-2">
+<h4 class="text-2xl font-semibold uppercase">Fachinformatik Umschulung</h4>
+<p class="text-sm">Berufliche Neuorientierung &amp; Spezialisierung in Systemintegration.</p>
+</div>
+<div class="basis-1/2 flex justify-center md:justify-start">
+<div class="md:ml-20">
+<svg class="w-32 h-32 md:w-48 md:h-48 animate-pulse" fill="none" viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#0f0f0f" height="40" rx="4" stroke="#ffffff" stroke-width="2" width="60" x="2" y="8"></rect>
+<rect fill="#1f1f1f" height="28" rx="2" width="48" x="8" y="14"></rect>
+<path d="M16 24L20 28L16 32" stroke="#4ade80" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M32 32H38" stroke="#60a5fa" stroke-linecap="round" stroke-width="2"></path>
+<path d="M48 24L44 28L48 32" stroke="#facc15" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<rect fill="#222" height="4" width="64" x="0" y="48"></rect>
+<rect fill="#666" height="2" rx="1" width="16" x="24" y="52"></rect>
+</svg>
+</div>
+</div>
+</div>
+</div>
+<div class="card fade-in">
+<h3 class="text-4xl font-bold mb-6 text-center">2023</h3>
+<div class="flex flex-col md:flex-row items-center md:space-x-8">
+<img alt="VS Code" class="w-full md:w-1/2 rounded-lg mb-6 md:mb-0 shadow" src="./assets/img/vscode-logo.png"/>
+<div class="text-left md:text-right md:w-1/2 space-y-2">
+<h4 class="text-2xl font-semibold uppercase">VS Code</h4>
+<p class="text-sm">Regelmäßige Arbeit mit Visual Studio Code.</p>
+</div>
+</div>
+</div>
+<div class="card fade-in">
+<h3 class="text-4xl font-bold mb-6 text-center">2021</h3>
+<div class="flex flex-col md:flex-row items-center md:space-x-8">
+<div class="text-left md:text-right md:w-1/2 space-y-2">
+<h4 class="text-2xl font-semibold uppercase">Adobe After Effects</h4>
+<p class="text-sm">Motion Graphics &amp; Video Post-Production.</p>
+</div>
+<img alt="AE" class="w-full md:w-1/2 rounded-lg mb-6 md:mb-0 shadow" src="./assets/img/after-effects-logo.png"/>
+</div>
+</div>
+<div class="fade-in text-center text-gray-400 italic">
+<h3 class="text-4xl font-bold mb-6">2019</h3>
+<p>Frühere Projekte …</p>
+</div>
+</div>
+</section>
+<!-- 🔹 📬 Kontaktbereich -->
+<section class="py-24 border-t border-white space-y-6" id="contact">
+<h2 class="text-2xl md:text-4xl font-bold uppercase">Kontakt</h2>
+<p class="text-lg">Let’s build something.</p>
+<form action="https://formspree.io/f/meokydvg" class="space-y-4 max-w-xl" method="POST">
+<div class="flex flex-col">
+<label class="mb-1 font-semibold" for="email">Deine Email</label>
+<input class="p-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300" id="email" name="email" required="" type="email"/>
+</div>
+<div class="flex flex-col">
+<label class="mb-1 font-semibold" for="message">Nachricht</label>
+<textarea class="p-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300 resize-none" id="message" name="message" required="" rows="5"></textarea>
+</div>
+<!-- Honeypot spam protection -->
+<div style="display:none;">
+<label>Do not fill this out: <input name="_gotcha"/></label>
+</div>
+<button class="px-6 py-2 bg-green-500 hover:bg-green-400 text-black font-bold rounded-lg transition duration-300 transform hover:scale-105" type="submit">
+      Nachricht senden
+    </button>
+<div class="hidden text-green-400 font-semibold mt-4" id="successMessage">Vielen Dank! Deine Nachricht wurde erfolgreich gesendet.</div></form>
+</section>
+<!-- 🔹 🧠 Skills-Bereich -->
+</div></main>
+<!-- 🔷 FOOTER mit Social Icons -->
+<footer class="text-center py-8 text-xs text-gray-400 tracking-widest flex flex-col items-center space-y-4">
 <div class="flex items-center space-x-2 text-red-500">
 <span class="text-sm text-gray-400">Made with</span>
 <span class="text-xl heartbeat text-red-500">♡</span>
@@ -98,19 +189,17 @@
 </a>
 </div>
 <div>© 2025 Julian Becker • beckerbyte</div>
-</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script><script>
-VANTA.NET({
-  el: "#bg",
-  color: 0x555555,
-  backgroundColor: 0x000000,
-  points: 10.0,
-  maxDistance: 20.0,
-  spacing: 18.0,
-  mouseControls: true,
-  touchControls: false,
-  gyroControls: false
-});
-</script><script src="assets/js/animated-cursor.js"></script><script>
+</footer>
+<meta content="Individuelles Webdesign &amp; Entwicklung durch Beckerbyte. Projekte, Erfahrungen &amp; Kontakt auf einen Blick." name="description"/>
+<!-- 🔹 VANTA.NET Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+<script>
+    VANTA.NET({ el: "#bg", color: 0x555555, backgroundColor: 0x000000, points: 10.0, maxDistance: 20.0, spacing: 18.0, mouseControls: true, touchControls: false, gyroControls: false });
+  </script>
+<!-- 🔹 Benutzerdefinierter Cursor -->
+<script src="assets/js/animated-cursor.js"></script>
+<script>
     <!-- 🔹 Typewriter JS -->
 const phrases = ["Code", "Design", "Systeme", "Lösungen"];
     let i = 0, currentText = "", deleting = false;
@@ -125,7 +214,8 @@ const phrases = ["Code", "Design", "Systeme", "Lösungen"];
       setTimeout(type, timeout);
     }
     document.addEventListener("DOMContentLoaded", type);
-  </script><script>
+  </script>
+<script>
     <!-- 🔹 Fade-In Scrollanimation -->
 document.querySelectorAll('.fade-in').forEach(el => {
       el.classList.add('opacity-0', 'translate-y-4');
@@ -138,7 +228,8 @@ document.querySelectorAll('.fade-in').forEach(el => {
       }, { threshold: 0.2 });
       observer.observe(el);
     });
-  </script><script>
+  </script>
+<script>
 <!-- 🔹 Scrollbasierte Fade-Out -->
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
@@ -167,7 +258,8 @@ window.addEventListener('scroll', () => {
     }
   });
 });
-</script><script>
+</script>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector("form");
   const successMessage = document.getElementById("successMessage");
@@ -191,7 +283,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-</script><script>
+</script>
+</body>
+</html>
+<script>
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contact-form");
   const status = document.getElementById("formStatus");
@@ -232,4 +327,4 @@ document.addEventListener("DOMContentLoaded", () => {
     button.classList.remove("animate-pulse", "opacity-50");
   });
 });
-</script></body></html>
+</script>
