@@ -1,0 +1,23 @@
+xml version=1.0 encoding=UTF-8
+urlset xmlns=httpswww.sitemaps.orgschemassitemap0.9
+  url
+    lochttpswww.beckerbyte.comloc
+    changefreqweeklychangefreq
+    priority1.0priority
+  url
+  url
+    lochttpswww.beckerbyte.comerfahrungenloc
+    changefreqmonthlychangefreq
+    priority0.8priority
+  url
+  url
+    lochttpswww.beckerbyte.comprojekteloc
+    changefreqmonthlychangefreq
+    priority0.8priority
+  url
+  url
+    lochttpswww.beckerbyte.comkontaktloc
+    changefreqyearlychangefreq
+    priority0.5priority
+  url
+urlset
