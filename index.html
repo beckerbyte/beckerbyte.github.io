@@ -271,7 +271,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     id="w3f__widget--content"
     x-show="open"
     @click.away="open = false"
-    class="fixed flex flex-col z-50 bottom-[100px] top-0 right-0 h-auto left-0 sm:top-auto sm:right-5 sm:left-auto h-[calc(100%-95px)] w-full sm:w-[350px] overflow-auto min-h-[250px] sm:h-[600px] border border-gray-700 bg-zinc-900 shadow-2xl rounded-md"
+    class="fixed flex flex-col z-50 bottom-[100px] top-0 left-0 h-auto left-0 sm:top-auto sm:left-5 sm:right-auto h-[calc(100%-95px)] w-full sm:w-[350px] overflow-auto min-h-[250px] sm:h-[600px] border border-gray-700 bg-zinc-900 shadow-2xl rounded-md"
   >
     <div class="flex p-5 flex-col justify-center items-center h-32 bg-zinc-800">
       <h3 class="text-lg text-white">Wie kann ich helfen?</h3>
@@ -328,7 +328,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
 
   <button
     @click="open = !open"
-    class="fixed z-40 right-5 bottom-5 shadow-lg flex justify-center items-center w-14 h-14 bg-green-500 rounded-full hover:bg-green-400 transition"
+    class="fixed z-40 left-5 bottom-5 shadow-lg flex justify-center items-center w-14 h-14 bg-green-500 rounded-full hover:bg-green-400 transition"
   >
     <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
