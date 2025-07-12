@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="de" class="scroll-smooth">
 <head>
+  <!-- 🔷 HEAD-BEREICH: Meta, Title, CSS, Icons -->
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>beckerbyte – Code & Vision</title>
@@ -33,9 +34,11 @@
 </head>
 <body class="bg-black text-white font-mono">
   <div id="cursor"></div>
+    <!-- 🔹 🌐 VANTA.NET Hintergrund Canvas -->
   <div id="bg" class="fixed inset-0 -z-10"></div>
 
-  <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 transform">
+    <!-- 🔹 📌 Navigation (zentriert, fixiert) -->
+<nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 transform">
     <div class="flex space-x-6 bg-black bg-opacity-60 backdrop-blur-md px-6 py-2 rounded-full shadow-lg">
       <a href="#home" class="text-white font-semibold hover:text-gray-300">Home</a>
       <a href="#skills" class="text-white font-semibold hover:text-gray-300">Erfahrungen</a>
@@ -43,15 +46,17 @@
     </div>
   </nav>
 
-  <header class="fixed top-4 left-6 z-50 transition-all duration-500">
+    <!-- 🔹 🖼️ Header mit Logo (fixiert links oben) -->
+<header class="fixed top-4 left-6 z-50 transition-all duration-500">
     <a href="#home">
       <img src="./assets/img/header.png" alt="Logo" class="h-36 md:h-48 lg:h-56 xl:h-64 hover:scale-105 transition" />
     </a>
   </header>
 
+    <!-- 🔷 MAIN-BEREICH: Inhalt der Seite -->
   <main class="container mx-auto px-6 md:px-12 lg:px-24 py-24 space-y-24 tab-container">
     <div id="home">
-      <section class="min-h-screen flex items-center">
+            <!-- 🔹 ⌨️ Typewriter Intro Sektion --> flex items-center">
         <h1 class="text-4xl md:text-7xl font-extrabold uppercase leading-tight">
           <span id="typewriter"></span>
         </h1>
@@ -59,7 +64,7 @@
 
       <h1 class="text-4xl md:text-7xl font-extrabold uppercase leading-tight">Code<br class="hidden md:block" /> is My Craft.</h1>
 
-      <section id="projects" class="relative py-24">
+            <!-- 🔹 📅 Timeline Projekte --> class="relative py-24">
         <span class="absolute left-1/2 -translate-x-1/2 h-full w-px bg-gray-700 pointer-events-none z-0"></span>
         <div class="space-y-24 max-w-4xl mx-auto px-4">
           <div class="card fade-in">
@@ -114,7 +119,7 @@
         </div>
       </section>
 
-      <section id="contact" class="py-24 border-t border-white space-y-4">
+            <!-- 🔹 📬 Kontakt Abschnitt --> class="py-24 border-t border-white space-y-4">
         <h2 class="text-2xl md:text-4xl font-bold uppercase">Kontakt</h2>
         <p class="text-lg">Let’s build something.<br>
           <a class="underline hover:text-gray-400" href="mailto:julian.becker123@gmail.com">julian.becker123@gmail.com</a>
@@ -122,7 +127,7 @@
       </section>
     </div>
 
-    <section id="skills" class="hidden space-y-6 py-24">
+        <!-- 🔹 🧠 Skills / Erfahrungen Tab --> class="hidden space-y-6 py-24">
       <h2 class="text-3xl md:text-5xl font-bold uppercase">Skills</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-8">
         <div class="card fade-in flex items-center space-x-4"><img src="./assets/img/sap-logo.png" class="w-12 h-12 object-contain" /><span>SAP ERP</span></div>
@@ -135,6 +140,7 @@
     </section>
   </main>
 
+    <!-- 🔷 FOOTER mit Social Icons -->
   <footer class="text-center py-8 text-xs text-gray-400 tracking-widest flex flex-col items-center space-y-4">
     <div class="flex items-center space-x-2 text-red-500">
       <span class="text-sm text-gray-400">Made with</span>
@@ -188,19 +194,31 @@
   </svg>
 </a>
 
+      <a aria-label="GitHub" href="https://github.com/beckerbyte" target="_blank">
+        <svg class="w-8 h-8 hover:scale-110 transition" fill="#181717" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.43 7.86 10.96..."/>
+        </svg>
+      </a>
+      <a aria-label="Discord" href="https://discord.com/users/270226761256534027" target="_blank">
+        <svg class="w-8 h-8 hover:scale-110 transition" fill="#5865F2" viewBox="0 0 245 240" xmlns="http://www.w3.org/2000/svg">
+          <path d="..."/>
+        </svg>
+      </a>
     </div>
     <div>© 2025 Julian Becker • beckerbyte</div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <!-- 🔹 VANTA.NET JavaScript (Three.js) -->/r134/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
   <script>
     VANTA.NET({ el: "#bg", color: 0x555555, backgroundColor: 0x000000, points: 10.0, maxDistance: 20.0, spacing: 18.0, mouseControls: true, touchControls: false, gyroControls: false });
   </script>
 
+    <!-- 🔹 🖱️ Benutzerdefinierter Cursor -->
   <script src="assets/js/animated-cursor.js"></script>
   <script>
-    const phrases = ["Code", "Design", "Systeme", "Lösungen"];
+      <!-- 🔹 ⌨️ Typewriter-Animation Code -->
+  const phrases = ["Code", "Design", "Systeme", "Lösungen"];
     let i = 0, currentText = "", deleting = false;
     function type() {
       const target = document.getElementById("typewriter");
@@ -216,7 +234,8 @@
   </script>
 
   <script>
-    document.querySelectorAll('.fade-in').forEach(el => {
+      <!-- 🔹 Scrollbasierte Fade-In-Animation -->
+  document.querySelectorAll('.fade-in').forEach(el => {
       el.classList.add('opacity-0', 'translate-y-4');
       const observer = new IntersectionObserver(([entry], obs) => {
         if (entry.isIntersecting) {
@@ -230,7 +249,8 @@
   </script>
 
 <script>
-window.addEventListener('scroll', () => {
+  <!-- 🔹 Scroll-Fade-Out für Header, Nav, Logo -->
+  window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
   const logo = document.querySelector('header');
   const headline = document.querySelector('h1');
@@ -260,6 +280,7 @@ window.addEventListener('scroll', () => {
 </script>
 
 <script>
+  <!-- 🔹 Tabswitcher: Home / Erfahrungen -->
 function showTab(id) {
   document.getElementById("home").classList.toggle("hidden", id !== "home");
   document.getElementById("skills").classList.toggle("hidden", id !== "skills");
