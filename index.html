@@ -45,6 +45,30 @@
 
     
 <!-- 🔷 BODY beginnt: Hauptstruktur -->
+  <div id="cookie-banner" class="fixed bottom-6 left-6 right-6 md:left-10 md:right-10 bg-black bg-opacity-80 backdrop-blur-md border border-gray-700 rounded-2xl text-white text-sm p-6 z-50 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between space-y-4 md:space-y-0 md:space-x-4 transition duration-300">
+  <p class="text-gray-300 max-w-xl">Diese Website verwendet technisch notwendige Cookies, um dir ein reibungsloses Erlebnis zu ermöglichen (z. B. visuelle Effekte). Mit Klick auf „Akzeptieren“ erklärst du dich damit einverstanden.</p>
+  <div class="flex space-x-3 self-end md:self-auto">
+    <button id="accept-cookies" class="px-5 py-2 bg-green-500 hover:bg-green-400 text-black font-bold rounded-xl transition transform hover:scale-105">Akzeptieren</button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const banner = document.getElementById("cookie-banner");
+    const acceptBtn = document.getElementById("accept-cookies");
+    const consent = localStorage.getItem("cookie_consent");
+
+    if (!consent) {
+      banner.style.display = "flex";
+    }
+
+    acceptBtn.addEventListener("click", function () {
+      localStorage.setItem("cookie_consent", "true");
+      banner.style.display = "none";
+    });
+  });
+</script>
+  
 <body class="bg-black text-white font-mono">
 <div id="cursor"></div>
 <!-- 🔹 🌐 VANTA.NET Hintergrund -->
