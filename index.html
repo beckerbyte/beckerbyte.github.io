@@ -269,7 +269,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
 <div id="web3forms__widget" x-data="{ open: false }">
   <div
     id="w3f__widget--content"
-    x-show="open"
+    x-show="open" x-cloak
     @click.away="open = false"
     class="fixed flex flex-col z-50 bottom-[100px] top-0 left-0 h-auto left-0 sm:top-auto sm:left-5 sm:right-auto h-[calc(100%-95px)] w-full sm:w-[350px] overflow-auto min-h-[250px] sm:h-[600px] border border-gray-700 bg-zinc-900 shadow-2xl rounded-md"
   >
