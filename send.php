@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $inhalt = "Von: $email\n\nNachricht:\n$nachricht";
 
     // Header setzen
-    $header = "From: kontaktformular@beckerbyte.com\r\n";
+    $header = "From: kontakt@beckerbyte.com\r\n";
     $header .= "Reply-To: $email";
 
     // Senden
