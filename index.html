@@ -127,13 +127,31 @@
       </section>
 
       <!-- 🔹 📬 Kontaktbereich -->
-<section id="contact" class="py-24 border-t border-white space-y-4">
-        <h2 class="text-2xl md:text-4xl font-bold uppercase">Kontakt</h2>
-        <p class="text-lg">Let’s build something.<br>
-          <a class="underline hover:text-gray-400" href="mailto:julian.becker123@gmail.com">julian.becker123@gmail.com</a>
-        </p>
-      </section>
-    </div>
+<section id="contact" class="py-24 border-t border-white max-w-2xl mx-auto space-y-8">
+  <h2 class="text-2xl md:text-4xl font-bold uppercase text-center">Kontakt</h2>
+  <form action="https://formspree.io/f/meokydvg" method="POST" class="space-y-6">
+    <label class="block">
+      <span class="block text-sm font-semibold mb-1">Deine E-Mail</span>
+      <input type="email" name="email" required
+             class="w-full p-3 bg-gray-900 border border-gray-700 rounded placeholder-gray-400"
+             placeholder="name@example.com">
+    </label>
+    <label class="block">
+      <span class="block text-sm font-semibold mb-1">Nachricht</span>
+      <textarea name="message" required rows="6"
+                class="w-full p-3 bg-gray-900 border border-gray-700 rounded placeholder-gray-400"
+                placeholder="Was möchtest du mir mitteilen?"></textarea>
+    </label>
+    <button type="submit"
+            class="bg-green-500 text-black font-semibold px-6 py-3 rounded hover:bg-green-400 transition">
+      Nachricht senden
+    </button>
+  </form>
+  <p class="text-center text-sm text-gray-400">
+    Oder direkt an <a href="mailto:julian.becker123@gmail.com" class="underline hover:text-gray-300">julian.becker123@gmail.com</a>
+  </p>
+</section>
+
 
     <!-- 🔹 🧠 Skills-Bereich -->
 <section id="skills" class="hidden space-y-6 py-24">
