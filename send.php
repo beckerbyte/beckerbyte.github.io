@@ -1,6 +1,6 @@
 <?php
 // Konfiguration
-$empfaenger = "julian.becker123@gmail.com";  // 
+$empfaenger = "kontakt@beckerbyte.com";  // 
 $betreff = "Neue Nachricht über beckerbyte.com";
 
 // Nur POST zulassen
