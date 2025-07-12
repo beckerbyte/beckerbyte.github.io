@@ -1,6 +1,6 @@
 <?php
 // Konfiguration
-$empfaenger = "deine@email.de";  // ⬅️ Hier deine E-Mail eintragen
+$empfaenger = "julian.becker123@gmail.com";  // 
 $betreff = "Neue Nachricht über beckerbyte.com";
 
 // Nur POST zulassen
