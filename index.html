@@ -74,7 +74,8 @@
     }
   </style>
 </head>
-<body class="bg-black text-white font-mono">
+<body>
+<div id="cursor"></div> class="bg-black text-white font-mono">
 
 <!-- Cookie Modal -->
 <div id="cookie-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm z-50">
@@ -100,21 +101,30 @@ function setCookie(name, value, days) {
   document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/';
 }
 function getCookie(name) {
-  return document.cookie.split('; ').find(row => row.startsWith(name + '='))?.split('=')[1];
+  const match = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+  return match ? decodeURIComponent(match[2]) : null;
 }
 document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("cookie-modal");
   const accept = document.getElementById("accept-cookies");
   const reject = document.getElementById("reject-cookies");
   const consent = getCookie("cookie_consent");
-  if (!consent) modal.style.display = "flex";
+
+  if (!consent) {
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+  } else {
+    modal.classList.add("hidden");
+  }
+
   accept.addEventListener("click", () => {
     setCookie("cookie_consent", "accepted", 365);
-    modal.style.display = "none";
+    modal.classList.add("hidden");
   });
+
   reject.addEventListener("click", () => {
     setCookie("cookie_consent", "rejected", 365);
-    modal.style.display = "none";
+    modal.classList.add("hidden");
   });
 });
 </script>
