@@ -30,8 +30,8 @@
 </style>
 </head><body><div id="cursor"></div><div class="fixed inset-0 -z-10" id="bg"></div><nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 transform">
 <div class="flex space-x-6 bg-black bg-opacity-60 backdrop-blur-md px-6 py-2 rounded-full shadow-lg">
-<button class="text-white font-semibold hover:text-gray-300" onclick="showTab('home')">Home</button>
-<button class="text-white font-semibold hover:text-gray-300" onclick="showTab('skills')">Erfahrungen</button>
+
+
 <a class="text-white font-semibold hover:text-gray-300" href="projekte.html">Projekte</a>
 </div>
 </nav><header class="fixed top-4 left-6 z-50 transition-all duration-500">
@@ -169,21 +169,6 @@ window.addEventListener('scroll', () => {
   });
 });
 </script><script>
-function showTab(id) {
-  document.getElementById("home").classList.add("hidden");
-  document.getElementById("skills").classList.add("hidden");
-  document.getElementById(id).classList.remove("hidden");
-
-  // Optional: scroll to the selected section
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
-}
-
-window.addEventListener('DOMContentLoaded', () => {
-  const hash = location.hash.replace('#', '') || 'home';
-  showTab(hash);
-});
-</script><script>
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector("form");
   const successMessage = document.getElementById("successMessage");
@@ -247,5 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
     button.disabled = false;
     button.classList.remove("animate-pulse", "opacity-50");
   });
+});
+</script></body></html>
 });
 </script></body></html>
