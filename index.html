@@ -45,7 +45,7 @@
 
     
 <!-- 🔷 BODY beginnt: Hauptstruktur -->
- <!-- 🔹 VISUELL ANGEPASSTES COOKIE MODAL -->
+<!-- 🔹 COOKIE-MODAL MIT document.cookie -->
 <div id="cookie-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm z-50">
   <div class="bg-black border border-gray-700 rounded-2xl p-6 max-w-md w-full mx-4 text-center space-y-6 shadow-2xl">
     <div class="mx-auto w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center">
@@ -64,21 +64,30 @@
 </div>
 
 <script>
+function setCookie(name, value, days) {
+  const expires = new Date(Date.now() + days * 864e5).toUTCString();
+  document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/';
+}
+
+function getCookie(name) {
+  return document.cookie.split('; ').find(row => row.startsWith(name + '='))?.split('=')[1];
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("cookie-modal");
   const accept = document.getElementById("accept-cookies");
   const reject = document.getElementById("reject-cookies");
-  const consent = localStorage.getItem("cookie_consent");
+  const consent = getCookie("cookie_consent");
 
   if (!consent) modal.style.display = "flex";
 
   accept.addEventListener("click", () => {
-    localStorage.setItem("cookie_consent", "accepted");
+    setCookie("cookie_consent", "accepted", 365);
     modal.style.display = "none";
   });
 
   reject.addEventListener("click", () => {
-    localStorage.setItem("cookie_consent", "rejected");
+    setCookie("cookie_consent", "rejected", 365);
     modal.style.display = "none";
   });
 });
