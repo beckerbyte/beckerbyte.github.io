@@ -17,5 +17,4 @@ Disallow: /
 User-agent: meta-externalagent
 Disallow: /
 
-# Sitemap-Verweis
 Sitemap: https://www.beckerbyte.com/sitemap.xml
