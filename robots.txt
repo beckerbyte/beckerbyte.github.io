@@ -1,6 +1,7 @@
-# Standardfreigabe für Suchmaschinen
+# Standardfreigabe für alle Seiten außer Impressum & Datenschutz
 User-agent: *
-Disallow:
+Disallow: /impressum.html
+Disallow: /datenschutz.html
 
 # Optionale Blockierung von KI-Crawlern
 User-agent: GPTBot
