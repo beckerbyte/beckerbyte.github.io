@@ -82,11 +82,7 @@
 <script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs"></script>
 <script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs"></script>
 <!-- 🔒 Info-Banner (Keine Consent-Pflicht) -->
-
 <!-- 🟢 Stilisiertes Info-Banner (animiert & angepasst) -->
-
-
-
 <!-- 🟢 Stilisiertes Info-Banner (animiert & angepasst) -->
 <style>
   @keyframes slideInRight {
@@ -111,9 +107,24 @@
 </div>
 </div>
 <div class="mt-4 text-right">
-<button class="bg-green-500 hover:bg-green-400 text-black px-4 py-1 rounded-md font-semibold text-xs transition-all" onclick="document.getElementById('cookie-info-banner').remove()">Verstanden</button>
+<button class="bg-green-500 hover:bg-green-400 text-black px-4 py-1 rounded-md font-semibold text-xs transition-all" onclick="acceptCookies()">Verstanden</button>
 </div>
 </div>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("cookieAccepted")) {
+      const banner = document.getElementById("cookie-info-banner");
+      if (banner) banner.remove();
+    }
+  });
+
+  function acceptCookies() {
+    localStorage.setItem("cookieAccepted", "true");
+    const banner = document.getElementById("cookie-info-banner");
+    if (banner) banner.remove();
+  }
+</script>
 </body>
 </html>
 <!-- 🔹 🌐 VANTA.NET Hintergrund -->
