@@ -75,81 +75,45 @@
 <!-- Cookie Modal -->
 <!-- Restlicher Inhalt deiner Seite -->
 <!-- 🔹 COOKIE-BANNER (Custom Style + Minimierbar) -->
-<div class="fixed bottom-6 right-6 z-50 max-w-sm w-[320px] bg-black border border-gray-700 rounded-2xl p-5 text-white shadow-xl space-y-4 hidden" id="cookie-banner">
-<div class="flex items-center space-x-3">
-<div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center">
-<svg fill="#ffffff" height="20" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 2a10 10 0 0 0-7.07 17.07c3.9 3.9 10.24 3.9 14.14 0 3.9-3.9 3.9-10.24 0-14.14A9.96 9.96 0 0 0 12 2zm0 2a7.93 7.93 0 0 1 5.66 13.66c-3.12 3.12-8.18 3.12-11.31 0A7.93 7.93 0 0 1 12 4zm-2 3a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm3 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-4 3a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
-</svg>
-</div>
-<div class="text-sm text-gray-300">
-      Diese Website nutzt notwendige Cookies für Effekte und Funktion. Du kannst zustimmen oder ablehnen.
-    </div>
-</div>
-<div class="flex justify-end space-x-3 text-sm">
-<button class="px-3 py-1 border border-gray-600 text-gray-300 rounded-lg hover:bg-gray-800 transition" id="cookie-reject">Ablehnen</button>
-<button class="px-3 py-1 bg-green-500 hover:bg-green-400 text-black font-bold rounded-lg transition transform hover:scale-105" id="cookie-accept">Akzeptieren</button>
-</div>
-</div>
 <!-- 🔹 MINIMIERTER BUTTON -->
 <button class="hidden fixed bottom-6 right-6 z-40 bg-zinc-800 text-white text-xs px-4 py-2 rounded-full border border-zinc-600 hover:bg-zinc-700 shadow-lg" id="cookie-settings-toggle">
   Cookie-Einstellungen
 </button>
-<script>
-function setCookie(name, value, days) {
-  const expires = new Date(Date.now() + days * 864e5).toUTCString();
-  document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/';
-}
-function getCookie(name) {
-  const match = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-  return match ? decodeURIComponent(match[2]) : null;
-}
+<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs"></script>
+<!-- 🔒 Info-Banner (Keine Consent-Pflicht) -->
 
-document.addEventListener("DOMContentLoaded", () => {
-  const banner = document.getElementById("cookie-banner");
-  const toggle = document.getElementById("cookie-settings-toggle");
-  const accept = document.getElementById("cookie-accept");
-  const reject = document.getElementById("cookie-reject");
+<!-- 🟢 Stilisiertes Info-Banner (animiert & angepasst) -->
 
-  const consent = getCookie("cookie_consent");
 
-  if (!consent) {
-    banner.classList.remove("hidden");
-  } else {
-    toggle.classList.remove("hidden");
+
+<!-- 🟢 Stilisiertes Info-Banner (animiert & angepasst) -->
+<style>
+  @keyframes slideInRight {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
-
-  function closeBanner() {
-    banner.classList.add("hidden");
-    toggle.classList.remove("hidden");
-  }
-
-  accept.addEventListener("click", () => {
-    setCookie("cookie_consent", "accepted", 365);
-    closeBanner();
-  });
-
-  reject.addEventListener("click", () => {
-    setCookie("cookie_consent", "rejected", 365);
-    closeBanner();
-  });
-
-  toggle.addEventListener("click", () => {
-    banner.classList.remove("hidden");
-    toggle.classList.add("hidden");
-  });
-});
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
-
-
-
+</style>
+<div class="fixed bottom-6 right-6 z-50 max-w-sm w-[320px] bg-black/80 backdrop-blur-lg border border-gray-700 rounded-xl p-5 text-white shadow-2xl text-sm animate-slideInRight" id="cookie-info-banner" style="animation: slideInRight 0.8s ease-out;">
+<div class="flex items-start space-x-3">
+<div class="flex-shrink-0 w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center">
+<svg fill="#fff" height="20" viewbox="0 0 24 24" width="20"><path d="M12 2a10 10 0 0 0-7.07 17.07c3.9 3.9 10.24 3.9 14.14 0 3.9-3.9 3.9-10.24 0-14.14A9.96 9.96 0 0 0 12 2zm0 2a7.93 7.93 0 0 1 5.66 13.66c-3.12 3.12-8.18 3.12-11.31 0A7.93 7.93 0 0 1 12 4z"></path></svg>
+</div>
+<div class="flex-1">
+<p class="text-gray-300 leading-snug">Diese Website verwendet nur technisch notwendige Cookies. Kein Tracking.</p>
+<a class="text-blue-400 underline text-xs" href="/datenschutz.html">Mehr erfahren</a>
+</div>
+</div>
+<div class="mt-4 text-right">
+<button class="bg-green-500 hover:bg-green-400 text-black px-4 py-1 rounded-md font-semibold text-xs transition-all" onclick="document.getElementById('cookie-info-banner').remove()">Verstanden</button>
+</div>
+</div>
 </body>
 </html>
 <!-- 🔹 🌐 VANTA.NET Hintergrund -->
@@ -227,42 +191,32 @@ document.addEventListener("DOMContentLoaded", () => {
 </div>
 </div>
 </section>
-
 <section class="py-24 px-6 max-w-2xl mx-auto">
-  <h2 class="text-3xl font-bold uppercase mb-6">Kontakt</h2>
-  <form action="https://getform.io/f/bgdlryza" method="POST" class="space-y-6">
-    <div>
-      <label for="name" class="block text-sm font-semibold mb-1">Name</label>
-      <input type="text" id="name" name="name" required placeholder="Max Mustermann"
-             class="w-full px-3 py-2 bg-zinc-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400" />
-    </div>
-
-    <div>
-      <label for="email" class="block text-sm font-semibold mb-1">E-Mail</label>
-      <input type="email" id="email" name="email" required placeholder="max@beispiel.de"
-             class="w-full px-3 py-2 bg-zinc-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400" />
-    </div>
-
-    <div>
-      <label for="message" class="block text-sm font-semibold mb-1">Nachricht</label>
-      <textarea id="message" name="message" rows="5" required placeholder="Deine Nachricht …"
-                class="w-full px-3 py-2 bg-zinc-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400"></textarea>
-    </div>
-
-    <div class="text-sm text-gray-400 flex flex-col items-start">
-      <label class="mb-1" for="privacy">
-        <input type="checkbox" id="privacy" name="privacy" required class="mr-2 align-middle" />
-        Ich akzeptiere die <a href="datenschutz.html" target="_blank" class="underline hover:text-green-400">Datenschutzerklärung</a>.
+<h2 class="text-3xl font-bold uppercase mb-6">Kontakt</h2>
+<form action="https://getform.io/f/bgdlryza" class="space-y-6" method="POST">
+<div>
+<label class="block text-sm font-semibold mb-1" for="name">Name</label>
+<input class="w-full px-3 py-2 bg-zinc-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400" id="name" name="name" placeholder="Max Mustermann" required="" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-semibold mb-1" for="email">E-Mail</label>
+<input class="w-full px-3 py-2 bg-zinc-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400" id="email" name="email" placeholder="max@beispiel.de" required="" type="email"/>
+</div>
+<div>
+<label class="block text-sm font-semibold mb-1" for="message">Nachricht</label>
+<textarea class="w-full px-3 py-2 bg-zinc-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400" id="message" name="message" placeholder="Deine Nachricht …" required="" rows="5"></textarea>
+</div>
+<div class="text-sm text-gray-400 flex flex-col items-start">
+<label class="mb-1" for="privacy">
+<input class="mr-2 align-middle" id="privacy" name="privacy" required="" type="checkbox"/>
+        Ich akzeptiere die <a class="underline hover:text-green-400" href="datenschutz.html" target="_blank">Datenschutzerklärung</a>.
       </label>
-    </div>
-
-    <button type="submit"
-            class="px-6 py-2 bg-green-500 hover:bg-green-400 text-black font-bold rounded-lg transition duration-300 transform hover:scale-105">
+</div>
+<button class="px-6 py-2 bg-green-500 hover:bg-green-400 text-black font-bold rounded-lg transition duration-300 transform hover:scale-105" type="submit">
       Nachricht senden
     </button>
-  </form>
+</form>
 </section>
-
 <!-- 🔹 🧠 Skills-Bereich -->
 </div></main>
 <!-- 🔷 FOOTER mit Social Icons -->
@@ -321,7 +275,6 @@ document.addEventListener("DOMContentLoaded", () => {
 <a class="hover:underline" href="impressum.html">Impressum</a>
 <a class="hover:underline" href="datenschutz.html">Datenschutz</a>
 </div>
-
 <div>© 2025 Julian Becker • beckerbyte</div>
 </footer>
 <meta content="Individuelles Webdesign &amp; Entwicklung durch Beckerbyte. Projekte, Erfahrungen &amp; Kontakt auf einen Blick." name="description"/>
@@ -393,70 +346,8 @@ window.addEventListener('scroll', () => {
   });
 });
 </script>
-
 <!-- 🔹 COOKIE-BANNER (Custom Style + Minimierbar) -->
-<div class="fixed bottom-6 right-6 z-50 max-w-sm w-[320px] bg-black border border-gray-700 rounded-2xl p-5 text-white shadow-xl space-y-4 hidden" id="cookie-banner">
-<div class="flex items-center space-x-3">
-<div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center">
-<svg fill="#ffffff" height="20" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 2a10 10 0 0 0-7.07 17.07c3.9 3.9 10.24 3.9 14.14 0 3.9-3.9 3.9-10.24 0-14.14A9.96 9.96 0 0 0 12 2zm0 2a7.93 7.93 0 0 1 5.66 13.66c-3.12 3.12-8.18 3.12-11.31 0A7.93 7.93 0 0 1 12 4zm-2 3a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm3 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-4 3a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
-</svg>
-</div>
-<div class="text-sm text-gray-300">
-      Diese Website nutzt notwendige Cookies für Effekte und Funktion. Du kannst zustimmen oder ablehnen.
-    </div>
-</div>
-<div class="flex justify-end space-x-3 text-sm">
-<button class="px-3 py-1 border border-gray-600 text-gray-300 rounded-lg hover:bg-gray-800 transition" id="cookie-reject">Ablehnen</button>
-<button class="px-3 py-1 bg-green-500 hover:bg-green-400 text-black font-bold rounded-lg transition transform hover:scale-105" id="cookie-accept">Akzeptieren</button>
-</div>
-</div>
 <!-- 🔹 MINIMIERTER BUTTON -->
 <button class="hidden fixed bottom-6 right-6 z-40 bg-zinc-800 text-white text-xs px-4 py-2 rounded-full border border-zinc-600 hover:bg-zinc-700 shadow-lg" id="cookie-settings-toggle">
   Cookie-Einstellungen
 </button>
-<script>
-function setCookie(name, value, days) {
-  const expires = new Date(Date.now() + days * 864e5).toUTCString();
-  document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/';
-}
-function getCookie(name) {
-  const match = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-  return match ? decodeURIComponent(match[2]) : null;
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const banner = document.getElementById("cookie-banner");
-  const toggle = document.getElementById("cookie-settings-toggle");
-  const accept = document.getElementById("cookie-accept");
-  const reject = document.getElementById("cookie-reject");
-
-  const consent = getCookie("cookie_consent");
-
-  if (!consent) {
-    banner.classList.remove("hidden");
-  } else {
-    toggle.classList.remove("hidden");
-  }
-
-  function closeBanner() {
-    banner.classList.add("hidden");
-    toggle.classList.remove("hidden");
-  }
-
-  accept.addEventListener("click", () => {
-    setCookie("cookie_consent", "accepted", 365);
-    closeBanner();
-  });
-
-  reject.addEventListener("click", () => {
-    setCookie("cookie_consent", "rejected", 365);
-    closeBanner();
-  });
-
-  toggle.addEventListener("click", () => {
-    banner.classList.remove("hidden");
-    toggle.classList.add("hidden");
-  });
-});
-</script>
