@@ -147,61 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("contactForm");
-  const result = document.getElementById("formResult");
 
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    const name = form.name;
-    const email = form.email;
-    const message = form.message;
-    let valid = true;
-
-    document.querySelectorAll('#nameError, #emailError, #messageError').forEach(el => el.classList.add('hidden'));
-
-    if (!name.value.trim()) {
-      document.getElementById('nameError').classList.remove('hidden');
-      valid = false;
-    }
-    if (!email.value.trim() || !email.validity.valid) {
-      document.getElementById('emailError').classList.remove('hidden');
-      valid = false;
-    }
-    if (!message.value.trim()) {
-      document.getElementById('messageError').classList.remove('hidden');
-      valid = false;
-    }
-
-    if (!valid) return;
-
-    const formData = new FormData(form);
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData,
-        headers: {
-          "Accept": "application/json"
-        }
-      });
-
-      if (response.ok) {
-        result.textContent = "Nachricht erfolgreich gesendet!";
-        result.className = "text-green-400";
-        form.reset();
-      } else {
-        result.textContent = "Fehler beim Senden. Bitte später erneut versuchen.";
-        result.className = "text-red-400";
-      }
-    } catch (err) {
-      result.textContent = "Netzwerkfehler.";
-      result.className = "text-red-400";
-    }
-  });
-});
-</script>
 
 
 </body>
@@ -447,31 +393,7 @@ window.addEventListener('scroll', () => {
   });
 });
 </script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.querySelector("form");
-  const successMessage = document.getElementById("successMessage");
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const data = new FormData(form);
-    fetch(form.action, {
-      method: "POST",
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    }).then(response => {
-      if (response.ok) {
-        successMessage.classList.remove("hidden");
-        form.reset();
-      } else {
-        alert("Fehler beim Senden der Nachricht.");
-      }
-    }).catch(() => {
-      alert("Serverfehler. Bitte später erneut versuchen.");
-    });
-  });
-});
-</script>
 <!-- 🔹 COOKIE-BANNER (Custom Style + Minimierbar) -->
 <div class="fixed bottom-6 right-6 z-50 max-w-sm w-[320px] bg-black border border-gray-700 rounded-2xl p-5 text-white shadow-xl space-y-4 hidden" id="cookie-banner">
 <div class="flex items-center space-x-3">
@@ -535,50 +457,6 @@ document.addEventListener("DOMContentLoaded", () => {
   toggle.addEventListener("click", () => {
     banner.classList.remove("hidden");
     toggle.classList.add("hidden");
-  });
-});
-</script>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("contact-form");
-  const status = document.getElementById("formStatus");
-  const button = document.getElementById("sendBtn");
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    // Bot check
-    const honeypot = form.querySelector('[name="_gotcha"]');
-    if (honeypot.value) return;
-
-    button.disabled = true;
-    button.classList.add("animate-pulse", "opacity-50");
-
-    const formData = new FormData(form);
-
-    try {
-      const response = await fetch("https://formspree.io/f/meokydvg", {
-        method: "POST",
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-
-      if (response.ok) {
-        status.classList.remove("hidden");
-        form.reset();
-      } else {
-        alert("Es gab ein Problem beim Senden.");
-      }
-    } catch (err) {
-      alert("Netzwerkfehler.");
-    }
-
-    button.disabled = false;
-    button.classList.remove("animate-pulse", "opacity-50");
   });
 });
 </script>
