@@ -282,86 +282,40 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 </section>
 
-<!-- 🔹 📬 Kontaktbereich – Widget -->
-<div id="web3forms__widget" x-data="{ open: false }">
-  <!-- Widget Content -->
-  <div
-    id="w3f__widget--content"
-    x-show="open"
-    x-cloak
-    @click.away="open = false"
-    class="fixed flex flex-col z-50 bottom-[100px] top-0 left-0 h-auto sm:top-auto sm:left-5 sm:right-auto h-[calc(100%-95px)] w-full sm:w-[350px] overflow-auto min-h-[250px] sm:h-[600px] border border-gray-700 bg-zinc-900 shadow-2xl rounded-md"
-  >
-    <div class="flex p-5 flex-col justify-center items-center h-32 bg-zinc-800">
-      <h3 class="text-lg text-white">Wie kann ich helfen?</h3>
-      <p class="text-white text-sm opacity-60">Ich antworte in der Regel innerhalb weniger Stunden</p>
+<section class="py-24 px-6 max-w-2xl mx-auto">
+  <h2 class="text-3xl font-bold uppercase mb-6">Kontakt</h2>
+  <form action="https://getform.io/f/bgdlryza" method="POST" class="space-y-6">
+    <div>
+      <label for="name" class="block text-sm font-semibold mb-1">Name</label>
+      <input type="text" id="name" name="name" required placeholder="Max Mustermann"
+             class="w-full px-3 py-2 bg-zinc-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400" />
     </div>
-    <div class="p-6 flex-grow">
-      <form id="contactForm" class="space-y-4 needs-validation" novalidate>
-        <input type="hidden" name="access_key" value="934d9f29-9305-4590-8db1-65d0da8b761a">
-        <input type="hidden" name="subject" value="Neue Nachricht über das Kontakt-Widget">
-        <input type="hidden" name="from_name" value="Kontaktformular">
 
-        <div>
-          <label for="name" class="text-sm">Name</label>
-          <input type="text" id="name" name="name" required placeholder="Max Mustermann"
-            class="w-full mt-1 px-3 py-2 bg-zinc-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400" />
-          <p class="text-sm text-red-400 hidden" id="nameError">Bitte Name eingeben.</p>
-        </div>
-
-        <div>
-          <label for="email" class="text-sm">E-Mail</label>
-          <input type="email" id="email" name="email" required placeholder="max@beispiel.de"
-            class="w-full mt-1 px-3 py-2 bg-zinc-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400" />
-          <p class="text-sm text-red-400 hidden" id="emailError">Bitte gültige E-Mail eingeben.</p>
-        </div>
-
-        <div>
-          <label for="message" class="text-sm">Nachricht</label>
-          <textarea id="message" name="message" rows="4" required placeholder="Deine Nachricht ..."
-            class="w-full mt-1 px-3 py-2 bg-zinc-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400"></textarea>
-          <p class="text-sm text-red-400 hidden" id="messageError">Bitte Nachricht eingeben.</p>
-        </div>
-
-        <div class="text-sm text-gray-400">
-          <label class="inline-flex items-start space-x-2">
-            <input type="checkbox" name="privacy" required class="accent-green-500 mt-1">
-            <span>Ich akzeptiere die <a href="datenschutz.html" target="_blank" class="underline hover:text-green-400">Datenschutzerklärung</a>.</span>
-          </label>
-        </div>
-
-        <div class="text-xs text-gray-500 italic">
-          Durch das Senden stimmst du der Verarbeitung deiner Daten durch Web3Forms zu.
-        </div>
-
-        <div>
-          <button type="submit"
-            class="w-full px-4 py-2 bg-green-500 hover:bg-green-400 text-black font-semibold rounded-md transition">
-            Nachricht senden
-          </button>
-          <p id="formResult" class="text-center text-sm mt-2"></p>
-        </div>
-      </form>
+    <div>
+      <label for="email" class="block text-sm font-semibold mb-1">E-Mail</label>
+      <input type="email" id="email" name="email" required placeholder="max@beispiel.de"
+             class="w-full px-3 py-2 bg-zinc-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400" />
     </div>
-  </div>
 
-  
-  
-  
-  <!-- Toggle Button -->
-  <button
-    @click="open = !open"
-    class="fixed z-40 left-5 bottom-5 shadow-lg flex justify-center items-center w-14 h-14 bg-green-500 rounded-full hover:bg-green-400 transition text-xl"
-  >
-    <span x-show="!open" x-cloak>📨</span>
-    <svg x-show="open" x-cloak xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <line x1="6" y1="6" x2="18" y2="18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <line x1="6" y1="18" x2="18" y2="6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </button>
-</div>
+    <div>
+      <label for="message" class="block text-sm font-semibold mb-1">Nachricht</label>
+      <textarea id="message" name="message" rows="5" required placeholder="Deine Nachricht …"
+                class="w-full px-3 py-2 bg-zinc-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400"></textarea>
+    </div>
 
+    <div class="text-sm text-gray-400 flex flex-col items-start">
+      <label class="mb-1" for="privacy">
+        <input type="checkbox" id="privacy" name="privacy" required class="mr-2 align-middle" />
+        Ich akzeptiere die <a href="datenschutz.html" target="_blank" class="underline hover:text-green-400">Datenschutzerklärung</a>.
+      </label>
+    </div>
 
+    <button type="submit"
+            class="px-6 py-2 bg-green-500 hover:bg-green-400 text-black font-bold rounded-lg transition duration-300 transform hover:scale-105">
+      Nachricht senden
+    </button>
+  </form>
+</section>
 
 <!-- 🔹 🧠 Skills-Bereich -->
 </div></main>
