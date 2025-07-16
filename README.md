@@ -1,44 +1,75 @@
-# beckerbyte – Portfolio
+<!DOCTYPE html>
 
-**Hi, ich bin Julian Becker.**  
-Angehender Fachinformatiker mit Fokus auf Technologie, Code und digitale Lösungen. Diese Seite zeigt, was ich mache, was ich kann und wo man mich findet.
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="Julian Becker" />
+  <meta name="description" content="Julian Becker – Portfolio für Webentwicklung & digitale Projekte" />
+  <title>Julian Becker – Portfolio</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>👋 Julian Becker</h1>
+      <p>Webentwicklung. Technologie. Digitale Lösungen.</p>
+    </div>
+  </header>
 
-## 🚀 Projekte
+  <section id="about">
+    <div class="container">
+      <h2>Über mich</h2>
+      <p>Ich bin angehender Fachinformatiker mit Fokus auf moderne Webtechnologien. Diese Seite zeigt, was ich baue, wie ich arbeite und wo man mich findet.</p>
+    </div>
+  </section>
 
-Diese Website liefert:
-- Eine Übersicht über mein Profil
-- Tech-Stack und Arbeitsweise
-- Kontakt- und Profil-Links
+  <section id="projects">
+    <div class="container">
+      <h2>🚀 Projekte & Inhalte</h2>
+      <ul>
+        <li>Profilübersicht & Tech-Stack</li>
+        <li>Design- & Codephilosophie</li>
+        <li>Live-Demos & GitHub-Repos</li>
+      </ul>
+    </div>
+  </section>
 
-## 🛠️ Technologien
+  <section id="tech">
+    <div class="container">
+      <h2>🛠️ Technologien & Tools</h2>
+      <div class="tech-list">
+        <span>HTML5</span>
+        <span>CSS3</span>
+        <span>Git & GitHub</span>
+        <span>Figma</span>
+        <span>CLI</span>
+      </div>
+    </div>
+  </section>
 
-- HTML5  
-- CSS3  
-- Git & GitHub Pages  
+  <section id="demo">
+    <div class="container">
+      <h2>🌐 Live-Demo</h2>
+      <p><a href="https://beckerbyte.github.io/" target="_blank">beckerbyte.github.io</a></p>
+    </div>
+  </section>
 
-## 🌐 Live-Demo
+  <section id="contact">
+    <div class="container">
+      <h2>📫 Kontakt</h2>
+      <p>📧 <a href="mailto:kontak@beckerbyte.com">kontak@beckerbyte.com</a></p>
+      <p>💼 <a href="https://www.linkedin.com/in/julian-becker-8125b42b7/">LinkedIn Profil</a></p>
+      <p>💬 <a href="https://discord.com/users/270226761256534027">Discord Direktnachricht</a></p>
+    </div>
+  </section>
 
-▶️ [beckerbyte.github.io](https://beckerbyte.github.io/)
-
-## 📁 Struktur
-
-```bash
-beckerbyte/
-├── index.html
-├── assets/
-│   ├── css/
-│   └── img/
-└── README.md
-```
-## 🧠 Ziele
-
-- Tech-Sichtbarkeit aufbauen  
-- GitHub-Profil professionell wirken lassen  
-- Einstieg in Webentwicklung dokumentieren
-
-## 📫 Kontakt
-
-📧 kontak@beckerbyte.com
-🔗 [LinkedIn Profil](https://www.linkedin.com/in/julian-becker-8125b42b7/)
- [![Discord](https://img.icons8.com/color/24/000000/discord-logo.png) CLICK ME](https://discord.com/users/270226761256534027)
-
+  <footer>
+    <div class="container">
+      <p>© Julian Becker · Code ist gut. Sichtbarkeit ist besser.</p>
+    </div>
+  </footer>
+</body>
+</html>
