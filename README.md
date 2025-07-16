@@ -56,7 +56,7 @@ beckerbyte/
 
 📧 [kontak@beckerbyte.com](mailto:kontak@beckerbyte.com)  
 🔗 [LinkedIn Profil](https://www.linkedin.com/in/julian-becker-8125b42b7/)  
-💬 [Discord Direktnachricht](https://discord.com/users/270226761256534027)
+ [![Discord](https://img.icons8.com/color/24/000000/discord-logo.png) CLICK ME](https://discord.com/users/270226761256534027)
 
 ---
 
