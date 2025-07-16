@@ -1,6 +1,6 @@
 # 🧠 beckerbyte – Portfolio von Julian Becker
 
-[![Pages](https://github.com/beckerbyte/beckerbyte.github.io/actions/workflows/pages.yml/badge.svg)](https://github.com/beckerbyte/beckerbyte.github.io/actions/workflows/pages.yml)
+(https://github.com/beckerbyte/beckerbyte.github.io/actions/workflows/pages.yml)
 [![Last Commit](https://img.shields.io/github/last-commit/beckerbyte/beckerbyte.github.io)](https://github.com/beckerbyte/beckerbyte.github.io/commits/main)
 [![Repo Size](https://img.shields.io/github/repo-size/beckerbyte/beckerbyte.github.io)](https://github.com/beckerbyte/beckerbyte.github.io)
 [![Status](https://img.shields.io/badge/status-active-success.svg)](https://github.com/beckerbyte/beckerbyte.github.io)
