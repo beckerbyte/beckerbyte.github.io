@@ -133,9 +133,13 @@
 
     .code-card-stage {
       position: relative;
+      width: min(100%, 340px);
+      min-height: 480px;
     }
 
     .code-card {
+      width: min(100%, 340px);
+      height: 480px;
       transform-origin: center;
       transition:
         top 560ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -167,9 +171,17 @@
     }
 
     .code-card-inner {
+      display: flex;
+      height: 100%;
+      min-height: 0;
+      flex-direction: column;
       transition:
         padding 560ms cubic-bezier(0.16, 1, 0.3, 1),
         border-radius 560ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .code-card-inner > .mb-7 {
+      flex: none;
     }
 
     .code-card.is-maximized .code-card-inner {
@@ -180,6 +192,10 @@
     }
 
     .code-card-content {
+      display: flex;
+      min-height: 0;
+      flex: 1;
+      flex-direction: column;
       overflow: hidden;
       max-height: 34rem;
       opacity: 1;
@@ -191,6 +207,20 @@
         margin 420ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
+
+    .code-card-content pre {
+      height: 252px;
+      min-height: 252px;
+      max-height: 252px;
+      flex: none;
+      overflow: hidden;
+    }
+
+    .code-card-content > .mt-8 {
+      margin-top: auto;
+      flex: none;
+    }
+
     .code-card.is-maximized .code-card-content {
       display: flex;
       min-height: 0;
@@ -199,11 +229,17 @@
     }
 
     .code-card.is-maximized pre {
+      height: auto;
       min-height: 0;
+      max-height: none;
       flex: 1;
       overflow: auto;
       font-size: clamp(0.9rem, 1.5vw, 1.16rem);
       line-height: 1.9;
+    }
+
+    .code-card.is-minimized {
+      height: 92px;
     }
 
     .code-card.is-minimized .code-card-content {
@@ -217,6 +253,10 @@
     .code-card.is-minimized .code-card-inner {
       padding-top: 1rem;
       padding-bottom: 1rem;
+    }
+
+    .code-card.is-minimized .code-card-inner > .mb-7 {
+      margin-bottom: 0;
     }
 
     .code-card.is-closed {
@@ -361,6 +401,20 @@
     }
 
     @media (max-width: 640px) {
+      .code-card-stage {
+        width: min(100%, 320px);
+        min-height: 460px;
+      }
+
+      .code-card {
+        width: min(100%, 320px);
+        height: 460px;
+      }
+
+      .code-card.is-minimized {
+        height: 88px;
+      }
+
       .code-card.is-maximized {
         width: calc(100vw - 1.25rem) !important;
         height: min(88vh, 680px) !important;
@@ -470,7 +524,7 @@
       <nav class="glass flex min-h-16 items-center justify-between rounded-2xl px-4 sm:px-5" aria-label="Hauptnavigation">
         <a href="#home" class="group flex items-center rounded-xl px-2 py-1.5 transition hover:bg-white/[0.03]" aria-label="beckerbyte Startseite">
           <img
-            src="./assets/img/beckerbyte-logo.png"
+            src="./assets/img/header.png"
             alt="beckerbyte"
             class="h-7 w-auto max-w-[150px] object-contain opacity-90 transition group-hover:opacity-100 sm:h-8 sm:max-w-[180px] md:h-9 md:max-w-[210px]"
             onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
@@ -1040,11 +1094,15 @@
         isAnimating = true;
         const targetRect = codeCardStage.getBoundingClientRect();
 
+        const normalCardHeight = window.matchMedia("(max-width: 640px)").matches
+          ? 460
+          : 480;
+
         codeCard.classList.remove("is-maximized");
         codeCard.style.top = `${targetRect.top}px`;
         codeCard.style.left = `${targetRect.left}px`;
         codeCard.style.width = `${targetRect.width}px`;
-        codeCard.style.height = `${targetRect.height}px`;
+        codeCard.style.height = `${normalCardHeight}px`;
 
         isMaximized = false;
         codeCardBackdrop.classList.remove("is-visible");
@@ -1073,8 +1131,11 @@
       const toggleMinimize = async () => {
         if (isAnimating || isClosed) return;
 
+        // Aus der Vollansicht führt der erste Klick nur zurück zur festen Normalgröße.
+        // Erst ein weiterer Klick minimiert die Karte auf die Fensterleiste.
         if (isMaximized) {
           await restoreCard();
+          return;
         }
 
         isMinimized = !isMinimized;
