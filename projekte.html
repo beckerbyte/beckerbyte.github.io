@@ -1,148 +1,498 @@
 <!DOCTYPE html>
-
-<html class="scroll-smooth" lang="de">
+<html lang="de" class="scroll-smooth">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Projekte – beckerbyte</title>
-<meta content="Ausgewählte Webprojekte von Beckerbyte: moderne Webentwicklung, Visuals, Tools." name="description"/>
-<link href="https://www.beckerbyte.com/projekte.html" rel="canonical"/>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="assets/css/style.css" rel="stylesheet"/>
-<link href="./assets/img/favicon-v2.png" rel="icon" type="image/png">
-</link></head>
-<body class="bg-black text-white font-mono">
-<div id="cursor"></div>
-<div class="fixed inset-0 -z-10" id="bg"></div>
-<nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 transform"><div class="flex space-x-6 bg-black bg-opacity-60 backdrop-blur-md px-6 py-2 rounded-full shadow-lg"><a class="text-white font-semibold hover:text-gray-300" href="index.html">Home</a><a class="text-white font-semibold hover:text-gray-300" href="skills.html">Erfahrungen</a><a class="text-white font-semibold hover:text-gray-300" href="projekte.html">Projekte</a></div></nav>
-<header class="fixed top-4 left-6 z-50 transition-all duration-500">
-<a href="/index.html">
-<img alt="Logo" class="h-36 md:h-48 lg:h-56 xl:h-64 hover:scale-105 transition" src="./assets/img/header.png"/>
-</a>
-</header>
-<main class="container mx-auto px-6 md:px-12 lg:px-24 py-32 space-y-24">
-<section>
-<h1 class="text-4xl md:text-6xl font-extrabold uppercase leading-tight">Projekte</h1>
-</section>
-<section class="space-y-24">
-<div class="card fade-in space-y-4">
-<h2 class="text-2xl font-bold uppercase">🌐 <a class="underline hover:text-gray-400" href="https://github.com/beckerbyte/beckerbyte.github.io" target="_blank">beckerbyte.github.io</a></h2>
-<p class="text-gray-300">Die persönliche Portfolio-Seite – vollständig responsive, gebaut mit Tailwind CSS, Vanilla JS und Vanta.js. Fokus: visuelle Klarheit, Performance, eigene Identität im Netz.</p>
-</div>
-<div class="card fade-in space-y-4">
-  <h2 class="text-2xl font-bold uppercase">
-    🧠 <a class="underline hover:text-gray-400" href="https://github.com/beckerbyte/Text-Analyzer" target="_blank" rel="noopener">Text-Analyzer</a>
-  </h2>
-  <p class="text-gray-300">
-    Ein einfaches Python-Skript zur lexikalischen Textanalyse. Zählt Wörter, Zeichen, Satzzeichen und liefert Basisstatistiken – CLI-basiert, wartbar, direkt einsetzbar.
-  </p>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projekte – Julian Becker | beckerbyte</title>
+  <meta
+    name="description"
+    content="Ausgewählte Projekte von Julian Becker: Webentwicklung, Python-Tools und digitale Lösungen."
+  >
+  <link rel="canonical" href="https://www.beckerbyte.com/projekte.html">
+  <link rel="icon" href="./assets/img/favicon-v2.png" type="image/png">
 
-  <!-- Buttons -->
-<div class="flex flex-wrap gap-4 pt-2">
-  <a href="https://github.com/beckerbyte/Text-Analyzer" target="_blank" rel="noopener"
-     class="px-5 py-2 rounded-full border border-gray-600 text-white font-semibold hover:bg-gray-800 transition">
-    Zum Repo
-  </a>
-  <a href="https://github.com/beckerbyte/beckerbyte.github.io/releases/latest/download/Text-Analyzer.zip"
-     class="px-5 py-2 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition">
-    ⬇ Download (.zip)
-  </a>
-</div>
-</section>
-</main>
-  
-<div class="text-center pt-12">
-  <a class="underline text-sm text-gray-400 hover:text-gray-300" href="index.html#home">
-    ← Zurück zur Startseite
-  </a>
-</div>
-
-  
-<footer class="text-center py-8 text-xs text-gray-400 tracking-widest flex flex-col items-center space-y-4">
-  <div class="flex items-center space-x-2 text-red-500">
-    <span class="text-sm text-gray-400">Made with</span>
-    <span class="text-xl heartbeat text-red-500">♡</span>
-    <span class="text-sm text-gray-400">by Julian</span>
-  </div>
-
-  <div class="flex space-x-6">
-    <a aria-label="GitHub" href="https://github.com/beckerbyte" target="_blank">
-      <svg class="w-8 h-8 hover:scale-110 transition" fill="#181717" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.43 7.86 10.96.58.1.79-.25.79-.56
-        0-.28-.01-1.03-.02-2.02-3.2.69-3.87-1.54-3.87-1.54-.53-1.35-1.3-1.71-1.3-1.71
-        -1.06-.73.08-.72.08-.72 1.18.08 1.8 1.22 1.8 1.22 1.04 1.78 2.73 1.27 3.4.97
-        .1-.75.4-1.27.73-1.56-2.56-.29-5.26-1.28-5.26-5.69
-        0-1.26.45-2.3 1.2-3.11-.12-.3-.52-1.52.11-3.17
-        0 0 .97-.31 3.18 1.2a11.1 11.1 0 0 1 2.9-.39
-        c.99 0 1.99.13 2.91.39 2.2-1.51 3.17-1.2 3.17-1.2
-        .63 1.65.24 2.87.12 3.17.75.81 1.2 1.85 1.2 3.11
-        0 4.42-2.71 5.4-5.29 5.68.41.35.78 1.03.78 2.08
-        0 1.5-.01 2.7-.01 3.07 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12
-        C23.5 5.74 18.27.5 12 .5z"></path>
-      </svg>
-    </a>
-
-    <a aria-label="Discord" href="https://discord.com/users/270226761256534027" target="_blank">
-      <svg class="w-8 h-8 hover:scale-110 transition" fill="#5865F2" viewBox="0 0 245 240" xmlns="http://www.w3.org/2000/svg">
-        <path d="M104.4 104.9c-5.7 0-10.2 5-10.2 11.1
-        0 6.1 4.6 11.1 10.2 11.1 5.7 0 10.3-5 10.2-11.1
-        0-6.1-4.6-11.1-10.2-11.1zm36.2 0c-5.7 0-10.2 5-10.2 11.1
-        0 6.1 4.6 11.1 10.2 11.1 5.7 0 10.3-5 10.2-11.1
-        0-6.1-4.6-11.1-10.2-11.1z"></path>
-        <path d="M189.5 20H55.5C43 20 32.7 30.3 32.7 42.8v137.9c0 12.5 10.3 22.8 22.8 22.8h108.5
-        l-5.1-17.6 12.4 11.5 11.7 10.7 20.8 18.4V42.8c0-12.5-10.3-22.8-22.8-22.8zm-41 131
-        s-3.9-4.6-7.2-8.6c14.2-4 19.6-12.7 19.6-12.7
-        -4.5 3-8.8 5.1-12.6 6.5-5.5 2.3-10.8 3.8-16 4.7
-        -10.6 2-20.4 1.5-28.9-.1-6.4-1.2-12-3-16.5-4.7
-        -2.6-1-5.4-2.3-8.2-3.9-.3-.2-.6-.3-.9-.5
-        -.2-.1-.3-.2-.5-.3-2.3-1.3-3.6-2.2-3.6-2.2
-        s5.2 8.7 19 12.7c-3.3 4-7.3 8.7-7.3 8.7
-        -24.1-.8-33.2-16.6-33.2-16.6
-        0-35.1 15.7-63.6 15.7-63.6
-        15.7-11.7 30.6-11.4 30.6-11.4l1.1 1.3
-        c-19.6 5.7-28.6 14.3-28.6 14.3
-        s2.4-1.3 6.5-3.2c11.8-5.2 21.2-6.6 25-6.9
-        .6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2
-        9.5 1.1 19.6 3.9 29.9 9.6
-        0 0-8.6-8.2-27.1-14l1.6-1.8
-        s14.9-.3 30.6 11.4c0 0 15.7 28.5 15.7 63.6
-        0 0-9.2 15.8-33.3 16.6z"></path>
-      </svg>
-    </a>
-  </div>
-
-  <div>© 2025 Julian Becker • beckerbyte</div>
-</footer>
-
-  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-<script>
-    VANTA.NET({
-      el: "#bg",
-      color: 0x555555,
-      backgroundColor: 0x000000,
-      points: 10.0,
-      maxDistance: 20.0,
-      spacing: 18.0,
-      mouseControls: true,
-      touchControls: false,
-      gyroControls: false
-    });
-  </script>
-<script>
-    document.querySelectorAll('.fade-in').forEach(el => {
-      el.classList.add('opacity-0', 'translate-y-4');
-      const observer = new IntersectionObserver(([entry], obs) => {
-        if (entry.isIntersecting) {
-          el.classList.remove('opacity-0', 'translate-y-4');
-          el.classList.add('transition-all', 'duration-1000');
-          obs.unobserve(entry.target);
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+            mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"]
+          },
+          boxShadow: {
+            glow: "0 0 60px rgba(74, 222, 128, 0.12)"
+          }
         }
-      }, { threshold: 0.2 });
-      observer.observe(el);
-    });
+      }
+    };
   </script>
-<script src="assets/js/animated-cursor.js"></script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --accent: #4ade80;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 15% 15%, rgba(74, 222, 128, 0.12), transparent 28rem),
+        radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.09), transparent 30rem),
+        #050505;
+    }
+
+    .page-grid {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, black, transparent 92%);
+    }
+
+    .glass {
+      background: rgba(15, 15, 15, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(18px);
+    }
+
+    .gradient-text {
+      color: transparent;
+      background: linear-gradient(90deg, #ffffff 0%, #86efac 48%, #7dd3fc 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    .section-kicker::before {
+      content: "";
+      display: inline-block;
+      width: 2rem;
+      height: 1px;
+      margin-right: 0.75rem;
+      vertical-align: middle;
+      background: var(--accent);
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::after {
+      content: "";
+      position: absolute;
+      right: -5rem;
+      bottom: -5rem;
+      width: 15rem;
+      height: 15rem;
+      border-radius: 9999px;
+      background: rgba(74, 222, 128, 0.08);
+      filter: blur(2rem);
+      opacity: 0;
+      transition: opacity 350ms ease, transform 350ms ease;
+    }
+
+    .project-card:hover::after {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    .project-preview {
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .noise {
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen overflow-x-hidden font-sans text-zinc-100 antialiased selection:bg-green-300 selection:text-black">
+  <a
+    href="#main"
+    class="sr-only z-[100] rounded-md bg-white px-4 py-2 text-black focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+  >
+    Zum Inhalt springen
+  </a>
+
+  <div class="page-grid fixed inset-0 -z-20"></div>
+  <div class="noise fixed inset-0 -z-10"></div>
+
+  <header class="fixed inset-x-0 top-0 z-50">
+    <div class="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
+      <nav class="glass flex min-h-16 items-center justify-between rounded-2xl px-4 sm:px-5" aria-label="Hauptnavigation">
+        <a href="index.html" class="flex items-center gap-3" aria-label="beckerbyte Startseite">
+          <img
+            src="./assets/img/header.png"
+            alt=""
+            class="h-10 w-auto max-w-[150px] object-contain"
+            onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+          >
+          <span class="hidden font-mono text-sm font-bold tracking-[0.18em] text-white">BECKERBYTE</span>
+        </a>
+
+        <div class="hidden items-center gap-1 md:flex">
+          <a
+            class="rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white"
+            href="index.html"
+          >
+            Home
+          </a>
+          <a
+            class="rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white"
+            href="skills.html"
+          >
+            Erfahrungen
+          </a>
+          <a
+            class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white"
+            href="projekte.html"
+            aria-current="page"
+          >
+            Projekte
+          </a>
+          <a
+            class="ml-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-green-300"
+            href="index.html#contact"
+          >
+            Kontakt
+          </a>
+        </div>
+
+        <button
+          id="menu-button"
+          class="rounded-lg border border-white/10 p-2 text-zinc-200 md:hidden"
+          type="button"
+          aria-label="Navigation öffnen"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </nav>
+
+      <div id="mobile-menu" class="glass mt-2 hidden rounded-2xl p-3 md:hidden">
+        <a class="block rounded-xl px-4 py-3 text-sm text-zinc-200 hover:bg-white/5" href="index.html">Home</a>
+        <a class="block rounded-xl px-4 py-3 text-sm text-zinc-200 hover:bg-white/5" href="skills.html">Erfahrungen</a>
+        <a class="block rounded-xl bg-white/10 px-4 py-3 text-sm font-medium text-white" href="projekte.html" aria-current="page">Projekte</a>
+        <a class="mt-2 block rounded-xl bg-white px-4 py-3 text-center text-sm font-semibold text-black" href="index.html#contact">Kontakt</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="pt-32">
+    <section class="pb-14 pt-16 sm:pb-20 sm:pt-24">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="reveal max-w-4xl">
+          <a
+            href="index.html"
+            class="mb-8 inline-flex items-center gap-2 text-sm text-zinc-400 transition hover:text-white"
+          >
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Zurück zur Startseite
+          </a>
+
+          <p class="section-kicker font-mono text-xs uppercase tracking-[0.24em] text-zinc-400">
+            Ausgewählte Arbeiten
+          </p>
+
+          <h1 class="mt-5 text-5xl font-black leading-[0.98] tracking-[-0.055em] sm:text-7xl">
+            Projekte mit
+            <span class="gradient-text block">klarem Nutzen.</span>
+          </h1>
+
+          <p class="mt-7 max-w-3xl text-lg leading-8 text-zinc-400 sm:text-xl">
+            Eigene Webprojekte und Werkzeuge, bei denen Funktion, Wartbarkeit und eine klare
+            Oberfläche im Mittelpunkt stehen.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-24 sm:pb-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="grid gap-6 lg:grid-cols-2">
+          <article class="project-card glass reveal rounded-[2rem] p-6 transition hover:-translate-y-1 hover:border-green-300/25 sm:p-8">
+            <div class="project-preview relative overflow-hidden rounded-[1.5rem] border border-white/10 p-5 sm:p-7">
+              <div class="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-green-300/10 blur-3xl"></div>
+
+              <div class="relative">
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-1.5">
+                    <span class="h-2.5 w-2.5 rounded-full bg-red-400/80"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-amber-300/80"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-green-300/80"></span>
+                  </div>
+                  <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Portfolio</span>
+                </div>
+
+                <div class="mt-8">
+                  <p class="font-mono text-xs uppercase tracking-[0.2em] text-green-300">Webentwicklung</p>
+                  <div class="mt-4 h-4 w-3/4 rounded-full bg-white/10"></div>
+                  <div class="mt-3 h-3 w-full rounded-full bg-white/5"></div>
+                  <div class="mt-2 h-3 w-5/6 rounded-full bg-white/5"></div>
+
+                  <div class="mt-8 grid grid-cols-3 gap-3">
+                    <div class="h-20 rounded-2xl border border-white/8 bg-white/[0.025]"></div>
+                    <div class="h-20 rounded-2xl border border-white/8 bg-white/[0.025]"></div>
+                    <div class="h-20 rounded-2xl border border-white/8 bg-white/[0.025]"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative mt-8">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="rounded-full border border-green-300/15 bg-green-300/[0.06] px-3 py-1 font-mono text-[11px] text-green-200">Tailwind CSS</span>
+                <span class="rounded-full border border-white/10 px-3 py-1 font-mono text-[11px] text-zinc-400">JavaScript</span>
+                <span class="rounded-full border border-white/10 px-3 py-1 font-mono text-[11px] text-zinc-400">Responsive</span>
+              </div>
+
+              <h2 class="mt-5 text-3xl font-semibold tracking-tight">beckerbyte.github.io</h2>
+              <p class="mt-4 leading-7 text-zinc-400">
+                Persönliche Portfolio-Seite mit responsivem Aufbau, eigener visueller Identität
+                und Fokus auf klare Nutzerführung.
+              </p>
+
+              <div class="mt-7">
+                <a
+                  href="https://github.com/beckerbyte/beckerbyte.github.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 font-semibold text-black transition hover:bg-green-300"
+                >
+                  Repository öffnen
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M7 17 17 7M8 7h9v9" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card glass reveal rounded-[2rem] p-6 transition hover:-translate-y-1 hover:border-sky-300/25 sm:p-8">
+            <div class="project-preview relative overflow-hidden rounded-[1.5rem] border border-white/10 p-5 sm:p-7">
+              <div class="absolute -left-12 -top-12 h-36 w-36 rounded-full bg-sky-300/10 blur-3xl"></div>
+
+              <div class="relative">
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-1.5">
+                    <span class="h-2.5 w-2.5 rounded-full bg-red-400/80"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-amber-300/80"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-green-300/80"></span>
+                  </div>
+                  <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Python CLI</span>
+                </div>
+
+                <pre class="mt-8 overflow-hidden font-mono text-[12px] leading-7 text-zinc-300 sm:text-sm"><code><span class="text-sky-300">def</span> <span class="text-green-300">analyze_text</span>(text):
+    words = text.split()
+    characters = len(text)
+    return {
+        <span class="text-green-300">"words"</span>: len(words),
+        <span class="text-green-300">"characters"</span>: characters
+    }</code></pre>
+
+                <div class="mt-8 grid grid-cols-3 gap-3 border-t border-white/10 pt-5 text-center">
+                  <div>
+                    <strong class="block text-lg text-white">CLI</strong>
+                    <span class="text-[11px] text-zinc-500">Interface</span>
+                  </div>
+                  <div>
+                    <strong class="block text-lg text-white">Fast</strong>
+                    <span class="text-[11px] text-zinc-500">Analysis</span>
+                  </div>
+                  <div>
+                    <strong class="block text-lg text-white">Simple</strong>
+                    <span class="text-[11px] text-zinc-500">Setup</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative mt-8">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="rounded-full border border-sky-300/15 bg-sky-300/[0.06] px-3 py-1 font-mono text-[11px] text-sky-200">Python</span>
+                <span class="rounded-full border border-white/10 px-3 py-1 font-mono text-[11px] text-zinc-400">CLI</span>
+                <span class="rounded-full border border-white/10 px-3 py-1 font-mono text-[11px] text-zinc-400">Textanalyse</span>
+              </div>
+
+              <h2 class="mt-5 text-3xl font-semibold tracking-tight">Text-Analyzer</h2>
+              <p class="mt-4 leading-7 text-zinc-400">
+                Schlankes Python-Skript zur lexikalischen Textanalyse. Zählt Wörter, Zeichen
+                und Satzzeichen und liefert kompakte Basisstatistiken.
+              </p>
+
+              <div class="mt-7 flex flex-wrap gap-3">
+                <a
+                  href="https://github.com/beckerbyte/Text-Analyzer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
+                >
+                  Repository
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M7 17 17 7M8 7h9v9" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </a>
+
+                <a
+                  href="https://github.com/beckerbyte/beckerbyte.github.io/releases/latest/download/Text-Analyzer.zip"
+                  class="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 font-semibold text-black transition hover:bg-green-300"
+                >
+                  ZIP herunterladen
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M12 3v12M7 10l5 5 5-5M5 21h14" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <section class="glass reveal mt-6 overflow-hidden rounded-[2rem]">
+          <div class="grid lg:grid-cols-[1fr_auto] lg:items-center">
+            <div class="p-8 sm:p-10">
+              <p class="font-mono text-xs uppercase tracking-[0.22em] text-green-300">Neue Idee?</p>
+              <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+                Aus einer guten Idee muss ein funktionierendes Produkt werden.
+              </h2>
+              <p class="mt-5 max-w-2xl leading-7 text-zinc-400">
+                Beschreibe kurz dein Projekt. Ich gebe dir eine klare Einschätzung zu Umsetzung,
+                Aufwand und sinnvollem nächsten Schritt.
+              </p>
+            </div>
+
+            <div class="flex flex-col gap-3 border-t border-white/10 p-8 sm:flex-row lg:border-l lg:border-t-0">
+              <a
+                href="index.html#contact"
+                class="inline-flex items-center justify-center gap-2 rounded-full bg-green-300 px-6 py-3.5 font-semibold text-black transition hover:bg-green-200"
+              >
+                Projekt besprechen
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </a>
+
+              <a
+                href="skills.html"
+                class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3.5 font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
+              >
+                Skills ansehen
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/8 py-10">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 text-sm text-zinc-500 sm:flex-row lg:px-8">
+      <div>
+        © <span id="year">2026</span> Julian Becker · beckerbyte
+      </div>
+
+      <div class="flex items-center gap-5">
+        <a
+          href="https://github.com/beckerbyte"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="transition hover:text-white"
+        >
+          GitHub
+        </a>
+        <a
+          href="https://discord.com/users/270226761256534027"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="transition hover:text-white"
+        >
+          Discord
+        </a>
+        <a href="impressum.html" class="transition hover:text-white">Impressum</a>
+        <a href="datenschutz.html" class="transition hover:text-white">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById("menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuButton?.addEventListener("click", () => {
+      const isOpen = !mobileMenu.classList.contains("hidden");
+      mobileMenu.classList.toggle("hidden");
+      menuButton.setAttribute("aria-expanded", String(!isOpen));
+    });
+
+    mobileMenu?.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      revealElements.forEach((element) => observer.observe(element));
+    } else {
+      revealElements.forEach((element) => element.classList.add("is-visible"));
+    }
+  </script>
 </body>
 </html>
