@@ -62,11 +62,237 @@
     }
 
     .gradient-text {
+      display: block;
+      padding-bottom: 0.1em;
+      margin-bottom: -0.1em;
       color: transparent;
       background: linear-gradient(90deg, #ffffff 0%, #86efac 48%, #7dd3fc 100%);
+      background-size: 180% auto;
       background-clip: text;
       -webkit-background-clip: text;
+      animation: gradient-flow 7s ease-in-out infinite;
     }
+
+    @keyframes gradient-flow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes hero-rise {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-animate {
+      opacity: 0;
+      animation: hero-rise 720ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+
+    @keyframes typing-cursor {
+      0%, 45% { opacity: 1; }
+      46%, 100% { opacity: 0; }
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 0.55em;
+      height: 1.15em;
+      margin-left: 0.12em;
+      vertical-align: -0.18em;
+      border-radius: 0.08em;
+      background: #86efac;
+      animation: typing-cursor 800ms steps(1, end) infinite;
+    }
+
+    .typing-cursor.is-finished {
+      animation-duration: 1100ms;
+      opacity: 0.8;
+    }
+
+
+    @keyframes code-card-swoosh {
+      0% {
+        opacity: 0;
+        transform: translate3d(-125%, 25%, 0) rotate(-18deg);
+      }
+      18% {
+        opacity: 0.8;
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(125%, -25%, 0) rotate(-18deg);
+      }
+    }
+
+    .code-card-stage {
+      position: relative;
+    }
+
+    .code-card {
+      transform-origin: center;
+      transition:
+        top 620ms cubic-bezier(0.16, 1, 0.3, 1),
+        left 620ms cubic-bezier(0.16, 1, 0.3, 1),
+        width 620ms cubic-bezier(0.16, 1, 0.3, 1),
+        height 620ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 620ms cubic-bezier(0.16, 1, 0.3, 1),
+        border-radius 620ms cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 620ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .code-card.is-moving {
+      position: fixed;
+      top: var(--card-top);
+      left: var(--card-left);
+      width: var(--card-width);
+      height: var(--card-height);
+      z-index: 90;
+      margin: 0;
+    }
+
+    .code-card.is-expanded {
+      top: 50%;
+      left: 50%;
+      width: min(92vw, 940px);
+      height: min(86vh, 700px);
+      transform: translate(-50%, -50%);
+      border-radius: 1.75rem;
+      box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.72),
+        0 0 90px rgba(74, 222, 128, 0.14);
+    }
+
+    .code-card-inner {
+      transition:
+        padding 620ms cubic-bezier(0.16, 1, 0.3, 1),
+        border-radius 620ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .code-card.is-expanded .code-card-inner {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      border-radius: 1.35rem;
+    }
+
+    .code-card.is-expanded pre {
+      min-height: 0;
+      flex: 1;
+      overflow: auto;
+      font-size: clamp(0.9rem, 1.55vw, 1.2rem);
+      line-height: 2;
+    }
+
+    .code-card-swoosh {
+      position: absolute;
+      inset: -55%;
+      z-index: 30;
+      pointer-events: none;
+      opacity: 0;
+      background:
+        linear-gradient(
+          100deg,
+          transparent 38%,
+          rgba(255, 255, 255, 0.04) 44%,
+          rgba(134, 239, 172, 0.42) 50%,
+          rgba(125, 211, 252, 0.2) 55%,
+          transparent 62%
+        );
+      filter: blur(1px);
+      mix-blend-mode: screen;
+    }
+
+    .code-card.is-swooshing .code-card-swoosh {
+      animation: code-card-swoosh 720ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .code-card-toggle {
+      display: inline-flex;
+      height: 2rem;
+      width: 2rem;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.65rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.035);
+      color: rgb(161 161 170);
+      transition:
+        color 220ms ease,
+        border-color 220ms ease,
+        background 220ms ease,
+        transform 220ms ease;
+    }
+
+    .code-card-toggle:hover {
+      color: rgb(134 239 172);
+      border-color: rgba(134, 239, 172, 0.35);
+      background: rgba(134, 239, 172, 0.08);
+      transform: scale(1.05);
+    }
+
+    .code-card-toggle svg {
+      transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .code-card.is-expanded .code-card-toggle svg {
+      transform: rotate(180deg);
+    }
+
+    .code-card-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      pointer-events: none;
+      opacity: 0;
+      background:
+        radial-gradient(circle at center, rgba(25, 45, 34, 0.2), transparent 45%),
+        rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(0);
+      transition:
+        opacity 420ms ease,
+        backdrop-filter 620ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .code-card-backdrop.is-visible {
+      pointer-events: auto;
+      opacity: 1;
+      backdrop-filter: blur(12px);
+    }
+
+    body.code-card-open {
+      overflow: hidden;
+    }
+
+    @media (max-width: 640px) {
+      .code-card.is-expanded {
+        width: calc(100vw - 1.25rem);
+        height: min(88vh, 680px);
+        border-radius: 1.25rem;
+      }
+
+      .code-card.is-expanded .code-card-inner {
+        padding: 1.25rem;
+      }
+
+      .code-card.is-expanded pre {
+        font-size: 0.78rem;
+        line-height: 1.8;
+      }
+    }
+
+    .hero-delay-1 { animation-delay: 80ms; }
+    .hero-delay-2 { animation-delay: 180ms; }
+    .hero-delay-3 { animation-delay: 300ms; }
+    .hero-delay-4 { animation-delay: 430ms; }
+    .hero-delay-5 { animation-delay: 560ms; }
 
     .section-kicker::before {
       content: "";
@@ -104,10 +330,28 @@
         scroll-behavior: auto;
       }
 
-      .reveal {
+      .reveal,
+      .hero-animate {
         opacity: 1;
         transform: none;
         transition: none;
+        animation: none !important;
+      }
+
+      .gradient-text,
+      .typing-cursor,
+      .code-card.is-swooshing .code-card-swoosh {
+        animation: none !important;
+      }
+
+      .code-card,
+      .code-card-inner,
+      .code-card-backdrop {
+        transition: none !important;
+      }
+
+      .typing-cursor {
+        display: none;
       }
 
       * {
@@ -129,15 +373,16 @@
 
   <div class="page-grid fixed inset-0 -z-20"></div>
   <div class="noise fixed inset-0 -z-10"></div>
+  <div id="code-card-backdrop" class="code-card-backdrop" aria-hidden="true"></div>
 
   <header class="fixed inset-x-0 top-0 z-50">
     <div class="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
       <nav class="glass flex min-h-16 items-center justify-between rounded-2xl px-4 sm:px-5" aria-label="Hauptnavigation">
         <a href="#home" class="group flex items-center rounded-xl px-2 py-1.5 transition hover:bg-white/[0.03]" aria-label="beckerbyte Startseite">
           <img
-            src="./assets/img/header.png"
+            src="./assets/img/beckerbyte-logo.png"
             alt="beckerbyte"
-            class="h-8 w-auto object-contain opacity-90 transition group-hover:opacity-100 sm:h-9 md:h-10"
+            class="h-7 w-auto max-w-[150px] object-contain opacity-90 transition group-hover:opacity-100 sm:h-8 sm:max-w-[180px] md:h-9 md:max-w-[210px]"
             onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
           >
           <span class="hidden text-sm font-semibold tracking-[0.16em] text-white sm:text-[15px]">beckerbyte</span>
@@ -178,27 +423,27 @@
   <main id="main">
     <section id="home" class="relative flex min-h-screen items-center pt-32">
       <div class="mx-auto grid w-full max-w-7xl items-center gap-16 px-6 py-20 lg:grid-cols-[1.2fr_0.8fr] lg:px-8">
-        <div class="reveal">
-          <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-green-300/20 bg-green-300/10 px-3 py-1.5 text-xs font-medium text-green-200">
+        <div>
+          <div class="hero-animate hero-delay-1 mb-7 inline-flex items-center gap-2 rounded-full border border-green-300/20 bg-green-300/10 px-3 py-1.5 text-xs font-medium text-green-200">
             <span class="h-2 w-2 animate-pulse rounded-full bg-green-300"></span>
             Offen für neue Projekte und Kooperationen
           </div>
 
-          <p class="section-kicker mb-5 font-mono text-xs uppercase tracking-[0.24em] text-zinc-400">
+          <p class="section-kicker hero-animate hero-delay-2 mb-5 font-mono text-xs uppercase tracking-[0.24em] text-zinc-400">
             Webentwicklung · IT · Design
           </p>
 
-          <h1 class="max-w-5xl text-5xl font-black leading-[0.98] tracking-[-0.055em] sm:text-6xl lg:text-8xl">
+          <h1 class="hero-animate hero-delay-3 max-w-5xl text-5xl font-black leading-[1.03] tracking-[-0.055em] sm:text-6xl sm:leading-[1.01] lg:text-8xl">
             Digitale Lösungen,
             <span class="gradient-text block">klar gebaut.</span>
           </h1>
 
-          <p class="mt-8 max-w-2xl text-lg leading-8 text-zinc-400 sm:text-xl">
+          <p class="hero-animate hero-delay-4 mt-8 max-w-2xl text-lg leading-8 text-zinc-400 sm:text-xl">
             Ich verbinde Webentwicklung, Systemintegration und visuelles Denken zu Lösungen,
             die schnell, verständlich und zuverlässig funktionieren.
           </p>
 
-          <div class="mt-10 flex flex-col gap-3 sm:flex-row">
+          <div class="hero-animate hero-delay-5 mt-10 flex flex-col gap-3 sm:flex-row">
             <a
               href="projekte.html"
               class="inline-flex items-center justify-center gap-2 rounded-full bg-green-300 px-6 py-3.5 font-semibold text-black transition hover:-translate-y-0.5 hover:bg-green-200"
@@ -217,22 +462,38 @@
           </div>
         </div>
 
-        <div class="reveal lg:justify-self-end">
-          <div class="glass relative overflow-hidden rounded-[2rem] p-5 shadow-glow sm:p-7">
+        <div id="code-card-stage" class="code-card-stage hero-animate hero-delay-5 lg:justify-self-end">
+          <div id="code-card" class="code-card glass relative overflow-hidden rounded-[2rem] p-5 shadow-glow sm:p-7" role="region" aria-label="Interaktive Code-Karte">
+            <div class="code-card-swoosh" aria-hidden="true"></div>
             <div class="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-green-300/15 blur-3xl"></div>
             <div class="absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-sky-300/10 blur-3xl"></div>
 
-            <div class="relative rounded-[1.35rem] border border-white/10 bg-black/50 p-6">
+            <div class="code-card-inner relative rounded-[1.35rem] border border-white/10 bg-black/50 p-6">
               <div class="mb-7 flex items-center justify-between">
                 <div class="flex gap-1.5">
                   <span class="h-2.5 w-2.5 rounded-full bg-red-400/80"></span>
                   <span class="h-2.5 w-2.5 rounded-full bg-amber-300/80"></span>
                   <span class="h-2.5 w-2.5 rounded-full bg-green-300/80"></span>
                 </div>
-                <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">beckerbyte.dev</span>
+                <div class="flex items-center gap-3">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">beckerbyte.dev</span>
+                  <button
+                    id="code-card-toggle"
+                    class="code-card-toggle"
+                    type="button"
+                    aria-label="Code-Karte vergrößern"
+                    aria-expanded="false"
+                    title="Code-Karte vergrößern"
+                  >
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                      <path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="m3 8 6-6M21 8l-6-6M3 16l6 6M21 16l-6 6" stroke-linecap="round"></path>
+                    </svg>
+                  </button>
+                </div>
               </div>
 
-              <pre class="overflow-hidden font-mono text-[12px] leading-7 text-zinc-300 sm:text-sm"><code><span class="text-sky-300">const</span> developer = {
+              <pre class="min-h-[252px] overflow-hidden whitespace-pre-wrap font-mono text-[12px] leading-7 text-zinc-300 sm:text-sm"><code id="typing-code" aria-label="Code-Beispiel"><span class="text-sky-300">const</span> developer = {
   name: <span class="text-green-300">"Julian Becker"</span>,
   focus: [
     <span class="text-green-300">"Webentwicklung"</span>,
@@ -240,7 +501,7 @@
     <span class="text-green-300">"Creative Tech"</span>
   ],
   mindset: <span class="text-green-300">"build useful things"</span>
-};</code></pre>
+};</code><span id="typing-cursor" class="typing-cursor" aria-hidden="true"></span></pre>
 
               <div class="mt-8 grid grid-cols-3 gap-3 border-t border-white/10 pt-5 text-center">
                 <div>
@@ -520,6 +781,168 @@
     });
 
     document.getElementById("year").textContent = String(new Date().getFullYear());
+
+
+    const typingCode = document.getElementById("typing-code");
+    const typingCursor = document.getElementById("typing-cursor");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (typingCode && typingCursor && !reducedMotion) {
+      const codeSegments = [
+        { text: "const", className: "text-sky-300" },
+        { text: " developer = {\n  name: " },
+        { text: "\"Julian Becker\"", className: "text-green-300" },
+        { text: ",\n  focus: [\n    " },
+        { text: "\"Webentwicklung\"", className: "text-green-300" },
+        { text: ",\n    " },
+        { text: "\"Systemintegration\"", className: "text-green-300" },
+        { text: ",\n    " },
+        { text: "\"Creative Tech\"", className: "text-green-300" },
+        { text: "\n  ],\n  mindset: " },
+        { text: "\"build useful things\"", className: "text-green-300" },
+        { text: "\n};" }
+      ];
+
+      typingCode.textContent = "";
+
+      const wait = (milliseconds) =>
+        new Promise((resolve) => window.setTimeout(resolve, milliseconds));
+
+      const characterDelay = (character) => {
+        if (character === "\n") return 150;
+        if ([",", ":", "{", "}", "[", "]", ";"].includes(character)) return 65;
+        if (character === " ") return 12;
+        return 24 + Math.random() * 24;
+      };
+
+      const typeCode = async () => {
+        await wait(1050);
+
+        for (const segment of codeSegments) {
+          const target = document.createElement("span");
+
+          if (segment.className) {
+            target.className = segment.className;
+          }
+
+          typingCode.appendChild(target);
+
+          for (const character of segment.text) {
+            target.textContent += character;
+            await wait(characterDelay(character));
+          }
+        }
+
+        typingCursor.classList.add("is-finished");
+      };
+
+      typeCode();
+    }
+
+
+    const codeCard = document.getElementById("code-card");
+    const codeCardStage = document.getElementById("code-card-stage");
+    const codeCardToggle = document.getElementById("code-card-toggle");
+    const codeCardBackdrop = document.getElementById("code-card-backdrop");
+
+    if (codeCard && codeCardStage && codeCardToggle && codeCardBackdrop) {
+      let codeCardExpanded = false;
+      let codeCardAnimating = false;
+
+      const playSwoosh = () => {
+        codeCard.classList.remove("is-swooshing");
+        void codeCard.offsetWidth;
+        codeCard.classList.add("is-swooshing");
+
+        window.setTimeout(() => {
+          codeCard.classList.remove("is-swooshing");
+        }, 760);
+      };
+
+      const updateCodeCardButton = () => {
+        const label = codeCardExpanded
+          ? "Code-Karte verkleinern"
+          : "Code-Karte vergrößern";
+
+        codeCardToggle.setAttribute("aria-expanded", String(codeCardExpanded));
+        codeCardToggle.setAttribute("aria-label", label);
+        codeCardToggle.setAttribute("title", label);
+      };
+
+      const expandCodeCard = () => {
+        if (codeCardExpanded || codeCardAnimating) return;
+
+        codeCardAnimating = true;
+        const rect = codeCard.getBoundingClientRect();
+
+        codeCardStage.style.minHeight = `${rect.height}px`;
+        codeCard.style.setProperty("--card-top", `${rect.top}px`);
+        codeCard.style.setProperty("--card-left", `${rect.left}px`);
+        codeCard.style.setProperty("--card-width", `${rect.width}px`);
+        codeCard.style.setProperty("--card-height", `${rect.height}px`);
+        codeCard.classList.add("is-moving");
+
+        void codeCard.offsetWidth;
+
+        codeCardExpanded = true;
+        document.body.classList.add("code-card-open");
+        codeCardBackdrop.classList.add("is-visible");
+        codeCard.classList.add("is-expanded");
+        updateCodeCardButton();
+        playSwoosh();
+
+        window.setTimeout(() => {
+          codeCardAnimating = false;
+          codeCardToggle.focus({ preventScroll: true });
+        }, 650);
+      };
+
+      const collapseCodeCard = () => {
+        if (!codeCardExpanded || codeCardAnimating) return;
+
+        codeCardAnimating = true;
+        const targetRect = codeCardStage.getBoundingClientRect();
+
+        codeCard.style.setProperty("--card-top", `${targetRect.top}px`);
+        codeCard.style.setProperty("--card-left", `${targetRect.left}px`);
+        codeCard.style.setProperty("--card-width", `${targetRect.width}px`);
+        codeCard.style.setProperty("--card-height", `${targetRect.height}px`);
+
+        codeCardExpanded = false;
+        codeCardBackdrop.classList.remove("is-visible");
+        codeCard.classList.remove("is-expanded");
+        updateCodeCardButton();
+        playSwoosh();
+
+        window.setTimeout(() => {
+          codeCard.classList.remove("is-moving");
+          codeCard.style.removeProperty("--card-top");
+          codeCard.style.removeProperty("--card-left");
+          codeCard.style.removeProperty("--card-width");
+          codeCard.style.removeProperty("--card-height");
+          codeCardStage.style.removeProperty("min-height");
+          document.body.classList.remove("code-card-open");
+          codeCardAnimating = false;
+          codeCardToggle.focus({ preventScroll: true });
+        }, 650);
+      };
+
+      codeCardToggle.addEventListener("click", () => {
+        if (codeCardExpanded) {
+          collapseCodeCard();
+        } else {
+          expandCodeCard();
+        }
+      });
+
+      codeCardBackdrop.addEventListener("click", collapseCodeCard);
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && codeCardExpanded) {
+          collapseCodeCard();
+        }
+      });
+    }
 
     const revealElements = document.querySelectorAll(".reveal");
 
