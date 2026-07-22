@@ -117,17 +117,17 @@
     }
 
 
-    @keyframes code-card-swoosh {
+    @keyframes card-swoosh {
       0% {
         opacity: 0;
-        transform: translate3d(-125%, 25%, 0) rotate(-18deg);
+        transform: translate3d(-140%, 28%, 0) rotate(-16deg);
       }
       18% {
-        opacity: 0.8;
+        opacity: 0.85;
       }
       100% {
         opacity: 0;
-        transform: translate3d(125%, -25%, 0) rotate(-18deg);
+        transform: translate3d(140%, -28%, 0) rotate(-16deg);
       }
     }
 
@@ -138,133 +138,222 @@
     .code-card {
       transform-origin: center;
       transition:
-        top 620ms cubic-bezier(0.16, 1, 0.3, 1),
-        left 620ms cubic-bezier(0.16, 1, 0.3, 1),
-        width 620ms cubic-bezier(0.16, 1, 0.3, 1),
-        height 620ms cubic-bezier(0.16, 1, 0.3, 1),
-        transform 620ms cubic-bezier(0.16, 1, 0.3, 1),
-        border-radius 620ms cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 620ms cubic-bezier(0.16, 1, 0.3, 1);
+        top 560ms cubic-bezier(0.16, 1, 0.3, 1),
+        left 560ms cubic-bezier(0.16, 1, 0.3, 1),
+        width 560ms cubic-bezier(0.16, 1, 0.3, 1),
+        height 560ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 560ms cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 320ms ease,
+        border-radius 560ms cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 560ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .code-card.is-moving {
+    .code-card.is-floating {
       position: fixed;
-      top: var(--card-top);
-      left: var(--card-left);
-      width: var(--card-width);
-      height: var(--card-height);
-      z-index: 90;
+      z-index: 100;
       margin: 0;
     }
 
-    .code-card.is-expanded {
-      top: 50%;
-      left: 50%;
-      width: min(92vw, 940px);
-      height: min(86vh, 700px);
+    .code-card.is-maximized {
+      top: 50% !important;
+      left: 50% !important;
+      width: min(92vw, 940px) !important;
+      height: min(86vh, 700px) !important;
       transform: translate(-50%, -50%);
       border-radius: 1.75rem;
       box-shadow:
-        0 30px 100px rgba(0, 0, 0, 0.72),
+        0 32px 120px rgba(0, 0, 0, 0.78),
         0 0 90px rgba(74, 222, 128, 0.14);
     }
 
     .code-card-inner {
       transition:
-        padding 620ms cubic-bezier(0.16, 1, 0.3, 1),
-        border-radius 620ms cubic-bezier(0.16, 1, 0.3, 1);
+        padding 560ms cubic-bezier(0.16, 1, 0.3, 1),
+        border-radius 560ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .code-card.is-expanded .code-card-inner {
+    .code-card.is-maximized .code-card-inner {
       display: flex;
       height: 100%;
       flex-direction: column;
       padding: clamp(1.5rem, 4vw, 3rem);
-      border-radius: 1.35rem;
     }
 
-    .code-card.is-expanded pre {
+    .code-card-content {
+      overflow: hidden;
+      max-height: 34rem;
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        max-height 520ms cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 260ms ease,
+        transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+        margin 420ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .code-card.is-maximized .code-card-content {
+      display: flex;
+      min-height: 0;
+      flex: 1;
+      flex-direction: column;
+    }
+
+    .code-card.is-maximized pre {
       min-height: 0;
       flex: 1;
       overflow: auto;
-      font-size: clamp(0.9rem, 1.55vw, 1.2rem);
-      line-height: 2;
+      font-size: clamp(0.9rem, 1.5vw, 1.16rem);
+      line-height: 1.9;
+    }
+
+    .code-card.is-minimized .code-card-content {
+      max-height: 0;
+      margin-top: 0;
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+    }
+
+    .code-card.is-minimized .code-card-inner {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .code-card.is-closed {
+      opacity: 0;
+      transform: scale(0.96);
+      pointer-events: none;
     }
 
     .code-card-swoosh {
       position: absolute;
-      inset: -55%;
+      inset: -60%;
       z-index: 30;
       pointer-events: none;
       opacity: 0;
       background:
         linear-gradient(
-          100deg,
-          transparent 38%,
+          102deg,
+          transparent 39%,
           rgba(255, 255, 255, 0.04) 44%,
-          rgba(134, 239, 172, 0.42) 50%,
-          rgba(125, 211, 252, 0.2) 55%,
+          rgba(134, 239, 172, 0.46) 50%,
+          rgba(125, 211, 252, 0.18) 55%,
           transparent 62%
         );
-      filter: blur(1px);
       mix-blend-mode: screen;
     }
 
     .code-card.is-swooshing .code-card-swoosh {
-      animation: code-card-swoosh 720ms cubic-bezier(0.16, 1, 0.3, 1);
+      animation: card-swoosh 680ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .code-card-toggle {
+    .window-dot {
+      position: relative;
       display: inline-flex;
-      height: 2rem;
-      width: 2rem;
+      height: 0.72rem;
+      width: 0.72rem;
       align-items: center;
       justify-content: center;
-      border-radius: 0.65rem;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(255, 255, 255, 0.035);
-      color: rgb(161 161 170);
+      border-radius: 9999px;
       transition:
-        color 220ms ease,
-        border-color 220ms ease,
-        background 220ms ease,
-        transform 220ms ease;
+        transform 180ms ease,
+        filter 180ms ease;
     }
 
-    .code-card-toggle:hover {
-      color: rgb(134 239 172);
-      border-color: rgba(134, 239, 172, 0.35);
-      background: rgba(134, 239, 172, 0.08);
-      transform: scale(1.05);
+    .window-dot:hover {
+      transform: scale(1.13);
+      filter: brightness(1.08);
     }
 
-    .code-card-toggle svg {
-      transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+    .window-dot:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.8);
+      outline-offset: 3px;
     }
 
-    .code-card.is-expanded .code-card-toggle svg {
-      transform: rotate(180deg);
+    .window-dot::after {
+      color: rgba(20, 20, 20, 0.82);
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.52rem;
+      font-weight: 900;
+      line-height: 1;
+      opacity: 0;
+      transition: opacity 140ms ease;
+    }
+
+    .window-controls:hover .window-dot::after,
+    .window-dot:focus-visible::after {
+      opacity: 1;
+    }
+
+    .window-dot--close {
+      background: rgb(248 113 113 / 0.88);
+    }
+
+    .window-dot--close::after {
+      content: "×";
+      transform: translateY(-0.02rem);
+    }
+
+    .window-dot--minimize {
+      background: rgb(252 211 77 / 0.88);
+    }
+
+    .window-dot--minimize::after {
+      content: "−";
+      transform: translateY(-0.03rem);
+    }
+
+    .window-dot--maximize {
+      background: rgb(134 239 172 / 0.88);
+    }
+
+    .window-dot--maximize::after {
+      content: "+";
     }
 
     .code-card-backdrop {
       position: fixed;
       inset: 0;
-      z-index: 80;
+      z-index: 90;
       pointer-events: none;
       opacity: 0;
-      background:
-        radial-gradient(circle at center, rgba(25, 45, 34, 0.2), transparent 45%),
-        rgba(0, 0, 0, 0.72);
-      backdrop-filter: blur(0);
-      transition:
-        opacity 420ms ease,
-        backdrop-filter 620ms cubic-bezier(0.16, 1, 0.3, 1);
+      background: rgba(0, 0, 0, 0.72);
+      transition: opacity 320ms ease;
     }
 
     .code-card-backdrop.is-visible {
       pointer-events: auto;
       opacity: 1;
-      backdrop-filter: blur(12px);
+    }
+
+    .code-card-reopen {
+      display: none;
+      width: 100%;
+      min-height: 4.5rem;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(15, 15, 15, 0.72);
+      color: rgb(212 212 216);
+      backdrop-filter: blur(18px);
+      transition:
+        border-color 220ms ease,
+        background 220ms ease,
+        color 220ms ease,
+        transform 220ms ease;
+    }
+
+    .code-card-reopen:hover {
+      transform: translateY(-2px);
+      border-color: rgba(134, 239, 172, 0.28);
+      background: rgba(134, 239, 172, 0.07);
+      color: rgb(187 247 208);
+    }
+
+    .code-card-stage.is-closed .code-card-reopen {
+      display: inline-flex;
     }
 
     body.code-card-open {
@@ -272,19 +361,19 @@
     }
 
     @media (max-width: 640px) {
-      .code-card.is-expanded {
-        width: calc(100vw - 1.25rem);
-        height: min(88vh, 680px);
+      .code-card.is-maximized {
+        width: calc(100vw - 1.25rem) !important;
+        height: min(88vh, 680px) !important;
         border-radius: 1.25rem;
       }
 
-      .code-card.is-expanded .code-card-inner {
+      .code-card.is-maximized .code-card-inner {
         padding: 1.25rem;
       }
 
-      .code-card.is-expanded pre {
+      .code-card.is-maximized pre {
         font-size: 0.78rem;
-        line-height: 1.8;
+        line-height: 1.75;
       }
     }
 
@@ -346,6 +435,7 @@
 
       .code-card,
       .code-card-inner,
+      .code-card-content,
       .code-card-backdrop {
         transition: none !important;
       }
@@ -470,30 +560,35 @@
 
             <div class="code-card-inner relative rounded-[1.35rem] border border-white/10 bg-black/50 p-6">
               <div class="mb-7 flex items-center justify-between">
-                <div class="flex gap-1.5">
-                  <span class="h-2.5 w-2.5 rounded-full bg-red-400/80"></span>
-                  <span class="h-2.5 w-2.5 rounded-full bg-amber-300/80"></span>
-                  <span class="h-2.5 w-2.5 rounded-full bg-green-300/80"></span>
-                </div>
-                <div class="flex items-center gap-3">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">beckerbyte.dev</span>
+                <div class="window-controls flex gap-1.5" aria-label="Fenstersteuerung">
                   <button
-                    id="code-card-toggle"
-                    class="code-card-toggle"
+                    id="code-card-close"
+                    class="window-dot window-dot--close"
+                    type="button"
+                    aria-label="Code-Karte schließen"
+                    title="Schließen"
+                  ></button>
+                  <button
+                    id="code-card-minimize"
+                    class="window-dot window-dot--minimize"
+                    type="button"
+                    aria-label="Code-Karte minimieren"
+                    title="Minimieren"
+                  ></button>
+                  <button
+                    id="code-card-maximize"
+                    class="window-dot window-dot--maximize"
                     type="button"
                     aria-label="Code-Karte vergrößern"
                     aria-expanded="false"
-                    title="Code-Karte vergrößern"
-                  >
-                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                      <path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5" stroke-linecap="round" stroke-linejoin="round"></path>
-                      <path d="m3 8 6-6M21 8l-6-6M3 16l6 6M21 16l-6 6" stroke-linecap="round"></path>
-                    </svg>
-                  </button>
+                    title="Vergrößern"
+                  ></button>
                 </div>
+                <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">beckerbyte.dev</span>
               </div>
 
-              <pre class="min-h-[252px] overflow-hidden whitespace-pre-wrap font-mono text-[12px] leading-7 text-zinc-300 sm:text-sm"><code id="typing-code" aria-label="Code-Beispiel"><span class="text-sky-300">const</span> developer = {
+              <div class="code-card-content">
+                <pre class="min-h-[252px] overflow-hidden whitespace-pre-wrap font-mono text-[12px] leading-7 text-zinc-300 sm:text-sm"><code id="typing-code" aria-label="Code-Beispiel"><span class="text-sky-300">const</span> developer = {
   name: <span class="text-green-300">"Julian Becker"</span>,
   focus: [
     <span class="text-green-300">"Webentwicklung"</span>,
@@ -503,7 +598,7 @@
   mindset: <span class="text-green-300">"build useful things"</span>
 };</code><span id="typing-cursor" class="typing-cursor" aria-hidden="true"></span></pre>
 
-              <div class="mt-8 grid grid-cols-3 gap-3 border-t border-white/10 pt-5 text-center">
+                <div class="mt-8 grid grid-cols-3 gap-3 border-t border-white/10 pt-5 text-center">
                 <div>
                   <strong class="block text-lg text-white">Clean</strong>
                   <span class="text-[11px] text-zinc-500">Code</span>
@@ -517,8 +612,19 @@
                   <span class="text-[11px] text-zinc-500">Systems</span>
                 </div>
               </div>
+              </div>
             </div>
           </div>
+
+          <button
+            id="code-card-reopen"
+            class="code-card-reopen"
+            type="button"
+            aria-label="Code-Karte wieder öffnen"
+          >
+            <span class="font-mono text-xs uppercase tracking-[0.2em]">Codekarte öffnen</span>
+            <span aria-hidden="true">↗</span>
+          </button>
         </div>
       </div>
 
@@ -842,12 +948,28 @@
 
     const codeCard = document.getElementById("code-card");
     const codeCardStage = document.getElementById("code-card-stage");
-    const codeCardToggle = document.getElementById("code-card-toggle");
     const codeCardBackdrop = document.getElementById("code-card-backdrop");
+    const codeCardClose = document.getElementById("code-card-close");
+    const codeCardMinimize = document.getElementById("code-card-minimize");
+    const codeCardMaximize = document.getElementById("code-card-maximize");
+    const codeCardReopen = document.getElementById("code-card-reopen");
 
-    if (codeCard && codeCardStage && codeCardToggle && codeCardBackdrop) {
-      let codeCardExpanded = false;
-      let codeCardAnimating = false;
+    if (
+      codeCard &&
+      codeCardStage &&
+      codeCardBackdrop &&
+      codeCardClose &&
+      codeCardMinimize &&
+      codeCardMaximize &&
+      codeCardReopen
+    ) {
+      let isMaximized = false;
+      let isMinimized = false;
+      let isClosed = false;
+      let isAnimating = false;
+
+      const waitForTransition = (duration = 590) =>
+        new Promise((resolve) => window.setTimeout(resolve, duration));
 
       const playSwoosh = () => {
         codeCard.classList.remove("is-swooshing");
@@ -856,92 +978,160 @@
 
         window.setTimeout(() => {
           codeCard.classList.remove("is-swooshing");
-        }, 760);
+        }, 720);
       };
 
-      const updateCodeCardButton = () => {
-        const label = codeCardExpanded
+      const updateControls = () => {
+        const maximizeLabel = isMaximized
           ? "Code-Karte verkleinern"
           : "Code-Karte vergrößern";
 
-        codeCardToggle.setAttribute("aria-expanded", String(codeCardExpanded));
-        codeCardToggle.setAttribute("aria-label", label);
-        codeCardToggle.setAttribute("title", label);
+        codeCardMaximize.setAttribute("aria-expanded", String(isMaximized));
+        codeCardMaximize.setAttribute("aria-label", maximizeLabel);
+        codeCardMaximize.setAttribute("title", maximizeLabel);
+
+        const minimizeLabel = isMinimized
+          ? "Code-Karte wiederherstellen"
+          : "Code-Karte minimieren";
+
+        codeCardMinimize.setAttribute("aria-label", minimizeLabel);
+        codeCardMinimize.setAttribute("title", minimizeLabel);
       };
 
-      const expandCodeCard = () => {
-        if (codeCardExpanded || codeCardAnimating) return;
+      const maximizeCard = async () => {
+        if (isAnimating || isMaximized || isClosed) return;
 
-        codeCardAnimating = true;
-        const rect = codeCard.getBoundingClientRect();
+        isAnimating = true;
 
-        codeCardStage.style.minHeight = `${rect.height}px`;
-        codeCard.style.setProperty("--card-top", `${rect.top}px`);
-        codeCard.style.setProperty("--card-left", `${rect.left}px`);
-        codeCard.style.setProperty("--card-width", `${rect.width}px`);
-        codeCard.style.setProperty("--card-height", `${rect.height}px`);
-        codeCard.classList.add("is-moving");
+        if (isMinimized) {
+          codeCard.classList.remove("is-minimized");
+          isMinimized = false;
+          await waitForTransition(440);
+        }
+
+        const startRect = codeCard.getBoundingClientRect();
+        codeCardStage.style.minHeight = `${startRect.height}px`;
+
+        codeCard.style.top = `${startRect.top}px`;
+        codeCard.style.left = `${startRect.left}px`;
+        codeCard.style.width = `${startRect.width}px`;
+        codeCard.style.height = `${startRect.height}px`;
+
+        document.body.appendChild(codeCard);
+        codeCard.classList.add("is-floating");
 
         void codeCard.offsetWidth;
 
-        codeCardExpanded = true;
+        isMaximized = true;
         document.body.classList.add("code-card-open");
         codeCardBackdrop.classList.add("is-visible");
-        codeCard.classList.add("is-expanded");
-        updateCodeCardButton();
+        codeCard.classList.add("is-maximized");
+        updateControls();
         playSwoosh();
 
-        window.setTimeout(() => {
-          codeCardAnimating = false;
-          codeCardToggle.focus({ preventScroll: true });
-        }, 650);
+        await waitForTransition();
+        isAnimating = false;
+        codeCardMaximize.focus({ preventScroll: true });
       };
 
-      const collapseCodeCard = () => {
-        if (!codeCardExpanded || codeCardAnimating) return;
+      const restoreCard = async () => {
+        if (isAnimating || !isMaximized) return;
 
-        codeCardAnimating = true;
+        isAnimating = true;
         const targetRect = codeCardStage.getBoundingClientRect();
 
-        codeCard.style.setProperty("--card-top", `${targetRect.top}px`);
-        codeCard.style.setProperty("--card-left", `${targetRect.left}px`);
-        codeCard.style.setProperty("--card-width", `${targetRect.width}px`);
-        codeCard.style.setProperty("--card-height", `${targetRect.height}px`);
+        codeCard.classList.remove("is-maximized");
+        codeCard.style.top = `${targetRect.top}px`;
+        codeCard.style.left = `${targetRect.left}px`;
+        codeCard.style.width = `${targetRect.width}px`;
+        codeCard.style.height = `${targetRect.height}px`;
 
-        codeCardExpanded = false;
+        isMaximized = false;
         codeCardBackdrop.classList.remove("is-visible");
-        codeCard.classList.remove("is-expanded");
-        updateCodeCardButton();
+        updateControls();
         playSwoosh();
 
-        window.setTimeout(() => {
-          codeCard.classList.remove("is-moving");
-          codeCard.style.removeProperty("--card-top");
-          codeCard.style.removeProperty("--card-left");
-          codeCard.style.removeProperty("--card-width");
-          codeCard.style.removeProperty("--card-height");
-          codeCardStage.style.removeProperty("min-height");
-          document.body.classList.remove("code-card-open");
-          codeCardAnimating = false;
-          codeCardToggle.focus({ preventScroll: true });
-        }, 650);
+        await waitForTransition();
+
+        codeCard.classList.remove("is-floating");
+        codeCard.removeAttribute("style");
+        codeCardStage.prepend(codeCard);
+        codeCardStage.style.removeProperty("min-height");
+        document.body.classList.remove("code-card-open");
+        isAnimating = false;
+        codeCardMaximize.focus({ preventScroll: true });
       };
 
-      codeCardToggle.addEventListener("click", () => {
-        if (codeCardExpanded) {
-          collapseCodeCard();
+      const toggleMaximize = () => {
+        if (isMaximized) {
+          restoreCard();
         } else {
-          expandCodeCard();
+          maximizeCard();
         }
-      });
+      };
 
-      codeCardBackdrop.addEventListener("click", collapseCodeCard);
+      const toggleMinimize = async () => {
+        if (isAnimating || isClosed) return;
+
+        if (isMaximized) {
+          await restoreCard();
+        }
+
+        isMinimized = !isMinimized;
+        codeCard.classList.toggle("is-minimized", isMinimized);
+        updateControls();
+        playSwoosh();
+      };
+
+      const closeCard = async () => {
+        if (isAnimating || isClosed) return;
+
+        if (isMaximized) {
+          await restoreCard();
+        }
+
+        isClosed = true;
+        isMinimized = false;
+        codeCard.classList.remove("is-minimized");
+        codeCard.classList.add("is-closed");
+        playSwoosh();
+
+        await waitForTransition(340);
+
+        codeCard.hidden = true;
+        codeCardStage.classList.add("is-closed");
+        codeCard.classList.remove("is-closed");
+        updateControls();
+        codeCardReopen.focus({ preventScroll: true });
+      };
+
+      const reopenCard = () => {
+        if (!isClosed) return;
+
+        isClosed = false;
+        codeCard.hidden = false;
+        codeCardStage.classList.remove("is-closed");
+        codeCard.classList.add("is-closed");
+
+        requestAnimationFrame(() => {
+          codeCard.classList.remove("is-closed");
+          playSwoosh();
+        });
+      };
+
+      codeCardMaximize.addEventListener("click", toggleMaximize);
+      codeCardMinimize.addEventListener("click", toggleMinimize);
+      codeCardClose.addEventListener("click", closeCard);
+      codeCardReopen.addEventListener("click", reopenCard);
+      codeCardBackdrop.addEventListener("click", restoreCard);
 
       document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && codeCardExpanded) {
-          collapseCodeCard();
+        if (event.key === "Escape" && isMaximized) {
+          restoreCard();
         }
       });
+
+      updateControls();
     }
 
     const revealElements = document.querySelectorAll(".reveal");
