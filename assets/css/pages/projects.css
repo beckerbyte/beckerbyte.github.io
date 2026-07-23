@@ -186,7 +186,7 @@
 
 .projects-showcase {
   position: relative;
-  padding-top: 7rem;
+  padding-top: 4rem;
 }
 
 .projects-grid {
@@ -582,7 +582,7 @@
   --projects-progress: 0;
   --projects-exit: 0;
   display: block;
-  min-height: 210svh;
+  min-height: 190svh;
   padding: 0;
 }
 
@@ -857,7 +857,7 @@
 
 @media (max-width: 1023px) {
   .projects-hero[data-projects-hero] {
-    min-height: 180svh;
+    min-height: 165svh;
   }
 
   .projects-hero__scene {
