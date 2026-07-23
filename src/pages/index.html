@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privates Portfolio – Julian Becker | beckerbyte</title>
+  <meta
+    name="description"
+    content="Privates, nichtkommerzielles Portfolio von Julian Becker zu Webentwicklung, Systemintegration und Creative Tech."
+  >
+  <link rel="canonical" href="https://www.beckerbyte.com/">
+  <link rel="icon" href="./assets/img/favicon-v2.png" type="image/png">
+  <script src="./assets/js/shared.js" defer></script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+            mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"]
+          },
+          boxShadow: {
+            glow: "0 0 60px rgba(74, 222, 128, 0.12)"
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="./assets/css/shared.css">
+  <style>
+    .gradient-text {
+      display: block;
+      padding-bottom: 0.1em;
+      margin-bottom: -0.1em;
+      color: transparent;
+      background: linear-gradient(90deg, #ffffff 0%, #86efac 48%, #7dd3fc 100%);
+      background-size: 180% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: gradient-flow 7s ease-in-out infinite;
+    }
+
+    @keyframes gradient-flow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes hero-rise {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-animate {
+      opacity: 0;
+      animation: hero-rise 720ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+
+    @keyframes typing-cursor {
+      0%, 45% { opacity: 1; }
+      46%, 100% { opacity: 0; }
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 0.55em;
+      height: 1.15em;
+      margin-left: 0.12em;
+      vertical-align: -0.18em;
+      border-radius: 0.08em;
+      background: #86efac;
+      animation: typing-cursor 800ms steps(1, end) infinite;
+    }
+
+    .typing-cursor.is-finished {
+      animation-duration: 1100ms;
+      opacity: 0.8;
+    }
+
+
+    @keyframes card-swoosh {
+      0% {
+        opacity: 0;
+        transform: translate3d(-140%, 28%, 0) rotate(-16deg);
+      }
+      18% {
+        opacity: 0.85;
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(140%, -28%, 0) rotate(-16deg);
+      }
+    }
+
+    .code-card-stage {
+      position: relative;
+      width: min(100%, 340px);
+      min-height: 480px;
+    }
+
+    .code-card {
+      width: min(100%, 340px);
+      height: 480px;
+      transform-origin: center;
+      transition:
+        top 560ms cubic-bezier(0.16, 1, 0.3, 1),
+        left 560ms cubic-bezier(0.16, 1, 0.3, 1),
+        width 560ms cubic-bezier(0.16, 1, 0.3, 1),
+        height 560ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 560ms cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 320ms ease,
+        border-radius 560ms cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 560ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .code-card.is-floating {
+      position: fixed;
+      z-index: 100;
+      margin: 0;
+    }
+
+    .code-card.is-maximized {
+      top: 50% !important;
+      left: 50% !important;
+      width: min(92vw, 940px) !important;
+      height: min(86vh, 700px) !important;
+      transform: translate(-50%, -50%);
+      border-radius: 1.75rem;
+      box-shadow:
+        0 32px 120px rgba(0, 0, 0, 0.78),
+        0 0 90px rgba(74, 222, 128, 0.14);
+    }
+
+    .code-card-inner {
+      display: flex;
+      height: 100%;
+      min-height: 0;
+      flex-direction: column;
+      transition:
+        padding 560ms cubic-bezier(0.16, 1, 0.3, 1),
+        border-radius 560ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .code-card-inner > .mb-7 {
+      flex: none;
+    }
+
+    .code-card.is-maximized .code-card-inner {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      padding: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    .code-card-content {
+      display: flex;
+      min-height: 0;
+      flex: 1;
+      flex-direction: column;
+      overflow: hidden;
+      max-height: 34rem;
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        max-height 520ms cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 260ms ease,
+        transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+        margin 420ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+
+    .code-card-content pre {
+      height: 252px;
+      min-height: 252px;
+      max-height: 252px;
+      flex: none;
+      overflow: hidden;
+    }
+
+    .code-card-content > .mt-8 {
+      margin-top: auto;
+      flex: none;
+    }
+
+    .code-card.is-maximized .code-card-content {
+      display: flex;
+      min-height: 0;
+      flex: 1;
+      flex-direction: column;
+    }
+
+    .code-card.is-maximized pre {
+      height: auto;
+      min-height: 0;
+      max-height: none;
+      flex: 1;
+      overflow: auto;
+      font-size: clamp(0.9rem, 1.5vw, 1.16rem);
+      line-height: 1.9;
+    }
+
+    .code-card.is-minimized {
+      height: 92px;
+    }
+
+    .code-card.is-minimized .code-card-content {
+      max-height: 0;
+      margin-top: 0;
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+    }
+
+    .code-card.is-minimized .code-card-inner {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .code-card.is-minimized .code-card-inner > .mb-7 {
+      margin-bottom: 0;
+    }
+
+    .code-card.is-closed {
+      opacity: 0;
+      transform: scale(0.96);
+      pointer-events: none;
+    }
+
+    .code-card-swoosh {
+      position: absolute;
+      inset: -60%;
+      z-index: 30;
+      pointer-events: none;
+      opacity: 0;
+      background:
+        linear-gradient(
+          102deg,
+          transparent 39%,
+          rgba(255, 255, 255, 0.04) 44%,
+          rgba(134, 239, 172, 0.46) 50%,
+          rgba(125, 211, 252, 0.18) 55%,
+          transparent 62%
+        );
+      mix-blend-mode: screen;
+    }
+
+    .code-card.is-swooshing .code-card-swoosh {
+      animation: card-swoosh 680ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .window-dot {
+      position: relative;
+      display: inline-flex;
+      height: 0.72rem;
+      width: 0.72rem;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      transition:
+        transform 180ms ease,
+        filter 180ms ease;
+    }
+
+    .window-dot:hover {
+      transform: scale(1.13);
+      filter: brightness(1.08);
+    }
+
+    .window-dot:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.8);
+      outline-offset: 3px;
+    }
+
+    .window-dot::after {
+      color: rgba(20, 20, 20, 0.82);
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.52rem;
+      font-weight: 900;
+      line-height: 1;
+      opacity: 0;
+      transition: opacity 140ms ease;
+    }
+
+    .window-controls:hover .window-dot::after,
+    .window-dot:focus-visible::after {
+      opacity: 1;
+    }
+
+    .window-dot--close {
+      background: rgb(248 113 113 / 0.88);
+    }
+
+    .window-dot--close::after {
+      content: "×";
+      transform: translateY(-0.02rem);
+    }
+
+    .window-dot--minimize {
+      background: rgb(252 211 77 / 0.88);
+    }
+
+    .window-dot--minimize::after {
+      content: "−";
+      transform: translateY(-0.03rem);
+    }
+
+    .window-dot--maximize {
+      background: rgb(134 239 172 / 0.88);
+    }
+
+    .window-dot--maximize::after {
+      content: "+";
+    }
+
+    .code-card-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      pointer-events: none;
+      opacity: 0;
+      background: rgba(0, 0, 0, 0.72);
+      transition: opacity 320ms ease;
+    }
+
+    .code-card-backdrop.is-visible {
+      pointer-events: auto;
+      opacity: 1;
+    }
+
+    .code-card-reopen {
+      display: none;
+      width: 100%;
+      min-height: 4.5rem;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(15, 15, 15, 0.72);
+      color: rgb(212 212 216);
+      backdrop-filter: blur(18px);
+      transition:
+        border-color 220ms ease,
+        background 220ms ease,
+        color 220ms ease,
+        transform 220ms ease;
+    }
+
+    .code-card-reopen:hover {
+      transform: translateY(-2px);
+      border-color: rgba(134, 239, 172, 0.28);
+      background: rgba(134, 239, 172, 0.07);
+      color: rgb(187 247 208);
+    }
+
+    .code-card-stage.is-closed .code-card-reopen {
+      display: inline-flex;
+    }
+
+    body.code-card-open {
+      overflow: hidden;
+    }
+
+    @media (max-width: 640px) {
+      .code-card-stage {
+        width: min(100%, 320px);
+        min-height: 460px;
+      }
+
+      .code-card {
+        width: min(100%, 320px);
+        height: 460px;
+      }
+
+      .code-card.is-minimized {
+        height: 88px;
+      }
+
+      .code-card.is-maximized {
+        width: calc(100vw - 1.25rem) !important;
+        height: min(88vh, 680px) !important;
+        border-radius: 1.25rem;
+      }
+
+      .code-card.is-maximized .code-card-inner {
+        padding: 1.25rem;
+      }
+
+      .code-card.is-maximized pre {
+        font-size: 0.78rem;
+        line-height: 1.75;
+      }
+    }
+
+    .hero-delay-1 { animation-delay: 80ms; }
+    .hero-delay-2 { animation-delay: 180ms; }
+    .hero-delay-3 { animation-delay: 300ms; }
+    .hero-delay-4 { animation-delay: 430ms; }
+    .hero-delay-5 { animation-delay: 560ms; }
+
+    .timeline-line {
+      background: linear-gradient(to bottom, transparent, rgba(74, 222, 128, 0.6), transparent);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-animate {
+        opacity: 1;
+        transform: none;
+        transition: none;
+        animation: none !important;
+      }
+
+      .gradient-text,
+      .typing-cursor,
+      .code-card.is-swooshing .code-card-swoosh {
+        animation: none !important;
+      }
+
+      .code-card,
+      .code-card-inner,
+      .code-card-content,
+      .code-card-backdrop {
+        transition: none !important;
+      }
+
+      .typing-cursor {
+        display: none;
+      }
+
+    }
+  </style>
+</head>
+
+<body class="min-h-screen overflow-x-hidden font-sans text-zinc-100 antialiased selection:bg-green-300 selection:text-black">
+  <a
+    href="#main"
+    class="sr-only z-[100] rounded-md bg-white px-4 py-2 text-black focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+  >
+    Zum Inhalt springen
+  </a>
+
+  <div class="page-grid fixed inset-0 -z-20"></div>
+  <div class="noise fixed inset-0 -z-10"></div>
+  <div id="code-card-backdrop" class="code-card-backdrop" aria-hidden="true"></div>
+
+  {{HEADER}}
+
+  <main id="main">
+    <section id="home" class="relative flex min-h-screen items-center pt-32">
+      <div class="mx-auto grid w-full max-w-7xl items-center gap-16 px-6 py-20 lg:grid-cols-[1.2fr_0.8fr] lg:px-8">
+        <div>
+          <div class="hero-animate hero-delay-1 mb-7 inline-flex items-center gap-2 rounded-full border border-green-300/20 bg-green-300/10 px-3 py-1.5 text-xs font-medium text-green-200">
+            <span class="h-2 w-2 animate-pulse rounded-full bg-green-300"></span>
+            Offen für Austausch und nichtkommerzielle Kooperationen
+          </div>
+
+          <p class="section-kicker hero-animate hero-delay-2 mb-5 font-mono text-xs uppercase tracking-[0.24em] text-zinc-400">
+            Webentwicklung · IT · Design
+          </p>
+
+          <h1 class="hero-animate hero-delay-3 max-w-5xl text-5xl font-black leading-[1.03] tracking-[-0.055em] sm:text-6xl sm:leading-[1.01] lg:text-8xl">
+            Digitale Lösungen,
+            <span class="gradient-text block">klar gebaut.</span>
+          </h1>
+
+          <p class="hero-animate hero-delay-4 mt-8 max-w-2xl text-lg leading-8 text-zinc-400 sm:text-xl">
+            Diese private, nichtkommerzielle Portfolio-Website zeigt meine Arbeiten aus Webentwicklung,
+            Systemintegration und Creative Tech – zum Lernen, Dokumentieren und Austauschen.
+          </p>
+
+          <div class="hero-animate hero-delay-5 mt-10 flex flex-col gap-3 sm:flex-row">
+            <a
+              href="projekte.html"
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-green-300 px-6 py-3.5 font-semibold text-black transition hover:-translate-y-0.5 hover:bg-green-200"
+            >
+              Projekte ansehen
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+            <a
+              href="#contact"
+              class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3.5 font-semibold text-white transition hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/10"
+            >
+              Projekt besprechen
+            </a>
+          </div>
+        </div>
+
+        <div id="code-card-stage" class="code-card-stage hero-animate hero-delay-5 lg:justify-self-end">
+          <div id="code-card" class="code-card glass relative overflow-hidden rounded-[2rem] p-5 shadow-glow sm:p-7" role="region" aria-label="Interaktive Code-Karte">
+            <div class="code-card-swoosh" aria-hidden="true"></div>
+            <div class="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-green-300/15 blur-3xl"></div>
+            <div class="absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-sky-300/10 blur-3xl"></div>
+
+            <div class="code-card-inner relative rounded-[1.35rem] border border-white/10 bg-black/50 p-6">
+              <div class="mb-7 flex items-center justify-between">
+                <div class="window-controls flex gap-1.5" aria-label="Fenstersteuerung">
+                  <button
+                    id="code-card-close"
+                    class="window-dot window-dot--close"
+                    type="button"
+                    aria-label="Code-Karte schließen"
+                    title="Schließen"
+                  ></button>
+                  <button
+                    id="code-card-minimize"
+                    class="window-dot window-dot--minimize"
+                    type="button"
+                    aria-label="Code-Karte minimieren"
+                    title="Minimieren"
+                  ></button>
+                  <button
+                    id="code-card-maximize"
+                    class="window-dot window-dot--maximize"
+                    type="button"
+                    aria-label="Code-Karte vergrößern"
+                    aria-expanded="false"
+                    title="Vergrößern"
+                  ></button>
+                </div>
+                <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">beckerbyte.dev</span>
+              </div>
+
+              <div class="code-card-content">
+                <pre class="min-h-[252px] overflow-hidden whitespace-pre-wrap font-mono text-[12px] leading-7 text-zinc-300 sm:text-sm"><code id="typing-code" aria-label="Code-Beispiel"><span class="text-sky-300">const</span> developer = {
+  name: <span class="text-green-300">"beckerbyte"</span>,
+  focus: [
+    <span class="text-green-300">"Webentwicklung"</span>,
+    <span class="text-green-300">"Systemintegration"</span>,
+    <span class="text-green-300">"Creative Tech"</span>
+  ],
+  mindset: <span class="text-green-300">"build useful things"</span>
+};</code><span id="typing-cursor" class="typing-cursor" aria-hidden="true"></span></pre>
+
+                <div class="mt-8 grid grid-cols-3 gap-3 border-t border-white/10 pt-5 text-center">
+                <div>
+                  <strong class="block text-lg text-white">Clean</strong>
+                  <span class="text-[11px] text-zinc-500">Code</span>
+                </div>
+                <div>
+                  <strong class="block text-lg text-white">Fast</strong>
+                  <span class="text-[11px] text-zinc-500">Delivery</span>
+                </div>
+                <div>
+                  <strong class="block text-lg text-white">Solid</strong>
+                  <span class="text-[11px] text-zinc-500">Systems</span>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            id="code-card-reopen"
+            class="code-card-reopen"
+            type="button"
+            aria-label="Code-Karte wieder öffnen"
+          >
+            <span class="font-mono text-xs uppercase tracking-[0.2em]">Codekarte öffnen</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+      </div>
+
+      <a
+        href="#about"
+        class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500 lg:flex"
+      >
+        Scroll
+        <span class="h-8 w-px bg-gradient-to-b from-zinc-500 to-transparent"></span>
+      </a>
+    </section>
+
+    <section id="about" class="py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="reveal max-w-3xl">
+          <p class="section-kicker font-mono text-xs uppercase tracking-[0.24em] text-zinc-400">Was ich mache</p>
+          <h2 class="mt-5 text-4xl font-bold tracking-tight sm:text-6xl">
+            Technik ohne unnötigen Ballast.
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-zinc-400">
+            Von der Idee bis zur Umsetzung: übersichtliche Interfaces, robuste Strukturen
+            und ein Ergebnis, das nicht nur gut aussieht, sondern im Alltag trägt.
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-5 md:grid-cols-3">
+          <article class="glass reveal rounded-3xl p-7 transition hover:-translate-y-1 hover:border-green-300/25">
+            <div class="mb-8 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-green-300/10 text-green-300">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold">Webentwicklung</h3>
+            <p class="mt-3 leading-7 text-zinc-400">
+              Responsive Websites, saubere Komponenten und fokussierte Nutzerführung.
+            </p>
+          </article>
+
+          <article class="glass reveal rounded-3xl p-7 transition hover:-translate-y-1 hover:border-sky-300/25">
+            <div class="mb-8 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-300/10 text-sky-300">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="12" rx="2"></rect>
+                <path d="M8 20h8M12 16v4" stroke-linecap="round"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold">Systemintegration</h3>
+            <p class="mt-3 leading-7 text-zinc-400">
+              Technische Abläufe, Infrastruktur und Systeme verständlich zusammenbringen.
+            </p>
+          </article>
+
+          <article class="glass reveal rounded-3xl p-7 transition hover:-translate-y-1 hover:border-violet-300/25">
+            <div class="mb-8 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-300/10 text-violet-300">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4" stroke-linecap="round"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold">Creative Tech</h3>
+            <p class="mt-3 leading-7 text-zinc-400">
+              Motion, visuelle Systeme und digitale Konzepte mit einer klaren technischen Basis.
+            </p>
+          </article>
+        </div>
+
+        <div class="reveal mt-5 flex flex-wrap gap-3 rounded-3xl border border-white/10 bg-white/[0.025] p-5">
+          <span class="rounded-full border border-white/10 px-4 py-2 font-mono text-xs text-zinc-300">HTML</span>
+          <span class="rounded-full border border-white/10 px-4 py-2 font-mono text-xs text-zinc-300">CSS</span>
+          <span class="rounded-full border border-white/10 px-4 py-2 font-mono text-xs text-zinc-300">JavaScript</span>
+          <span class="rounded-full border border-white/10 px-4 py-2 font-mono text-xs text-zinc-300">Tailwind CSS</span>
+          <span class="rounded-full border border-white/10 px-4 py-2 font-mono text-xs text-zinc-300">VS Code</span>
+          <span class="rounded-full border border-white/10 px-4 py-2 font-mono text-xs text-zinc-300">SAP</span>
+          <span class="rounded-full border border-white/10 px-4 py-2 font-mono text-xs text-zinc-300">After Effects</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="py-24 sm:py-32">
+      <div class="mx-auto max-w-6xl px-6 lg:px-8">
+        <div class="reveal text-center">
+          <p class="font-mono text-xs uppercase tracking-[0.24em] text-green-300">Entwicklung</p>
+          <h2 class="mt-5 text-4xl font-bold tracking-tight sm:text-6xl">Mein Weg.</h2>
+        </div>
+
+        <div class="relative mt-16">
+          <div class="timeline-line absolute bottom-0 left-4 top-0 w-px md:left-1/2"></div>
+
+          <article class="reveal relative mb-12 grid gap-6 pl-12 md:grid-cols-2 md:pl-0">
+            <span class="absolute left-[11px] top-8 h-3 w-3 rounded-full border-2 border-black bg-green-300 ring-4 ring-green-300/15 md:left-1/2 md:-translate-x-1/2"></span>
+            <div class="glass rounded-3xl p-7 md:mr-10 md:text-right">
+              <span class="font-mono text-sm text-green-300">2025</span>
+              <h3 class="mt-3 text-2xl font-semibold">Fachinformatik Umschulung</h3>
+              <p class="mt-3 leading-7 text-zinc-400">
+                Berufliche Neuorientierung mit Schwerpunkt Systemintegration und praxisnaher IT.
+              </p>
+            </div>
+            <div class="hidden md:block"></div>
+          </article>
+
+          <article class="reveal relative mb-12 grid gap-6 pl-12 md:grid-cols-2 md:pl-0">
+            <span class="absolute left-[11px] top-8 h-3 w-3 rounded-full border-2 border-black bg-sky-300 ring-4 ring-sky-300/15 md:left-1/2 md:-translate-x-1/2"></span>
+            <div class="hidden md:block"></div>
+            <div class="glass rounded-3xl p-7 md:ml-10">
+              <span class="font-mono text-sm text-sky-300">2023</span>
+              <h3 class="mt-3 text-2xl font-semibold">VS Code & Web-Workflow</h3>
+              <p class="mt-3 leading-7 text-zinc-400">
+                Regelmäßige Entwicklung mit Visual Studio Code und Ausbau moderner Frontend-Workflows.
+              </p>
+            </div>
+          </article>
+
+          <article class="reveal relative grid gap-6 pl-12 md:grid-cols-2 md:pl-0">
+            <span class="absolute left-[11px] top-8 h-3 w-3 rounded-full border-2 border-black bg-violet-300 ring-4 ring-violet-300/15 md:left-1/2 md:-translate-x-1/2"></span>
+            <div class="glass rounded-3xl p-7 md:mr-10 md:text-right">
+              <span class="font-mono text-sm text-violet-300">2021</span>
+              <h3 class="mt-3 text-2xl font-semibold">Adobe After Effects</h3>
+              <p class="mt-3 leading-7 text-zinc-400">
+                Motion Graphics, Animation und visuelle Postproduktion als kreative Ergänzung.
+              </p>
+            </div>
+            <div class="hidden md:block"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="glass reveal overflow-hidden rounded-[2rem]">
+          <div class="grid lg:grid-cols-[0.85fr_1.15fr]">
+            <div class="relative border-b border-white/10 p-8 sm:p-12 lg:border-b-0 lg:border-r">
+              <div class="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-green-300/10 blur-3xl"></div>
+              <div class="relative">
+                <p class="font-mono text-xs uppercase tracking-[0.24em] text-green-300">Kontakt</p>
+                <h2 class="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
+                  Lass uns Ideen austauschen.
+                </h2>
+                <p class="mt-6 max-w-md leading-7 text-zinc-400">
+                  Schreib mir zu Lernprojekten, Open Source oder einem fachlichen Austausch. Über diese Website biete ich keine entgeltlichen Leistungen an.
+                </p>
+
+                <div class="mt-10 space-y-4 text-sm text-zinc-300">
+                  <div class="flex items-center gap-3">
+                    <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-green-300">01</span>
+                    Klare Anforderung
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-green-300">02</span>
+                    Realistische Umsetzung
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-green-300">03</span>
+                    Sauberes Ergebnis
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <form action="https://getform.io/f/bgdlryza" method="POST" class="p-8 sm:p-12">
+              <div class="grid gap-6 sm:grid-cols-2">
+                <div>
+                  <label for="name" class="mb-2 block text-sm font-medium text-zinc-300">Name</label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    autocomplete="name"
+                    required
+                    placeholder="Max Mustermann"
+                    class="w-full rounded-2xl border border-white/10 bg-black/35 px-4 py-3.5 text-white outline-none transition placeholder:text-zinc-600 focus:border-green-300/60 focus:ring-4 focus:ring-green-300/10"
+                  >
+                </div>
+
+                <div>
+                  <label for="email" class="mb-2 block text-sm font-medium text-zinc-300">E-Mail</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    required
+                    placeholder="max@beispiel.de"
+                    class="w-full rounded-2xl border border-white/10 bg-black/35 px-4 py-3.5 text-white outline-none transition placeholder:text-zinc-600 focus:border-green-300/60 focus:ring-4 focus:ring-green-300/10"
+                  >
+                </div>
+              </div>
+
+              <div class="mt-6">
+                <label for="message" class="mb-2 block text-sm font-medium text-zinc-300">Nachricht</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
+                  required
+                  placeholder="Worum geht es?"
+                  class="w-full resize-y rounded-2xl border border-white/10 bg-black/35 px-4 py-3.5 text-white outline-none transition placeholder:text-zinc-600 focus:border-green-300/60 focus:ring-4 focus:ring-green-300/10"
+                ></textarea>
+              </div>
+
+              <label class="mt-5 flex items-start gap-3 text-sm leading-6 text-zinc-400">
+                <input
+                  type="checkbox"
+                  name="privacy"
+                  required
+                  class="mt-1 h-4 w-4 rounded border-white/20 bg-black text-green-300 focus:ring-green-300"
+                >
+                <span>
+                  Ich habe die
+                  <a href="datenschutz.html" target="_blank" rel="noopener noreferrer" class="text-zinc-200 underline decoration-zinc-600 underline-offset-4 hover:text-green-300">
+                    Datenschutzerklärung
+                  </a> zur Kenntnis genommen.
+                </span>
+              </label>
+
+              <button
+                type="submit"
+                class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 font-semibold text-black transition hover:bg-green-300 sm:w-auto"
+              >
+                Nachricht senden
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="m5 12 14-7-4 14-3-6-7-1Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {{FOOTER}}
+
+  <script>
+    const typingCode = document.getElementById("typing-code");
+    const typingCursor = document.getElementById("typing-cursor");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (typingCode && typingCursor && !reducedMotion) {
+      const codeSegments = [
+        { text: "const", className: "text-sky-300" },
+        { text: " developer = {\n  name: " },
+        { text: "\"beckerbyte\"", className: "text-green-300" },
+        { text: ",\n  focus: [\n    " },
+        { text: "\"Webentwicklung\"", className: "text-green-300" },
+        { text: ",\n    " },
+        { text: "\"Systemintegration\"", className: "text-green-300" },
+        { text: ",\n    " },
+        { text: "\"Creative Tech\"", className: "text-green-300" },
+        { text: "\n  ],\n  mindset: " },
+        { text: "\"build useful things\"", className: "text-green-300" },
+        { text: "\n};" }
+      ];
+
+      typingCode.textContent = "";
+
+      const wait = (milliseconds) =>
+        new Promise((resolve) => window.setTimeout(resolve, milliseconds));
+
+      const characterDelay = (character) => {
+        if (character === "\n") return 150;
+        if ([",", ":", "{", "}", "[", "]", ";"].includes(character)) return 65;
+        if (character === " ") return 12;
+        return 24 + Math.random() * 24;
+      };
+
+      const typeCode = async () => {
+        await wait(1050);
+
+        for (const segment of codeSegments) {
+          const target = document.createElement("span");
+
+          if (segment.className) {
+            target.className = segment.className;
+          }
+
+          typingCode.appendChild(target);
+
+          for (const character of segment.text) {
+            target.textContent += character;
+            await wait(characterDelay(character));
+          }
+        }
+
+        typingCursor.classList.add("is-finished");
+      };
+
+      typeCode();
+    }
+
+
+    const codeCard = document.getElementById("code-card");
+    const codeCardStage = document.getElementById("code-card-stage");
+    const codeCardBackdrop = document.getElementById("code-card-backdrop");
+    const codeCardClose = document.getElementById("code-card-close");
+    const codeCardMinimize = document.getElementById("code-card-minimize");
+    const codeCardMaximize = document.getElementById("code-card-maximize");
+    const codeCardReopen = document.getElementById("code-card-reopen");
+
+    if (
+      codeCard &&
+      codeCardStage &&
+      codeCardBackdrop &&
+      codeCardClose &&
+      codeCardMinimize &&
+      codeCardMaximize &&
+      codeCardReopen
+    ) {
+      let isMaximized = false;
+      let isMinimized = false;
+      let isClosed = false;
+      let isAnimating = false;
+
+      const waitForTransition = (duration = 590) =>
+        new Promise((resolve) => window.setTimeout(resolve, duration));
+
+      const playSwoosh = () => {
+        codeCard.classList.remove("is-swooshing");
+        void codeCard.offsetWidth;
+        codeCard.classList.add("is-swooshing");
+
+        window.setTimeout(() => {
+          codeCard.classList.remove("is-swooshing");
+        }, 720);
+      };
+
+      const updateControls = () => {
+        const maximizeLabel = isMaximized
+          ? "Code-Karte verkleinern"
+          : "Code-Karte vergrößern";
+
+        codeCardMaximize.setAttribute("aria-expanded", String(isMaximized));
+        codeCardMaximize.setAttribute("aria-label", maximizeLabel);
+        codeCardMaximize.setAttribute("title", maximizeLabel);
+
+        const minimizeLabel = isMinimized
+          ? "Code-Karte wiederherstellen"
+          : "Code-Karte minimieren";
+
+        codeCardMinimize.setAttribute("aria-label", minimizeLabel);
+        codeCardMinimize.setAttribute("title", minimizeLabel);
+      };
+
+      const maximizeCard = async () => {
+        if (isAnimating || isMaximized || isClosed) return;
+
+        isAnimating = true;
+
+        if (isMinimized) {
+          codeCard.classList.remove("is-minimized");
+          isMinimized = false;
+          await waitForTransition(440);
+        }
+
+        const startRect = codeCard.getBoundingClientRect();
+        codeCardStage.style.minHeight = `${startRect.height}px`;
+
+        codeCard.style.top = `${startRect.top}px`;
+        codeCard.style.left = `${startRect.left}px`;
+        codeCard.style.width = `${startRect.width}px`;
+        codeCard.style.height = `${startRect.height}px`;
+
+        document.body.appendChild(codeCard);
+        codeCard.classList.add("is-floating");
+
+        void codeCard.offsetWidth;
+
+        isMaximized = true;
+        document.body.classList.add("code-card-open");
+        codeCardBackdrop.classList.add("is-visible");
+        codeCard.classList.add("is-maximized");
+        updateControls();
+        playSwoosh();
+
+        await waitForTransition();
+        isAnimating = false;
+        codeCardMaximize.focus({ preventScroll: true });
+      };
+
+      const restoreCard = async () => {
+        if (isAnimating || !isMaximized) return;
+
+        isAnimating = true;
+        const targetRect = codeCardStage.getBoundingClientRect();
+
+        const normalCardHeight = window.matchMedia("(max-width: 640px)").matches
+          ? 460
+          : 480;
+
+        codeCard.classList.remove("is-maximized");
+        codeCard.style.top = `${targetRect.top}px`;
+        codeCard.style.left = `${targetRect.left}px`;
+        codeCard.style.width = `${targetRect.width}px`;
+        codeCard.style.height = `${normalCardHeight}px`;
+
+        isMaximized = false;
+        codeCardBackdrop.classList.remove("is-visible");
+        updateControls();
+        playSwoosh();
+
+        await waitForTransition();
+
+        codeCard.classList.remove("is-floating");
+        codeCard.removeAttribute("style");
+        codeCardStage.prepend(codeCard);
+        codeCardStage.style.removeProperty("min-height");
+        document.body.classList.remove("code-card-open");
+        isAnimating = false;
+        codeCardMaximize.focus({ preventScroll: true });
+      };
+
+      const toggleMaximize = () => {
+        if (isMaximized) {
+          restoreCard();
+        } else {
+          maximizeCard();
+        }
+      };
+
+      const toggleMinimize = async () => {
+        if (isAnimating || isClosed) return;
+
+        // Aus der Vollansicht führt der erste Klick nur zurück zur festen Normalgröße.
+        // Erst ein weiterer Klick minimiert die Karte auf die Fensterleiste.
+        if (isMaximized) {
+          await restoreCard();
+          return;
+        }
+
+        isMinimized = !isMinimized;
+        codeCard.classList.toggle("is-minimized", isMinimized);
+        updateControls();
+        playSwoosh();
+      };
+
+      const closeCard = async () => {
+        if (isAnimating || isClosed) return;
+
+        if (isMaximized) {
+          await restoreCard();
+        }
+
+        isClosed = true;
+        isMinimized = false;
+        codeCard.classList.remove("is-minimized");
+        codeCard.classList.add("is-closed");
+        playSwoosh();
+
+        await waitForTransition(340);
+
+        codeCard.hidden = true;
+        codeCardStage.classList.add("is-closed");
+        codeCard.classList.remove("is-closed");
+        updateControls();
+        codeCardReopen.focus({ preventScroll: true });
+      };
+
+      const reopenCard = () => {
+        if (!isClosed) return;
+
+        isClosed = false;
+        codeCard.hidden = false;
+        codeCardStage.classList.remove("is-closed");
+        codeCard.classList.add("is-closed");
+
+        requestAnimationFrame(() => {
+          codeCard.classList.remove("is-closed");
+          playSwoosh();
+        });
+      };
+
+      codeCardMaximize.addEventListener("click", toggleMaximize);
+      codeCardMinimize.addEventListener("click", toggleMinimize);
+      codeCardClose.addEventListener("click", closeCard);
+      codeCardReopen.addEventListener("click", reopenCard);
+      codeCardBackdrop.addEventListener("click", restoreCard);
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && isMaximized) {
+          restoreCard();
+        }
+      });
+
+      updateControls();
+    }
+
+  </script>
+</body>
+</html>
