@@ -690,6 +690,9 @@
 }
 
 .projects-hero h1 .projects-hero__line--three {
+  /* Keep glyph descenders inside the background-clipped text box. */
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
   transform:
     translate3d(
       calc(var(--projects-progress) * -2.8rem),
