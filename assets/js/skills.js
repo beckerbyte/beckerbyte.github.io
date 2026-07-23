@@ -4,7 +4,7 @@ if (motionScene) {
   const motionPercent = motionScene.querySelector("[data-motion-percent]");
   const motionPhases = [...motionScene.querySelectorAll("[data-ae-phase]")];
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const pinnedLayout = window.matchMedia("(min-width: 900px) and (min-height: 720px)");
+  const motionLayout = window.matchMedia("(min-height: 560px)");
   let motionFrame = null;
 
   const clamp = (value, minimum = 0, maximum = 1) =>
@@ -16,7 +16,7 @@ if (motionScene) {
   const updateMotionScene = () => {
     motionFrame = null;
 
-    if (reducedMotion.matches || !pinnedLayout.matches) {
+    if (reducedMotion.matches || !motionLayout.matches) {
       motionScene.style.setProperty("--motion-progress", "1");
       motionScene.style.setProperty("--ae-depth", "1");
       motionScene.style.setProperty("--ae-reveal", "1");
@@ -62,6 +62,6 @@ if (motionScene) {
   window.addEventListener("scroll", requestMotionUpdate, { passive: true });
   window.addEventListener("resize", requestMotionUpdate);
   reducedMotion.addEventListener("change", requestMotionUpdate);
-  pinnedLayout.addEventListener("change", requestMotionUpdate);
+  motionLayout.addEventListener("change", requestMotionUpdate);
   requestMotionUpdate();
 }
