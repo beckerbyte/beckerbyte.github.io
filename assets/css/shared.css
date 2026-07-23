@@ -469,3 +469,32 @@ body > footer {
     display: none;
   }
 }
+
+
+/* Direction-aware navigation: hide on downward scroll, reveal on upward scroll. */
+.site-header {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  transition:
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 220ms ease;
+  will-change: transform, opacity;
+}
+
+.site-header.is-hidden {
+  transform: translate3d(0, calc(-100% - 1.25rem), 0);
+  opacity: 0.92;
+  pointer-events: none;
+}
+
+.site-header:focus-within {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header {
+    transition: none;
+  }
+}
