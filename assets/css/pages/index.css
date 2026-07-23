@@ -404,3 +404,95 @@ body.code-card-open {
   }
 
 }
+
+/* Scroll-linked depth effect for the experience timeline. */
+.timeline {
+  --timeline-progress: 0;
+}
+
+.timeline-line {
+  background: rgba(63, 63, 70, 0.45);
+}
+
+.timeline-line::after {
+  position: absolute;
+  inset: 0 0 auto;
+  height: calc(var(--timeline-progress) * 100%);
+  border-radius: 999px;
+  background: linear-gradient(
+    to bottom,
+    rgba(134, 239, 172, 0.2),
+    rgba(74, 222, 128, 0.95) 22%,
+    rgba(125, 211, 252, 0.85) 68%,
+    rgba(196, 181, 253, 0.9)
+  );
+  box-shadow: 0 0 18px rgba(74, 222, 128, 0.32);
+  content: "";
+}
+
+.timeline-card {
+  --timeline-shift-x: 0px;
+  --timeline-shift-y: 0px;
+  --timeline-scale: 1;
+  transform: translate3d(
+      var(--timeline-shift-x),
+      var(--timeline-shift-y),
+      0
+    )
+    scale(var(--timeline-scale));
+  will-change: transform;
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 100ms linear;
+}
+
+.timeline-item.is-active .timeline-card {
+  border-color: rgba(134, 239, 172, 0.24);
+  box-shadow:
+    0 22px 65px rgba(0, 0, 0, 0.35),
+    0 0 38px rgba(74, 222, 128, 0.07);
+}
+
+.timeline-dot {
+  z-index: 1;
+  transition:
+    box-shadow 220ms ease,
+    filter 220ms ease,
+    transform 220ms ease;
+}
+
+.timeline-item:nth-of-type(1) { --timeline-accent: rgba(134, 239, 172, 0.75); }
+.timeline-item:nth-of-type(2) { --timeline-accent: rgba(125, 211, 252, 0.75); }
+.timeline-item:nth-of-type(3) { --timeline-accent: rgba(196, 181, 253, 0.75); }
+
+.timeline-item.is-active .timeline-dot {
+  filter: brightness(1.18);
+  transform: scale(1.45);
+  box-shadow: 0 0 22px var(--timeline-accent);
+}
+
+@media (min-width: 768px) {
+  .timeline-item.is-active .timeline-dot {
+    transform: translateX(-50%) scale(1.45);
+  }
+}
+
+@media (max-width: 767px) {
+  .timeline-card {
+    transform: none;
+    will-change: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-card {
+    transform: none !important;
+    transition: none !important;
+    will-change: auto;
+  }
+
+  .timeline-dot {
+    transition: none !important;
+  }
+}

@@ -249,3 +249,100 @@ if (
 
   updateControls();
 }
+
+const timeline = document.getElementById("timeline");
+
+if (timeline && !reducedMotion) {
+  const timelineItems = [...timeline.querySelectorAll(".timeline-item")];
+  const desktopTimeline = window.matchMedia("(min-width: 768px)");
+  let timelineFrame = null;
+
+  const clamp = (value, minimum, maximum) =>
+    Math.min(Math.max(value, minimum), maximum);
+
+  const updateTimeline = () => {
+    timelineFrame = null;
+
+    const viewportHeight = window.innerHeight;
+    const timelineRect = timeline.getBoundingClientRect();
+    const progressStart = viewportHeight * 0.7;
+    const progressDistance = Math.max(
+      timelineRect.height - viewportHeight * 0.4,
+      1
+    );
+    const progress = clamp(
+      (progressStart - timelineRect.top) / progressDistance,
+      0,
+      1
+    );
+
+    timeline.style.setProperty("--timeline-progress", progress.toFixed(4));
+
+    let activeItem = null;
+    let activeDistance = Number.POSITIVE_INFINITY;
+
+    for (const item of timelineItems) {
+      const card = item.querySelector(".timeline-card");
+      if (!card) continue;
+
+      const cardRect = card.getBoundingClientRect();
+      const distanceFromCenter =
+        cardRect.top + cardRect.height / 2 - viewportHeight / 2;
+      const normalizedDistance = clamp(
+        distanceFromCenter / (viewportHeight * 0.62),
+        -1,
+        1
+      );
+      const focus = 1 - Math.abs(normalizedDistance);
+
+      if (desktopTimeline.matches) {
+        const horizontalDirection = card.classList.contains("timeline-card--left")
+          ? 1
+          : -1;
+
+        card.style.setProperty(
+          "--timeline-shift-x",
+          `${(horizontalDirection * focus * 12).toFixed(2)}px`
+        );
+        card.style.setProperty(
+          "--timeline-shift-y",
+          `${(normalizedDistance * 16).toFixed(2)}px`
+        );
+        card.style.setProperty(
+          "--timeline-scale",
+          (1 + focus * 0.012).toFixed(4)
+        );
+      } else {
+        card.style.removeProperty("--timeline-shift-x");
+        card.style.removeProperty("--timeline-shift-y");
+        card.style.removeProperty("--timeline-scale");
+      }
+
+      const absoluteDistance = Math.abs(distanceFromCenter);
+      if (absoluteDistance < activeDistance) {
+        activeDistance = absoluteDistance;
+        activeItem = item;
+      }
+    }
+
+    const timelineIsVisible =
+      timelineRect.bottom > 0 && timelineRect.top < viewportHeight;
+
+    for (const item of timelineItems) {
+      item.classList.toggle(
+        "is-active",
+        timelineIsVisible && item === activeItem
+      );
+    }
+  };
+
+  const requestTimelineUpdate = () => {
+    if (timelineFrame !== null) return;
+    timelineFrame = window.requestAnimationFrame(updateTimeline);
+  };
+
+  window.addEventListener("scroll", requestTimelineUpdate, { passive: true });
+  window.addEventListener("resize", requestTimelineUpdate);
+  desktopTimeline.addEventListener("change", requestTimelineUpdate);
+  requestTimelineUpdate();
+}
