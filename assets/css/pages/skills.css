@@ -464,7 +464,6 @@
 }
 
 .system-card__logo span {
-  display: none;
   color: rgb(125 211 252);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.7rem;
@@ -606,7 +605,10 @@
 }
 
 .creative-tool > span {
-  display: none;
+  color: rgb(196 181 253);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
 }
 
 .creative-tool strong {
