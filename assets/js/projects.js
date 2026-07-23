@@ -1,17 +1,10 @@
-const projectsHero = document.querySelector(".projects-hero");
-const parallaxLayers = [...document.querySelectorAll("[data-parallax-layer]")];
 const parallaxCards = [...document.querySelectorAll("[data-parallax-card]")];
 const projectsReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)"
 );
 const projectsDesktop = window.matchMedia("(min-width: 768px)");
 
-if (
-  projectsHero &&
-  parallaxLayers.length > 0 &&
-  parallaxCards.length > 0 &&
-  !projectsReducedMotion.matches
-) {
+if (parallaxCards.length > 0 && !projectsReducedMotion.matches) {
   let projectsFrame = null;
 
   const clamp = (value, minimum, maximum) =>
@@ -21,17 +14,6 @@ if (
     projectsFrame = null;
 
     const viewportHeight = window.innerHeight;
-    const heroRect = projectsHero.getBoundingClientRect();
-    const heroTravel = clamp(-heroRect.top, 0, heroRect.height);
-
-    for (const layer of parallaxLayers) {
-      const depth = Number(layer.dataset.depth || 0);
-      layer.style.setProperty(
-        "--parallax-y",
-        `${(heroTravel * depth).toFixed(2)}px`
-      );
-    }
-
     let focusedCard = null;
     let focusedDistance = Number.POSITIVE_INFINITY;
 
