@@ -1778,7 +1778,63 @@
   }
 }
 
-@media (max-width: 899px), (max-height: 719px) {
+@media (max-width: 899px) and (min-height: 560px) {
+  .creative-scroll-scene {
+    height: 185svh;
+  }
+
+  .creative-pin {
+    position: sticky;
+    top: 5.15rem;
+    max-height: calc(100svh - 5.65rem);
+    overflow: hidden;
+    grid-template-columns: 1fr;
+  }
+
+  .creative-pin .capability-block__index,
+  .creative-pin .capability-block__header {
+    display: none;
+  }
+
+  .creative-pin .capability-block__body {
+    min-width: 0;
+    padding: 0.55rem;
+  }
+
+  .ae-workspace {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
+
+  .ae-composition__toolbar {
+    min-height: 2.55rem;
+  }
+
+  .ae-canvas {
+    min-height: clamp(18rem, 48svh, 26rem);
+  }
+
+  .ae-timeline {
+    padding-block: 0.48rem 0.6rem;
+  }
+
+  .ae-inspector {
+    gap: 0;
+  }
+
+  .ae-inspector__header,
+  .ae-phases,
+  .ae-inspector > p {
+    display: none;
+  }
+
+  .ae-inspector__status {
+    border-radius: 0.8rem;
+    padding: 0.65rem 0.85rem;
+  }
+}
+
+@media (max-height: 559px) {
   .creative-scroll-scene {
     --motion-progress: 1;
     --ae-depth: 1;
