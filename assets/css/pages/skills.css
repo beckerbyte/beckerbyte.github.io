@@ -60,20 +60,20 @@
     scale(calc(1 + var(--skills-hero-progress) * 0.08));
 }
 
-.capability-map__orbit--outer {
+.skills-hero .capability-map__orbit--outer {
   transform:
     translate(-50%, -50%)
     rotate(calc(var(--skills-hero-progress) * 95deg))
     scale(calc(1 + var(--skills-hero-progress) * 0.1));
 }
 
-.capability-map__core {
+.skills-hero .capability-map__core {
   transform:
     translate(-50%, -50%)
     scale(calc(1 + var(--skills-hero-progress) * 0.08));
 }
 
-.capability-node--web {
+.skills-hero .capability-node--web {
   transform:
     translate3d(
       calc(var(--skills-hero-progress) * -20px),
@@ -82,7 +82,7 @@
     );
 }
 
-.capability-node--systems {
+.skills-hero .capability-node--systems {
   transform:
     translate3d(
       calc(var(--skills-hero-progress) * 22px),
@@ -91,7 +91,7 @@
     );
 }
 
-.capability-node--creative {
+.skills-hero .capability-node--creative {
   transform:
     translate3d(
       calc(var(--skills-hero-progress) * -12px),
