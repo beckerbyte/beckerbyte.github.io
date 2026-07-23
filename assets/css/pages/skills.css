@@ -3829,7 +3829,11 @@
     grid-column: auto;
   }
 
-  .system-detail__visual,
+  .system-detail__visual {
+    min-height: 0;
+    height: auto;
+  }
+
   .system-detail__visual img {
     min-height: 14rem;
     height: 14rem;
