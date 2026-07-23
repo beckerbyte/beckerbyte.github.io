@@ -36,11 +36,13 @@ liegen unter `src/pages/`. Die HTML-Dateien im Projektstamm werden daraus generi
 weiterhin direkt von Cloudflare Pages beziehungsweise GitHub Pages ausgeliefert.
 
 ```bash
+npm install
 npm run build
 ```
 
 Nach Änderungen an Templates oder Partials müssen die generierten HTML-Dateien gemeinsam
 mit den Quelldateien committed werden. `npm run check` prüft, ob der generierte Stand aktuell ist.
+Tailwind CSS wird dabei lokal kompiliert; im Browser wird kein externer Tailwind-Code ausgeführt.
 
 ---
 

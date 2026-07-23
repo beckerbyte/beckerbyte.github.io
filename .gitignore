@@ -1,3 +1,4 @@
 .env
 
 assets/downloads/*.zip
+node_modules/

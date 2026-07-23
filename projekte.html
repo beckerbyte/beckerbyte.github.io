@@ -12,62 +12,10 @@
   <link rel="icon" href="./assets/img/favicon-v2.png" type="image/png">
   <script src="./assets/js/shared.js" defer></script>
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-            mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"]
-          },
-          boxShadow: {
-            glow: "0 0 60px rgba(74, 222, 128, 0.12)"
-          }
-        }
-      }
-    };
-  </script>
 
   <link rel="stylesheet" href="./assets/css/shared.css">
-  <style>
-    .gradient-text {
-      color: transparent;
-      background: linear-gradient(90deg, #ffffff 0%, #86efac 48%, #7dd3fc 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-    }
-
-    .project-card {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project-card::after {
-      content: "";
-      position: absolute;
-      right: -5rem;
-      bottom: -5rem;
-      width: 15rem;
-      height: 15rem;
-      border-radius: 9999px;
-      background: rgba(74, 222, 128, 0.08);
-      filter: blur(2rem);
-      opacity: 0;
-      transition: opacity 350ms ease, transform 350ms ease;
-    }
-
-    .project-card:hover::after {
-      opacity: 1;
-      transform: scale(1.2);
-    }
-
-    .project-preview {
-      background:
-        linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
-    }
-
-  </style>
+  <link rel="stylesheet" href="./assets/css/tailwind.css">
+  <link rel="stylesheet" href="./assets/css/pages/projects.css">
 </head>
 
 <body class="min-h-screen overflow-x-hidden font-sans text-zinc-100 antialiased selection:bg-green-300 selection:text-black">
@@ -89,7 +37,7 @@
             src="./assets/img/header.png"
             alt="beckerbyte"
             class="h-7 w-auto max-w-[150px] object-contain opacity-90 transition group-hover:opacity-100 sm:h-8 sm:max-w-[180px] md:h-9 md:max-w-[210px]"
-            onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+            data-fallback-next
           >
           <span class="hidden text-sm font-semibold tracking-[0.16em] text-white sm:text-[15px]">beckerbyte</span>
         </a>

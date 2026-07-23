@@ -1,0 +1,35 @@
+.gradient-text {
+  color: transparent;
+  background: linear-gradient(90deg, #ffffff 0%, #86efac 48%, #7dd3fc 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  right: -5rem;
+  bottom: -5rem;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 9999px;
+  background: rgba(74, 222, 128, 0.08);
+  filter: blur(2rem);
+  opacity: 0;
+  transition: opacity 350ms ease, transform 350ms ease;
+}
+
+.project-card:hover::after {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.project-preview {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+}
