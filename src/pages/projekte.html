@@ -11,6 +11,7 @@
   <link rel="canonical" href="https://www.beckerbyte.com/projekte.html">
   <link rel="icon" href="./assets/img/favicon-v2.png" type="image/png">
   <script src="./assets/js/shared.js" defer></script>
+  <script src="./assets/js/projects.js" defer></script>
 
 
   <link rel="stylesheet" href="./assets/css/shared.css">
@@ -32,41 +33,64 @@
   {{HEADER}}
 
   <main id="main" class="pt-32">
-    <section class="pb-14 pt-16 sm:pb-20 sm:pt-24">
-      <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="reveal max-w-4xl">
-          <a
-            href="index.html"
-            class="mb-8 inline-flex items-center gap-2 text-sm text-zinc-400 transition hover:text-white"
-          >
-            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <section class="projects-hero">
+      <div class="projects-hero__layers" aria-hidden="true">
+        <div class="projects-orbit projects-orbit--one" data-parallax-layer data-depth="0.18"></div>
+        <div class="projects-orbit projects-orbit--two" data-parallax-layer data-depth="0.34"></div>
+        <div class="projects-orbit projects-orbit--three" data-parallax-layer data-depth="0.52"></div>
+        <div class="projects-code-grid" data-parallax-layer data-depth="0.12"></div>
+      </div>
+
+      <div class="projects-shell projects-hero__layout">
+        <div class="projects-hero__copy reveal">
+          <a href="index.html" class="projects-back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
             Zurück zur Startseite
           </a>
 
-          <p class="section-kicker font-mono text-xs uppercase tracking-[0.24em] text-zinc-400">
-            Ausgewählte Arbeiten
-          </p>
-
-          <h1 class="mt-5 text-5xl font-black leading-[0.98] tracking-[-0.055em] sm:text-7xl">
-            Projekte mit
-            <span class="gradient-text block">klarem Nutzen.</span>
+          <p class="projects-kicker">Ausgewählte Arbeiten · 2026</p>
+          <h1>
+            Gebaut, getestet,
+            <span>weitergedacht.</span>
           </h1>
-
-          <p class="mt-7 max-w-3xl text-lg leading-8 text-zinc-400 sm:text-xl">
-            Eigene Webprojekte und Werkzeuge, bei denen Funktion, Wartbarkeit und eine klare
-            Oberfläche im Mittelpunkt stehen.
+          <p class="projects-hero__intro">
+            Eigene Webprojekte und Werkzeuge, bei denen Funktion, Wartbarkeit und
+            eine klare Oberfläche zusammenkommen.
           </p>
         </div>
+
+        <aside class="projects-manifest reveal" aria-label="Projektübersicht">
+          <div class="projects-manifest__header">
+            <span>Index</span>
+            <span>02 Projekte</span>
+          </div>
+          <a href="#portfolio-project">
+            <span>01</span>
+            <div><strong>beckerbyte.com</strong><small>Portfolio · Web</small></div>
+            <span aria-hidden="true">↘</span>
+          </a>
+          <a href="#text-analyzer-project">
+            <span>02</span>
+            <div><strong>Text-Analyzer</strong><small>Python · CLI</small></div>
+            <span aria-hidden="true">↘</span>
+          </a>
+        </aside>
+      </div>
+
+      <div class="projects-scroll-cue" aria-hidden="true">
+        <span>Scroll to explore</span>
+        <i></i>
       </div>
     </section>
 
-    <section class="pb-24 sm:pb-32">
+    <section class="projects-showcase pb-24 sm:pb-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="grid gap-6 lg:grid-cols-2">
-          <article class="project-card glass reveal rounded-[2rem] p-6 transition hover:-translate-y-1 hover:border-green-300/25 sm:p-8">
-            <div class="project-preview relative overflow-hidden rounded-[1.5rem] border border-white/10 p-5 sm:p-7">
+        <div id="projects-grid" class="projects-grid grid gap-6 lg:grid-cols-2">
+          <article id="portfolio-project" class="project-card project-card--portfolio glass reveal rounded-[2rem] p-6 sm:p-8" data-parallax-card>
+            <div class="project-card__meta"><span>01 / 02</span><span>Web · Portfolio</span></div>
+            <div class="project-preview relative overflow-hidden rounded-[1.5rem] border border-white/10 p-5 sm:p-7" data-parallax-preview>
               <div class="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-green-300/10 blur-3xl"></div>
 
               <div class="relative">
@@ -123,8 +147,9 @@
             </div>
           </article>
 
-          <article class="project-card glass reveal rounded-[2rem] p-6 transition hover:-translate-y-1 hover:border-sky-300/25 sm:p-8">
-            <div class="project-preview relative overflow-hidden rounded-[1.5rem] border border-white/10 p-5 sm:p-7">
+          <article id="text-analyzer-project" class="project-card project-card--analyzer glass reveal rounded-[2rem] p-6 sm:p-8" data-parallax-card>
+            <div class="project-card__meta"><span>02 / 02</span><span>Python · CLI</span></div>
+            <div class="project-preview relative overflow-hidden rounded-[1.5rem] border border-white/10 p-5 sm:p-7" data-parallax-preview>
               <div class="absolute -left-12 -top-12 h-36 w-36 rounded-full bg-sky-300/10 blur-3xl"></div>
 
               <div class="relative">
@@ -202,16 +227,16 @@
           </article>
         </div>
 
-        <section class="glass reveal mt-6 overflow-hidden rounded-[2rem]">
+        <section class="projects-cta glass reveal mt-6 overflow-hidden rounded-[2rem]">
           <div class="grid lg:grid-cols-[1fr_auto] lg:items-center">
             <div class="p-8 sm:p-10">
-              <p class="font-mono text-xs uppercase tracking-[0.22em] text-green-300">Neue Idee?</p>
+              <p class="font-mono text-xs uppercase tracking-[0.22em] text-green-300">Lernidee oder Austausch?</p>
               <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-                Aus einer guten Idee muss ein funktionierendes Produkt werden.
+                Gute Ideen werden besser, wenn man sie ausprobiert.
               </h2>
               <p class="mt-5 max-w-2xl leading-7 text-zinc-400">
-                Beschreibe kurz dein Projekt. Ich gebe dir eine klare Einschätzung zu Umsetzung,
-                Aufwand und sinnvollem nächsten Schritt.
+                Wenn du dich zu einem Lernprojekt, Open Source oder einer technischen Idee austauschen
+                möchtest, schreib mir gern. Dieses Portfolio ist nichtkommerziell.
               </p>
             </div>
 
@@ -220,7 +245,7 @@
                 href="index.html#contact"
                 class="inline-flex items-center justify-center gap-2 rounded-full bg-green-300 px-6 py-3.5 font-semibold text-black transition hover:bg-green-200"
               >
-                Projekt besprechen
+                Austausch starten
                 <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                   <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
