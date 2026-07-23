@@ -1039,3 +1039,284 @@
     transition: none;
   }
 }
+
+
+/* Refined capability-stack introduction and visual web workbench. */
+.section-intro--stack {
+  grid-template-columns: 1fr;
+  max-width: none;
+  margin-bottom: 3.5rem;
+  padding: clamp(1.4rem, 3vw, 2rem);
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(circle at 86% 20%, rgba(125, 211, 252, 0.07), transparent 28rem),
+    rgba(255, 255, 255, 0.014);
+}
+
+.section-intro--stack h2 {
+  max-width: 49rem;
+  margin-top: 1rem;
+}
+
+.section-intro__summary {
+  display: grid;
+  align-content: end;
+  gap: 0.75rem;
+  max-width: 34rem;
+}
+
+.section-intro__summary > span {
+  color: rgb(134 239 172);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.section-intro__summary p {
+  color: rgb(161 161 170);
+  line-height: 1.72;
+}
+
+.web-workbench {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.web-workbench__browser,
+.web-workbench__panel {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.085);
+  border-radius: 1.25rem;
+  background: #090c0b;
+}
+
+.web-browser__bar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 2.65rem;
+  padding: 0 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+  background: #121614;
+  color: rgb(113 113 122);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.62rem;
+}
+
+.web-browser__bar > div {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.web-browser__bar i {
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+  background: #52525b;
+}
+
+.web-browser__bar i:first-child { background: #f87171; }
+.web-browser__bar i:nth-child(2) { background: #facc15; }
+.web-browser__bar i:last-child { background: #86efac; }
+
+.web-browser__bar > span {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  background: rgba(0, 0, 0, 0.3);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.web-browser__canvas {
+  min-height: 20rem;
+  padding: 1.1rem;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.027) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.027) 1px, transparent 1px),
+    radial-gradient(circle at 72% 28%, rgba(74, 222, 128, 0.13), transparent 14rem),
+    #070908;
+  background-size: 2rem 2rem, 2rem 2rem, auto, auto;
+}
+
+.web-browser__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(212 212 216);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.67rem;
+}
+
+.web-browser__nav > div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.web-browser__nav i {
+  display: block;
+  width: 2.2rem;
+  height: 0.38rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.web-browser__hero {
+  max-width: 29rem;
+  padding: clamp(2.5rem, 6vw, 4.2rem) 0 2rem;
+}
+
+.web-browser__hero small {
+  color: rgb(134 239 172);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.13em;
+}
+
+.web-browser__hero strong {
+  display: block;
+  max-width: 25rem;
+  margin-top: 0.75rem;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+}
+
+.web-browser__hero p {
+  max-width: 25rem;
+  margin-top: 0.9rem;
+  color: rgb(161 161 170);
+  line-height: 1.55;
+}
+
+.web-browser__hero > span {
+  display: inline-flex;
+  margin-top: 1.1rem;
+  border-radius: 999px;
+  padding: 0.55rem 0.85rem;
+  background: rgb(134 239 172);
+  color: #050505;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.web-browser__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.55rem;
+}
+
+.web-browser__cards i {
+  min-height: 2.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.022);
+}
+
+.web-workbench__panel {
+  display: flex;
+  min-height: 20rem;
+  flex-direction: column;
+  background: #080a09;
+}
+
+.web-workbench__tabs {
+  display: flex;
+  overflow-x: auto;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+.web-workbench__tabs span {
+  flex: none;
+  padding: 0.82rem 0.9rem;
+  color: rgb(113 113 122);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.62rem;
+}
+
+.web-workbench__tabs .is-active {
+  border-bottom: 2px solid rgb(134 239 172);
+  color: rgb(212 212 216);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.web-code {
+  display: grid;
+  gap: 0.45rem;
+  flex: 1;
+  padding: 1.35rem;
+  color: #9ca3af;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: clamp(0.68rem, 1.4vw, 0.78rem);
+  line-height: 1.55;
+}
+
+.web-code span {
+  white-space: pre;
+}
+
+.web-code b {
+  color: rgb(125 211 252);
+  font-weight: 500;
+}
+
+.web-code em {
+  color: rgb(134 239 172);
+  font-style: normal;
+}
+
+.web-build {
+  display: grid;
+  border-top: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+.web-build > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.72rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.62rem;
+}
+
+.web-build > div:last-child {
+  border-bottom: 0;
+}
+
+.web-build span {
+  color: rgb(113 113 122);
+}
+
+.web-build strong {
+  color: rgb(187 247 208);
+  font-weight: 500;
+  text-align: right;
+}
+
+@media (min-width: 800px) {
+  .section-intro--stack {
+    grid-template-columns: 1.25fr 0.75fr;
+    align-items: end;
+    gap: 3rem;
+  }
+
+  .web-workbench {
+    grid-template-columns: 1.25fr 0.75fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .web-browser__nav i:nth-child(n + 2) {
+    display: none;
+  }
+
+  .web-code {
+    overflow-x: auto;
+  }
+}
