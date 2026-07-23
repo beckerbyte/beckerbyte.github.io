@@ -3078,3 +3078,356 @@
     padding: 0.68rem;
   }
 }
+
+
+/* Interactive animated system-integration lab. */
+.systems-lab[data-system-scene] {
+  position: relative;
+  isolation: isolate;
+}
+
+.systems-lab[data-system-scene]::before {
+  position: absolute;
+  z-index: -1;
+  inset: 8% -5% 4%;
+  border-radius: 45%;
+  background:
+    radial-gradient(circle at 18% 28%, rgba(14, 165, 233, 0.13), transparent 28%),
+    radial-gradient(circle at 72% 58%, rgba(74, 222, 128, 0.1), transparent 30%);
+  filter: blur(36px);
+  content: "";
+  animation: systems-lab-drift 9s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.systems-lab__intro {
+  position: relative;
+  overflow: hidden;
+}
+
+.systems-lab__intro::after {
+  position: absolute;
+  inset: 0 auto 0 -35%;
+  width: 24%;
+  background: linear-gradient(90deg, transparent, rgba(125, 211, 252, 0.12), transparent);
+  transform: skewX(-18deg);
+  content: "";
+  animation: systems-intro-scan 5.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.systems-lab__meta {
+  display: grid;
+  align-content: end;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.systems-lab__meta > p {
+  color: rgb(161 161 170);
+  line-height: 1.6;
+}
+
+.systems-lab__status {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.7rem;
+  overflow: hidden;
+  border: 1px solid rgba(125, 211, 252, 0.14);
+  border-radius: 0.8rem;
+  padding: 0.58rem 0.7rem;
+  background: rgba(3, 10, 15, 0.68);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.systems-lab__status span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  color: rgb(125 211 252);
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.systems-lab__status i {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #86efac;
+  box-shadow: 0 0 12px rgba(134, 239, 172, 0.72);
+  animation: systems-status-pulse 1.8s ease-in-out infinite;
+}
+
+.systems-lab__status strong {
+  overflow: hidden;
+  color: rgb(228 228 231);
+  font-size: 0.64rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.systems-lab__status small {
+  color: rgb(113 113 122);
+  font-size: 0.58rem;
+}
+
+.systems-lab__grid {
+  position: relative;
+  isolation: isolate;
+}
+
+.systems-visual {
+  --system-accent: #7dd3fc;
+  position: relative;
+  z-index: 1;
+  outline: none;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition:
+    border-color 260ms ease,
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 320ms ease,
+    background 260ms ease;
+}
+
+.systems-visual[data-system-card="database"] {
+  --system-accent: #86efac;
+}
+
+.systems-visual[data-system-card="automation"] {
+  --system-accent: #fde047;
+}
+
+.systems-visual::before {
+  position: absolute;
+  z-index: 3;
+  left: -42%;
+  top: 0;
+  width: 34%;
+  height: 47%;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--system-accent) 24%, transparent), transparent);
+  transform: skewX(-14deg);
+  opacity: 0;
+  content: "";
+  pointer-events: none;
+}
+
+.systems-visual::after {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent, var(--system-accent), transparent);
+  transform: scaleX(0.15);
+  opacity: 0;
+  content: "";
+  transition: transform 320ms ease, opacity 220ms ease;
+  pointer-events: none;
+}
+
+.systems-visual:hover,
+.systems-visual:focus-visible,
+.systems-visual.is-active {
+  border-color: color-mix(in srgb, var(--system-accent) 48%, transparent);
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--system-accent) 7%, transparent), transparent 54%),
+    rgba(255, 255, 255, 0.022);
+  box-shadow:
+    0 24px 55px rgba(0, 0, 0, 0.34),
+    0 0 32px color-mix(in srgb, var(--system-accent) 12%, transparent);
+  transform: translateY(-0.42rem) scale(1.012);
+}
+
+.systems-visual:focus-visible {
+  outline: 2px solid var(--system-accent);
+  outline-offset: 3px;
+}
+
+.systems-visual:hover::after,
+.systems-visual:focus-visible::after,
+.systems-visual.is-active::after {
+  transform: scaleX(1);
+  opacity: 0.88;
+}
+
+.systems-visual.is-active::before {
+  opacity: 1;
+  animation: systems-card-scan 3.4s ease-in-out infinite;
+}
+
+.systems-visual > img {
+  transition:
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 320ms ease,
+    opacity 320ms ease;
+}
+
+.systems-visual:not(.is-active) > img {
+  filter: saturate(0.72) brightness(0.82);
+  opacity: 0.78;
+}
+
+.systems-visual.is-active > img,
+.systems-visual:hover > img,
+.systems-visual:focus-visible > img {
+  filter: saturate(1.15) brightness(1.05);
+  opacity: 1;
+  transform: scale(1.035);
+}
+
+.systems-visual figcaption {
+  position: relative;
+  z-index: 2;
+  transition: background 260ms ease;
+}
+
+.systems-visual.is-active figcaption {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--system-accent) 6%, transparent), transparent 58%);
+}
+
+.systems-visual li {
+  transition:
+    border-color 220ms ease,
+    background 220ms ease,
+    color 220ms ease,
+    transform 220ms ease;
+}
+
+.systems-visual.is-active li {
+  border-color: color-mix(in srgb, var(--system-accent) 34%, transparent);
+  background: color-mix(in srgb, var(--system-accent) 8%, transparent);
+  color: color-mix(in srgb, var(--system-accent) 78%, white);
+  transform: translateY(-0.08rem);
+}
+
+.systems-context > div,
+.systems-context > aside {
+  position: relative;
+  overflow: hidden;
+  transition:
+    border-color 220ms ease,
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 220ms ease;
+}
+
+.systems-context > div::before,
+.systems-context > aside::before {
+  position: absolute;
+  left: -45%;
+  top: 0;
+  width: 35%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #7dd3fc, transparent);
+  content: "";
+  animation: systems-context-route 5s linear infinite;
+}
+
+.systems-context > :nth-child(2)::before {
+  animation-delay: -1.7s;
+}
+
+.systems-context > :nth-child(3)::before {
+  animation-delay: -3.2s;
+}
+
+.systems-context > div:hover,
+.systems-context > aside:hover {
+  border-color: rgba(125, 211, 252, 0.24);
+  background: rgba(125, 211, 252, 0.035);
+  transform: translateY(-0.18rem);
+}
+
+@media (min-width: 700px) {
+  .systems-lab__grid::before {
+    position: absolute;
+    z-index: 0;
+    left: 5%;
+    right: 5%;
+    top: 28%;
+    height: 1px;
+    background:
+      linear-gradient(90deg, transparent, #7dd3fc, #86efac, #fde047, transparent);
+    background-size: 220% 100%;
+    filter: drop-shadow(0 0 6px rgba(125, 211, 252, 0.45));
+    content: "";
+    animation: systems-data-route 4.5s linear infinite;
+  }
+}
+
+@media (max-width: 767px) {
+  .systems-lab__status {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .systems-lab__status small {
+    display: none;
+  }
+
+  .systems-visual:hover,
+  .systems-visual:focus-visible,
+  .systems-visual.is-active {
+    transform: translateY(-0.18rem);
+  }
+
+  .systems-visual::before {
+    height: 43%;
+  }
+}
+
+@keyframes systems-lab-drift {
+  from { transform: translate3d(-1.5%, -1%, 0) scale(0.96); }
+  to { transform: translate3d(2%, 2%, 0) scale(1.04); }
+}
+
+@keyframes systems-intro-scan {
+  0%, 24% { transform: translateX(0) skewX(-18deg); opacity: 0; }
+  42% { opacity: 1; }
+  76%, 100% { transform: translateX(620%) skewX(-18deg); opacity: 0; }
+}
+
+@keyframes systems-status-pulse {
+  0%, 100% { transform: scale(0.78); opacity: 0.58; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+@keyframes systems-card-scan {
+  0%, 18% { transform: translateX(0) skewX(-14deg); opacity: 0; }
+  36% { opacity: 1; }
+  72%, 100% { transform: translateX(420%) skewX(-14deg); opacity: 0; }
+}
+
+@keyframes systems-context-route {
+  to { transform: translateX(520%); }
+}
+
+@keyframes systems-data-route {
+  to { background-position: -220% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .systems-lab[data-system-scene]::before,
+  .systems-lab__intro::after,
+  .systems-lab__status i,
+  .systems-visual::before,
+  .systems-context > div::before,
+  .systems-context > aside::before,
+  .systems-lab__grid::before {
+    animation: none;
+  }
+
+  .systems-visual,
+  .systems-visual > img,
+  .systems-visual figcaption,
+  .systems-visual li,
+  .systems-context > div,
+  .systems-context > aside {
+    transition: none;
+  }
+}
