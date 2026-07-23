@@ -956,6 +956,55 @@
   .projects-showcase {
     margin-top: -22svh;
   }
+
+  /*
+   * Keep the mobile parallax motion, but move the animated color fields onto
+   * independent compositor layers. Safari can then translate and fade cached
+   * textures instead of repainting two large gradients on every scroll frame.
+   */
+  .projects-hero__scene::before,
+  .projects-hero__scene::after {
+    position: absolute;
+    z-index: -2;
+    inset: -12%;
+    content: "";
+    pointer-events: none;
+    will-change: transform, opacity;
+  }
+
+  .projects-hero__scene::before {
+    background: radial-gradient(
+      circle at 25% 48%,
+      rgba(34, 197, 94, 0.18),
+      transparent 32%
+    );
+    opacity: calc(0.56 + var(--projects-progress) * 0.44 - var(--projects-exit) * 0.5);
+    transform:
+      translate3d(calc(var(--projects-progress) * 11vw), 0, 0)
+      scale(calc(1 + var(--projects-progress) * 0.14));
+  }
+
+  .projects-hero__scene::after {
+    background: radial-gradient(
+      circle at 75% 48%,
+      rgba(14, 165, 233, 0.2),
+      transparent 33%
+    );
+    opacity: calc(0.55 + var(--projects-progress) * 0.45 - var(--projects-exit) * 0.5);
+    transform:
+      translate3d(calc(var(--projects-progress) * -9vw), 0, 0)
+      scale(calc(1 + var(--projects-progress) * 0.14));
+  }
+
+  /* Backdrop blur on a moving 3D layer forces costly live recapture in iOS. */
+  .projects-manifest {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(10, 10, 10, 0.88);
+    box-shadow:
+      0 28px 70px rgba(0, 0, 0, 0.4),
+      0 0 36px rgba(56, 189, 248, 0.06);
+  }
 }
 
 @media (max-width: 420px) {
