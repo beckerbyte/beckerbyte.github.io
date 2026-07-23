@@ -26,7 +26,11 @@ if (projectsHero) {
     const progress = clampProjectsHero(
       (earlyStart - rect.top) / (scrollDistance + earlyStart)
     );
-    const exit = clampProjectsHero((progress - 0.7) / 0.3);
+    /*
+     * Finish the transition before the pinned scene releases. Otherwise its
+     * last semi-transparent frame overlaps the first project cards.
+     */
+    const exit = clampProjectsHero((progress - 0.56) / 0.28);
 
     projectsHero.style.setProperty(
       "--projects-progress",
