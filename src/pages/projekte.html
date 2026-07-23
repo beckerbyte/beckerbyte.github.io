@@ -33,9 +33,19 @@
   {{HEADER}}
 
   <main id="main" class="pt-32">
-    <section class="projects-hero">
+    <section class="projects-hero" data-projects-hero>
+      <div class="projects-hero__scene">
+        <div class="projects-hero__depth" aria-hidden="true">
+          <span class="projects-hero__ghost">PROJECTS</span>
+          <i class="projects-hero__orbit projects-hero__orbit--one"></i>
+          <i class="projects-hero__orbit projects-hero__orbit--two"></i>
+          <b class="projects-hero__beam"></b>
+          <span class="projects-hero__counter">02 / SELECTED WORK</span>
+        </div>
+
+
       <div class="projects-shell projects-hero__layout">
-        <div class="projects-hero__copy reveal">
+        <div class="projects-hero__copy">
           <a href="index.html" class="projects-back">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -44,9 +54,10 @@
           </a>
 
           <p class="projects-kicker">Ausgewählte Arbeiten · 2026</p>
-          <h1>
-            Gebaut, getestet,
-            <span>weitergedacht.</span>
+          <h1 aria-label="Gebaut, getestet, weitergedacht.">
+            <span class="projects-hero__line projects-hero__line--one" aria-hidden="true">Gebaut,</span>
+            <span class="projects-hero__line projects-hero__line--two" aria-hidden="true">getestet,</span>
+            <span class="projects-hero__line projects-hero__line--three projects-hero__line--accent" aria-hidden="true">weitergedacht.</span>
           </h1>
           <p class="projects-hero__intro">
             Eigene Webprojekte und Werkzeuge, bei denen Funktion, Wartbarkeit und
@@ -54,7 +65,7 @@
           </p>
         </div>
 
-        <aside class="projects-manifest reveal" aria-label="Projektübersicht">
+        <aside class="projects-manifest" aria-label="Projektübersicht">
           <div class="projects-manifest__header">
             <span>Index</span>
             <span>02 Projekte</span>
@@ -75,6 +86,7 @@
       <div class="projects-scroll-cue" aria-hidden="true">
         <span>Scroll to explore</span>
         <i></i>
+      </div>
       </div>
     </section>
 
