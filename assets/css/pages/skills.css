@@ -2747,7 +2747,7 @@
 }
 
 .web-browser__canvas.is-changing .web-browser__hero > * {
-  animation: web-design-change 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: web-design-change 320ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
 .web-browser__canvas.is-changing .web-browser__hero > :nth-child(2) {
