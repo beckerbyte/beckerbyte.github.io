@@ -1,0 +1,9 @@
+{
+  "name": "beckerbyte-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "npm run build && git diff --exit-code -- index.html skills.html projekte.html impressum.html datenschutz.html"
+  }
+}
