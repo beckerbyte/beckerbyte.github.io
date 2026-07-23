@@ -48,50 +48,7 @@
   <div class="page-grid fixed inset-0 -z-20"></div>
   <div class="noise fixed inset-0 -z-10"></div>
 
-  <header class="fixed inset-x-0 top-0 z-50">
-    <div class="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
-      <nav class="glass flex min-h-16 items-center justify-between rounded-2xl px-4 sm:px-5" aria-label="Hauptnavigation">
-        <a href="index.html" class="group flex items-center rounded-xl px-2 py-1.5 transition hover:bg-white/[0.03]" aria-label="beckerbyte Startseite">
-          <img
-            src="./assets/img/header.png"
-            alt="beckerbyte"
-            class="h-7 w-auto max-w-[150px] object-contain opacity-90 transition group-hover:opacity-100 sm:h-8 sm:max-w-[180px] md:h-9 md:max-w-[210px]"
-            onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
-          >
-          <span class="hidden text-sm font-semibold tracking-[0.16em] text-white sm:text-[15px]">beckerbyte</span>
-        </a>
-
-        <div class="hidden items-center gap-1 md:flex">
-          <a class="rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white" href="index.html">Home</a>
-          <a class="rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white" href="skills.html">Erfahrungen</a>
-          <a class="rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white" href="projekte.html">Projekte</a>
-          <a class="ml-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-green-300" href="index.html#contact">
-            Kontakt
-          </a>
-        </div>
-
-        <button
-          id="menu-button"
-          class="rounded-lg border border-white/10 p-2 text-zinc-200 md:hidden"
-          type="button"
-          aria-label="Navigation öffnen"
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-        >
-          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-            <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"></path>
-          </svg>
-        </button>
-      </nav>
-
-      <div id="mobile-menu" class="glass mt-2 hidden rounded-2xl p-3 md:hidden">
-        <a class="block rounded-xl px-4 py-3 text-sm text-zinc-200 hover:bg-white/5" href="index.html">Home</a>
-        <a class="block rounded-xl px-4 py-3 text-sm text-zinc-200 hover:bg-white/5" href="skills.html">Erfahrungen</a>
-        <a class="block rounded-xl px-4 py-3 text-sm text-zinc-200 hover:bg-white/5" href="projekte.html">Projekte</a>
-        <a class="mt-2 block rounded-xl bg-white px-4 py-3 text-center text-sm font-semibold text-black" href="index.html#contact">Kontakt</a>
-      </div>
-    </div>
-  </header>
+  {{HEADER}}
 
   <main id="main" class="pt-32">
     <section class="pb-14 pt-16 sm:pb-20 sm:pt-24">
@@ -174,20 +131,7 @@
     </section>
   </main>
 
-  <footer class="border-t border-white/10 py-10">
-    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 text-sm text-zinc-500 sm:flex-row lg:px-8">
-      <div>
-        © <span id="year">2026</span> Julian Becker · beckerbyte
-      </div>
-
-      <div class="flex items-center gap-5">
-        <a href="https://github.com/beckerbyte" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">GitHub</a>
-        <a href="https://discord.com/users/270226761256534027" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">Discord</a>
-        <a href="impressum.html" class="text-white" aria-current="page">Impressum</a>
-        <a href="datenschutz.html" class="transition hover:text-white">Datenschutz</a>
-      </div>
-    </div>
-  </footer>
+  {{FOOTER}}
 
 </body>
 </html>
