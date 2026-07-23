@@ -852,6 +852,7 @@
 
 .projects-showcase {
   z-index: 4;
+  margin-top: -30svh;
   background: linear-gradient(to bottom, rgba(3, 5, 6, 0.2), transparent 18rem);
 }
 
@@ -948,6 +949,10 @@
     bottom: 0.65rem;
     font-size: 0.52rem;
   }
+
+  .projects-showcase {
+    margin-top: -22svh;
+  }
 }
 
 @media (max-width: 420px) {
@@ -1003,5 +1008,9 @@
   .projects-hero__counter,
   .projects-scroll-cue {
     opacity: 1;
+  }
+
+  .projects-showcase {
+    margin-top: 0;
   }
 }
