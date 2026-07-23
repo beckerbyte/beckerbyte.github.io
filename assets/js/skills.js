@@ -123,6 +123,109 @@ if (webDesignPreview && webDesignButtons.length > 0) {
 }
 
 
+const systemsScene = document.querySelector("[data-system-scene]");
+const systemCards = [...document.querySelectorAll("[data-system-card]")];
+
+if (systemsScene && systemCards.length > 0) {
+  const systemTrack = systemsScene.querySelector(".systems-lab__grid");
+  const systemStatus = systemsScene.querySelector("[data-system-status]");
+  const systemCount = systemsScene.querySelector("[data-system-count]");
+  const mobileSystemLayout = window.matchMedia("(max-width: 767px)");
+  let systemFrame = null;
+
+  const systemStates = {
+    network: "Netzwerk aktiv",
+    database: "Datenbank synchronisiert",
+    automation: "Hardware verbunden"
+  };
+
+  const activateSystemCard = (card) => {
+    const index = systemCards.indexOf(card);
+    if (index < 0) return;
+
+    systemCards.forEach((item) => {
+      const active = item === card;
+      item.classList.toggle("is-active", active);
+
+      if (active) {
+        item.setAttribute("aria-current", "true");
+      } else {
+        item.removeAttribute("aria-current");
+      }
+    });
+
+    if (systemStatus) {
+      systemStatus.textContent =
+        systemStates[card.dataset.systemCard] || "System aktiv";
+    }
+
+    if (systemCount) {
+      systemCount.textContent =
+        `${String(index + 1).padStart(2, "0")} / ${String(systemCards.length).padStart(2, "0")}`;
+    }
+  };
+
+  const updateVisibleSystemCard = () => {
+    systemFrame = null;
+    if (!mobileSystemLayout.matches || !systemTrack) return;
+
+    const trackRect = systemTrack.getBoundingClientRect();
+    const trackCenter = trackRect.left + trackRect.width / 2;
+    let closestCard = systemCards[0];
+    let closestDistance = Number.POSITIVE_INFINITY;
+
+    systemCards.forEach((card) => {
+      const rect = card.getBoundingClientRect();
+      const distance = Math.abs(rect.left + rect.width / 2 - trackCenter);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestCard = card;
+      }
+    });
+
+    activateSystemCard(closestCard);
+  };
+
+  const requestSystemUpdate = () => {
+    if (systemFrame !== null) return;
+    systemFrame = window.requestAnimationFrame(updateVisibleSystemCard);
+  };
+
+  systemCards.forEach((card, index) => {
+    card.addEventListener("pointerenter", () => activateSystemCard(card));
+    card.addEventListener("focusin", () => activateSystemCard(card));
+    card.addEventListener("click", () => activateSystemCard(card));
+    card.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+
+      let nextIndex = index;
+      if (event.key === "ArrowLeft") {
+        nextIndex = (index - 1 + systemCards.length) % systemCards.length;
+      }
+      if (event.key === "ArrowRight") {
+        nextIndex = (index + 1) % systemCards.length;
+      }
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = systemCards.length - 1;
+
+      systemCards[nextIndex].focus();
+      activateSystemCard(systemCards[nextIndex]);
+    });
+  });
+
+  systemTrack?.addEventListener("scroll", requestSystemUpdate, { passive: true });
+  mobileSystemLayout.addEventListener("change", () => {
+    activateSystemCard(systemCards[0]);
+    requestSystemUpdate();
+  });
+
+  activateSystemCard(systemCards[0]);
+  requestSystemUpdate();
+}
+
+
 const motionScene = document.querySelector("[data-motion-scene]");
 
 if (motionScene) {
