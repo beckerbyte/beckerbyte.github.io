@@ -149,39 +149,42 @@
 
           <article id="text-analyzer-project" class="project-card project-card--analyzer glass reveal rounded-[2rem] p-6 sm:p-8" data-parallax-card>
             <div class="project-card__meta"><span>02 / 02</span><span>Python · CLI</span></div>
-            <div class="project-preview relative overflow-hidden rounded-[1.5rem] border border-white/10 p-5 sm:p-7" data-parallax-preview>
-              <div class="absolute -left-12 -top-12 h-36 w-36 rounded-full bg-sky-300/10 blur-3xl"></div>
+            <div class="project-preview python-window" data-parallax-preview>
+              <div class="python-window__titlebar">
+                <div class="python-window__brand" aria-hidden="true">
+                  <span class="python-mark python-mark--blue"></span>
+                  <span class="python-mark python-mark--yellow"></span>
+                </div>
+                <span>text_analyzer.py — Python 3.13</span>
+                <div class="python-window__controls" aria-hidden="true">
+                  <i></i><i></i><i></i>
+                </div>
+              </div>
 
-              <div class="relative">
-                <div class="flex items-center justify-between">
-                  <div class="flex gap-1.5">
-                    <span class="h-2.5 w-2.5 rounded-full bg-red-400/80"></span>
-                    <span class="h-2.5 w-2.5 rounded-full bg-amber-300/80"></span>
-                    <span class="h-2.5 w-2.5 rounded-full bg-green-300/80"></span>
-                  </div>
-                  <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Python CLI</span>
+              <div class="python-window__workspace">
+                <div class="python-window__tabs" aria-hidden="true">
+                  <span class="is-active">text_analyzer.py</span>
+                  <span>Terminal</span>
                 </div>
 
-                <pre class="mt-8 overflow-hidden font-mono text-[12px] leading-7 text-zinc-300 sm:text-sm"><code><span class="text-sky-300">def</span> <span class="text-green-300">analyze_text</span>(text):
-    words = text.split()
-    characters = len(text)
-    return {
-        <span class="text-green-300">"words"</span>: len(words),
-        <span class="text-green-300">"characters"</span>: characters
-    }</code></pre>
+                <div class="python-window__editor">
+                  <ol class="python-code" aria-label="Python-Codebeispiel">
+                    <li><code><b>from</b> collections <b>import</b> Counter</code></li>
+                    <li><code></code></li>
+                    <li><code><b>def</b> <em>analyze_text</em>(text):</code></li>
+                    <li><code>    words = text.lower().split()</code></li>
+                    <li><code>    <b>return</b> Counter(words)</code></li>
+                  </ol>
 
-                <div class="mt-8 grid grid-cols-3 gap-3 border-t border-white/10 pt-5 text-center">
-                  <div>
-                    <strong class="block text-lg text-white">CLI</strong>
-                    <span class="text-[11px] text-zinc-500">Interface</span>
-                  </div>
-                  <div>
-                    <strong class="block text-lg text-white">Fast</strong>
-                    <span class="text-[11px] text-zinc-500">Analysis</span>
-                  </div>
-                  <div>
-                    <strong class="block text-lg text-white">Simple</strong>
-                    <span class="text-[11px] text-zinc-500">Setup</span>
+                  <div class="python-terminal" aria-label="Beispielausgabe des Text-Analyzers">
+                    <div class="python-terminal__bar">
+                      <span>TERMINAL</span>
+                      <span>python</span>
+                    </div>
+                    <p><span class="python-prompt">$</span> python text_analyzer.py</p>
+                    <p><span class="python-label">Text:</span> Python macht Textanalyse übersichtlich.</p>
+                    <p class="python-result">✓ 5 Wörter · 39 Zeichen · 1 Satz</p>
+                    <p><span class="python-prompt">›</span><span class="python-cursor" aria-hidden="true"></span></p>
                   </div>
                 </div>
               </div>
