@@ -462,9 +462,29 @@ body.code-card-open {
     transform 220ms ease;
 }
 
-.timeline-item:nth-of-type(1) { --timeline-accent: rgba(134, 239, 172, 0.75); }
-.timeline-item:nth-of-type(2) { --timeline-accent: rgba(125, 211, 252, 0.75); }
-.timeline-item:nth-of-type(3) { --timeline-accent: rgba(196, 181, 253, 0.75); }
+.timeline-item:nth-of-type(1) { --timeline-accent: rgba(110, 231, 183, 0.75); }
+.timeline-item:nth-of-type(2) { --timeline-accent: rgba(134, 239, 172, 0.75); }
+.timeline-item:nth-of-type(3) { --timeline-accent: rgba(125, 211, 252, 0.75); }
+.timeline-item:nth-of-type(4) { --timeline-accent: rgba(196, 181, 253, 0.75); }
+
+.timeline-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.timeline-skill {
+  border: 1px solid rgba(110, 231, 183, 0.18);
+  border-radius: 999px;
+  background: rgba(110, 231, 183, 0.06);
+  padding: 0.4rem 0.68rem;
+  color: rgb(167, 243, 208);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.035em;
+  line-height: 1.25;
+}
 
 .timeline-item.is-active .timeline-dot {
   filter: brightness(1.18);
