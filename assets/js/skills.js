@@ -130,7 +130,12 @@ if (systemsScene && systemCards.length > 0) {
   const systemTrack = systemsScene.querySelector(".systems-lab__grid");
   const systemStatus = systemsScene.querySelector("[data-system-status]");
   const systemCount = systemsScene.querySelector("[data-system-count]");
+  const systemDialog = systemsScene.querySelector("[data-system-dialog]");
+  const systemClose = systemsScene.querySelector("[data-system-close]");
+  const systemExpandButtons = [...systemsScene.querySelectorAll("[data-system-expand]")];
+  const systemDetailPanels = [...systemsScene.querySelectorAll("[data-system-detail]")];
   const mobileSystemLayout = window.matchMedia("(max-width: 767px)");
+  let lastSystemTrigger = null;
   let systemFrame = null;
 
   const systemStates = {
@@ -165,6 +170,38 @@ if (systemsScene && systemCards.length > 0) {
     }
   };
 
+  const openSystemDetail = (key, trigger) => {
+    if (!systemDialog) return;
+
+    systemDetailPanels.forEach((panel) => {
+      const active = panel.dataset.systemDetail === key;
+      panel.classList.toggle("is-active", active);
+      panel.hidden = !active;
+    });
+
+    systemDialog.dataset.systemTheme = key;
+    lastSystemTrigger = trigger;
+    document.documentElement.classList.add("system-detail-open");
+
+    if (typeof systemDialog.showModal === "function") {
+      if (!systemDialog.open) systemDialog.showModal();
+    } else {
+      systemDialog.setAttribute("open", "");
+    }
+  };
+
+  const closeSystemDetail = () => {
+    if (!systemDialog) return;
+
+    if (typeof systemDialog.close === "function" && systemDialog.open) {
+      systemDialog.close();
+    } else {
+      systemDialog.removeAttribute("open");
+      document.documentElement.classList.remove("system-detail-open");
+      lastSystemTrigger?.focus();
+    }
+  };
+
   const updateVisibleSystemCard = () => {
     systemFrame = null;
     if (!mobileSystemLayout.matches || !systemTrack) return;
@@ -191,6 +228,25 @@ if (systemsScene && systemCards.length > 0) {
     if (systemFrame !== null) return;
     systemFrame = window.requestAnimationFrame(updateVisibleSystemCard);
   };
+
+  systemExpandButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const key = button.dataset.systemExpand;
+      const card = systemCards.find((item) => item.dataset.systemCard === key);
+      if (card) activateSystemCard(card);
+      openSystemDetail(key, button);
+    });
+  });
+
+  systemClose?.addEventListener("click", closeSystemDetail);
+  systemDialog?.addEventListener("click", (event) => {
+    if (event.target === systemDialog) closeSystemDetail();
+  });
+  systemDialog?.addEventListener("close", () => {
+    document.documentElement.classList.remove("system-detail-open");
+    lastSystemTrigger?.focus();
+  });
 
   systemCards.forEach((card, index) => {
     card.addEventListener("pointerenter", () => activateSystemCard(card));
