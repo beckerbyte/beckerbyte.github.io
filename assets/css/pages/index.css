@@ -657,6 +657,8 @@ body.code-card-open {
 }
 
 .hero-parallax__copy {
+  position: relative;
+  z-index: 1;
   transform:
     translate3d(calc(var(--hero-progress) * -36px), calc(var(--hero-progress) * -46px), calc(var(--hero-progress) * 75px))
     scale(calc(1 - var(--hero-progress) * 0.035));
@@ -665,6 +667,8 @@ body.code-card-open {
 }
 
 .hero-parallax__card {
+  position: relative;
+  z-index: 1;
   transform:
     translate3d(calc(var(--hero-progress) * 54px), calc(var(--hero-progress) * 58px), calc(var(--hero-progress) * 115px))
     rotateY(calc(-7deg + var(--hero-progress) * 12deg))
@@ -697,13 +701,6 @@ body.code-card-open {
   .hero-parallax__pin {
     position: sticky;
     top: 0;
-  }
-
-  .hero-depth {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    margin-bottom: -100vh;
   }
 
   .hero-parallax__cue {
