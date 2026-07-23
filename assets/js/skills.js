@@ -65,3 +65,45 @@ if (motionScene) {
   motionLayout.addEventListener("change", requestMotionUpdate);
   requestMotionUpdate();
 }
+
+
+const webTabs = [...document.querySelectorAll("[data-web-tab]")];
+const webPanels = [...document.querySelectorAll("[data-web-panel]")];
+
+if (webTabs.length > 0 && webPanels.length > 0) {
+  const activateWebTab = (selectedTab) => {
+    const target = selectedTab.dataset.webTab;
+
+    webTabs.forEach((tab) => {
+      const active = tab === selectedTab;
+      tab.classList.toggle("is-active", active);
+      tab.setAttribute("aria-selected", String(active));
+      tab.tabIndex = active ? 0 : -1;
+    });
+
+    webPanels.forEach((panel) => {
+      const active = panel.dataset.webPanel === target;
+      panel.classList.toggle("is-active", active);
+      panel.hidden = !active;
+    });
+  };
+
+  webTabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => activateWebTab(tab));
+    tab.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+
+      let nextIndex = index;
+      if (event.key === "ArrowLeft") nextIndex = (index - 1 + webTabs.length) % webTabs.length;
+      if (event.key === "ArrowRight") nextIndex = (index + 1) % webTabs.length;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = webTabs.length - 1;
+
+      webTabs[nextIndex].focus();
+      activateWebTab(webTabs[nextIndex]);
+    });
+  });
+
+  activateWebTab(webTabs.find((tab) => tab.classList.contains("is-active")) || webTabs[0]);
+}
