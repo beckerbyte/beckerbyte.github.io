@@ -1,3 +1,47 @@
+const skillsHero = document.querySelector("[data-skills-parallax]");
+
+if (skillsHero) {
+  const skillsHeroReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let skillsHeroFrame = null;
+
+  const clampSkillsHero = (value, minimum = 0, maximum = 1) =>
+    Math.min(Math.max(value, minimum), maximum);
+
+  const updateSkillsHero = () => {
+    skillsHeroFrame = null;
+
+    if (skillsHeroReducedMotion.matches) {
+      skillsHero.style.setProperty("--skills-hero-progress", "0");
+      return;
+    }
+
+    const rect = skillsHero.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const travel = Math.max(
+      rect.height - viewportHeight * 0.42,
+      viewportHeight * 0.72,
+      1
+    );
+    const progress = clampSkillsHero(-rect.top / travel);
+
+    skillsHero.style.setProperty(
+      "--skills-hero-progress",
+      progress.toFixed(4)
+    );
+  };
+
+  const requestSkillsHeroUpdate = () => {
+    if (skillsHeroFrame !== null) return;
+    skillsHeroFrame = window.requestAnimationFrame(updateSkillsHero);
+  };
+
+  window.addEventListener("scroll", requestSkillsHeroUpdate, { passive: true });
+  window.addEventListener("resize", requestSkillsHeroUpdate);
+  skillsHeroReducedMotion.addEventListener("change", requestSkillsHeroUpdate);
+  requestSkillsHeroUpdate();
+}
+
+
 const motionScene = document.querySelector("[data-motion-scene]");
 
 if (motionScene) {

@@ -362,10 +362,11 @@ if (heroParallax && !reducedMotion) {
     const rect = heroParallax.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
     const travel = Math.max(rect.height - viewportHeight, 1);
+    const mobileTravel = Math.max(viewportHeight * 0.82, 1);
 
     const progress = heroPinnedLayout.matches
       ? clampHero(-rect.top / travel)
-      : clampHero((viewportHeight * 0.18 - rect.top) / Math.max(rect.height, 1));
+      : clampHero(-rect.top / mobileTravel);
 
     const exit = clampHero((progress - 0.76) / 0.24);
     heroParallax.style.setProperty("--hero-progress", progress.toFixed(4));

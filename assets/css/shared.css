@@ -224,8 +224,8 @@ body > footer {
   -webkit-text-stroke: 1px rgba(134, 239, 172, 0.075);
   text-transform: uppercase;
   transform:
-    translate3d(calc(-50% + var(--hero-progress) * 80px), calc(-50% - var(--hero-progress) * 125px), -260px)
-    scale(calc(0.78 + var(--hero-progress) * 0.3));
+    translate3d(calc(-50% + var(--hero-progress) * 120px), calc(-50% - var(--hero-progress) * 190px), -260px)
+    scale(calc(0.76 + var(--hero-progress) * 0.42));
   opacity: calc(0.45 + var(--hero-progress) * 0.4);
   will-change: transform;
 }
@@ -243,9 +243,9 @@ body > footer {
   width: min(52vw, 48rem);
   aspect-ratio: 1;
   transform:
-    translate3d(calc(var(--hero-progress) * -90px), calc(var(--hero-progress) * 55px), 0)
-    rotate(calc(var(--hero-progress) * 95deg + var(--page-progress, 0) * 220deg))
-    scale(calc(0.82 + var(--hero-progress) * 0.18));
+    translate3d(calc(var(--hero-progress) * -145px), calc(var(--hero-progress) * 90px), 0)
+    rotate(calc(var(--hero-progress) * 135deg + var(--page-progress, 0) * 260deg))
+    scale(calc(0.78 + var(--hero-progress) * 0.26));
   box-shadow:
     inset 0 0 90px rgba(14, 165, 233, 0.025),
     0 0 80px rgba(14, 165, 233, 0.035);
@@ -259,8 +259,8 @@ body > footer {
   border-color: rgba(134, 239, 172, 0.16);
   border-style: dashed;
   transform:
-    translate3d(calc(var(--hero-progress) * 72px), calc(var(--hero-progress) * -48px), 0)
-    rotate(calc(var(--hero-progress) * -130deg - var(--page-progress, 0) * 180deg));
+    translate3d(calc(var(--hero-progress) * 110px), calc(var(--hero-progress) * -80px), 0)
+    rotate(calc(var(--hero-progress) * -190deg - var(--page-progress, 0) * 230deg));
 }
 
 .hero-depth__beam {
@@ -281,8 +281,8 @@ body > footer {
   transform:
     rotate(21deg)
     translate3d(
-      calc(var(--hero-progress) * 240px + var(--page-progress, 0) * 180px),
-      calc(var(--hero-progress) * -70px - var(--page-progress, 0) * 90px),
+      calc(var(--hero-progress) * 340px + var(--page-progress, 0) * 220px),
+      calc(var(--hero-progress) * -105px - var(--page-progress, 0) * 130px),
       0
     );
   opacity: calc(0.35 + var(--hero-progress) * 0.55);
@@ -325,8 +325,8 @@ body > footer {
   position: relative;
   z-index: 1;
   transform:
-    translate3d(calc(var(--hero-progress) * -36px), calc(var(--hero-progress) * -46px), calc(var(--hero-progress) * 75px))
-    scale(calc(1 - var(--hero-progress) * 0.035));
+    translate3d(calc(var(--hero-progress) * -58px), calc(var(--hero-progress) * -78px), calc(var(--hero-progress) * 120px))
+    scale(calc(1 - var(--hero-progress) * 0.055));
   opacity: calc(1 - var(--hero-exit) * 0.7);
   will-change: transform, opacity;
 }
@@ -335,10 +335,10 @@ body > footer {
   position: relative;
   z-index: 1;
   transform:
-    translate3d(calc(var(--hero-progress) * 54px), calc(var(--hero-progress) * 58px), calc(var(--hero-progress) * 115px))
-    rotateY(calc(-7deg + var(--hero-progress) * 12deg))
-    rotateX(calc(var(--hero-progress) * -4deg))
-    scale(calc(0.96 + var(--hero-progress) * 0.075));
+    translate3d(calc(var(--hero-progress) * 88px), calc(var(--hero-progress) * 90px), calc(var(--hero-progress) * 180px))
+    rotateY(calc(-9deg + var(--hero-progress) * 20deg))
+    rotateX(calc(var(--hero-progress) * -7deg))
+    scale(calc(0.95 + var(--hero-progress) * 0.12));
   filter:
     drop-shadow(0 35px 55px rgba(0, 0, 0, 0.38))
     drop-shadow(0 0 calc(var(--hero-progress) * 42px) rgba(74, 222, 128, 0.13));
@@ -414,11 +414,17 @@ body > footer {
     bottom: 12%;
   }
 
-  .hero-parallax__copy,
+  .hero-parallax__copy {
+    transform:
+      translate3d(calc(var(--hero-progress) * -10px), calc(var(--hero-progress) * -52px), 0)
+      scale(calc(1 - var(--hero-progress) * 0.035));
+  }
+
   .hero-parallax__card {
     transform:
-      translate3d(0, calc(var(--hero-progress) * -16px), 0)
-      scale(calc(1 - var(--hero-progress) * 0.015));
+      translate3d(calc(var(--hero-progress) * 12px), calc(var(--hero-progress) * 42px), 0)
+      rotate(calc(var(--hero-progress) * 1.5deg))
+      scale(calc(0.98 + var(--hero-progress) * 0.055));
   }
 
   .hero-depth__orbit--one {

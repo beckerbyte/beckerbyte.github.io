@@ -4,13 +4,100 @@
 }
 
 .skills-hero {
+  --skills-hero-progress: 0;
+  position: relative;
   padding: 4rem 0 6rem;
 }
 
 .skills-hero__grid {
+  position: relative;
   display: grid;
   align-items: center;
   gap: 4rem;
+  perspective: 1400px;
+}
+
+.skills-hero__copy,
+.capability-map {
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+}
+
+.skills-hero__copy.is-visible {
+  transform:
+    translate3d(
+      calc(var(--skills-hero-progress) * -54px),
+      calc(var(--skills-hero-progress) * -70px),
+      calc(var(--skills-hero-progress) * 90px)
+    )
+    scale(calc(1 - var(--skills-hero-progress) * 0.04));
+  opacity: calc(1 - var(--skills-hero-progress) * 0.22);
+}
+
+.capability-map.is-visible {
+  transform:
+    translate3d(
+      calc(var(--skills-hero-progress) * 70px),
+      calc(var(--skills-hero-progress) * 82px),
+      calc(var(--skills-hero-progress) * 140px)
+    )
+    rotateY(calc(-5deg + var(--skills-hero-progress) * 13deg))
+    rotateX(calc(var(--skills-hero-progress) * -4deg))
+    scale(calc(0.97 + var(--skills-hero-progress) * 0.07));
+  filter:
+    drop-shadow(0 32px 55px rgba(0, 0, 0, 0.36))
+    drop-shadow(0 0 56px rgba(56, 189, 248, 0.11));
+}
+
+.capability-map__grid {
+  will-change: transform;
+  transform:
+    translate3d(
+      calc(var(--skills-hero-progress) * -24px),
+      calc(var(--skills-hero-progress) * -18px),
+      0
+    )
+    scale(calc(1 + var(--skills-hero-progress) * 0.08));
+}
+
+.skills-hero .capability-map__orbit--outer {
+  transform:
+    translate(-50%, -50%)
+    rotate(calc(var(--skills-hero-progress) * 95deg))
+    scale(calc(1 + var(--skills-hero-progress) * 0.1));
+}
+
+.skills-hero .capability-map__core {
+  transform:
+    translate(-50%, -50%)
+    scale(calc(1 + var(--skills-hero-progress) * 0.08));
+}
+
+.skills-hero .capability-node--web {
+  transform:
+    translate3d(
+      calc(var(--skills-hero-progress) * -20px),
+      calc(var(--skills-hero-progress) * -12px),
+      0
+    );
+}
+
+.skills-hero .capability-node--systems {
+  transform:
+    translate3d(
+      calc(var(--skills-hero-progress) * 22px),
+      calc(var(--skills-hero-progress) * -18px),
+      0
+    );
+}
+
+.skills-hero .capability-node--creative {
+  transform:
+    translate3d(
+      calc(var(--skills-hero-progress) * -12px),
+      calc(var(--skills-hero-progress) * 24px),
+      0
+    );
 }
 
 .back-link {
@@ -789,7 +876,15 @@
 }
 
 @media (min-width: 1024px) {
+  .skills-hero {
+    min-height: 142vh;
+    padding-bottom: 0;
+  }
+
   .skills-hero__grid {
+    position: sticky;
+    top: 6.5rem;
+    min-height: calc(100vh - 6.5rem);
     grid-template-columns: minmax(0, 1.08fr) minmax(27rem, 0.72fr);
   }
 
@@ -818,6 +913,22 @@
   .skills-cta {
     grid-template-columns: 1fr auto;
     align-items: center;
+  }
+}
+
+@media (max-width: 1023px) {
+  .skills-hero__copy.is-visible {
+    transform:
+      translate3d(0, calc(var(--skills-hero-progress) * -34px), 0)
+      scale(calc(1 - var(--skills-hero-progress) * 0.025));
+    opacity: calc(1 - var(--skills-hero-progress) * 0.12);
+  }
+
+  .capability-map.is-visible {
+    transform:
+      translate3d(0, calc(var(--skills-hero-progress) * 46px), 0)
+      rotate(calc(var(--skills-hero-progress) * 1.5deg))
+      scale(calc(0.985 + var(--skills-hero-progress) * 0.035));
   }
 }
 
@@ -864,6 +975,20 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .skills-hero__copy,
+  .skills-hero__copy.is-visible,
+  .capability-map,
+  .capability-map.is-visible,
+  .capability-map__grid,
+  .capability-map__orbit--outer,
+  .capability-map__core,
+  .capability-node {
+    transform: none !important;
+    opacity: 1;
+    filter: none;
+    will-change: auto;
+  }
+
   .capability-map__orbit--inner {
     animation: none;
   }
