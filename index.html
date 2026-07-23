@@ -77,9 +77,19 @@
   </header>
 
   <main id="main">
-    <section id="home" class="relative flex min-h-screen items-center pt-32">
-      <div class="mx-auto grid w-full max-w-7xl items-center gap-16 px-6 py-20 lg:grid-cols-[1.2fr_0.8fr] lg:px-8">
-        <div>
+    <section id="home" class="hero-parallax relative" data-hero-parallax>
+      <div class="hero-depth" aria-hidden="true">
+        <div class="hero-depth__word">BUILD</div>
+        <div class="hero-depth__orbit hero-depth__orbit--one"></div>
+        <div class="hero-depth__orbit hero-depth__orbit--two"></div>
+        <div class="hero-depth__beam"></div>
+        <span class="hero-depth__tag hero-depth__tag--web">WEB / 01</span>
+        <span class="hero-depth__tag hero-depth__tag--systems">SYSTEMS / 02</span>
+        <span class="hero-depth__tag hero-depth__tag--motion">MOTION / 03</span>
+      </div>
+
+      <div class="hero-parallax__pin mx-auto grid w-full max-w-7xl items-center gap-16 px-6 py-20 lg:grid-cols-[1.2fr_0.8fr] lg:px-8">
+        <div class="hero-parallax__copy">
           <div class="hero-animate hero-delay-1 mb-7 inline-flex items-center gap-2 rounded-full border border-green-300/20 bg-green-300/10 px-3 py-1.5 text-xs font-medium text-green-200">
             <span class="h-2 w-2 animate-pulse rounded-full bg-green-300"></span>
             Offen für Austausch und nichtkommerzielle Kooperationen
@@ -118,7 +128,7 @@
           </div>
         </div>
 
-        <div id="code-card-stage" class="code-card-stage hero-animate hero-delay-5 lg:justify-self-end">
+        <div id="code-card-stage" class="code-card-stage hero-parallax__card hero-animate hero-delay-5 lg:justify-self-end">
           <div id="code-card" class="code-card glass relative overflow-hidden rounded-[2rem] p-5 shadow-glow sm:p-7" role="region" aria-label="Interaktive Code-Karte">
             <div class="code-card-swoosh" aria-hidden="true"></div>
             <div class="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-green-300/15 blur-3xl"></div>
@@ -196,7 +206,7 @@
 
       <a
         href="#about"
-        class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500 lg:flex"
+        class="hero-parallax__cue hidden items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500 lg:flex"
       >
         Scroll
         <span class="h-8 w-px bg-gradient-to-b from-zinc-500 to-transparent"></span>

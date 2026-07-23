@@ -516,3 +516,257 @@ body.code-card-open {
     transition: none !important;
   }
 }
+
+
+/* Cinematic scroll-linked depth sequence for the home hero. */
+.hero-parallax {
+  --hero-progress: 0;
+  --hero-exit: 0;
+  min-height: 100vh;
+  overflow: clip;
+  isolation: isolate;
+}
+
+.hero-parallax__pin {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  padding-top: 8rem;
+  perspective: 1200px;
+}
+
+.hero-depth {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-depth::after {
+  position: absolute;
+  inset: auto 0 0;
+  height: 28rem;
+  background: linear-gradient(to bottom, transparent, #050505 88%);
+  content: "";
+}
+
+.hero-depth__word {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  color: transparent;
+  font-size: clamp(9rem, 26vw, 30rem);
+  font-weight: 950;
+  letter-spacing: -0.1em;
+  line-height: 0.7;
+  -webkit-text-stroke: 1px rgba(134, 239, 172, 0.075);
+  text-transform: uppercase;
+  transform:
+    translate3d(calc(-50% + var(--hero-progress) * 80px), calc(-50% - var(--hero-progress) * 125px), -260px)
+    scale(calc(0.78 + var(--hero-progress) * 0.3));
+  opacity: calc(0.45 + var(--hero-progress) * 0.4);
+  will-change: transform;
+}
+
+.hero-depth__orbit {
+  position: absolute;
+  border: 1px solid rgba(125, 211, 252, 0.14);
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.hero-depth__orbit--one {
+  right: -8rem;
+  top: 18%;
+  width: min(52vw, 48rem);
+  aspect-ratio: 1;
+  transform:
+    translate3d(calc(var(--hero-progress) * -90px), calc(var(--hero-progress) * 55px), 0)
+    rotate(calc(var(--hero-progress) * 95deg))
+    scale(calc(0.82 + var(--hero-progress) * 0.18));
+  box-shadow:
+    inset 0 0 90px rgba(14, 165, 233, 0.025),
+    0 0 80px rgba(14, 165, 233, 0.035);
+}
+
+.hero-depth__orbit--two {
+  left: -9rem;
+  bottom: 4%;
+  width: min(38vw, 32rem);
+  aspect-ratio: 1;
+  border-color: rgba(134, 239, 172, 0.16);
+  border-style: dashed;
+  transform:
+    translate3d(calc(var(--hero-progress) * 72px), calc(var(--hero-progress) * -48px), 0)
+    rotate(calc(var(--hero-progress) * -130deg));
+}
+
+.hero-depth__beam {
+  position: absolute;
+  left: 48%;
+  top: -28%;
+  width: 9rem;
+  height: 155%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(134, 239, 172, 0.055),
+    rgba(125, 211, 252, 0.09),
+    transparent
+  );
+  filter: blur(22px);
+  mix-blend-mode: screen;
+  transform:
+    rotate(21deg)
+    translate3d(calc(var(--hero-progress) * 240px), calc(var(--hero-progress) * -70px), 0);
+  opacity: calc(0.35 + var(--hero-progress) * 0.55);
+}
+
+.hero-depth__tag {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 999px;
+  padding: 0.45rem 0.7rem;
+  background: rgba(8, 10, 9, 0.72);
+  color: rgb(113 113 122);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  backdrop-filter: blur(10px);
+  opacity: calc(var(--hero-progress) * 1.4);
+  will-change: transform;
+}
+
+.hero-depth__tag--web {
+  left: 7%;
+  top: 26%;
+  transform: translate3d(calc(var(--hero-progress) * 55px), calc((1 - var(--hero-progress)) * 70px), 0);
+}
+
+.hero-depth__tag--systems {
+  right: 8%;
+  top: 22%;
+  transform: translate3d(calc(var(--hero-progress) * -70px), calc((1 - var(--hero-progress)) * 105px), 0);
+}
+
+.hero-depth__tag--motion {
+  right: 24%;
+  bottom: 14%;
+  transform: translate3d(calc(var(--hero-progress) * -35px), calc((1 - var(--hero-progress)) * -75px), 0);
+}
+
+.hero-parallax__copy {
+  transform:
+    translate3d(calc(var(--hero-progress) * -36px), calc(var(--hero-progress) * -46px), calc(var(--hero-progress) * 75px))
+    scale(calc(1 - var(--hero-progress) * 0.035));
+  opacity: calc(1 - var(--hero-exit) * 0.7);
+  will-change: transform, opacity;
+}
+
+.hero-parallax__card {
+  transform:
+    translate3d(calc(var(--hero-progress) * 54px), calc(var(--hero-progress) * 58px), calc(var(--hero-progress) * 115px))
+    rotateY(calc(-7deg + var(--hero-progress) * 12deg))
+    rotateX(calc(var(--hero-progress) * -4deg))
+    scale(calc(0.96 + var(--hero-progress) * 0.075));
+  filter:
+    drop-shadow(0 35px 55px rgba(0, 0, 0, 0.38))
+    drop-shadow(0 0 calc(var(--hero-progress) * 42px) rgba(74, 222, 128, 0.13));
+  opacity: calc(1 - var(--hero-exit) * 0.48);
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+}
+
+.hero-parallax__cue {
+  position: absolute;
+  left: 50%;
+  bottom: 2rem;
+  z-index: 4;
+  transform:
+    translateX(-50%)
+    translateY(calc(var(--hero-progress) * 18px));
+  opacity: calc(1 - var(--hero-progress) * 1.7);
+}
+
+@media (min-width: 900px) and (min-height: 700px) {
+  .hero-parallax {
+    height: 168vh;
+  }
+
+  .hero-parallax__pin {
+    position: sticky;
+    top: 0;
+  }
+
+  .hero-depth {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    margin-bottom: -100vh;
+  }
+
+  .hero-parallax__cue {
+    position: fixed;
+  }
+}
+
+@media (max-width: 899px), (max-height: 699px) {
+  .hero-depth__word {
+    font-size: 42vw;
+  }
+
+  .hero-depth__tag {
+    display: none;
+  }
+
+  .hero-parallax__copy,
+  .hero-parallax__card {
+    transform:
+      translate3d(0, calc(var(--hero-progress) * -16px), 0)
+      scale(calc(1 - var(--hero-progress) * 0.015));
+  }
+
+  .hero-depth__orbit--one {
+    width: 30rem;
+    right: -18rem;
+  }
+
+  .hero-depth__orbit--two {
+    width: 22rem;
+    left: -14rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-parallax {
+    height: auto !important;
+    --hero-progress: 0;
+    --hero-exit: 0;
+  }
+
+  .hero-parallax__pin,
+  .hero-depth {
+    position: relative !important;
+    top: auto !important;
+  }
+
+  .hero-depth {
+    position: absolute !important;
+  }
+
+  .hero-depth__word,
+  .hero-depth__orbit,
+  .hero-depth__beam,
+  .hero-parallax__copy,
+  .hero-parallax__card,
+  .hero-parallax__cue {
+    transform: none !important;
+    filter: none !important;
+    will-change: auto;
+  }
+
+  .hero-depth__tag {
+    display: none;
+  }
+}
