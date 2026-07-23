@@ -340,23 +340,18 @@
 
 .process-line {
   display: grid;
+  gap: 0.75rem;
   margin: 0;
   padding: 0;
   list-style: none;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 1.25rem;
-  overflow: hidden;
 }
 
 .process-line li {
   position: relative;
   padding: 1.25rem;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1rem;
   background: rgba(255,255,255,0.018);
-}
-
-.process-line li:last-child {
-  border-bottom: 0;
 }
 
 .process-line span,
@@ -759,10 +754,6 @@
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .process-line li {
-    border-right: 1px solid rgba(255,255,255,0.08);
-    border-bottom: 0;
-  }
 
   .tool-row {
     grid-template-columns: repeat(4, 1fr);
@@ -2023,15 +2014,6 @@
 
   .process-line li {
     padding: 0.9rem;
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .process-line li:nth-child(2n) {
-    border-right: 0;
-  }
-
-  .process-line li:nth-child(-n + 2) {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .tool {
