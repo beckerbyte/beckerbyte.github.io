@@ -42,6 +42,87 @@ if (skillsHero) {
 }
 
 
+const webDesignPreview = document.querySelector("[data-design-preview]");
+const webDesignButtons = [...document.querySelectorAll("[data-design-option]")];
+
+if (webDesignPreview && webDesignButtons.length > 0) {
+  const designKicker = webDesignPreview.querySelector("[data-design-kicker]");
+  const designTitle = webDesignPreview.querySelector("[data-design-title]");
+  const designCopy = webDesignPreview.querySelector("[data-design-copy]");
+  const designLink = webDesignPreview.querySelector("[data-design-link]");
+
+  const webDesigns = {
+    portfolio: {
+      kicker: "PORTFOLIO · CLEAN · PERSONAL",
+      title: "Digitale Arbeiten, klar präsentiert.",
+      copy: "Projekte, Kompetenzen und Persönlichkeit in einer ruhigen, fokussierten Oberfläche.",
+      linkLabel: "Portfolio öffnen →",
+      href: "projekte.html#portfolio-project"
+    },
+    studio: {
+      kicker: "CREATIVE STUDIO · MOTION · BRAND",
+      title: "Ideen mit Bewegung und Charakter.",
+      copy: "Eine expressive Startseite für visuelle Arbeiten, Markenwelten und Motion Design.",
+      linkLabel: "Motion entdecken →",
+      href: "#creative"
+    },
+    systems: {
+      kicker: "SYSTEM HUB · NETWORK · DATA",
+      title: "Technik und Abläufe auf einen Blick.",
+      copy: "Ein strukturiertes Dashboard für Netzwerke, Daten, Automatisierung und Systemstatus.",
+      linkLabel: "Systeme ansehen →",
+      href: "#systems"
+    }
+  };
+
+  const activateWebDesign = (button) => {
+    const design = webDesigns[button.dataset.designOption];
+    if (!design) return;
+
+    webDesignButtons.forEach((item) => {
+      const active = item === button;
+      item.classList.toggle("is-active", active);
+      item.setAttribute("aria-pressed", String(active));
+    });
+
+    webDesignPreview.dataset.designTheme = button.dataset.designOption;
+    designKicker && (designKicker.textContent = design.kicker);
+    designTitle && (designTitle.textContent = design.title);
+    designCopy && (designCopy.textContent = design.copy);
+
+    if (designLink) {
+      designLink.textContent = design.linkLabel;
+      designLink.href = design.href;
+    }
+
+    webDesignPreview.classList.remove("is-changing");
+    void webDesignPreview.offsetWidth;
+    webDesignPreview.classList.add("is-changing");
+  };
+
+  webDesignButtons.forEach((button, index) => {
+    button.addEventListener("click", () => activateWebDesign(button));
+    button.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+
+      let nextIndex = index;
+      if (event.key === "ArrowLeft") {
+        nextIndex = (index - 1 + webDesignButtons.length) % webDesignButtons.length;
+      }
+      if (event.key === "ArrowRight") {
+        nextIndex = (index + 1) % webDesignButtons.length;
+      }
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = webDesignButtons.length - 1;
+
+      webDesignButtons[nextIndex].focus();
+      activateWebDesign(webDesignButtons[nextIndex]);
+    });
+  });
+}
+
+
 const motionScene = document.querySelector("[data-motion-scene]");
 
 if (motionScene) {
