@@ -250,20 +250,27 @@
               </p>
             </header>
 
-            <div class="systems-lab" aria-labelledby="systems-lab-heading">
+            <div class="systems-lab" data-system-scene aria-labelledby="systems-lab-heading">
               <div class="systems-lab__intro">
                 <div>
                   <span>Praxis aus der Umschulung</span>
                   <h3 id="systems-lab-heading">Systeme verbinden, prüfen und verstehen.</h3>
                 </div>
-                <p>
-                  Aktuelle Lernfelder – vom Netzaufbau über Datenbanken bis zur
-                  Automatisierung und hardwarenahen Steuerung.
-                </p>
+                <div class="systems-lab__meta">
+                  <p>
+                    Aktuelle Lernfelder – vom Netzaufbau über Datenbanken bis zur
+                    Automatisierung und hardwarenahen Steuerung.
+                  </p>
+                  <div class="systems-lab__status" aria-live="polite">
+                    <span><i aria-hidden="true"></i> Live Lab</span>
+                    <strong data-system-status>Netzwerk aktiv</strong>
+                    <small data-system-count>01 / 03</small>
+                  </div>
+                </div>
               </div>
 
               <div class="systems-lab__grid">
-                <figure class="systems-visual">
+                <figure class="systems-visual is-active" data-system-card="network" tabindex="0">
                   <img
                     src="./assets/img/systemintegration-network.svg"
                     alt="Schematisches Netzwerk mit Client, Switch, Router und Server"
@@ -278,7 +285,7 @@
                   </figcaption>
                 </figure>
 
-                <figure class="systems-visual">
+                <figure class="systems-visual" data-system-card="database" tabindex="0">
                   <img
                     src="./assets/img/systemintegration-database.svg"
                     alt="Schematische SQL-Datenbank mit Tabellen und Abfrage"
@@ -293,7 +300,7 @@
                   </figcaption>
                 </figure>
 
-                <figure class="systems-visual">
+                <figure class="systems-visual" data-system-card="automation" tabindex="0">
                   <img
                     src="./assets/img/systemintegration-automation.svg"
                     alt="Schematische Verbindung von Python-Skript, Arduino und Sensor"
