@@ -3,7 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/build.mjs",
-    "check": "npm run build && git diff --exit-code -- index.html skills.html projekte.html impressum.html datenschutz.html"
+    "build": "npm run build:css && npm run build:html",
+    "build:css": "tailwindcss -i ./assets/css/tailwind-input.css -o ./assets/css/tailwind.css --minify",
+    "build:html": "node scripts/build.mjs",
+    "check": "npm run build && git diff --exit-code -- index.html skills.html projekte.html impressum.html datenschutz.html assets/css/tailwind.css"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
   }
 }

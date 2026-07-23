@@ -9,32 +9,10 @@
   <link rel="icon" href="./assets/img/favicon-v2.png" type="image/png">
   <script src="./assets/js/shared.js" defer></script>
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-            mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"]
-          },
-          boxShadow: {
-            glow: "0 0 60px rgba(74, 222, 128, 0.12)"
-          }
-        }
-      }
-    };
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
 
   <link rel="stylesheet" href="./assets/css/shared.css">
-  <style>
-    .legal-section + .legal-section {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 2rem;
-      margin-top: 2rem;
-    }
-
-  </style>
+  <link rel="stylesheet" href="./assets/css/tailwind.css">
+  <link rel="stylesheet" href="./assets/css/pages/legal.css">
 </head>
 
 <body class="min-h-screen overflow-x-hidden font-sans text-zinc-100 antialiased selection:bg-green-300 selection:text-black">
@@ -156,13 +134,11 @@
 
           <section class="legal-section">
             <p class="font-mono text-xs uppercase tracking-[0.2em] text-green-300">05</p>
-            <h2 class="mt-3 text-2xl font-semibold">Externe Ressourcen</h2>
+            <h2 class="mt-3 text-2xl font-semibold">Lokale Ressourcen</h2>
             <p class="mt-5 leading-8 text-zinc-400">
-              Zur Darstellung wird Tailwind CSS über <span class="text-zinc-300">cdn.tailwindcss.com</span>
-              geladen. Dabei wird eine Verbindung zum Anbieter hergestellt, wodurch insbesondere
-              die IP-Adresse und technische Abrufdaten verarbeitet werden können. Rechtsgrundlage
-              ist Art. 6 Abs. 1 lit. f DSGVO; das berechtigte Interesse liegt in einer einheitlichen
-              und funktionsfähigen Darstellung der Website.
+              Stylesheets, Skripte, Schriftdefinitionen und Bilder werden lokal über die eigene
+              Website ausgeliefert. Beim Seitenaufruf wird hierfür keine zusätzliche Verbindung
+              zu einem externen Content-Delivery-Netzwerk hergestellt.
             </p>
           </section>
 

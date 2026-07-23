@@ -12,61 +12,10 @@
   <link rel="icon" href="./assets/img/favicon-v2.png" type="image/png">
   <script src="./assets/js/shared.js" defer></script>
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-            mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"]
-          },
-          boxShadow: {
-            glow: "0 0 60px rgba(74, 222, 128, 0.12)"
-          }
-        }
-      }
-    };
-  </script>
 
   <link rel="stylesheet" href="./assets/css/shared.css">
-  <style>
-    .gradient-text {
-      color: transparent;
-      background: linear-gradient(90deg, #ffffff 0%, #86efac 48%, #7dd3fc 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-    }
-
-    .skill-card {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .skill-card::after {
-      content: "";
-      position: absolute;
-      inset: auto -3rem -4rem auto;
-      width: 9rem;
-      height: 9rem;
-      border-radius: 9999px;
-      background: rgba(74, 222, 128, 0.07);
-      filter: blur(1rem);
-      transition: transform 350ms ease, opacity 350ms ease;
-      opacity: 0;
-    }
-
-    .skill-card:hover::after {
-      opacity: 1;
-      transform: scale(1.25);
-    }
-
-    .skill-icon {
-      background:
-        linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-    }
-
-  </style>
+  <link rel="stylesheet" href="./assets/css/tailwind.css">
+  <link rel="stylesheet" href="./assets/css/pages/skills.css">
 </head>
 
 <body class="min-h-screen overflow-x-hidden font-sans text-zinc-100 antialiased selection:bg-green-300 selection:text-black">
@@ -133,7 +82,7 @@
                   src="./assets/img/html-logo.png"
                   alt="HTML Logo"
                   class="h-full w-full object-contain"
-                  onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+            data-fallback-next
                 >
                 <span class="hidden font-mono text-xs font-bold text-orange-300">HTML</span>
               </div>
@@ -149,7 +98,7 @@
                   src="./assets/img/css-logo.png"
                   alt="CSS Logo"
                   class="h-full w-full object-contain"
-                  onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+            data-fallback-next
                 >
                 <span class="hidden font-mono text-xs font-bold text-sky-300">CSS</span>
               </div>
@@ -165,7 +114,7 @@
                   src="./assets/img/javascript-logo.png"
                   alt="JavaScript Logo"
                   class="h-full w-full object-contain"
-                  onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+            data-fallback-next
                 >
                 <span class="hidden font-mono text-xs font-bold text-yellow-300">JS</span>
               </div>
@@ -181,7 +130,7 @@
                   src="./assets/img/tailwind-logo.png"
                   alt="Tailwind CSS Logo"
                   class="h-full w-full object-contain"
-                  onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+            data-fallback-next
                 >
                 <span class="hidden font-mono text-[10px] font-bold text-cyan-300">TAILWIND</span>
               </div>
@@ -212,7 +161,7 @@
                     src="./assets/img/sap-logo.png"
                     alt="SAP Logo"
                     class="h-full w-full object-contain"
-                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+            data-fallback-next
                   >
                   <span class="hidden font-mono text-sm font-bold text-sky-300">SAP</span>
                 </div>
@@ -232,7 +181,7 @@
                     src="./assets/img/flexus-logo.png"
                     alt="Flexus Mobile Solutions Logo"
                     class="h-full w-full object-contain"
-                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+            data-fallback-next
                   >
                   <span class="hidden font-mono text-[10px] font-bold text-green-300">FLEXUS</span>
                 </div>
@@ -266,7 +215,7 @@
                     src="./assets/img/vscode-logo.png"
                     alt="Visual Studio Code Logo"
                     class="h-full w-full object-contain"
-                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+            data-fallback-next
                   >
                   <span class="hidden font-mono text-xs font-bold text-sky-300">VS CODE</span>
                 </div>
@@ -286,7 +235,7 @@
                     src="./assets/img/after-effects-logo.png"
                     alt="Adobe After Effects Logo"
                     class="h-full w-full object-contain"
-                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+            data-fallback-next
                   >
                   <span class="hidden font-mono text-sm font-bold text-violet-300">AE</span>
                 </div>

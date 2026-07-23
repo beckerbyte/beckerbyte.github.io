@@ -1,6 +1,13 @@
 const menuButton = document.getElementById("menu-button");
 const mobileMenu = document.getElementById("mobile-menu");
 
+document.querySelectorAll("[data-fallback-next]").forEach((image) => {
+  image.addEventListener("error", () => {
+    image.classList.add("hidden");
+    image.nextElementSibling?.classList.remove("hidden");
+  });
+});
+
 const closeMobileMenu = () => {
   mobileMenu?.classList.add("hidden");
   menuButton?.setAttribute("aria-expanded", "false");
