@@ -174,38 +174,81 @@
               </p>
             </header>
 
-            <div class="systems-layout">
-              <div class="system-card">
-                <div class="system-card__logo">
-                  <img src="./assets/img/sap-logo.png" alt="SAP" data-fallback-next>
-                  <span class="hidden">SAP</span>
-                </div>
+            <div class="systems-lab" aria-labelledby="systems-lab-heading">
+              <div class="systems-lab__intro">
                 <div>
-                  <span class="system-card__label">ERP & Prozesse</span>
-                  <h3>SAP ERP</h3>
-                  <p>Arbeit mit strukturierten betrieblichen Abläufen und Prozesszusammenhängen.</p>
+                  <span>Praxis aus der Umschulung</span>
+                  <h3 id="systems-lab-heading">Systeme verbinden, prüfen und verstehen.</h3>
                 </div>
-              </div>
-
-              <div class="system-card">
-                <div class="system-card__logo">
-                  <img src="./assets/img/flexus-logo.png" alt="Flexus Mobile Solutions" data-fallback-next>
-                  <span class="hidden">Flexus</span>
-                </div>
-                <div>
-                  <span class="system-card__label">Mobile Abläufe</span>
-                  <h3>Flexus Mobile Solutions</h3>
-                  <p>Mobile Anwendungen als Verbindung zwischen Prozess und praktischer Nutzung.</p>
-                </div>
-              </div>
-
-              <aside class="systems-note">
-                <span>Perspektive</span>
                 <p>
-                  Nicht nur fragen, ob etwas technisch funktioniert – sondern ob es in den
-                  vorhandenen Ablauf passt.
+                  Aktuelle Lernfelder – vom Netzaufbau über Datenbanken bis zur
+                  Automatisierung und hardwarenahen Steuerung.
                 </p>
-              </aside>
+              </div>
+
+              <div class="systems-lab__grid">
+                <figure class="systems-visual">
+                  <img
+                    src="./assets/img/systemintegration-network.svg"
+                    alt="Schematisches Netzwerk mit Client, Switch, Router und Server"
+                  >
+                  <figcaption>
+                    <span>Netzwerk-Labor</span>
+                    <h4>Cisco Packet Tracer</h4>
+                    <p>IPv4, Subnetting, Switching, Routing und grundlegende Netzwerkdiagnose.</p>
+                    <ul aria-label="Netzwerk-Lernfelder">
+                      <li>IPv4</li><li>VLAN</li><li>Routing</li><li>Ping</li>
+                    </ul>
+                  </figcaption>
+                </figure>
+
+                <figure class="systems-visual">
+                  <img
+                    src="./assets/img/systemintegration-database.svg"
+                    alt="Schematische SQL-Datenbank mit Tabellen und Abfrage"
+                  >
+                  <figcaption>
+                    <span>Daten & Abfragen</span>
+                    <h4>SQL mit HeidiSQL</h4>
+                    <p>Relationale Daten verstehen, Tabellen strukturieren und Abfragen nachvollziehen.</p>
+                    <ul aria-label="Datenbank-Lernfelder">
+                      <li>SELECT</li><li>JOIN</li><li>Tabellen</li><li>Relationen</li>
+                    </ul>
+                  </figcaption>
+                </figure>
+
+                <figure class="systems-visual">
+                  <img
+                    src="./assets/img/systemintegration-automation.svg"
+                    alt="Schematische Verbindung von Python-Skript, Arduino und Sensor"
+                  >
+                  <figcaption>
+                    <span>Code & Hardware</span>
+                    <h4>Python und Arduino</h4>
+                    <p>Kleine Automatisierungen entwickeln und das Zusammenspiel mit Hardware erproben.</p>
+                    <ul aria-label="Automatisierungs-Lernfelder">
+                      <li>Python</li><li>Arduino</li><li>Sensorik</li><li>Logik</li>
+                    </ul>
+                  </figcaption>
+                </figure>
+              </div>
+
+              <div class="systems-context">
+                <div>
+                  <span>Prozesskontext</span>
+                  <strong>SAP ERP</strong>
+                  <p>Strukturierte betriebliche Abläufe und Prozesszusammenhänge.</p>
+                </div>
+                <div>
+                  <span>Mobile Abläufe</span>
+                  <strong>Flexus Mobile Solutions</strong>
+                  <p>Verbindung zwischen Prozess, System und praktischer Nutzung.</p>
+                </div>
+                <aside>
+                  <span>Fokus</span>
+                  <p>Technik nicht isoliert betrachten: Netzwerk, Daten, Software und Prozess greifen ineinander.</p>
+                </aside>
+              </div>
             </div>
           </div>
         </article>
