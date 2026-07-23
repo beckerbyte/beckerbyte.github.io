@@ -3874,3 +3874,110 @@
     transition: none;
   }
 }
+
+
+/* Mobile affordance for the horizontal system-card track. */
+.systems-swipe-cue {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .systems-swipe-cue {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    min-height: 2.45rem;
+    border: 1px solid rgba(125, 211, 252, 0.16);
+    border-radius: 0.85rem;
+    padding: 0.58rem 0.72rem;
+    background:
+      linear-gradient(90deg, rgba(125, 211, 252, 0.07), rgba(134, 239, 172, 0.035)),
+      rgba(3, 10, 15, 0.64);
+    color: rgb(161 161 170);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .systems-swipe-cue > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .systems-swipe-cue > span i {
+    color: rgb(125 211 252);
+    font-size: 0.92rem;
+    font-style: normal;
+    animation: systems-swipe-nudge 1.8s ease-in-out infinite;
+  }
+
+  .systems-swipe-cue__progress {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .systems-swipe-cue__progress i {
+    width: 0.34rem;
+    height: 0.34rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.18);
+    transition:
+      width 220ms ease,
+      background 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  .systems-swipe-cue__progress i.is-active {
+    width: 1rem;
+    background: rgb(125 211 252);
+    box-shadow: 0 0 10px rgba(125, 211, 252, 0.55);
+  }
+
+  .systems-swipe-cue__progress b {
+    margin-left: 0.2rem;
+    color: rgb(134 239 172);
+    font-size: 0.9rem;
+    font-weight: 500;
+    animation: systems-swipe-arrow 1.8s ease-in-out infinite;
+  }
+
+  .systems-lab__grid {
+    grid-auto-columns: min(86%, 23rem);
+    padding-right: clamp(2.5rem, 12vw, 4rem);
+    scrollbar-width: none;
+  }
+
+  .systems-lab__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .systems-visual {
+    scroll-snap-align: start;
+  }
+}
+
+@keyframes systems-swipe-nudge {
+  0%, 100% { transform: translateX(0); opacity: 0.6; }
+  50% { transform: translateX(0.18rem); opacity: 1; }
+}
+
+@keyframes systems-swipe-arrow {
+  0%, 100% { transform: translateX(0); opacity: 0.55; }
+  50% { transform: translateX(0.28rem); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .systems-swipe-cue > span i,
+  .systems-swipe-cue__progress b {
+    animation: none;
+  }
+
+  .systems-swipe-cue__progress i {
+    transition: none;
+  }
+}
