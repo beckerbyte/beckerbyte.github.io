@@ -2204,3 +2204,359 @@
     grid-column: auto;
   }
 }
+
+
+/* Viewport-sized capability sections and compact mobile tracks. */
+@media (min-width: 1024px) and (min-height: 720px) {
+  .capability-block--web,
+  .capability-block--systems,
+  .creative-pin {
+    min-height: calc(100svh - 7.25rem);
+  }
+
+  .capability-block__body {
+    padding: 1.45rem 1.8rem;
+  }
+
+  .capability-block__header {
+    gap: 1rem;
+    padding-bottom: 1.15rem;
+  }
+
+  .capability-block__header h2 {
+    margin-top: 0.45rem;
+    font-size: clamp(2rem, 3vw, 3rem);
+  }
+
+  .capability-block__header > p {
+    line-height: 1.55;
+  }
+
+  .web-workbench {
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .web-browser__canvas,
+  .web-workbench__panel {
+    min-height: 15rem;
+  }
+
+  .web-browser__hero {
+    padding: 1.55rem 0 1rem;
+  }
+
+  .web-browser__hero strong {
+    font-size: clamp(1.65rem, 2.7vw, 2.45rem);
+  }
+
+  .web-browser__hero p {
+    margin-top: 0.65rem;
+  }
+
+  .web-browser__hero > a {
+    margin-top: 0.75rem;
+  }
+
+  .web-code {
+    padding: 0.9rem 1rem;
+  }
+
+  .web-build > div {
+    padding-block: 0.5rem;
+  }
+
+  .process-line,
+  .tool-row {
+    gap: 0.55rem;
+  }
+
+  .process-line li,
+  .tool {
+    padding: 0.72rem;
+  }
+
+  .systems-lab {
+    gap: 0.6rem;
+  }
+
+  .systems-lab__intro {
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .systems-lab__intro h3 {
+    margin-top: 0.3rem;
+    font-size: clamp(1.25rem, 2vw, 1.65rem);
+  }
+
+  .systems-lab__intro > p {
+    line-height: 1.45;
+  }
+
+  .systems-lab__grid,
+  .systems-context {
+    gap: 0.55rem;
+  }
+
+  .systems-visual > img {
+    aspect-ratio: 2.35 / 1;
+  }
+
+  .systems-visual figcaption {
+    padding: 0.78rem;
+  }
+
+  .systems-visual h4 {
+    margin-top: 0.25rem;
+    font-size: 1rem;
+  }
+
+  .systems-visual p {
+    margin-top: 0.35rem;
+    line-height: 1.4;
+  }
+
+  .systems-visual ul {
+    gap: 0.28rem;
+    margin-top: 0.55rem;
+  }
+
+  .systems-visual li {
+    padding: 0.24rem 0.42rem;
+  }
+
+  .systems-context > div,
+  .systems-context > aside {
+    padding: 0.72rem 0.85rem;
+  }
+
+  .systems-context p {
+    margin-top: 0.3rem;
+    line-height: 1.4;
+  }
+
+  .ae-canvas {
+    min-height: clamp(15rem, 34svh, 22rem);
+  }
+
+  .ae-composition__toolbar {
+    min-height: 2.55rem;
+  }
+
+  .ae-timeline {
+    padding-block: 0.55rem 0.7rem;
+  }
+
+  .ae-inspector {
+    gap: 0.5rem;
+  }
+
+  .ae-inspector__header {
+    padding: 0.75rem;
+  }
+
+  .ae-phases li {
+    padding: 0.62rem 0.75rem;
+  }
+
+  .ae-inspector__status,
+  .ae-inspector > p {
+    padding: 0.72rem 0.8rem;
+  }
+
+  .ae-inspector > p {
+    line-height: 1.45;
+  }
+}
+
+@media (max-width: 767px) {
+  .capability-block__body {
+    padding: 0.75rem;
+  }
+
+  .capability-block__header {
+    padding-bottom: 0.9rem;
+  }
+
+  .capability-block__header h2 {
+    font-size: clamp(1.55rem, 7.2vw, 2rem);
+  }
+
+  .capability-block__header > p {
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .web-workbench {
+    display: flex;
+    width: 100%;
+    gap: 0.65rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding-bottom: 0.45rem;
+    scroll-padding-inline: 0;
+    scroll-snap-type: inline mandatory;
+    scrollbar-width: thin;
+  }
+
+  .web-workbench__browser,
+  .web-workbench__panel {
+    flex: 0 0 calc(100% - 0.75rem);
+    min-width: 0;
+    min-height: 17.5rem;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .web-browser__canvas {
+    min-height: 14.75rem;
+  }
+
+  .web-browser__hero {
+    padding: 1.35rem 0 0.8rem;
+  }
+
+  .web-browser__hero strong {
+    font-size: clamp(1.45rem, 7vw, 1.9rem);
+  }
+
+  .web-browser__hero p {
+    margin-top: 0.6rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .web-browser__hero > a {
+    margin-top: 0.75rem;
+  }
+
+  .web-workbench__panel {
+    min-height: 17.5rem;
+  }
+
+  .web-code {
+    min-height: 8.6rem;
+    padding: 0.8rem;
+    font-size: 0.68rem;
+  }
+
+  .web-build > div {
+    padding: 0.46rem 0.65rem;
+  }
+
+  .process-line,
+  .tool-row {
+    display: flex;
+    gap: 0.55rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding-bottom: 0.35rem;
+    scroll-snap-type: inline mandatory;
+    scrollbar-width: thin;
+  }
+
+  .process-line li {
+    flex: 0 0 8.7rem;
+    min-height: 5.5rem;
+    scroll-snap-align: start;
+  }
+
+  .process-line strong,
+  .process-line small {
+    margin-left: 1.65rem;
+  }
+
+  .tool {
+    flex: 0 0 10.5rem;
+    min-height: 4.8rem;
+    scroll-snap-align: start;
+  }
+
+  .systems-lab {
+    gap: 0.7rem;
+  }
+
+  .systems-lab__intro {
+    gap: 0.6rem;
+    padding: 0.85rem;
+  }
+
+  .systems-lab__intro h3 {
+    margin-top: 0.3rem;
+    font-size: 1.3rem;
+  }
+
+  .systems-lab__intro > p {
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .systems-lab__grid {
+    display: grid;
+    width: 100%;
+    grid-auto-columns: calc(100% - 0.75rem);
+    grid-auto-flow: column;
+    gap: 0.65rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    margin: 0;
+    padding: 0 0 0.45rem;
+    scroll-padding-inline: 0;
+    scroll-snap-type: inline mandatory;
+    scrollbar-width: thin;
+  }
+
+  .systems-visual {
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .systems-visual > img {
+    aspect-ratio: 2.35 / 1;
+  }
+
+  .systems-visual figcaption {
+    padding: 0.78rem;
+  }
+
+  .systems-visual h4 {
+    margin-top: 0.25rem;
+    font-size: 1rem;
+  }
+
+  .systems-visual p {
+    margin-top: 0.35rem;
+    font-size: 0.88rem;
+    line-height: 1.4;
+  }
+
+  .systems-visual ul {
+    margin-top: 0.55rem;
+  }
+
+  .systems-context {
+    display: flex;
+    gap: 0.55rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding-bottom: 0.4rem;
+    scroll-snap-type: inline mandatory;
+    scrollbar-width: thin;
+  }
+
+  .systems-context > div,
+  .systems-context > aside {
+    flex: 0 0 calc(100% - 2rem);
+    min-width: 0;
+    padding: 0.78rem;
+    scroll-snap-align: start;
+  }
+
+  .systems-context p {
+    margin-top: 0.3rem;
+    font-size: 0.88rem;
+    line-height: 1.4;
+  }
+}
