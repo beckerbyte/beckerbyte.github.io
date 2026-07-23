@@ -23,8 +23,24 @@ Dieses Portfolio ist mehr als eine statische Website. Es zeigt, wie ich denke, a
 ## ⚙️ Stack & Tools
 
 - HTML5, CSS3
+- Dependency-freier Node.js-Build für gemeinsame Layout-Templates
 - Git & GitHub Pages
 - VS Code, CLI, Figma
+
+---
+
+## 🧩 Seiten bearbeiten
+
+Header und Footer liegen zentral unter `src/partials/`. Die eigentlichen Seitenquellen
+liegen unter `src/pages/`. Die HTML-Dateien im Projektstamm werden daraus generiert und
+weiterhin direkt von Cloudflare Pages beziehungsweise GitHub Pages ausgeliefert.
+
+```bash
+npm run build
+```
+
+Nach Änderungen an Templates oder Partials müssen die generierten HTML-Dateien gemeinsam
+mit den Quelldateien committed werden. `npm run check` prüft, ob der generierte Stand aktuell ist.
 
 ---
 
@@ -39,6 +55,12 @@ Dieses Portfolio ist mehr als eine statische Website. Es zeigt, wie ich denke, a
 ```bash
 beckerbyte/
 ├── index.html
+├── package.json
+├── scripts/
+│   └── build.mjs
+├── src/
+│   ├── pages/
+│   └── partials/
 ├── assets/
 │   ├── css/
 │   │   └── style.css
