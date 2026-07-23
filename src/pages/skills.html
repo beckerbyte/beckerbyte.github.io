@@ -32,254 +32,274 @@
   {{HEADER}}
 
   <main id="main" class="pt-32">
-    <section class="pb-14 pt-16 sm:pb-20 sm:pt-24">
-      <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="reveal max-w-4xl">
-          <a
-            href="index.html"
-            class="mb-8 inline-flex items-center gap-2 text-sm text-zinc-400 transition hover:text-white"
-          >
-            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <section class="skills-hero">
+      <div class="skills-shell skills-hero__grid">
+        <div class="reveal">
+          <a href="index.html" class="back-link">
+            <svg class="back-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
             Zurück zur Startseite
           </a>
 
-          <p class="section-kicker font-mono text-xs uppercase tracking-[0.24em] text-zinc-400">
-            Skills & Werkzeuge
-          </p>
-
-          <h1 class="mt-5 text-5xl font-black leading-[0.98] tracking-[-0.055em] sm:text-7xl">
-            Technologie trifft
-            <span class="gradient-text block">praktische Anwendung.</span>
+          <p class="skills-kicker">Erfahrungen & Arbeitsweise</p>
+          <h1 class="skills-title">
+            Nicht nur Tools.
+            <span>Ein Arbeitsmodell.</span>
           </h1>
-
-          <p class="mt-7 max-w-3xl text-lg leading-8 text-zinc-400 sm:text-xl">
-            Systeme, Webtechnologien und Kreativwerkzeuge, mit denen ich digitale Lösungen
-            konzipiere, entwickle und umsetze.
+          <p class="skills-intro">
+            Ich verbinde Webentwicklung, Systemverständnis und visuelle Gestaltung.
+            Entscheidend ist für mich nicht die Länge einer Tool-Liste, sondern wie aus
+            einzelnen Fähigkeiten ein nachvollziehbares Ergebnis entsteht.
           </p>
+
+          <nav class="skills-jump" aria-label="Kompetenzbereiche">
+            <a href="#web">Web</a>
+            <a href="#systems">Systeme</a>
+            <a href="#creative">Creative Tech</a>
+          </nav>
+        </div>
+
+        <div class="capability-map reveal" aria-label="Kompetenzmodell: Webentwicklung, Systeme und Creative Tech">
+          <div class="capability-map__grid" aria-hidden="true"></div>
+          <div class="capability-map__orbit capability-map__orbit--outer" aria-hidden="true"></div>
+          <div class="capability-map__orbit capability-map__orbit--inner" aria-hidden="true"></div>
+
+          <div class="capability-map__core">
+            <span>beckerbyte</span>
+            <strong>Build useful things</strong>
+          </div>
+
+          <div class="capability-node capability-node--web">
+            <span>01</span>
+            <strong>Web</strong>
+          </div>
+          <div class="capability-node capability-node--systems">
+            <span>02</span>
+            <strong>Systeme</strong>
+          </div>
+          <div class="capability-node capability-node--creative">
+            <span>03</span>
+            <strong>Motion</strong>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="pb-24 sm:pb-32">
-      <div class="mx-auto max-w-7xl space-y-16 px-6 lg:px-8">
-        <section class="reveal" aria-labelledby="web-heading">
-          <div class="mb-7 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-            <div>
-              <p class="font-mono text-xs uppercase tracking-[0.22em] text-green-300">01 · Development</p>
-              <h2 id="web-heading" class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Webentwicklung</h2>
+    <section class="skills-signal" aria-label="Grundsätze">
+      <div class="skills-shell skills-signal__grid">
+        <div><span>01</span><strong>Verstehen</strong><small>Kontext vor Code</small></div>
+        <div><span>02</span><strong>Strukturieren</strong><small>Komplexität reduzieren</small></div>
+        <div><span>03</span><strong>Umsetzen</strong><small>Sauber und nachvollziehbar</small></div>
+        <div><span>04</span><strong>Verbessern</strong><small>Prüfen und iterieren</small></div>
+      </div>
+    </section>
+
+    <section class="skills-content">
+      <div class="skills-shell">
+        <header class="section-intro reveal">
+          <p class="skills-kicker">Capability stack</p>
+          <h2>Drei Felder. Ein gemeinsamer Anspruch.</h2>
+          <p>
+            Jeder Bereich hat eine andere Aufgabe. Zusammen bilden sie meinen Weg von der
+            technischen Grundlage bis zur visuellen Ausarbeitung.
+          </p>
+        </header>
+
+        <article id="web" class="capability-block capability-block--web reveal">
+          <div class="capability-block__index">
+            <span>01</span>
+            <p>Development</p>
+          </div>
+
+          <div class="capability-block__body">
+            <header class="capability-block__header">
+              <div>
+                <p class="capability-block__eyebrow">Webentwicklung</p>
+                <h2>Vom Markup zum wartbaren Interface.</h2>
+              </div>
+              <p>
+                Semantische Strukturen, responsive Layouts und gezielte Interaktion –
+                möglichst direkt, zugänglich und ohne unnötige Laufzeit-Abhängigkeiten.
+              </p>
+            </header>
+
+            <ol class="process-line" aria-label="Webentwicklungsprozess">
+              <li><span>01</span><strong>Semantik</strong><small>HTML</small></li>
+              <li><span>02</span><strong>Layout</strong><small>CSS</small></li>
+              <li><span>03</span><strong>Interaktion</strong><small>JavaScript</small></li>
+              <li><span>04</span><strong>System</strong><small>Tailwind & Build</small></li>
+            </ol>
+
+            <div class="tool-row" aria-label="Webtechnologien">
+              <div class="tool">
+                <img src="./assets/img/html-logo.png" alt="" data-fallback-next>
+                <span>HTML</span>
+                <strong>Struktur</strong>
+              </div>
+              <div class="tool">
+                <img src="./assets/img/css-logo.png" alt="" data-fallback-next>
+                <span>CSS</span>
+                <strong>Layout</strong>
+              </div>
+              <div class="tool">
+                <img src="./assets/img/javascript-logo.png" alt="" data-fallback-next>
+                <span>JavaScript</span>
+                <strong>Verhalten</strong>
+              </div>
+              <div class="tool">
+                <img src="./assets/img/tailwind-logo.png" alt="" data-fallback-next>
+                <span>Tailwind</span>
+                <strong>System</strong>
+              </div>
             </div>
-            <p class="max-w-md text-sm leading-6 text-zinc-500">
-              Solide Grundlagen und moderne Werkzeuge für responsive, wartbare Interfaces.
-            </p>
+          </div>
+        </article>
+
+        <article id="systems" class="capability-block capability-block--systems reveal">
+          <div class="capability-block__index">
+            <span>02</span>
+            <p>Systems</p>
           </div>
 
-          <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            <article class="skill-card glass rounded-3xl p-6 transition hover:-translate-y-1 hover:border-green-300/25">
-              <div class="skill-icon flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 p-3">
-                <img
-                  src="./assets/img/html-logo.png"
-                  alt="HTML Logo"
-                  class="h-full w-full object-contain"
-            data-fallback-next
-                >
-                <span class="hidden font-mono text-xs font-bold text-orange-300">HTML</span>
+          <div class="capability-block__body">
+            <header class="capability-block__header">
+              <div>
+                <p class="capability-block__eyebrow">Systemintegration</p>
+                <h2>Technik im Kontext von Abläufen.</h2>
               </div>
-              <h3 class="mt-6 text-xl font-semibold">HTML</h3>
-              <p class="mt-3 text-sm leading-6 text-zinc-400">
-                Semantische Struktur als belastbare Grundlage moderner Websites.
+              <p>
+                Systeme sind nicht isoliert. Ich betrachte Werkzeuge, Daten und Prozesse
+                gemeinsam, damit technische Lösungen im realen Ablauf verständlich bleiben.
               </p>
-            </article>
+            </header>
 
-            <article class="skill-card glass rounded-3xl p-6 transition hover:-translate-y-1 hover:border-green-300/25">
-              <div class="skill-icon flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 p-3">
-                <img
-                  src="./assets/img/css-logo.png"
-                  alt="CSS Logo"
-                  class="h-full w-full object-contain"
-            data-fallback-next
-                >
-                <span class="hidden font-mono text-xs font-bold text-sky-300">CSS</span>
+            <div class="systems-layout">
+              <div class="system-card">
+                <div class="system-card__logo">
+                  <img src="./assets/img/sap-logo.png" alt="SAP" data-fallback-next>
+                  <span>SAP</span>
+                </div>
+                <div>
+                  <span class="system-card__label">ERP & Prozesse</span>
+                  <h3>SAP ERP</h3>
+                  <p>Arbeit mit strukturierten betrieblichen Abläufen und Prozesszusammenhängen.</p>
+                </div>
               </div>
-              <h3 class="mt-6 text-xl font-semibold">CSS</h3>
-              <p class="mt-3 text-sm leading-6 text-zinc-400">
-                Responsive Layouts, visuelle Systeme und saubere Interaktionen.
-              </p>
-            </article>
 
-            <article class="skill-card glass rounded-3xl p-6 transition hover:-translate-y-1 hover:border-green-300/25">
-              <div class="skill-icon flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 p-3">
-                <img
-                  src="./assets/img/javascript-logo.png"
-                  alt="JavaScript Logo"
-                  class="h-full w-full object-contain"
-            data-fallback-next
-                >
-                <span class="hidden font-mono text-xs font-bold text-yellow-300">JS</span>
+              <div class="system-card">
+                <div class="system-card__logo">
+                  <img src="./assets/img/flexus-logo.png" alt="Flexus Mobile Solutions" data-fallback-next>
+                  <span>Flexus</span>
+                </div>
+                <div>
+                  <span class="system-card__label">Mobile Abläufe</span>
+                  <h3>Flexus Mobile Solutions</h3>
+                  <p>Mobile Anwendungen als Verbindung zwischen Prozess und praktischer Nutzung.</p>
+                </div>
               </div>
-              <h3 class="mt-6 text-xl font-semibold">JavaScript</h3>
-              <p class="mt-3 text-sm leading-6 text-zinc-400">
-                Dynamische Funktionen und interaktive Benutzeroberflächen.
-              </p>
-            </article>
 
-            <article class="skill-card glass rounded-3xl p-6 transition hover:-translate-y-1 hover:border-green-300/25">
-              <div class="skill-icon flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 p-3">
-                <img
-                  src="./assets/img/tailwind-logo.png"
-                  alt="Tailwind CSS Logo"
-                  class="h-full w-full object-contain"
-            data-fallback-next
-                >
-                <span class="hidden font-mono text-[10px] font-bold text-cyan-300">TAILWIND</span>
-              </div>
-              <h3 class="mt-6 text-xl font-semibold">Tailwind CSS</h3>
-              <p class="mt-3 text-sm leading-6 text-zinc-400">
-                Schnelle, konsistente Umsetzung komponentenbasierter Oberflächen.
-              </p>
-            </article>
+              <aside class="systems-note">
+                <span>Perspektive</span>
+                <p>
+                  Nicht nur fragen, ob etwas technisch funktioniert – sondern ob es in den
+                  vorhandenen Ablauf passt.
+                </p>
+              </aside>
+            </div>
           </div>
+        </article>
+
+        <article id="creative" class="capability-block capability-block--creative reveal">
+          <div class="capability-block__index">
+            <span>03</span>
+            <p>Creative Tech</p>
+          </div>
+
+          <div class="capability-block__body">
+            <header class="capability-block__header">
+              <div>
+                <p class="capability-block__eyebrow">Visuelle Systeme</p>
+                <h2>Bewegung mit technischer Grundlage.</h2>
+              </div>
+              <p>
+                Motion und visuelle Gestaltung ergänzen meine technische Arbeit dort,
+                wo Hierarchie, Feedback und Atmosphäre verständlicher werden sollen.
+              </p>
+            </header>
+
+            <div class="creative-stage">
+              <div class="creative-stage__preview" aria-hidden="true">
+                <div class="motion-frame motion-frame--one"></div>
+                <div class="motion-frame motion-frame--two"></div>
+                <div class="motion-frame motion-frame--three"></div>
+                <span>motion / timing / composition</span>
+              </div>
+
+              <div class="creative-stage__tools">
+                <div class="creative-tool">
+                  <img src="./assets/img/after-effects-logo.png" alt="" data-fallback-next>
+                  <span>AE</span>
+                  <div>
+                    <small>Motion Graphics</small>
+                    <strong>Adobe After Effects</strong>
+                  </div>
+                </div>
+                <div class="creative-tool">
+                  <img src="./assets/img/vscode-logo.png" alt="" data-fallback-next>
+                  <span>VS</span>
+                  <div>
+                    <small>Entwicklungsumgebung</small>
+                    <strong>Visual Studio Code</strong>
+                  </div>
+                </div>
+                <p>
+                  Gestaltung und Umsetzung bleiben keine getrennten Welten:
+                  Bewegung wird als Teil der Benutzerführung gedacht.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <section class="working-model reveal" aria-labelledby="working-model-heading">
+          <div class="working-model__intro">
+            <p class="skills-kicker">Arbeitsweise</p>
+            <h2 id="working-model-heading">Vom Problem zum nachvollziehbaren Ergebnis.</h2>
+          </div>
+
+          <ol class="working-model__steps">
+            <li>
+              <span>01</span>
+              <div><strong>Kontext klären</strong><p>Ziel, Rahmen und tatsächlichen Bedarf verstehen.</p></div>
+            </li>
+            <li>
+              <span>02</span>
+              <div><strong>Struktur entwickeln</strong><p>Inhalte, Komponenten und technische Grenzen ordnen.</p></div>
+            </li>
+            <li>
+              <span>03</span>
+              <div><strong>Schrittweise bauen</strong><p>Kleine, prüfbare Änderungen statt unnötiger Komplexität.</p></div>
+            </li>
+            <li>
+              <span>04</span>
+              <div><strong>Ergebnis prüfen</strong><p>Lesbarkeit, Verhalten und Wartbarkeit gemeinsam betrachten.</p></div>
+            </li>
+          </ol>
         </section>
 
-        <section class="reveal" aria-labelledby="systems-heading">
-          <div class="mb-7 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-            <div>
-              <p class="font-mono text-xs uppercase tracking-[0.22em] text-sky-300">02 · Systems</p>
-              <h2 id="systems-heading" class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Business & Systeme</h2>
-            </div>
-            <p class="max-w-md text-sm leading-6 text-zinc-500">
-              Erfahrung mit betrieblichen Prozessen und mobilen Unternehmenslösungen.
+        <section class="skills-cta reveal">
+          <div>
+            <p class="skills-kicker">Praxis statt Etiketten</p>
+            <h2>Die konkrete Anwendung steckt in den Projekten.</h2>
+            <p>
+              Dieses Portfolio dient dem Lernen, Dokumentieren und fachlichen Austausch.
+              Es ist kein gewerbliches Leistungsangebot.
             </p>
           </div>
-
-          <div class="grid gap-5 md:grid-cols-2">
-            <article class="skill-card glass rounded-3xl p-6 transition hover:-translate-y-1 hover:border-sky-300/25 sm:p-8">
-              <div class="flex flex-col gap-6 sm:flex-row sm:items-center">
-                <div class="skill-icon flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl border border-white/10 p-4">
-                  <img
-                    src="./assets/img/sap-logo.png"
-                    alt="SAP Logo"
-                    class="h-full w-full object-contain"
-            data-fallback-next
-                  >
-                  <span class="hidden font-mono text-sm font-bold text-sky-300">SAP</span>
-                </div>
-                <div>
-                  <h3 class="text-2xl font-semibold">SAP ERP</h3>
-                  <p class="mt-3 leading-7 text-zinc-400">
-                    Arbeit mit ERP-Prozessen und strukturierten Unternehmensabläufen.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <article class="skill-card glass rounded-3xl p-6 transition hover:-translate-y-1 hover:border-sky-300/25 sm:p-8">
-              <div class="flex flex-col gap-6 sm:flex-row sm:items-center">
-                <div class="skill-icon flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl border border-white/10 p-4">
-                  <img
-                    src="./assets/img/flexus-logo.png"
-                    alt="Flexus Mobile Solutions Logo"
-                    class="h-full w-full object-contain"
-            data-fallback-next
-                  >
-                  <span class="hidden font-mono text-[10px] font-bold text-green-300">FLEXUS</span>
-                </div>
-                <div>
-                  <h3 class="text-2xl font-semibold">Flexus Mobile Solutions</h3>
-                  <p class="mt-3 leading-7 text-zinc-400">
-                    Mobile Lösungen und Anwendungen im Umfeld betrieblicher Prozesse.
-                  </p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="reveal" aria-labelledby="tools-heading">
-          <div class="mb-7 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-            <div>
-              <p class="font-mono text-xs uppercase tracking-[0.22em] text-violet-300">03 · Workflow</p>
-              <h2 id="tools-heading" class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Tools & Creative</h2>
-            </div>
-            <p class="max-w-md text-sm leading-6 text-zinc-500">
-              Werkzeuge für Entwicklung, Animation und visuelle Umsetzung.
-            </p>
-          </div>
-
-          <div class="grid gap-5 md:grid-cols-2">
-            <article class="skill-card glass rounded-3xl p-6 transition hover:-translate-y-1 hover:border-violet-300/25 sm:p-8">
-              <div class="flex flex-col gap-6 sm:flex-row sm:items-center">
-                <div class="skill-icon flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl border border-white/10 p-4">
-                  <img
-                    src="./assets/img/vscode-logo.png"
-                    alt="Visual Studio Code Logo"
-                    class="h-full w-full object-contain"
-            data-fallback-next
-                  >
-                  <span class="hidden font-mono text-xs font-bold text-sky-300">VS CODE</span>
-                </div>
-                <div>
-                  <h3 class="text-2xl font-semibold">Visual Studio Code</h3>
-                  <p class="mt-3 leading-7 text-zinc-400">
-                    Zentrale Entwicklungsumgebung für strukturierte Web-Workflows.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <article class="skill-card glass rounded-3xl p-6 transition hover:-translate-y-1 hover:border-violet-300/25 sm:p-8">
-              <div class="flex flex-col gap-6 sm:flex-row sm:items-center">
-                <div class="skill-icon flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl border border-white/10 p-4">
-                  <img
-                    src="./assets/img/after-effects-logo.png"
-                    alt="Adobe After Effects Logo"
-                    class="h-full w-full object-contain"
-            data-fallback-next
-                  >
-                  <span class="hidden font-mono text-sm font-bold text-violet-300">AE</span>
-                </div>
-                <div>
-                  <h3 class="text-2xl font-semibold">Adobe After Effects</h3>
-                  <p class="mt-3 leading-7 text-zinc-400">
-                    Motion Graphics, Animation und visuelle Postproduktion.
-                  </p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="glass reveal overflow-hidden rounded-[2rem]">
-          <div class="grid lg:grid-cols-[1fr_auto] lg:items-center">
-            <div class="p-8 sm:p-10">
-              <p class="font-mono text-xs uppercase tracking-[0.22em] text-green-300">Nächster Schritt</p>
-              <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-                Skills sind nur wertvoll, wenn daraus etwas funktioniert.
-              </h2>
-              <p class="mt-5 max-w-2xl leading-7 text-zinc-400">
-                Die konkrete Anwendung siehst du in meinen Projekten oder wir sprechen direkt über dein Vorhaben.
-              </p>
-            </div>
-
-            <div class="flex flex-col gap-3 border-t border-white/10 p-8 sm:flex-row lg:border-l lg:border-t-0">
-              <a
-                href="projekte.html"
-                class="inline-flex items-center justify-center gap-2 rounded-full bg-green-300 px-6 py-3.5 font-semibold text-black transition hover:bg-green-200"
-              >
-                Projekte ansehen
-                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-              </a>
-
-              <a
-                href="index.html#contact"
-                class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3.5 font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
-              >
-                Kontakt
-              </a>
-            </div>
+          <div class="skills-cta__actions">
+            <a href="projekte.html" class="button button--primary">Projekte ansehen <span aria-hidden="true">↗</span></a>
+            <a href="index.html#contact" class="button button--secondary">Austauschen</a>
           </div>
         </section>
       </div>
