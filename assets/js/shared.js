@@ -1,5 +1,6 @@
 const menuButton = document.getElementById("menu-button");
 const mobileMenu = document.getElementById("mobile-menu");
+const sharedReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 document.querySelectorAll("[data-fallback-next]").forEach((image) => {
   image.addEventListener("error", () => {
@@ -56,7 +57,7 @@ if ("IntersectionObserver" in window) {
 
 const siteParallax = document.querySelector("[data-site-parallax]");
 
-if (siteParallax && !reducedMotion) {
+if (siteParallax && !sharedReducedMotion) {
   let siteParallaxFrame = null;
 
   const updateSiteParallax = () => {
