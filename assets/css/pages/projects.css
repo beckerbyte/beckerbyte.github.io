@@ -596,8 +596,10 @@
   align-items: center;
   overflow: clip;
   isolation: isolate;
+  opacity: calc(1 - var(--projects-exit));
   perspective: 1600px;
   transform-style: preserve-3d;
+  will-change: opacity;
 }
 
 .projects-hero__scene::before {
@@ -641,7 +643,7 @@
       calc(var(--projects-progress) * -2rem),
       calc(var(--projects-progress) * 110px)
     );
-  opacity: calc(1 - var(--projects-exit) * 0.72);
+  opacity: 1;
   filter: blur(calc(var(--projects-exit) * 3px));
 }
 
@@ -711,7 +713,7 @@
     0 28px 90px rgba(0,0,0,0.42),
     0 0 calc(var(--projects-progress) * 65px)
       rgba(56, 189, 248, calc(var(--projects-progress) * 0.14));
-  opacity: calc(1 - var(--projects-exit) * 0.56);
+  opacity: 1;
 }
 
 .projects-manifest a {
@@ -763,7 +765,7 @@
       -220px
     )
     scale(calc(0.82 + var(--projects-progress) * 0.42));
-  opacity: calc(0.42 - var(--projects-exit) * 0.3);
+  opacity: 0.42;
   will-change: transform, opacity;
 }
 
@@ -981,6 +983,7 @@
     height: auto;
     min-height: calc(100svh - 8rem);
     overflow: hidden;
+    opacity: 1;
   }
 
   .projects-hero__copy,
