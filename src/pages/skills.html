@@ -282,6 +282,9 @@
                     <ul aria-label="Netzwerk-Lernfelder">
                       <li>IPv4</li><li>VLAN</li><li>Routing</li><li>Ping</li>
                     </ul>
+                    <button class="systems-visual__expand" type="button" data-system-expand="network" aria-label="Netzwerk-Labor groß öffnen">
+                      <span>Mehr verstehen</span><i aria-hidden="true">↗</i>
+                    </button>
                   </figcaption>
                 </figure>
 
@@ -297,6 +300,9 @@
                     <ul aria-label="Datenbank-Lernfelder">
                       <li>SELECT</li><li>JOIN</li><li>Tabellen</li><li>Relationen</li>
                     </ul>
+                    <button class="systems-visual__expand" type="button" data-system-expand="database" aria-label="Datenbank-Labor groß öffnen">
+                      <span>Mehr verstehen</span><i aria-hidden="true">↗</i>
+                    </button>
                   </figcaption>
                 </figure>
 
@@ -312,9 +318,128 @@
                     <ul aria-label="Automatisierungs-Lernfelder">
                       <li>Python</li><li>Arduino</li><li>Sensorik</li><li>Logik</li>
                     </ul>
+                    <button class="systems-visual__expand" type="button" data-system-expand="automation" aria-label="Automatisierungs-Labor groß öffnen">
+                      <span>Mehr verstehen</span><i aria-hidden="true">↗</i>
+                    </button>
                   </figcaption>
                 </figure>
               </div>
+
+              <dialog class="system-detail" data-system-dialog aria-label="Systemintegration im Detail">
+                <div class="system-detail__shell">
+                  <button class="system-detail__close" type="button" data-system-close aria-label="Detailansicht schließen">
+                    <span>Schließen</span><i aria-hidden="true">×</i>
+                  </button>
+
+                  <article class="system-detail__panel is-active" data-system-detail="network">
+                    <header class="system-detail__header">
+                      <div>
+                        <span>01 · Netzwerk-Labor</span>
+                        <h3>Cisco Packet Tracer</h3>
+                      </div>
+                      <p>Ein Netzwerk funktioniert erst, wenn Geräte adressiert sind, Wege kennen und Fehler systematisch eingegrenzt werden.</p>
+                    </header>
+                    <div class="system-detail__layout">
+                      <figure class="system-detail__visual">
+                        <img src="./assets/img/systemintegration-network.svg" alt="Netzwerkweg vom Client über Switch und Router zum Server">
+                        <figcaption>Vom Endgerät bis zum Server: Jeder Abschnitt muss erreichbar und korrekt konfiguriert sein.</figcaption>
+                      </figure>
+                      <div class="system-detail__content">
+                        <section>
+                          <span>Worum geht es?</span>
+                          <h4>Kommunikation planbar machen.</h4>
+                          <p>IP-Adressen, Subnetze, Switches und Router bestimmen, welches Gerät mit welchem Ziel kommunizieren kann. Packet Tracer macht diese Wege sichtbar und gefahrlos testbar.</p>
+                        </section>
+                        <section>
+                          <span>Typischer Ablauf</span>
+                          <ol class="system-detail__steps">
+                            <li><b>01</b><strong>Adressieren</strong><small>IP-Netz und Subnetzmaske planen</small></li>
+                            <li><b>02</b><strong>Verbinden</strong><small>Clients, Switches und Router konfigurieren</small></li>
+                            <li><b>03</b><strong>Prüfen</strong><small>Ping, Routing und Fehlerquellen untersuchen</small></li>
+                          </ol>
+                        </section>
+                        <aside>
+                          <span>Praxisziel</span>
+                          <strong>Eine kleine Topologie aufbauen und nachvollziehbar diagnostizieren.</strong>
+                          <p>So entsteht das Grundverständnis dafür, warum ein Dienst erreichbar ist – oder an welcher Stelle die Verbindung scheitert.</p>
+                        </aside>
+                      </div>
+                    </div>
+                  </article>
+
+                  <article class="system-detail__panel" data-system-detail="database" hidden>
+                    <header class="system-detail__header">
+                      <div>
+                        <span>02 · Daten & Abfragen</span>
+                        <h3>SQL mit HeidiSQL</h3>
+                      </div>
+                      <p>Datenbanken speichern Informationen nicht als lose Liste, sondern als miteinander verbundene Tabellen mit klaren Beziehungen.</p>
+                    </header>
+                    <div class="system-detail__layout">
+                      <figure class="system-detail__visual">
+                        <img src="./assets/img/systemintegration-database.svg" alt="SQL-Abfrage auf strukturierte Tabellen">
+                        <figcaption>Tabellen bilden die Struktur; SQL formuliert die Frage, die an diese Daten gestellt wird.</figcaption>
+                      </figure>
+                      <div class="system-detail__content">
+                        <section>
+                          <span>Worum geht es?</span>
+                          <h4>Daten strukturiert ablegen und gezielt lesen.</h4>
+                          <p>Primär- und Fremdschlüssel verbinden Datensätze. SELECT, WHERE und JOIN liefern daraus genau die Informationen, die eine Anwendung oder ein Prozess benötigt.</p>
+                        </section>
+                        <section>
+                          <span>Typischer Ablauf</span>
+                          <ol class="system-detail__steps">
+                            <li><b>01</b><strong>Modellieren</strong><small>Tabellen, Felder und Beziehungen festlegen</small></li>
+                            <li><b>02</b><strong>Abfragen</strong><small>Daten filtern, sortieren und verknüpfen</small></li>
+                            <li><b>03</b><strong>Validieren</strong><small>Ergebnis und Datenqualität kontrollieren</small></li>
+                          </ol>
+                        </section>
+                        <aside>
+                          <span>Praxisziel</span>
+                          <strong>Eine relationale Struktur verstehen und belastbare Abfragen formulieren.</strong>
+                          <p>HeidiSQL dient dabei als sichtbare Arbeitsoberfläche für Tabellen, Beziehungen, Daten und Abfrageergebnisse.</p>
+                        </aside>
+                      </div>
+                    </div>
+                  </article>
+
+                  <article class="system-detail__panel" data-system-detail="automation" hidden>
+                    <header class="system-detail__header">
+                      <div>
+                        <span>03 · Code & Hardware</span>
+                        <h3>Python und Arduino</h3>
+                      </div>
+                      <p>Automatisierung verbindet Messwerte aus der realen Welt mit Logik im Programm und einer sichtbaren Reaktion der Hardware.</p>
+                    </header>
+                    <div class="system-detail__layout">
+                      <figure class="system-detail__visual">
+                        <img src="./assets/img/systemintegration-automation.svg" alt="Programmcode verarbeitet einen Sensorwert und steuert einen Arduino">
+                        <figcaption>Sensor lesen, Wert bewerten, Aktion auslösen: eine kompakte Regelstrecke zum Anfassen.</figcaption>
+                      </figure>
+                      <div class="system-detail__content">
+                        <section>
+                          <span>Worum geht es?</span>
+                          <h4>Software mit physischen Komponenten verbinden.</h4>
+                          <p>Ein Sensor liefert Eingangsdaten. Programmcode bewertet diese Werte und steuert abhängig von Bedingungen beispielsweise eine LED, einen Ausgang oder einen weiteren Prozess.</p>
+                        </section>
+                        <section>
+                          <span>Typischer Ablauf</span>
+                          <ol class="system-detail__steps">
+                            <li><b>01</b><strong>Aufbauen</strong><small>Sensor, Arduino und Ausgang verbinden</small></li>
+                            <li><b>02</b><strong>Auswerten</strong><small>Messwert einlesen und logisch prüfen</small></li>
+                            <li><b>03</b><strong>Steuern</strong><small>Reaktion auslösen und Verhalten testen</small></li>
+                          </ol>
+                        </section>
+                        <aside>
+                          <span>Praxisziel</span>
+                          <strong>Eine einfache Sensor-Aktor-Logik entwickeln und erklären können.</strong>
+                          <p>Damit wird greifbar, wie Software, Schnittstellen und Hardware als gemeinsames System arbeiten.</p>
+                        </aside>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </dialog>
 
               <div class="systems-context">
                 <div>
