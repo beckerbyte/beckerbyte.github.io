@@ -134,6 +134,7 @@ if (systemsScene && systemCards.length > 0) {
   const systemClose = systemsScene.querySelector("[data-system-close]");
   const systemExpandButtons = [...systemsScene.querySelectorAll("[data-system-expand]")];
   const systemDetailPanels = [...systemsScene.querySelectorAll("[data-system-detail]")];
+  const systemDots = [...systemsScene.querySelectorAll("[data-system-dot]")];
   const mobileSystemLayout = window.matchMedia("(max-width: 767px)");
   let lastSystemTrigger = null;
   let systemFrame = null;
@@ -168,6 +169,10 @@ if (systemsScene && systemCards.length > 0) {
       systemCount.textContent =
         `${String(index + 1).padStart(2, "0")} / ${String(systemCards.length).padStart(2, "0")}`;
     }
+
+    systemDots.forEach((dot, dotIndex) => {
+      dot.classList.toggle("is-active", dotIndex === index);
+    });
   };
 
   const openSystemDetail = (key, trigger) => {
