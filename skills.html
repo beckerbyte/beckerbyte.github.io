@@ -189,7 +189,7 @@
                     <small>SEMANTIC · RESPONSIVE · ACCESSIBLE</small>
                     <strong>Interfaces mit klarer Struktur.</strong>
                     <p>Inhalt, Layout und Verhalten greifen kontrolliert ineinander.</p>
-                    <span>Projekt ansehen →</span>
+                    <a href="projekte.html#portfolio-project">Projekt ansehen →</a>
                   </div>
                   <div class="web-browser__cards" aria-hidden="true">
                     <i></i><i></i><i></i>
@@ -198,17 +198,31 @@
               </div>
 
               <div class="web-workbench__panel">
-                <div class="web-workbench__tabs">
-                  <span class="is-active">index.html</span>
-                  <span>styles.css</span>
-                  <span>app.js</span>
+                <div class="web-workbench__tabs" role="tablist" aria-label="Codebeispiele">
+                  <button id="web-tab-html" class="is-active" type="button" role="tab" aria-selected="true" aria-controls="web-panel-html" data-web-tab="html">index.html</button>
+                  <button id="web-tab-css" type="button" role="tab" aria-selected="false" aria-controls="web-panel-css" data-web-tab="css">styles.css</button>
+                  <button id="web-tab-js" type="button" role="tab" aria-selected="false" aria-controls="web-panel-js" data-web-tab="js">app.js</button>
                 </div>
-                <div class="web-code" aria-label="Beispiel für semantisches HTML">
+                <div id="web-panel-html" class="web-code is-active" role="tabpanel" aria-labelledby="web-tab-html" data-web-panel="html">
                   <span><b>&lt;main</b> id=<em>"content"</em><b>&gt;</b></span>
                   <span>  <b>&lt;section</b> class=<em>"hero"</em><b>&gt;</b></span>
                   <span>    <b>&lt;h1&gt;</b>Klare Struktur.<b>&lt;/h1&gt;</b></span>
                   <span>  <b>&lt;/section&gt;</b></span>
                   <span><b>&lt;/main&gt;</b></span>
+                </div>
+                <div id="web-panel-css" class="web-code" role="tabpanel" aria-labelledby="web-tab-css" data-web-panel="css" hidden>
+                  <span><b>.hero</b> {</span>
+                  <span>  display: <em>grid</em>;</span>
+                  <span>  min-height: <em>100svh</em>;</span>
+                  <span>  align-items: <em>center</em>;</span>
+                  <span>}</span>
+                </div>
+                <div id="web-panel-js" class="web-code" role="tabpanel" aria-labelledby="web-tab-js" data-web-panel="js" hidden>
+                  <span><b>const</b> project = <em>document</em></span>
+                  <span>  .querySelector(<em>"#portfolio"</em>);</span>
+                  <span></span>
+                  <span>project.<b>classList</b></span>
+                  <span>  .add(<em>"is-ready"</em>);</span>
                 </div>
                 <div class="web-build">
                   <div><span>Build</span><strong>✓ erfolgreich</strong></div>
