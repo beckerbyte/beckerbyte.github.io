@@ -139,6 +139,19 @@ body > footer {
   pointer-events: none;
 }
 
+/*
+ * The global scene also uses the generic hero-depth class. Keep the combined
+ * component viewport-fixed; otherwise the later generic rule above turns it
+ * back into a one-viewport absolute layer that scrolls out of view.
+ */
+.hero-depth.site-depth {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+}
+
 .hero-depth::after {
   position: absolute;
   inset: 0;
