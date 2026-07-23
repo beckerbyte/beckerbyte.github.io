@@ -346,3 +346,40 @@ if (timeline && !reducedMotion) {
   desktopTimeline.addEventListener("change", requestTimelineUpdate);
   requestTimelineUpdate();
 }
+
+
+const heroParallax = document.querySelector("[data-hero-parallax]");
+
+if (heroParallax && !reducedMotion) {
+  const heroPinnedLayout = window.matchMedia("(min-width: 900px) and (min-height: 700px)");
+  let heroFrame = null;
+
+  const clampHero = (value, minimum = 0, maximum = 1) =>
+    Math.min(Math.max(value, minimum), maximum);
+
+  const updateHeroParallax = () => {
+    heroFrame = null;
+
+    const rect = heroParallax.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const travel = Math.max(rect.height - viewportHeight, 1);
+
+    const progress = heroPinnedLayout.matches
+      ? clampHero(-rect.top / travel)
+      : clampHero((viewportHeight * 0.18 - rect.top) / Math.max(rect.height, 1));
+
+    const exit = clampHero((progress - 0.76) / 0.24);
+    heroParallax.style.setProperty("--hero-progress", progress.toFixed(4));
+    heroParallax.style.setProperty("--hero-exit", exit.toFixed(4));
+  };
+
+  const requestHeroUpdate = () => {
+    if (heroFrame !== null) return;
+    heroFrame = window.requestAnimationFrame(updateHeroParallax);
+  };
+
+  window.addEventListener("scroll", requestHeroUpdate, { passive: true });
+  window.addEventListener("resize", requestHeroUpdate);
+  heroPinnedLayout.addEventListener("change", requestHeroUpdate);
+  requestHeroUpdate();
+}
