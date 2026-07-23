@@ -349,8 +349,6 @@ if (timeline && !reducedMotion) {
 
 
 const heroParallax = document.querySelector("[data-hero-parallax]");
-const siteParallax = document.querySelector("[data-site-parallax]");
-
 if (heroParallax && !reducedMotion) {
   const heroPinnedLayout = window.matchMedia("(min-width: 900px) and (min-height: 700px)");
   let heroFrame = null;
@@ -370,16 +368,9 @@ if (heroParallax && !reducedMotion) {
       : clampHero((viewportHeight * 0.18 - rect.top) / Math.max(rect.height, 1));
 
     const exit = clampHero((progress - 0.76) / 0.24);
-    const pageTravel = Math.max(document.documentElement.scrollHeight - viewportHeight, 1);
-    const pageProgress = clampHero(window.scrollY / pageTravel);
-
     heroParallax.style.setProperty("--hero-progress", progress.toFixed(4));
     heroParallax.style.setProperty("--hero-exit", exit.toFixed(4));
 
-    if (siteParallax) {
-      siteParallax.style.setProperty("--hero-progress", progress.toFixed(4));
-      siteParallax.style.setProperty("--page-progress", pageProgress.toFixed(4));
-    }
   };
 
   const requestHeroUpdate = () => {

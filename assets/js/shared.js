@@ -53,3 +53,31 @@ if ("IntersectionObserver" in window) {
 } else {
   revealElements.forEach((element) => element.classList.add("is-visible"));
 }
+
+const siteParallax = document.querySelector("[data-site-parallax]");
+
+if (siteParallax && !reducedMotion) {
+  let siteParallaxFrame = null;
+
+  const updateSiteParallax = () => {
+    siteParallaxFrame = null;
+
+    const viewportHeight = window.innerHeight;
+    const pageTravel = Math.max(document.documentElement.scrollHeight - viewportHeight, 1);
+    const pageProgress = Math.min(Math.max(window.scrollY / pageTravel, 0), 1);
+    const introTravel = Math.max(Math.min(viewportHeight * 0.68, pageTravel), 1);
+    const introProgress = Math.min(Math.max(window.scrollY / introTravel, 0), 1);
+
+    siteParallax.style.setProperty("--hero-progress", introProgress.toFixed(4));
+    siteParallax.style.setProperty("--page-progress", pageProgress.toFixed(4));
+  };
+
+  const requestSiteParallaxUpdate = () => {
+    if (siteParallaxFrame !== null) return;
+    siteParallaxFrame = window.requestAnimationFrame(updateSiteParallax);
+  };
+
+  window.addEventListener("scroll", requestSiteParallaxUpdate, { passive: true });
+  window.addEventListener("resize", requestSiteParallaxUpdate);
+  requestSiteParallaxUpdate();
+}
