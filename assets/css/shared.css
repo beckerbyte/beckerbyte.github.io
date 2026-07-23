@@ -148,6 +148,57 @@ body > footer {
   content: "";
 }
 
+/*
+ * Persistent ambient color field for every page. The oversized layers remain
+ * fixed to the viewport, so they cannot expose a horizontal seam while the
+ * page content scrolls above them.
+ */
+.site-depth::before,
+.site-depth::after {
+  position: absolute;
+  inset: -24%;
+  pointer-events: none;
+  content: "";
+  will-change: transform;
+}
+
+.site-depth::before {
+  z-index: -2;
+  background:
+    radial-gradient(circle at 16% 20%, rgba(74, 222, 128, 0.18) 0, rgba(34, 197, 94, 0.065) 20%, transparent 43%),
+    radial-gradient(circle at 84% 24%, rgba(56, 189, 248, 0.15) 0, rgba(14, 165, 233, 0.055) 22%, transparent 45%),
+    radial-gradient(circle at 28% 82%, rgba(134, 239, 172, 0.12) 0, rgba(74, 222, 128, 0.04) 19%, transparent 40%),
+    radial-gradient(circle at 78% 78%, rgba(125, 211, 252, 0.12) 0, rgba(14, 165, 233, 0.04) 20%, transparent 42%);
+  filter: blur(18px);
+  opacity: 0.92;
+  transform:
+    translate3d(
+      calc(var(--page-progress, 0) * -7vw),
+      calc(var(--page-progress, 0) * -9vh),
+      0
+    )
+    scale(1.03);
+}
+
+.site-depth::after {
+  z-index: -1;
+  background:
+    radial-gradient(circle at 48% 18%, rgba(134, 239, 172, 0.105), transparent 24%),
+    radial-gradient(circle at 62% 58%, rgba(56, 189, 248, 0.095), transparent 26%),
+    radial-gradient(circle at 12% 64%, rgba(74, 222, 128, 0.09), transparent 23%),
+    radial-gradient(circle at 92% 86%, rgba(125, 211, 252, 0.085), transparent 25%);
+  filter: blur(26px);
+  mix-blend-mode: screen;
+  opacity: 0.76;
+  transform:
+    translate3d(
+      calc(var(--page-progress, 0) * 8vw),
+      calc(var(--page-progress, 0) * 7vh),
+      0
+    )
+    rotate(calc(var(--page-progress, 0) * 5deg));
+}
+
 .hero-depth__word {
   position: absolute;
   left: 50%;
@@ -310,6 +361,21 @@ body > footer {
 }
 
 @media (max-width: 899px), (max-height: 699px) {
+  .site-depth::before,
+  .site-depth::after {
+    inset: -38% -58%;
+  }
+
+  .site-depth::before {
+    filter: blur(14px);
+    opacity: 1;
+  }
+
+  .site-depth::after {
+    filter: blur(20px);
+    opacity: 0.82;
+  }
+
   .hero-depth__word {
     font-size: 42vw;
   }
