@@ -703,6 +703,11 @@ body.code-card-open {
     position: sticky;
     top: 0;
     height: 100vh;
+    margin-bottom: -100vh;
+  }
+
+  .hero-parallax__cue {
+    position: fixed;
   }
 }
 
