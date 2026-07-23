@@ -575,3 +575,430 @@
     animation: none;
   }
 }
+
+
+/* Scroll-pinned cinematic project hero. */
+.projects-hero[data-projects-hero] {
+  --projects-progress: 0;
+  --projects-exit: 0;
+  display: block;
+  min-height: 210svh;
+  padding: 0;
+}
+
+.projects-hero__scene {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  display: grid;
+  min-height: 42rem;
+  height: 100svh;
+  align-items: center;
+  overflow: clip;
+  isolation: isolate;
+  perspective: 1600px;
+  transform-style: preserve-3d;
+}
+
+.projects-hero__scene::before {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at calc(14% + var(--projects-progress) * 18%) 48%,
+      rgba(34, 197, 94, calc(0.1 + var(--projects-progress) * 0.08)),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at calc(86% - var(--projects-progress) * 14%) 48%,
+      rgba(14, 165, 233, calc(0.11 + var(--projects-progress) * 0.09)),
+      transparent 33%
+    );
+  content: "";
+  transform: scale(calc(1 + var(--projects-progress) * 0.14));
+  opacity: calc(1 - var(--projects-exit) * 0.5);
+  will-change: transform, opacity;
+}
+
+.projects-hero__layout {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 3rem, 80rem);
+  padding-top: 5.5rem;
+  transform-style: preserve-3d;
+}
+
+.projects-hero__copy,
+.projects-manifest {
+  will-change: transform, opacity, filter;
+}
+
+.projects-hero__copy {
+  transform:
+    translate3d(
+      calc(var(--projects-progress) * -3.2rem),
+      calc(var(--projects-progress) * -2rem),
+      calc(var(--projects-progress) * 110px)
+    );
+  opacity: calc(1 - var(--projects-exit) * 0.72);
+  filter: blur(calc(var(--projects-exit) * 3px));
+}
+
+.projects-hero h1 {
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+
+.projects-hero h1 .projects-hero__line {
+  display: block;
+  color: rgb(250 250 250);
+  background: none;
+  background-clip: border-box;
+  -webkit-background-clip: border-box;
+  transform-origin: 0 50%;
+  will-change: transform, opacity;
+}
+
+.projects-hero h1 .projects-hero__line--one {
+  transform:
+    translate3d(
+      calc(var(--projects-progress) * -1.8rem),
+      calc(var(--projects-progress) * -1rem),
+      calc(var(--projects-progress) * 70px)
+    )
+    rotateY(calc(var(--projects-progress) * -4deg));
+}
+
+.projects-hero h1 .projects-hero__line--two {
+  transform:
+    translate3d(
+      calc(var(--projects-progress) * 2.4rem),
+      calc(var(--projects-progress) * -0.2rem),
+      calc(var(--projects-progress) * 120px)
+    )
+    rotateY(calc(var(--projects-progress) * 5deg));
+}
+
+.projects-hero h1 .projects-hero__line--accent {
+  color: transparent;
+  background: linear-gradient(95deg, #fff 0%, #86efac 46%, #7dd3fc 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.projects-hero h1 .projects-hero__line--three {
+  transform:
+    translate3d(
+      calc(var(--projects-progress) * -2.8rem),
+      calc(var(--projects-progress) * 1.1rem),
+      calc(var(--projects-progress) * 165px)
+    )
+    rotateX(calc(var(--projects-progress) * -3deg));
+}
+
+.projects-manifest {
+  transform:
+    translate3d(
+      calc(var(--projects-progress) * -2.5rem),
+      calc(var(--projects-progress) * 3.8rem),
+      calc(var(--projects-progress) * 210px)
+    )
+    rotateY(calc(-4deg + var(--projects-progress) * -9deg))
+    rotateX(calc(var(--projects-progress) * 3deg))
+    scale(calc(0.98 + var(--projects-progress) * 0.08));
+  box-shadow:
+    0 28px 90px rgba(0,0,0,0.42),
+    0 0 calc(var(--projects-progress) * 65px)
+      rgba(56, 189, 248, calc(var(--projects-progress) * 0.14));
+  opacity: calc(1 - var(--projects-exit) * 0.56);
+}
+
+.projects-manifest a {
+  transform: translateZ(0);
+  will-change: transform, background;
+}
+
+.projects-manifest a:nth-of-type(1) {
+  transform:
+    translate3d(
+      calc(var(--projects-progress) * -1rem),
+      calc(var(--projects-progress) * -0.45rem),
+      calc(var(--projects-progress) * 55px)
+    );
+}
+
+.projects-manifest a:nth-of-type(2) {
+  transform:
+    translate3d(
+      calc(var(--projects-progress) * 1.2rem),
+      calc(var(--projects-progress) * 0.55rem),
+      calc(var(--projects-progress) * 85px)
+    );
+}
+
+.projects-hero__depth {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+.projects-hero__ghost {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: transparent;
+  font-size: clamp(12rem, 30vw, 34rem);
+  font-weight: 950;
+  letter-spacing: -0.09em;
+  line-height: 0.7;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.045);
+  transform:
+    translate3d(
+      calc(-50% + var(--projects-progress) * 2rem),
+      calc(-50% + var(--projects-progress) * -4rem),
+      -220px
+    )
+    scale(calc(0.82 + var(--projects-progress) * 0.42));
+  opacity: calc(0.42 - var(--projects-exit) * 0.3);
+  will-change: transform, opacity;
+}
+
+.projects-hero__orbit {
+  position: absolute;
+  border: 1px solid rgba(125, 211, 252, 0.12);
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.projects-hero__orbit--one {
+  right: -7rem;
+  top: 13%;
+  width: min(44rem, 55vw);
+  aspect-ratio: 1;
+  transform:
+    rotate(calc(var(--projects-progress) * 75deg))
+    scale(calc(0.9 + var(--projects-progress) * 0.28));
+}
+
+.projects-hero__orbit--two {
+  left: -10rem;
+  bottom: -9rem;
+  width: min(32rem, 44vw);
+  aspect-ratio: 1;
+  border-style: dashed;
+  border-color: rgba(134, 239, 172, 0.14);
+  transform:
+    rotate(calc(var(--projects-progress) * -110deg))
+    scale(calc(0.9 + var(--projects-progress) * 0.22));
+}
+
+.projects-hero__beam {
+  position: absolute;
+  left: 46%;
+  top: -18%;
+  width: 1px;
+  height: 140%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(134, 239, 172, 0.3),
+    rgba(125, 211, 252, 0.2),
+    transparent
+  );
+  box-shadow: 0 0 28px rgba(125, 211, 252, 0.18);
+  transform:
+    rotate(24deg)
+    translateY(calc(var(--projects-progress) * 9rem));
+  opacity: calc(0.25 + var(--projects-progress) * 0.65);
+}
+
+.projects-hero__counter {
+  position: absolute;
+  right: 8%;
+  bottom: 12%;
+  border: 1px solid rgba(125, 211, 252, 0.15);
+  border-radius: 999px;
+  padding: 0.5rem 0.75rem;
+  background: rgba(5, 10, 13, 0.58);
+  color: rgb(125 211 252);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  transform:
+    translate3d(
+      calc(var(--projects-progress) * -2rem),
+      calc(var(--projects-progress) * -3rem),
+      calc(var(--projects-progress) * 90px)
+    );
+  opacity: calc(0.45 + var(--projects-progress) * 0.55 - var(--projects-exit) * 0.7);
+}
+
+.projects-scroll-cue {
+  z-index: 3;
+  bottom: 1.1rem;
+  display: flex;
+  opacity: calc(1 - var(--projects-exit));
+}
+
+.projects-scroll-cue i::after {
+  width: calc(18% + var(--projects-progress) * 82%);
+}
+
+.projects-showcase {
+  z-index: 4;
+  background: linear-gradient(to bottom, rgba(3, 5, 6, 0.2), transparent 18rem);
+}
+
+@media (max-width: 1023px) {
+  .projects-hero[data-projects-hero] {
+    min-height: 180svh;
+  }
+
+  .projects-hero__scene {
+    min-height: 0;
+    height: 100svh;
+  }
+
+  .projects-hero__layout {
+    width: min(100% - 2rem, 80rem);
+    gap: 1.2rem;
+    padding-top: 5.6rem;
+    padding-bottom: 2.8rem;
+  }
+
+  .projects-back {
+    margin-bottom: 1.15rem;
+    font-size: 0.78rem;
+  }
+
+  .projects-hero h1 {
+    margin-top: 0.85rem;
+    font-size: clamp(2.8rem, 13vw, 5rem);
+    line-height: 0.87;
+  }
+
+  .projects-hero__intro {
+    margin-top: 1.15rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .projects-manifest__header,
+  .projects-manifest a {
+    padding: 0.72rem 0.85rem;
+  }
+
+  .projects-manifest {
+    transform:
+      translate3d(
+        calc(var(--projects-progress) * -0.8rem),
+        calc(var(--projects-progress) * 1.6rem),
+        calc(var(--projects-progress) * 90px)
+      )
+      rotateY(calc(var(--projects-progress) * -4deg))
+      scale(calc(0.98 + var(--projects-progress) * 0.04));
+  }
+
+  .projects-hero__copy {
+    transform:
+      translate3d(
+        calc(var(--projects-progress) * -0.9rem),
+        calc(var(--projects-progress) * -1rem),
+        calc(var(--projects-progress) * 70px)
+      );
+  }
+
+  .projects-hero h1 .projects-hero__line--one {
+    transform: translate3d(calc(var(--projects-progress) * -0.6rem), 0, calc(var(--projects-progress) * 40px));
+  }
+
+  .projects-hero h1 .projects-hero__line--two {
+    transform: translate3d(calc(var(--projects-progress) * 0.8rem), 0, calc(var(--projects-progress) * 65px));
+  }
+
+  .projects-hero h1 .projects-hero__line--three {
+    transform: translate3d(calc(var(--projects-progress) * -0.7rem), calc(var(--projects-progress) * 0.4rem), calc(var(--projects-progress) * 85px));
+  }
+
+  .projects-hero__ghost {
+    font-size: clamp(9rem, 44vw, 17rem);
+  }
+
+  .projects-hero__orbit--one {
+    right: -9rem;
+    width: 28rem;
+  }
+
+  .projects-hero__orbit--two {
+    left: -9rem;
+    width: 23rem;
+  }
+
+  .projects-hero__counter {
+    display: none;
+  }
+
+  .projects-scroll-cue {
+    bottom: 0.65rem;
+    font-size: 0.52rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .projects-hero__layout {
+    padding-top: 4.9rem;
+  }
+
+  .projects-hero h1 {
+    font-size: clamp(2.55rem, 13.5vw, 3.55rem);
+  }
+
+  .projects-hero__intro {
+    max-width: 21rem;
+  }
+
+  .projects-manifest {
+    border-radius: 1rem;
+  }
+
+  .projects-manifest small {
+    font-size: 0.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-hero[data-projects-hero] {
+    min-height: auto;
+    padding: 3rem 0 6rem;
+  }
+
+  .projects-hero__scene {
+    position: relative;
+    height: auto;
+    min-height: calc(100svh - 8rem);
+    overflow: hidden;
+  }
+
+  .projects-hero__copy,
+  .projects-hero h1 .projects-hero__line,
+  .projects-manifest,
+  .projects-manifest a,
+  .projects-hero__ghost,
+  .projects-hero__orbit,
+  .projects-hero__beam,
+  .projects-hero__counter {
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .projects-hero__copy,
+  .projects-manifest,
+  .projects-hero__counter,
+  .projects-scroll-cue {
+    opacity: 1;
+  }
+}

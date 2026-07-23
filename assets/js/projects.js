@@ -1,3 +1,56 @@
+
+const projectsHero = document.querySelector("[data-projects-hero]");
+
+if (projectsHero) {
+  const projectsHeroReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+  let projectsHeroFrame = null;
+
+  const clampProjectsHero = (value, minimum = 0, maximum = 1) =>
+    Math.min(Math.max(value, minimum), maximum);
+
+  const updateProjectsHero = () => {
+    projectsHeroFrame = null;
+
+    if (projectsHeroReducedMotion.matches) {
+      projectsHero.style.setProperty("--projects-progress", "0");
+      projectsHero.style.setProperty("--projects-exit", "0");
+      return;
+    }
+
+    const rect = projectsHero.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const scrollDistance = Math.max(rect.height - viewportHeight, 1);
+    const earlyStart = viewportHeight * 0.14;
+    const progress = clampProjectsHero(
+      (earlyStart - rect.top) / (scrollDistance + earlyStart)
+    );
+    const exit = clampProjectsHero((progress - 0.7) / 0.3);
+
+    projectsHero.style.setProperty(
+      "--projects-progress",
+      progress.toFixed(4)
+    );
+    projectsHero.style.setProperty("--projects-exit", exit.toFixed(4));
+  };
+
+  const requestProjectsHeroUpdate = () => {
+    if (projectsHeroFrame !== null) return;
+    projectsHeroFrame = window.requestAnimationFrame(updateProjectsHero);
+  };
+
+  window.addEventListener("scroll", requestProjectsHeroUpdate, {
+    passive: true
+  });
+  window.addEventListener("resize", requestProjectsHeroUpdate);
+  projectsHeroReducedMotion.addEventListener(
+    "change",
+    requestProjectsHeroUpdate
+  );
+  requestProjectsHeroUpdate();
+}
+
 const parallaxCards = [...document.querySelectorAll("[data-parallax-card]")];
 const projectsReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)"
