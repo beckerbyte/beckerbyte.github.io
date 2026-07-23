@@ -877,3 +877,165 @@
     animation: none;
   }
 }
+
+
+/* Visual learning lab for the Systemintegration section. */
+.systems-lab {
+  display: grid;
+  gap: 1rem;
+}
+
+.systems-lab__intro {
+  display: grid;
+  gap: 1rem;
+  padding: 1.4rem;
+  border: 1px solid rgba(125, 211, 252, 0.14);
+  border-radius: 1.25rem;
+  background:
+    linear-gradient(120deg, rgba(56, 189, 248, 0.08), transparent 55%),
+    rgba(255, 255, 255, 0.018);
+}
+
+.systems-lab__intro span,
+.systems-visual figcaption > span,
+.systems-context span {
+  color: rgb(125 211 252);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.systems-lab__intro h3 {
+  margin-top: 0.5rem;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.systems-lab__intro > p {
+  max-width: 34rem;
+  color: rgb(161 161 170);
+  line-height: 1.7;
+}
+
+.systems-lab__grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.systems-visual {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.085);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.018);
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.systems-visual:hover {
+  border-color: rgba(125, 211, 252, 0.28);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+  transform: translateY(-0.2rem);
+}
+
+.systems-visual > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+  background: #080d13;
+  object-fit: cover;
+}
+
+.systems-visual figcaption {
+  padding: 1.25rem;
+}
+
+.systems-visual h4 {
+  margin-top: 0.42rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.systems-visual p {
+  margin-top: 0.55rem;
+  color: rgb(161 161 170);
+  line-height: 1.58;
+}
+
+.systems-visual ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.systems-visual li {
+  border: 1px solid rgba(125, 211, 252, 0.15);
+  border-radius: 999px;
+  padding: 0.35rem 0.55rem;
+  background: rgba(125, 211, 252, 0.045);
+  color: rgb(186 230 253);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.61rem;
+}
+
+.systems-context {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.systems-context > div,
+.systems-context > aside {
+  padding: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.014);
+}
+
+.systems-context strong {
+  display: block;
+  margin-top: 0.4rem;
+}
+
+.systems-context p {
+  margin-top: 0.45rem;
+  color: rgb(161 161 170);
+  line-height: 1.58;
+}
+
+.systems-context > aside {
+  border-color: rgba(125, 211, 252, 0.14);
+  background: linear-gradient(135deg, rgba(125, 211, 252, 0.07), rgba(255, 255, 255, 0.014));
+}
+
+@media (min-width: 700px) {
+  .systems-lab__intro {
+    grid-template-columns: 1fr 0.8fr;
+    align-items: end;
+  }
+
+  .systems-lab__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .systems-context {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .systems-context > aside {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .systems-visual {
+    transition: none;
+  }
+}
