@@ -3981,3 +3981,20 @@
     transition: none;
   }
 }
+
+
+/* iOS Safari: keep the mobile After Effects scene inside a true sticky chain. */
+@media (max-width: 899px) and (min-height: 560px) {
+  .creative-scroll-scene {
+    overflow: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .creative-pin {
+    position: -webkit-sticky;
+    position: sticky;
+    align-self: start;
+  }
+}
