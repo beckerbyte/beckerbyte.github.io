@@ -2,6 +2,74 @@ const menuButton = document.getElementById("menu-button");
 const mobileMenu = document.getElementById("mobile-menu");
 const sharedReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+
+const siteHeader = document.querySelector("header.fixed");
+const headerHideDistance = 14;
+const headerShowDistance = 6;
+
+if (siteHeader) {
+  siteHeader.classList.add("site-header");
+
+  let lastHeaderScrollY = Math.max(window.scrollY, 0);
+  let headerDirection = 0;
+  let headerDirectionDistance = 0;
+  let headerFrame = null;
+
+  const showSiteHeader = () => {
+    siteHeader.classList.remove("is-hidden");
+  };
+
+  const updateSiteHeader = () => {
+    headerFrame = null;
+
+    const currentScrollY = Math.max(window.scrollY, 0);
+    const delta = currentScrollY - lastHeaderScrollY;
+    const menuIsOpen = mobileMenu && !mobileMenu.classList.contains("hidden");
+    const headerHasFocus = siteHeader.contains(document.activeElement);
+
+    if (currentScrollY <= 32 || menuIsOpen || headerHasFocus) {
+      showSiteHeader();
+      headerDirection = 0;
+      headerDirectionDistance = 0;
+      lastHeaderScrollY = currentScrollY;
+      return;
+    }
+
+    if (Math.abs(delta) < 1) {
+      lastHeaderScrollY = currentScrollY;
+      return;
+    }
+
+    const nextDirection = delta > 0 ? 1 : -1;
+
+    if (nextDirection !== headerDirection) {
+      headerDirection = nextDirection;
+      headerDirectionDistance = 0;
+    }
+
+    headerDirectionDistance += Math.abs(delta);
+
+    if (headerDirection > 0 && headerDirectionDistance >= headerHideDistance) {
+      siteHeader.classList.add("is-hidden");
+      headerDirectionDistance = 0;
+    } else if (headerDirection < 0 && headerDirectionDistance >= headerShowDistance) {
+      showSiteHeader();
+      headerDirectionDistance = 0;
+    }
+
+    lastHeaderScrollY = currentScrollY;
+  };
+
+  const requestHeaderUpdate = () => {
+    if (headerFrame !== null) return;
+    headerFrame = window.requestAnimationFrame(updateSiteHeader);
+  };
+
+  window.addEventListener("scroll", requestHeaderUpdate, { passive: true });
+  siteHeader.addEventListener("focusin", showSiteHeader);
+  updateSiteHeader();
+}
+
 document.querySelectorAll("[data-fallback-next]").forEach((image) => {
   image.addEventListener("error", () => {
     image.classList.add("hidden");
@@ -18,6 +86,7 @@ menuButton?.addEventListener("click", () => {
   const isOpen = !mobileMenu?.classList.contains("hidden");
   mobileMenu?.classList.toggle("hidden");
   menuButton.setAttribute("aria-expanded", String(!isOpen));
+  siteHeader?.classList.remove("is-hidden");
 });
 
 mobileMenu?.querySelectorAll("a").forEach((link) => {
