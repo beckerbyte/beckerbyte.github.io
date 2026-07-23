@@ -137,19 +137,30 @@
                   <span>localhost:3000/portfolio</span>
                   <b>↗</b>
                 </div>
-                <div class="web-browser__canvas">
+                <div class="web-browser__canvas" data-design-preview data-design-theme="portfolio">
                   <div class="web-browser__nav">
                     <span>beckerbyte</span>
                     <div><i></i><i></i><i></i></div>
                   </div>
-                  <div class="web-browser__hero">
-                    <small>SEMANTIC · RESPONSIVE · ACCESSIBLE</small>
-                    <strong>Interfaces mit klarer Struktur.</strong>
-                    <p>Inhalt, Layout und Verhalten greifen kontrolliert ineinander.</p>
-                    <a href="projekte.html#portfolio-project">Projekt ansehen →</a>
+                  <div class="web-browser__hero" aria-live="polite">
+                    <small data-design-kicker>PORTFOLIO · CLEAN · PERSONAL</small>
+                    <strong data-design-title>Digitale Arbeiten, klar präsentiert.</strong>
+                    <p data-design-copy>Projekte, Kompetenzen und Persönlichkeit in einer ruhigen, fokussierten Oberfläche.</p>
+                    <a href="projekte.html#portfolio-project" data-design-link>Portfolio öffnen →</a>
                   </div>
-                  <div class="web-browser__cards" aria-hidden="true">
-                    <i></i><i></i><i></i>
+                  <div class="web-browser__cards" role="group" aria-label="Beispiel-Homepage auswählen">
+                    <button class="web-design-card is-active" type="button" data-design-option="portfolio" aria-pressed="true">
+                      <span class="web-design-card__preview" aria-hidden="true"></span>
+                      <span class="web-design-card__label">Portfolio</span>
+                    </button>
+                    <button class="web-design-card" type="button" data-design-option="studio" aria-pressed="false">
+                      <span class="web-design-card__preview" aria-hidden="true"></span>
+                      <span class="web-design-card__label">Studio</span>
+                    </button>
+                    <button class="web-design-card" type="button" data-design-option="systems" aria-pressed="false">
+                      <span class="web-design-card__preview" aria-hidden="true"></span>
+                      <span class="web-design-card__label">System Hub</span>
+                    </button>
                   </div>
                 </div>
               </div>
