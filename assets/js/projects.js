@@ -6,6 +6,8 @@ if (projectsHero) {
     "(prefers-reduced-motion: reduce)"
   );
   let projectsHeroFrame = null;
+  let projectsHeroProgress = "";
+  let projectsHeroExit = "";
 
   const clampProjectsHero = (value, minimum = 0, maximum = 1) =>
     Math.min(Math.max(value, minimum), maximum);
@@ -32,11 +34,18 @@ if (projectsHero) {
      */
     const exit = clampProjectsHero((progress - 0.68) / 0.28);
 
-    projectsHero.style.setProperty(
-      "--projects-progress",
-      progress.toFixed(4)
-    );
-    projectsHero.style.setProperty("--projects-exit", exit.toFixed(4));
+    const nextProgress = progress.toFixed(4);
+    const nextExit = exit.toFixed(4);
+
+    if (nextProgress !== projectsHeroProgress) {
+      projectsHeroProgress = nextProgress;
+      projectsHero.style.setProperty("--projects-progress", nextProgress);
+    }
+
+    if (nextExit !== projectsHeroExit) {
+      projectsHeroExit = nextExit;
+      projectsHero.style.setProperty("--projects-exit", nextExit);
+    }
   };
 
   const requestProjectsHeroUpdate = () => {
@@ -55,7 +64,12 @@ if (projectsHero) {
   requestProjectsHeroUpdate();
 }
 
-const parallaxCards = [...document.querySelectorAll("[data-parallax-card]")];
+const parallaxCards = [...document.querySelectorAll("[data-parallax-card]")].map(
+  (card) => ({
+    card,
+    preview: card.querySelector("[data-parallax-preview]")
+  })
+);
 const projectsReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)"
 );
@@ -73,10 +87,12 @@ if (parallaxCards.length > 0 && !projectsReducedMotion.matches) {
     const viewportHeight = window.innerHeight;
     let focusedCard = null;
     let focusedDistance = Number.POSITIVE_INFINITY;
+    const cardMeasurements = [];
+    const useCardTransforms = projectsDesktop.matches;
 
-    for (const card of parallaxCards) {
-      const preview = card.querySelector("[data-parallax-preview]");
+    for (const { card, preview } of parallaxCards) {
       const cardRect = card.getBoundingClientRect();
+      cardMeasurements.push({ card, cardRect });
       const cardCenter = cardRect.top + cardRect.height / 2;
       const distanceFromCenter = cardCenter - viewportHeight / 2;
       const normalizedDistance = clamp(
@@ -86,7 +102,7 @@ if (parallaxCards.length > 0 && !projectsReducedMotion.matches) {
       );
       const focus = 1 - Math.abs(normalizedDistance);
 
-      if (projectsDesktop.matches) {
+      if (useCardTransforms) {
         card.style.setProperty(
           "--card-shift-y",
           `${(normalizedDistance * 20).toFixed(2)}px`
@@ -104,11 +120,6 @@ if (parallaxCards.length > 0 && !projectsReducedMotion.matches) {
           "--preview-shift-y",
           `${(normalizedDistance * -11).toFixed(2)}px`
         );
-      } else {
-        card.style.removeProperty("--card-shift-y");
-        card.style.removeProperty("--card-rotate");
-        card.style.removeProperty("--card-scale");
-        preview?.style.removeProperty("--preview-shift-y");
       }
 
       const absoluteDistance = Math.abs(distanceFromCenter);
@@ -118,8 +129,7 @@ if (parallaxCards.length > 0 && !projectsReducedMotion.matches) {
       }
     }
 
-    for (const card of parallaxCards) {
-      const cardRect = card.getBoundingClientRect();
+    for (const { card, cardRect } of cardMeasurements) {
       const isVisible =
         cardRect.bottom > viewportHeight * 0.12 &&
         cardRect.top < viewportHeight * 0.88;
@@ -136,8 +146,21 @@ if (parallaxCards.length > 0 && !projectsReducedMotion.matches) {
     projectsFrame = window.requestAnimationFrame(updateProjectsParallax);
   };
 
+  const handleProjectsBreakpoint = () => {
+    if (!projectsDesktop.matches) {
+      for (const { card, preview } of parallaxCards) {
+        card.style.removeProperty("--card-shift-y");
+        card.style.removeProperty("--card-rotate");
+        card.style.removeProperty("--card-scale");
+        preview?.style.removeProperty("--preview-shift-y");
+      }
+    }
+
+    requestProjectsUpdate();
+  };
+
   window.addEventListener("scroll", requestProjectsUpdate, { passive: true });
   window.addEventListener("resize", requestProjectsUpdate);
-  projectsDesktop.addEventListener("change", requestProjectsUpdate);
+  projectsDesktop.addEventListener("change", handleProjectsBreakpoint);
   requestProjectsUpdate();
 }
