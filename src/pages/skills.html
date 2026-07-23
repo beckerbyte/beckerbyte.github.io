@@ -11,6 +11,7 @@
   <link rel="canonical" href="https://www.beckerbyte.com/skills.html">
   <link rel="icon" href="./assets/img/favicon-v2.png" type="image/png">
   <script src="./assets/js/shared.js" defer></script>
+  <script src="./assets/js/skills.js" defer></script>
 
 
   <link rel="stylesheet" href="./assets/css/shared.css">
@@ -303,53 +304,89 @@
           </div>
         </article>
 
-        <article id="creative" class="capability-block capability-block--creative reveal">
-          <div class="capability-block__index">
-            <span>03</span>
-            <p>Creative Tech</p>
-          </div>
+        <article id="creative" class="creative-scroll-scene reveal" data-motion-scene>
+          <div class="capability-block capability-block--creative creative-pin">
+            <div class="capability-block__index">
+              <span>03</span>
+              <p>Creative Tech</p>
+              <div class="creative-progress" aria-hidden="true"><i></i></div>
+            </div>
 
-          <div class="capability-block__body">
-            <header class="capability-block__header">
-              <div>
-                <p class="capability-block__eyebrow">Visuelle Systeme</p>
-                <h2>Bewegung mit technischer Grundlage.</h2>
-              </div>
-              <p>
-                Motion und visuelle Gestaltung ergänzen meine technische Arbeit dort,
-                wo Hierarchie, Feedback und Atmosphäre verständlicher werden sollen.
-              </p>
-            </header>
-
-            <div class="creative-stage">
-              <div class="creative-stage__preview" aria-hidden="true">
-                <div class="motion-frame motion-frame--one"></div>
-                <div class="motion-frame motion-frame--two"></div>
-                <div class="motion-frame motion-frame--three"></div>
-                <span>motion / timing / composition</span>
-              </div>
-
-              <div class="creative-stage__tools">
-                <div class="creative-tool">
-                  <img src="./assets/img/after-effects-logo.png" alt="" data-fallback-next>
-                  <span class="hidden">AE</span>
-                  <div>
-                    <small>Motion Graphics</small>
-                    <strong>Adobe After Effects</strong>
-                  </div>
-                </div>
-                <div class="creative-tool">
-                  <img src="./assets/img/vscode-logo.png" alt="" data-fallback-next>
-                  <span class="hidden">VS</span>
-                  <div>
-                    <small>Entwicklungsumgebung</small>
-                    <strong>Visual Studio Code</strong>
-                  </div>
+            <div class="capability-block__body">
+              <header class="capability-block__header">
+                <div>
+                  <p class="capability-block__eyebrow">Visuelle Systeme</p>
+                  <h2>Eine Komposition, die beim Scrollen lebendig wird.</h2>
                 </div>
                 <p>
-                  Gestaltung und Umsetzung bleiben keine getrennten Welten:
-                  Bewegung wird als Teil der Benutzerführung gedacht.
+                  Ebenen, Masken, Licht, Typografie und Timing werden zu einer
+                  scrollgesteuerten Motion-Sequenz – inspiriert von Adobe After Effects.
                 </p>
+              </header>
+
+              <div class="ae-workspace">
+                <div class="ae-composition" aria-label="Scrollgesteuerte Motion-Graphics-Komposition">
+                  <div class="ae-composition__toolbar">
+                    <div>
+                      <span class="ae-app">Ae</span>
+                      <strong>beckerbyte_motion.aep</strong>
+                    </div>
+                    <span>COMP 01 · 1920 × 1080</span>
+                  </div>
+
+                  <div class="ae-canvas">
+                    <div class="ae-grid" aria-hidden="true"></div>
+                    <div class="ae-glow ae-glow--one" aria-hidden="true"></div>
+                    <div class="ae-glow ae-glow--two" aria-hidden="true"></div>
+                    <div class="ae-shape ae-shape--back" aria-hidden="true"></div>
+                    <div class="ae-shape ae-shape--middle" aria-hidden="true"></div>
+                    <div class="ae-shape ae-shape--front" aria-hidden="true"></div>
+                    <div class="ae-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+                    <div class="ae-title">
+                      <span>MOTION</span>
+                      <strong>IN<br>DEPTH</strong>
+                      <small>Scroll-driven composition</small>
+                    </div>
+                    <div class="ae-crosshair" aria-hidden="true"></div>
+                  </div>
+
+                  <div class="ae-timeline" aria-hidden="true">
+                    <div class="ae-timeline__time">
+                      <span>00:00:00</span><span>00:01:12</span><span>00:03:00</span>
+                    </div>
+                    <div class="ae-timeline__tracks">
+                      <div><span>◆ Typography</span><i></i></div>
+                      <div><span>◉ Light & Glow</span><i></i></div>
+                      <div><span>▱ Shape Layers</span><i></i></div>
+                      <div><span>⌁ Camera Depth</span><i></i></div>
+                      <b class="ae-playhead"></b>
+                    </div>
+                  </div>
+                </div>
+
+                <aside class="ae-inspector">
+                  <div class="ae-inspector__header">
+                    <img src="./assets/img/after-effects-logo.png" alt="">
+                    <div><span>Motion Graphics</span><strong>Adobe After Effects</strong></div>
+                  </div>
+
+                  <ol class="ae-phases" aria-label="Ablauf der Scrollanimation">
+                    <li data-ae-phase="1"><span>01</span><div><strong>Ebenen</strong><small>Tiefe und räumliche Staffelung</small></div></li>
+                    <li data-ae-phase="2"><span>02</span><div><strong>Masken</strong><small>Gezielte Enthüllung der Typografie</small></div></li>
+                    <li data-ae-phase="3"><span>03</span><div><strong>Licht</strong><small>Glow, Farbe und Atmosphäre</small></div></li>
+                    <li data-ae-phase="4"><span>04</span><div><strong>Timing</strong><small>Kontrollierte Auflösung der Szene</small></div></li>
+                  </ol>
+
+                  <div class="ae-inspector__status">
+                    <span>Scroll-Fortschritt</span>
+                    <strong data-motion-percent>0%</strong>
+                  </div>
+
+                  <p>
+                    Der Abschnitt bleibt kurz im Bild, während die Komposition ihre Ebenen
+                    entfaltet. Danach gibt er den normalen Seitenfluss wieder frei.
+                  </p>
+                </aside>
               </div>
             </div>
           </div>
