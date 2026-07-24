@@ -19,6 +19,8 @@ if (projectsHero) {
     if (projectsHeroReducedMotion.matches) {
       projectsHero.style.setProperty("--projects-progress", "0");
       projectsHero.style.setProperty("--projects-exit", "0");
+      projectsHero.style.setProperty("--projects-foreground-progress", "0");
+      projectsHero.classList.remove("is-foreground-moving", "is-exiting");
       return;
     }
 
@@ -56,7 +58,17 @@ if (projectsHero) {
         "--projects-manifest-progress",
         nextManifestProgress
       );
+      projectsHero.style.setProperty(
+        "--projects-foreground-progress",
+        nextManifestProgress
+      );
     }
+
+    projectsHero.classList.toggle(
+      "is-foreground-moving",
+      manifestProgress > 0.0005
+    );
+    projectsHero.classList.toggle("is-exiting", exit > 0.001);
   };
 
   const requestProjectsHeroUpdate = () => {
