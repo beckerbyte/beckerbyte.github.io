@@ -1066,3 +1066,13 @@
     margin-top: 0;
   }
 }
+
+
+/* Start the projects hero at the same height as every other page. */
+.projects-hero__scene {
+  align-items: start;
+}
+
+.projects-hero__layout {
+  padding-top: var(--site-first-content-offset);
+}
