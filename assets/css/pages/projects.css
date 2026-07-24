@@ -586,6 +586,7 @@
   --projects-progress: 0;
   --projects-exit: 0;
   --projects-manifest-progress: 0;
+  --projects-foreground-progress: 0;
   display: block;
   min-height: 190svh;
   padding: 0;
@@ -644,12 +645,29 @@
 .projects-hero__copy {
   transform:
     translate3d(
-      calc(var(--projects-progress) * -3.2rem),
-      calc(var(--projects-progress) * -2rem),
-      calc(var(--projects-progress) * 110px)
+      calc(var(--projects-foreground-progress) * -3.2rem),
+      calc(var(--projects-foreground-progress) * -2rem),
+      calc(var(--projects-foreground-progress) * 110px)
     );
   opacity: 1;
+  filter: none;
+  will-change: auto;
+}
+
+.projects-hero.is-foreground-moving .projects-hero__copy {
+  will-change: transform, opacity;
+}
+
+.projects-hero.is-exiting .projects-hero__copy {
   filter: blur(calc(var(--projects-exit) * 3px));
+  will-change: transform, opacity, filter;
+}
+
+.projects-hero:not(.is-foreground-moving) .projects-hero__copy,
+.projects-hero:not(.is-foreground-moving) h1 .projects-hero__line {
+  transform: none !important;
+  filter: none !important;
+  will-change: auto;
 }
 
 .projects-hero h1 {
@@ -670,21 +688,21 @@
 .projects-hero h1 .projects-hero__line--one {
   transform:
     translate3d(
-      calc(var(--projects-progress) * -1.8rem),
-      calc(var(--projects-manifest-progress) * -1rem),
-      calc(var(--projects-progress) * 70px)
+      calc(var(--projects-foreground-progress) * -1.8rem),
+      calc(var(--projects-foreground-progress) * -1rem),
+      calc(var(--projects-foreground-progress) * 70px)
     )
-    rotateY(calc(var(--projects-manifest-progress) * -4deg));
+    rotateY(calc(var(--projects-foreground-progress) * -4deg));
 }
 
 .projects-hero h1 .projects-hero__line--two {
   transform:
     translate3d(
-      calc(var(--projects-progress) * 2.4rem),
-      calc(var(--projects-progress) * -0.2rem),
-      calc(var(--projects-progress) * 120px)
+      calc(var(--projects-foreground-progress) * 2.4rem),
+      calc(var(--projects-foreground-progress) * -0.2rem),
+      calc(var(--projects-foreground-progress) * 120px)
     )
-    rotateY(calc(var(--projects-progress) * 5deg));
+    rotateY(calc(var(--projects-foreground-progress) * 5deg));
 }
 
 .projects-hero h1 .projects-hero__line--accent {
@@ -700,11 +718,11 @@
   margin-bottom: -0.12em;
   transform:
     translate3d(
-      calc(var(--projects-progress) * -2.8rem),
-      calc(var(--projects-progress) * 1.1rem),
-      calc(var(--projects-progress) * 165px)
+      calc(var(--projects-foreground-progress) * -2.8rem),
+      calc(var(--projects-foreground-progress) * 1.1rem),
+      calc(var(--projects-foreground-progress) * 165px)
     )
-    rotateX(calc(var(--projects-progress) * -3deg));
+    rotateX(calc(var(--projects-foreground-progress) * -3deg));
 }
 
 .projects-manifest {
