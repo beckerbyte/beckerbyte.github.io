@@ -932,25 +932,36 @@
       scale(calc(1 + var(--projects-manifest-progress) * 0.02));
   }
 
-  .projects-hero__copy {
-    transform:
-      translate3d(
-        calc(var(--projects-progress) * -0.9rem),
-        calc(var(--projects-progress) * -1rem),
-        calc(var(--projects-progress) * 70px)
-      );
+  /*
+   * Animate the mobile foreground as one cached compositor layer. The visual
+   * scroll-away motion stays intact without recalculating four nested 3D text
+   * layers (copy wrapper plus three heading lines) on every frame.
+   */
+  .projects-hero h1 {
+    perspective: none;
+    transform-style: flat;
   }
 
-  .projects-hero h1 .projects-hero__line--one {
-    transform: translate3d(calc(var(--projects-progress) * -0.6rem), 0, calc(var(--projects-progress) * 40px));
+  .projects-hero.is-foreground-moving .projects-hero__copy {
+    transform: translate3d(
+      0,
+      calc(var(--projects-foreground-progress) * -3rem),
+      0
+    );
+    filter: none;
+    will-change: transform, opacity;
   }
 
-  .projects-hero h1 .projects-hero__line--two {
-    transform: translate3d(calc(var(--projects-progress) * 0.8rem), 0, calc(var(--projects-progress) * 65px));
-  }
-
+  .projects-hero h1 .projects-hero__line,
+  .projects-hero h1 .projects-hero__line--one,
+  .projects-hero h1 .projects-hero__line--two,
   .projects-hero h1 .projects-hero__line--three {
-    transform: translate3d(calc(var(--projects-progress) * -0.7rem), calc(var(--projects-progress) * 0.4rem), calc(var(--projects-progress) * 85px));
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .projects-hero.is-exiting .projects-hero__copy {
+    filter: none;
   }
 
   .projects-hero__ghost {
