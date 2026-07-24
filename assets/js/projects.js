@@ -8,6 +8,7 @@ if (projectsHero) {
   let projectsHeroFrame = null;
   let projectsHeroProgress = "";
   let projectsHeroExit = "";
+  let projectsManifestProgress = "";
 
   const clampProjectsHero = (value, minimum = 0, maximum = 1) =>
     Math.min(Math.max(value, minimum), maximum);
@@ -28,6 +29,7 @@ if (projectsHero) {
     const progress = clampProjectsHero(
       (earlyStart - rect.top) / (scrollDistance + earlyStart)
     );
+    const manifestProgress = clampProjectsHero(-rect.top / scrollDistance);
     /*
      * Finish the transition before the pinned scene releases. Otherwise its
      * last semi-transparent frame overlaps the first project cards.
@@ -36,6 +38,7 @@ if (projectsHero) {
 
     const nextProgress = progress.toFixed(4);
     const nextExit = exit.toFixed(4);
+    const nextManifestProgress = manifestProgress.toFixed(4);
 
     if (nextProgress !== projectsHeroProgress) {
       projectsHeroProgress = nextProgress;
@@ -45,6 +48,14 @@ if (projectsHero) {
     if (nextExit !== projectsHeroExit) {
       projectsHeroExit = nextExit;
       projectsHero.style.setProperty("--projects-exit", nextExit);
+    }
+
+    if (nextManifestProgress !== projectsManifestProgress) {
+      projectsManifestProgress = nextManifestProgress;
+      projectsHero.style.setProperty(
+        "--projects-manifest-progress",
+        nextManifestProgress
+      );
     }
   };
 
