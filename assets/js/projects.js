@@ -116,7 +116,7 @@ if (parallaxCards.length > 0 && !projectsReducedMotion.matches) {
       if (useCardTransforms) {
         card.style.setProperty(
           "--card-shift-y",
-          `${(normalizedDistance * 20).toFixed(2)}px`
+          `${Math.round(normalizedDistance * 20)}px`
         );
         card.style.setProperty(
           "--card-rotate",
@@ -129,7 +129,7 @@ if (parallaxCards.length > 0 && !projectsReducedMotion.matches) {
 
         preview?.style.setProperty(
           "--preview-shift-y",
-          `${(normalizedDistance * -11).toFixed(2)}px`
+          `${Math.round(normalizedDistance * -11)}px`
         );
       }
 
