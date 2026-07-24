@@ -1074,5 +1074,6 @@
 }
 
 .projects-hero__layout {
+  align-items: start;
   padding-top: var(--site-first-content-offset);
 }

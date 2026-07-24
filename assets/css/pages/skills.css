@@ -1,5 +1,5 @@
 .skills-shell {
-  width: min(100% - 3rem, 78rem);
+  width: min(100% - 3rem, 80rem);
   margin-inline: auto;
 }
 
@@ -4007,4 +4007,14 @@
 
 .skills-hero {
   padding-top: var(--site-first-content-offset);
+}
+
+.skills-hero__grid {
+  align-items: start;
+}
+
+@media (max-width: 767px) {
+  .skills-shell {
+    width: min(100% - 2rem, 80rem);
+  }
 }

@@ -510,3 +510,34 @@ body > footer {
     --site-first-content-offset: 6.5rem;
   }
 }
+
+
+/* Shared back navigation for every secondary page. */
+#main .page-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 2.5rem;
+  color: rgb(161 161 170);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+#main .page-back-link:hover {
+  color: white;
+  transform: translateX(-0.2rem);
+}
+
+#main .page-back-link svg {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+}
+
+@media (max-width: 767px) {
+  #main .page-back-link {
+    margin-bottom: 1.5rem;
+    font-size: 0.78rem;
+  }
+}
