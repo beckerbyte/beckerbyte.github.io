@@ -516,3 +516,15 @@ body.code-card-open {
     transition: none !important;
   }
 }
+
+
+/* Align the mobile hero with the actual fixed-header height. */
+@media (max-width: 767px) {
+  .hero-parallax__pin {
+    padding-top: 5rem;
+  }
+
+  .hero-parallax__content {
+    padding-top: 1.5rem;
+  }
+}
