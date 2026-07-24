@@ -3998,3 +3998,13 @@
     align-self: start;
   }
 }
+
+
+/* Replace stacked utility and section padding with the shared page start. */
+#main {
+  padding-top: 0;
+}
+
+.skills-hero {
+  padding-top: var(--site-first-content-offset);
+}
