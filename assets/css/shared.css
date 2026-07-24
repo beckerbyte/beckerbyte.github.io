@@ -498,3 +498,15 @@ body > footer {
     transition: none;
   }
 }
+
+
+/* Shared vertical start for the first content below the fixed header. */
+:root {
+  --site-first-content-offset: 8rem;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --site-first-content-offset: 6.5rem;
+  }
+}

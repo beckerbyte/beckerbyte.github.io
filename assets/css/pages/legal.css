@@ -3,3 +3,13 @@
   padding-top: 2rem;
   margin-top: 2rem;
 }
+
+
+/* Align legal intros with the shared first-content offset. */
+#main {
+  padding-top: 0;
+}
+
+#main > section:first-child {
+  padding-top: var(--site-first-content-offset);
+}
