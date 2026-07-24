@@ -709,9 +709,9 @@
       calc(var(--projects-progress) * 3.8rem),
       calc(var(--projects-progress) * 210px)
     )
-    rotateY(calc(-4deg + var(--projects-progress) * -9deg))
+    rotateY(calc(var(--projects-progress) * -13deg))
     rotateX(calc(var(--projects-progress) * 3deg))
-    scale(calc(0.98 + var(--projects-progress) * 0.08));
+    scale(calc(1 + var(--projects-progress) * 0.06));
   box-shadow:
     0 28px 90px rgba(0,0,0,0.42),
     0 0 calc(var(--projects-progress) * 65px)
@@ -906,7 +906,7 @@
         calc(var(--projects-progress) * 90px)
       )
       rotateY(calc(var(--projects-progress) * -4deg))
-      scale(calc(0.98 + var(--projects-progress) * 0.04));
+      scale(calc(1 + var(--projects-progress) * 0.02));
   }
 
   .projects-hero__copy {
@@ -1076,4 +1076,28 @@
 .projects-hero__layout {
   align-items: start;
   padding-top: var(--site-first-content-offset);
+}
+
+
+/* Match the global homepage container gutters at every breakpoint. */
+.projects-shell,
+.projects-hero__layout {
+  box-sizing: border-box;
+  width: min(100%, 80rem);
+  padding-inline: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .projects-shell,
+  .projects-hero__layout {
+    padding-inline: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .projects-shell,
+  .projects-hero__layout {
+    width: min(100%, 80rem);
+    padding-inline: 1rem;
+  }
 }
