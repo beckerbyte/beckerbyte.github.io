@@ -711,7 +711,7 @@
       calc(var(--projects-manifest-progress) * 210px)
     )
     rotateY(calc(var(--projects-manifest-progress) * -13deg))
-    rotateX(calc(var(--projects-progress) * 3deg))
+    rotateX(calc(var(--projects-manifest-progress) * 3deg))
     scale(calc(1 + var(--projects-manifest-progress) * 0.06));
   box-shadow:
     0 28px 90px rgba(0,0,0,0.42),
@@ -904,9 +904,9 @@
       translate3d(
         calc(var(--projects-manifest-progress) * -0.8rem),
         calc(var(--projects-manifest-progress) * 1.6rem),
-        calc(var(--projects-progress) * 90px)
+        calc(var(--projects-manifest-progress) * 90px)
       )
-      rotateY(calc(var(--projects-progress) * -4deg))
+      rotateY(calc(var(--projects-manifest-progress) * -4deg))
       scale(calc(1 + var(--projects-manifest-progress) * 0.02));
   }
 
