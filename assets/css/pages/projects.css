@@ -728,7 +728,7 @@
 .projects-manifest a:nth-of-type(1) {
   transform:
     translate3d(
-      calc(var(--projects-progress) * -1rem),
+      calc(var(--projects-manifest-progress) * -1rem),
       calc(var(--projects-manifest-progress) * -0.45rem),
       calc(var(--projects-manifest-progress) * 55px)
     );
