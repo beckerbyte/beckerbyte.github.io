@@ -518,13 +518,11 @@ body.code-card-open {
 }
 
 
-/* Align the mobile hero with the actual fixed-header height. */
-@media (max-width: 767px) {
-  .hero-parallax__pin {
-    padding-top: 5rem;
-  }
+/* Align the home hero with the shared first-content offset. */
+.hero-parallax__pin {
+  padding-top: 5rem;
+}
 
-  .hero-parallax__content {
-    padding-top: 1.5rem;
-  }
+.hero-parallax__content {
+  padding-top: calc(var(--site-first-content-offset) - 5rem);
 }
