@@ -4018,3 +4018,24 @@
     width: min(100% - 2rem, 80rem);
   }
 }
+
+
+/* Match the global homepage container gutters at every breakpoint. */
+.skills-shell {
+  box-sizing: border-box;
+  width: min(100%, 80rem);
+  padding-inline: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .skills-shell {
+    padding-inline: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .skills-shell {
+    width: min(100%, 80rem);
+    padding-inline: 1rem;
+  }
+}
