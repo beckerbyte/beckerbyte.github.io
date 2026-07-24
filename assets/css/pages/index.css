@@ -524,5 +524,6 @@ body.code-card-open {
 }
 
 .hero-parallax__content {
+  align-content: start;
   padding-top: calc(var(--site-first-content-offset) - 5rem);
 }
