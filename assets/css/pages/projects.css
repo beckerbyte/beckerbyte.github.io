@@ -581,6 +581,7 @@
 .projects-hero[data-projects-hero] {
   --projects-progress: 0;
   --projects-exit: 0;
+  --projects-manifest-progress: 0;
   display: block;
   min-height: 190svh;
   padding: 0;
@@ -666,10 +667,10 @@
   transform:
     translate3d(
       calc(var(--projects-progress) * -1.8rem),
-      calc(var(--projects-progress) * -1rem),
+      calc(var(--projects-manifest-progress) * -1rem),
       calc(var(--projects-progress) * 70px)
     )
-    rotateY(calc(var(--projects-progress) * -4deg));
+    rotateY(calc(var(--projects-manifest-progress) * -4deg));
 }
 
 .projects-hero h1 .projects-hero__line--two {
@@ -705,17 +706,17 @@
 .projects-manifest {
   transform:
     translate3d(
-      calc(var(--projects-progress) * -2.5rem),
-      calc(var(--projects-progress) * 3.8rem),
-      calc(var(--projects-progress) * 210px)
+      calc(var(--projects-manifest-progress) * -2.5rem),
+      calc(var(--projects-manifest-progress) * 3.8rem),
+      calc(var(--projects-manifest-progress) * 210px)
     )
-    rotateY(calc(var(--projects-progress) * -13deg))
+    rotateY(calc(var(--projects-manifest-progress) * -13deg))
     rotateX(calc(var(--projects-progress) * 3deg))
-    scale(calc(1 + var(--projects-progress) * 0.06));
+    scale(calc(1 + var(--projects-manifest-progress) * 0.06));
   box-shadow:
     0 28px 90px rgba(0,0,0,0.42),
-    0 0 calc(var(--projects-progress) * 65px)
-      rgba(56, 189, 248, calc(var(--projects-progress) * 0.14));
+    0 0 calc(var(--projects-manifest-progress) * 65px)
+      rgba(56, 189, 248, calc(var(--projects-manifest-progress) * 0.14));
   opacity: 1;
 }
 
@@ -728,17 +729,17 @@
   transform:
     translate3d(
       calc(var(--projects-progress) * -1rem),
-      calc(var(--projects-progress) * -0.45rem),
-      calc(var(--projects-progress) * 55px)
+      calc(var(--projects-manifest-progress) * -0.45rem),
+      calc(var(--projects-manifest-progress) * 55px)
     );
 }
 
 .projects-manifest a:nth-of-type(2) {
   transform:
     translate3d(
-      calc(var(--projects-progress) * 1.2rem),
-      calc(var(--projects-progress) * 0.55rem),
-      calc(var(--projects-progress) * 85px)
+      calc(var(--projects-manifest-progress) * 1.2rem),
+      calc(var(--projects-manifest-progress) * 0.55rem),
+      calc(var(--projects-manifest-progress) * 85px)
     );
 }
 
@@ -837,7 +838,7 @@
     translate3d(
       calc(var(--projects-progress) * -2rem),
       calc(var(--projects-progress) * -3rem),
-      calc(var(--projects-progress) * 90px)
+      calc(var(--projects-manifest-progress) * 90px)
     );
   opacity: calc(0.45 + var(--projects-progress) * 0.55 - var(--projects-exit) * 0.7);
 }
@@ -901,12 +902,12 @@
   .projects-manifest {
     transform:
       translate3d(
-        calc(var(--projects-progress) * -0.8rem),
-        calc(var(--projects-progress) * 1.6rem),
+        calc(var(--projects-manifest-progress) * -0.8rem),
+        calc(var(--projects-manifest-progress) * 1.6rem),
         calc(var(--projects-progress) * 90px)
       )
       rotateY(calc(var(--projects-progress) * -4deg))
-      scale(calc(1 + var(--projects-progress) * 0.02));
+      scale(calc(1 + var(--projects-manifest-progress) * 0.02));
   }
 
   .projects-hero__copy {
