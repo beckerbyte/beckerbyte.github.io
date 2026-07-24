@@ -199,10 +199,7 @@
   --card-scale: 1;
   position: relative;
   overflow: hidden;
-  transform:
-    translate3d(0, var(--card-shift-y), 0)
-    rotateX(var(--card-rotate))
-    scale(var(--card-scale));
+  transform: translate3d(0, var(--card-shift-y), 0);
   transform-origin: 50% 50%;
   will-change: transform;
   transition:
@@ -275,7 +272,11 @@
   --preview-shift-y: 0px;
   background:
     linear-gradient(145deg, rgba(255,255,255,0.065), rgba(255,255,255,0.012));
-  transform: translate3d(0, var(--preview-shift-y), 0);
+  transform:
+    translate3d(0, var(--preview-shift-y), 0)
+    rotateX(var(--card-rotate))
+    scale(var(--card-scale));
+  transform-origin: 50% 50%;
   transition: transform 90ms linear, border-color 220ms ease;
   will-change: transform;
 }
