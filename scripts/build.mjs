@@ -1,57 +1,12 @@
 import { readFile, writeFile } from "node:fs/promises";
 
 const pages = {
-  "index.html": {
-    brandHref: "#home",
-    primaryHref: "#about",
-    primaryLabel: "Profil",
-    skillsHref: "#experience",
-    projectsHref: "#projects",
-    contactHref: "#contact",
-    active: "home"
-  },
-  "skills.html": {
-    brandHref: "index.html",
-    primaryHref: "index.html",
-    primaryLabel: "Home",
-    skillsHref: "skills.html",
-    projectsHref: "projekte.html",
-    contactHref: "index.html#contact",
-    active: "skills"
-  },
-  "projekte.html": {
-    brandHref: "index.html",
-    primaryHref: "index.html",
-    primaryLabel: "Home",
-    skillsHref: "skills.html",
-    projectsHref: "projekte.html",
-    contactHref: "index.html#contact",
-    active: "projects"
-  },
-  "impressum.html": {
-    brandHref: "index.html",
-    primaryHref: "index.html",
-    primaryLabel: "Home",
-    skillsHref: "skills.html",
-    projectsHref: "projekte.html",
-    contactHref: "index.html#contact",
-    active: "imprint"
-  },
-  "datenschutz.html": {
-    brandHref: "index.html",
-    primaryHref: "index.html",
-    primaryLabel: "Home",
-    skillsHref: "skills.html",
-    projectsHref: "projekte.html",
-    contactHref: "index.html#contact",
-    active: "privacy"
-  }
+  "index.html": { active: "home" },
+  "skills.html": { active: "skills" },
+  "projekte.html": { active: "projects" },
+  "impressum.html": { active: "imprint" },
+  "datenschutz.html": { active: "privacy" }
 };
-
-const activeClass = "rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white";
-const idleClass = "rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white";
-const mobileActiveClass = "block rounded-xl bg-white/10 px-4 py-3 text-sm font-medium text-white";
-const mobileIdleClass = "block rounded-xl px-4 py-3 text-sm text-zinc-200 hover:bg-white/5";
 
 const [headerTemplate, footerTemplate] = await Promise.all([
   readFile("src/partials/header.html", "utf8"),
@@ -66,26 +21,28 @@ const replaceTokens = (template, values) =>
     return values[key];
   });
 
+const current = (active, page) => active === page ? ' aria-current="page"' : "";
+const activeClass = (active, page) => active === page ? " is-active" : "";
+
 for (const [file, page] of Object.entries(pages)) {
   const values = {
-    BRAND_HREF: page.brandHref,
-    PRIMARY_HREF: page.primaryHref,
-    PRIMARY_LABEL: page.primaryLabel,
-    SKILLS_HREF: page.skillsHref,
-    PROJECTS_HREF: page.projectsHref,
-    CONTACT_HREF: page.contactHref,
-    SKILLS_CLASS: page.active === "skills" ? activeClass : idleClass,
-    SKILLS_CURRENT: page.active === "skills" ? ' aria-current="page"' : "",
-    PROJECTS_CLASS: page.active === "projects" ? activeClass : idleClass,
-    PROJECTS_CURRENT: page.active === "projects" ? ' aria-current="page"' : "",
-    MOBILE_SKILLS_CLASS: page.active === "skills" ? mobileActiveClass : mobileIdleClass,
-    MOBILE_SKILLS_CURRENT: page.active === "skills" ? ' aria-current="page"' : "",
-    MOBILE_PROJECTS_CLASS: page.active === "projects" ? mobileActiveClass : mobileIdleClass,
-    MOBILE_PROJECTS_CURRENT: page.active === "projects" ? ' aria-current="page"' : "",
-    IMPRINT_CLASS: page.active === "imprint" ? "text-white" : "transition hover:text-white",
-    IMPRINT_CURRENT: page.active === "imprint" ? ' aria-current="page"' : "",
-    PRIVACY_CLASS: page.active === "privacy" ? "text-white" : "transition hover:text-white",
-    PRIVACY_CURRENT: page.active === "privacy" ? ' aria-current="page"' : ""
+    BRAND_ACTIVE_CLASS: activeClass(page.active, "home"),
+    BRAND_CURRENT: current(page.active, "home"),
+    HOME_ACTIVE_CLASS: activeClass(page.active, "home"),
+    HOME_CURRENT: current(page.active, "home"),
+    SKILLS_ACTIVE_CLASS: activeClass(page.active, "skills"),
+    SKILLS_CURRENT: current(page.active, "skills"),
+    PROJECTS_ACTIVE_CLASS: activeClass(page.active, "projects"),
+    PROJECTS_CURRENT: current(page.active, "projects"),
+    MOBILE_SKILLS_ACTIVE_CLASS: activeClass(page.active, "skills"),
+    MOBILE_SKILLS_CURRENT: current(page.active, "skills"),
+    MOBILE_PROJECTS_ACTIVE_CLASS: activeClass(page.active, "projects"),
+    MOBILE_PROJECTS_CURRENT: current(page.active, "projects"),
+    FOOTER_HOME_CURRENT: current(page.active, "home"),
+    FOOTER_SKILLS_CURRENT: current(page.active, "skills"),
+    FOOTER_PROJECTS_CURRENT: current(page.active, "projects"),
+    IMPRINT_CURRENT: current(page.active, "imprint"),
+    PRIVACY_CURRENT: current(page.active, "privacy")
   };
 
   const [pageTemplate, header, footer] = await Promise.all([

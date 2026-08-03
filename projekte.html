@@ -8,7 +8,7 @@
     name="description"
     content="Ausgewählte Projekte von Julian Becker: Webentwicklung, Python-Tools und digitale Lösungen."
   >
-  <link rel="canonical" href="https://www.beckerbyte.com/projekte.html">
+  <link rel="canonical" href="https://www.beckerbyte.com/projekte">
   <link rel="icon" href="./assets/img/favicon-v2.png" type="image/png">
   <script src="./assets/js/shared.js" defer></script>
   <script src="./assets/js/projects.js" defer></script>
@@ -43,7 +43,7 @@
   <header class="fixed inset-x-0 top-0 z-50">
     <div class="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
       <nav class="glass flex min-h-16 items-center justify-between rounded-2xl px-4 sm:px-5" aria-label="Hauptnavigation">
-        <a href="index.html" class="group flex items-center rounded-xl px-2 py-1.5 transition hover:bg-white/[0.03]" aria-label="beckerbyte Startseite">
+        <a href="/" class="site-brand group flex items-center rounded-xl px-2 py-1.5 transition hover:bg-white/[0.03]" aria-label="beckerbyte – Zur Startseite">
           <img
             src="./assets/img/header.png"
             alt="beckerbyte"
@@ -53,34 +53,33 @@
           <span class="hidden text-sm font-semibold tracking-[0.16em] text-white sm:text-[15px]">beckerbyte</span>
         </a>
 
-        <div class="hidden items-center gap-1 md:flex">
-          <a class="rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white" href="index.html" data-nav-section="about">Home</a>
-          <a class="rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white" href="skills.html" data-nav-section="experience">Erfahrungen</a>
-          <a class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white" href="projekte.html" aria-current="page" data-nav-section="projects">Projekte</a>
-          <a class="ml-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-green-300" href="index.html#contact">
-            Kontakt
-          </a>
+        <div class="site-nav hidden items-center gap-1 md:flex">
+          <a class="site-nav__link" href="/skills">Skills &amp; Erfahrungen</a>
+          <a class="site-nav__link is-active" href="/projekte" aria-current="page">Projekte</a>
+          <a class="site-nav__link site-nav__link--contact" href="/#kontakt" data-nav-section="kontakt">Kontakt</a>
         </div>
 
         <button
           id="menu-button"
-          class="rounded-lg border border-white/10 p-2 text-zinc-200 md:hidden"
+          class="site-menu-button md:hidden"
           type="button"
           aria-label="Navigation öffnen"
           aria-expanded="false"
           aria-controls="mobile-menu"
         >
-          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-            <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"></path>
+          <span>Menü</span>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path class="site-menu-button__open" d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"></path>
+            <path class="site-menu-button__close" d="m6 6 12 12M18 6 6 18" stroke-linecap="round"></path>
           </svg>
         </button>
       </nav>
 
-      <div id="mobile-menu" class="glass mt-2 hidden rounded-2xl p-3 md:hidden">
-        <a class="block rounded-xl px-4 py-3 text-sm text-zinc-200 hover:bg-white/5" href="index.html">Home</a>
-        <a class="block rounded-xl px-4 py-3 text-sm text-zinc-200 hover:bg-white/5" href="skills.html">Erfahrungen</a>
-        <a class="block rounded-xl bg-white/10 px-4 py-3 text-sm font-medium text-white" href="projekte.html" aria-current="page">Projekte</a>
-        <a class="mt-2 block rounded-xl bg-white px-4 py-3 text-center text-sm font-semibold text-black" href="index.html#contact">Kontakt</a>
+      <div id="mobile-menu" class="site-mobile-menu glass mt-2 hidden rounded-2xl p-3 md:hidden" inert>
+        <a class="site-mobile-menu__link" href="/">Startseite</a>
+        <a class="site-mobile-menu__link" href="/skills">Skills &amp; Erfahrungen</a>
+        <a class="site-mobile-menu__link is-active" href="/projekte" aria-current="page">Projekte</a>
+        <a class="site-mobile-menu__link site-mobile-menu__link--contact" href="/#kontakt" data-nav-section="kontakt">Kontakt</a>
       </div>
     </div>
   </header>
@@ -99,15 +98,16 @@
 
       <div class="projects-shell projects-hero__layout">
         <div class="projects-hero__copy">
-          <a href="index.html" class="page-back-link projects-back">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-            Zur Homepage
-          </a>
+          <nav class="site-breadcrumb" aria-label="Breadcrumb">
+            <ol>
+              <li><a href="/">Start</a></li>
+              <li aria-current="page">Projekte</li>
+            </ol>
+          </nav>
 
           <p class="projects-kicker">Ausgewählte Arbeiten · 2026</p>
-          <h1 aria-label="Gebaut, getestet, weitergedacht.">
+          <h1>
+            <span class="sr-only">Gebaut, getestet, weitergedacht.</span>
             <span class="projects-hero__line projects-hero__line--one" aria-hidden="true">Gebaut,</span>
             <span class="projects-hero__line projects-hero__line--two" aria-hidden="true">getestet,</span>
             <span class="projects-hero__line projects-hero__line--three projects-hero__line--accent" aria-hidden="true">weitergedacht.</span>
@@ -189,7 +189,7 @@
                 und Fokus auf klare Nutzerführung.
               </p>
 
-              <div class="mt-7">
+              <div class="mt-7 flex flex-wrap gap-3">
                 <a
                   href="https://github.com/beckerbyte/beckerbyte.github.io"
                   target="_blank"
@@ -200,6 +200,12 @@
                   <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path d="M7 17 17 7M8 7h9v9" stroke-linecap="round" stroke-linejoin="round"></path>
                   </svg>
+                </a>
+                <a
+                  href="/skills#web"
+                  class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
+                >
+                  Web-Skills ansehen <span aria-hidden="true">→</span>
                 </a>
               </div>
             </div>
@@ -227,7 +233,7 @@
                 </div>
 
                 <div class="python-window__editor">
-                  <ol class="python-code" aria-label="Python-Codebeispiel">
+                  <ol class="python-code">
                     <li><code><b>from</b> collections <b>import</b> Counter</code></li>
                     <li><code></code></li>
                     <li><code><b>def</b> <em>analyze_text</em>(text):</code></li>
@@ -235,7 +241,7 @@
                     <li><code>    <b>return</b> Counter(words)</code></li>
                   </ol>
 
-                  <div class="python-terminal" aria-label="Beispielausgabe des Text-Analyzers">
+                  <section class="python-terminal" aria-label="Beispielausgabe des Text-Analyzers">
                     <div class="python-terminal__bar">
                       <span>TERMINAL</span>
                       <span>python</span>
@@ -244,7 +250,7 @@
                     <p><span class="python-label">Text:</span> Python macht Textanalyse übersichtlich.</p>
                     <p class="python-result">✓ 5 Wörter · 39 Zeichen · 1 Satz</p>
                     <p><span class="python-prompt">›</span><span class="python-cursor" aria-hidden="true"></span></p>
-                  </div>
+                  </section>
                 </div>
               </div>
             </div>
@@ -284,6 +290,12 @@
                     <path d="M12 3v12M7 10l5 5 5-5M5 21h14" stroke-linecap="round" stroke-linejoin="round"></path>
                   </svg>
                 </a>
+                <a
+                  href="/skills#systems"
+                  class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
+                >
+                  Python &amp; Systeme ansehen <span aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
           </article>
@@ -304,7 +316,7 @@
 
             <div class="flex flex-col gap-3 border-t border-white/10 p-8 sm:flex-row lg:border-l lg:border-t-0">
               <a
-                href="index.html#contact"
+                href="/#kontakt"
                 class="inline-flex items-center justify-center gap-2 rounded-full bg-green-300 px-6 py-3.5 font-semibold text-black transition hover:bg-green-200"
               >
                 Austausch starten
@@ -314,10 +326,10 @@
               </a>
 
               <a
-                href="skills.html"
+                href="/skills"
                 class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3.5 font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
               >
-                Skills ansehen
+                Skills &amp; Arbeitsweise ansehen
               </a>
             </div>
           </div>
@@ -326,25 +338,41 @@
     </section>
   </main>
 
-  <footer class="site-footer border-t border-white/10 py-10">
-    <div class="mx-auto grid max-w-7xl gap-8 px-6 text-sm text-zinc-500 sm:grid-cols-[auto_1fr_auto] sm:items-center lg:px-8">
-      <div class="flex items-center gap-4">
-        <img src="./assets/img/header.png" alt="beckerbyte" class="h-6 w-auto max-w-[150px] object-contain opacity-70" data-fallback-next>
-        <span class="hidden">beckerbyte</span>
+  <footer class="site-footer border-t border-white/10 py-12">
+    <div class="site-footer__grid mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="site-footer__brand">
+        <a href="/" aria-label="beckerbyte – Zur Startseite">
+          <img src="./assets/img/header.png" alt="beckerbyte" class="h-7 w-auto max-w-[160px] object-contain opacity-75 transition hover:opacity-100" data-fallback-next>
+          <span class="hidden">beckerbyte</span>
+        </a>
+        <p>Webentwicklung, Systeme und Creative Tech – klar verbunden.</p>
       </div>
 
-      <div class="flex flex-wrap items-center gap-x-5 gap-y-3 sm:justify-center">
-        <a href="https://github.com/beckerbyte" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">GitHub</a>
-        <a href="https://www.linkedin.com/in/beckerbyte/" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">LinkedIn</a>
-        <a href="https://discord.com/users/270226761256534027" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">Discord</a>
-        <a href="impressum.html" class="transition hover:text-white">Impressum</a>
-        <a href="datenschutz.html" class="transition hover:text-white">Datenschutz</a>
+      <nav class="site-footer__group" aria-label="Footer-Navigation">
+        <h2>Navigation</h2>
+        <a href="/">Start</a>
+        <a href="/skills">Skills &amp; Erfahrungen</a>
+        <a href="/projekte" aria-current="page">Projekte</a>
+        <a href="/#kontakt">Kontakt</a>
+      </nav>
+
+      <div class="site-footer__group">
+        <h2>Social</h2>
+        <a href="https://github.com/beckerbyte" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        <a href="https://www.linkedin.com/in/beckerbyte/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a href="https://discord.com/users/270226761256534027" target="_blank" rel="noopener noreferrer">Discord <span aria-hidden="true">↗</span></a>
       </div>
 
-      <div class="flex items-center justify-between gap-5 sm:justify-end">
-        <span>© <span id="year">2026</span> Julian Becker</span>
-        <a href="#main" class="site-footer__top" aria-label="Zurück nach oben">↑</a>
-      </div>
+      <nav class="site-footer__group" aria-label="Rechtliches">
+        <h2>Rechtliches</h2>
+        <a href="/impressum">Impressum</a>
+        <a href="/datenschutz">Datenschutz</a>
+      </nav>
+    </div>
+
+    <div class="site-footer__meta mx-auto mt-10 flex max-w-7xl items-center justify-between gap-5 border-t border-white/10 px-6 pt-6 text-sm text-zinc-500 lg:px-8">
+      <span>© <span id="year">2026</span> Julian Becker</span>
+      <a href="#main" class="site-footer__top" aria-label="Zurück nach oben">↑</a>
     </div>
   </footer>
 

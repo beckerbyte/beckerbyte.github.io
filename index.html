@@ -51,7 +51,7 @@
   <header class="fixed inset-x-0 top-0 z-50">
     <div class="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
       <nav class="glass flex min-h-16 items-center justify-between rounded-2xl px-4 sm:px-5" aria-label="Hauptnavigation">
-        <a href="#home" class="group flex items-center rounded-xl px-2 py-1.5 transition hover:bg-white/[0.03]" aria-label="beckerbyte Startseite">
+        <a href="/" class="site-brand group flex items-center rounded-xl px-2 py-1.5 transition hover:bg-white/[0.03] is-active" aria-label="beckerbyte – Zur Startseite" aria-current="page">
           <img
             src="./assets/img/header.png"
             alt="beckerbyte"
@@ -61,34 +61,33 @@
           <span class="hidden text-sm font-semibold tracking-[0.16em] text-white sm:text-[15px]">beckerbyte</span>
         </a>
 
-        <div class="hidden items-center gap-1 md:flex">
-          <a class="rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white" href="#about" data-nav-section="about">Profil</a>
-          <a class="rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white" href="#experience" data-nav-section="experience">Erfahrungen</a>
-          <a class="rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white" href="#projects" data-nav-section="projects">Projekte</a>
-          <a class="ml-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-green-300" href="#contact">
-            Kontakt
-          </a>
+        <div class="site-nav hidden items-center gap-1 md:flex">
+          <a class="site-nav__link" href="/skills">Skills &amp; Erfahrungen</a>
+          <a class="site-nav__link" href="/projekte">Projekte</a>
+          <a class="site-nav__link site-nav__link--contact" href="/#kontakt" data-nav-section="kontakt">Kontakt</a>
         </div>
 
         <button
           id="menu-button"
-          class="rounded-lg border border-white/10 p-2 text-zinc-200 md:hidden"
+          class="site-menu-button md:hidden"
           type="button"
           aria-label="Navigation öffnen"
           aria-expanded="false"
           aria-controls="mobile-menu"
         >
-          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-            <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"></path>
+          <span>Menü</span>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path class="site-menu-button__open" d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"></path>
+            <path class="site-menu-button__close" d="m6 6 12 12M18 6 6 18" stroke-linecap="round"></path>
           </svg>
         </button>
       </nav>
 
-      <div id="mobile-menu" class="glass mt-2 hidden rounded-2xl p-3 md:hidden">
-        <a class="block rounded-xl px-4 py-3 text-sm text-zinc-200 hover:bg-white/5" href="#about">Profil</a>
-        <a class="block rounded-xl px-4 py-3 text-sm text-zinc-200 hover:bg-white/5" href="#experience">Erfahrungen</a>
-        <a class="block rounded-xl px-4 py-3 text-sm text-zinc-200 hover:bg-white/5" href="#projects">Projekte</a>
-        <a class="mt-2 block rounded-xl bg-white px-4 py-3 text-center text-sm font-semibold text-black" href="#contact">Kontakt</a>
+      <div id="mobile-menu" class="site-mobile-menu glass mt-2 hidden rounded-2xl p-3 md:hidden" inert>
+        <a class="site-mobile-menu__link is-active" href="/" aria-current="page">Startseite</a>
+        <a class="site-mobile-menu__link" href="/skills">Skills &amp; Erfahrungen</a>
+        <a class="site-mobile-menu__link" href="/projekte">Projekte</a>
+        <a class="site-mobile-menu__link site-mobile-menu__link--contact" href="/#kontakt" data-nav-section="kontakt">Kontakt</a>
       </div>
     </div>
   </header>
@@ -119,7 +118,7 @@
 
           <div class="hero-animate hero-delay-5 mt-10 flex flex-col gap-3 sm:flex-row">
             <a
-              href="#projects"
+              href="/projekte"
               class="inline-flex items-center justify-center gap-2 rounded-full bg-green-300 px-6 py-3.5 font-semibold text-black transition hover:-translate-y-0.5 hover:bg-green-200"
             >
               Projekte ansehen
@@ -128,7 +127,7 @@
               </svg>
             </a>
             <a
-              href="#contact"
+              href="#kontakt"
               class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3.5 font-semibold text-white transition hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/10"
             >
               Kontakt aufnehmen
@@ -256,7 +255,7 @@
         <section class="tech-system reveal mt-5" aria-label="Technologien und Werkzeuge">
           <div class="tech-system__header">
             <span>TECH MATRIX / 13 MODULES</span>
-            <a href="skills.html">Alle Erfahrungen ansehen ↗</a>
+            <a href="/skills">Skills &amp; Erfahrungen ansehen <span aria-hidden="true">→</span></a>
           </div>
           <div class="tech-system__grid">
             <div class="tech-cluster tech-cluster--web">
@@ -399,7 +398,7 @@
               <ul><li>Python</li><li>CLI</li><li>Textanalyse</li></ul>
               <div class="home-project__links">
                 <a href="https://github.com/beckerbyte/Text-Analyzer" target="_blank" rel="noopener noreferrer">Repository öffnen ↗</a>
-                <a href="projekte.html#text-analyzer-project">Details ansehen →</a>
+                <a href="/projekte#text-analyzer-project">Details ansehen →</a>
               </div>
             </div>
           </article>
@@ -407,12 +406,12 @@
 
         <div class="projects-section__more reveal">
           <span>02 reale Projekte dokumentiert</span>
-          <a href="projekte.html">Projektarchiv öffnen →</a>
+          <a href="/projekte">Alle Projekte ansehen <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="contact-section py-24 sm:py-32">
+    <section id="kontakt" class="contact-section py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="contact-panel glass reveal overflow-hidden rounded-[2rem]">
           <div class="grid lg:grid-cols-[0.85fr_1.15fr]">
@@ -499,7 +498,7 @@
                 >
                 <span>
                   Ich habe die
-                  <a href="datenschutz.html" target="_blank" rel="noopener noreferrer" class="text-zinc-200 underline decoration-zinc-600 underline-offset-4 hover:text-green-300">
+                  <a href="/datenschutz" class="text-zinc-200 underline decoration-zinc-600 underline-offset-4 hover:text-green-300">
                     Datenschutzerklärung
                   </a> zur Kenntnis genommen.
                 </span>
@@ -523,25 +522,41 @@
     </section>
   </main>
 
-  <footer class="site-footer border-t border-white/10 py-10">
-    <div class="mx-auto grid max-w-7xl gap-8 px-6 text-sm text-zinc-500 sm:grid-cols-[auto_1fr_auto] sm:items-center lg:px-8">
-      <div class="flex items-center gap-4">
-        <img src="./assets/img/header.png" alt="beckerbyte" class="h-6 w-auto max-w-[150px] object-contain opacity-70" data-fallback-next>
-        <span class="hidden">beckerbyte</span>
+  <footer class="site-footer border-t border-white/10 py-12">
+    <div class="site-footer__grid mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="site-footer__brand">
+        <a href="/" aria-label="beckerbyte – Zur Startseite">
+          <img src="./assets/img/header.png" alt="beckerbyte" class="h-7 w-auto max-w-[160px] object-contain opacity-75 transition hover:opacity-100" data-fallback-next>
+          <span class="hidden">beckerbyte</span>
+        </a>
+        <p>Webentwicklung, Systeme und Creative Tech – klar verbunden.</p>
       </div>
 
-      <div class="flex flex-wrap items-center gap-x-5 gap-y-3 sm:justify-center">
-        <a href="https://github.com/beckerbyte" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">GitHub</a>
-        <a href="https://www.linkedin.com/in/beckerbyte/" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">LinkedIn</a>
-        <a href="https://discord.com/users/270226761256534027" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">Discord</a>
-        <a href="impressum.html" class="transition hover:text-white">Impressum</a>
-        <a href="datenschutz.html" class="transition hover:text-white">Datenschutz</a>
+      <nav class="site-footer__group" aria-label="Footer-Navigation">
+        <h2>Navigation</h2>
+        <a href="/" aria-current="page">Start</a>
+        <a href="/skills">Skills &amp; Erfahrungen</a>
+        <a href="/projekte">Projekte</a>
+        <a href="/#kontakt">Kontakt</a>
+      </nav>
+
+      <div class="site-footer__group">
+        <h2>Social</h2>
+        <a href="https://github.com/beckerbyte" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        <a href="https://www.linkedin.com/in/beckerbyte/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a href="https://discord.com/users/270226761256534027" target="_blank" rel="noopener noreferrer">Discord <span aria-hidden="true">↗</span></a>
       </div>
 
-      <div class="flex items-center justify-between gap-5 sm:justify-end">
-        <span>© <span id="year">2026</span> Julian Becker</span>
-        <a href="#main" class="site-footer__top" aria-label="Zurück nach oben">↑</a>
-      </div>
+      <nav class="site-footer__group" aria-label="Rechtliches">
+        <h2>Rechtliches</h2>
+        <a href="/impressum">Impressum</a>
+        <a href="/datenschutz">Datenschutz</a>
+      </nav>
+    </div>
+
+    <div class="site-footer__meta mx-auto mt-10 flex max-w-7xl items-center justify-between gap-5 border-t border-white/10 px-6 pt-6 text-sm text-zinc-500 lg:px-8">
+      <span>© <span id="year">2026</span> Julian Becker</span>
+      <a href="#main" class="site-footer__top" aria-label="Zurück nach oben">↑</a>
     </div>
   </footer>
 

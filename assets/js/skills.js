@@ -57,7 +57,7 @@ if (webDesignPreview && webDesignButtons.length > 0) {
       title: "Digitale Arbeiten, klar präsentiert.",
       copy: "Projekte, Kompetenzen und Persönlichkeit in einer ruhigen, fokussierten Oberfläche.",
       linkLabel: "Portfolio öffnen →",
-      href: "projekte.html#portfolio-project"
+      href: "/projekte#portfolio-project"
     },
     studio: {
       kicker: "CREATIVE STUDIO · MOTION · BRAND",
