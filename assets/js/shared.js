@@ -23,6 +23,7 @@ if (siteHeader) {
     headerFrame = null;
 
     const currentScrollY = Math.max(window.scrollY, 0);
+    siteHeader.classList.toggle("is-compact", currentScrollY > 24);
     const delta = currentScrollY - lastHeaderScrollY;
     const menuIsOpen = mobileMenu && !mobileMenu.classList.contains("hidden");
     const headerHasFocus = siteHeader.contains(document.activeElement);
@@ -68,6 +69,31 @@ if (siteHeader) {
   window.addEventListener("scroll", requestHeaderUpdate, { passive: true });
   siteHeader.addEventListener("focusin", showSiteHeader);
   updateSiteHeader();
+}
+
+const sectionNavigation = [...document.querySelectorAll("[data-nav-section]")]
+  .filter((link) => link.getAttribute("href")?.startsWith("#"));
+
+if (sectionNavigation.length && "IntersectionObserver" in window) {
+  const sections = sectionNavigation
+    .map((link) => document.getElementById(link.dataset.navSection))
+    .filter(Boolean);
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+    if (!visible) return;
+    sectionNavigation.forEach((link) => {
+      const isActive = link.dataset.navSection === visible.target.id;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
+  }, { rootMargin: "-35% 0px -50%", threshold: [0, 0.25, 0.6] });
+
+  sections.forEach((section) => sectionObserver.observe(section));
 }
 
 document.querySelectorAll("[data-fallback-next]").forEach((image) => {

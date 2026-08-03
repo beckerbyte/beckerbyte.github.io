@@ -5,6 +5,8 @@ const pages = {
     brandHref: "#home",
     primaryHref: "#about",
     primaryLabel: "Profil",
+    skillsHref: "#experience",
+    projectsHref: "#projects",
     contactHref: "#contact",
     active: "home"
   },
@@ -12,6 +14,8 @@ const pages = {
     brandHref: "index.html",
     primaryHref: "index.html",
     primaryLabel: "Home",
+    skillsHref: "skills.html",
+    projectsHref: "projekte.html",
     contactHref: "index.html#contact",
     active: "skills"
   },
@@ -19,6 +23,8 @@ const pages = {
     brandHref: "index.html",
     primaryHref: "index.html",
     primaryLabel: "Home",
+    skillsHref: "skills.html",
+    projectsHref: "projekte.html",
     contactHref: "index.html#contact",
     active: "projects"
   },
@@ -26,6 +32,8 @@ const pages = {
     brandHref: "index.html",
     primaryHref: "index.html",
     primaryLabel: "Home",
+    skillsHref: "skills.html",
+    projectsHref: "projekte.html",
     contactHref: "index.html#contact",
     active: "imprint"
   },
@@ -33,6 +41,8 @@ const pages = {
     brandHref: "index.html",
     primaryHref: "index.html",
     primaryLabel: "Home",
+    skillsHref: "skills.html",
+    projectsHref: "projekte.html",
     contactHref: "index.html#contact",
     active: "privacy"
   }
@@ -61,6 +71,8 @@ for (const [file, page] of Object.entries(pages)) {
     BRAND_HREF: page.brandHref,
     PRIMARY_HREF: page.primaryHref,
     PRIMARY_LABEL: page.primaryLabel,
+    SKILLS_HREF: page.skillsHref,
+    PROJECTS_HREF: page.projectsHref,
     CONTACT_HREF: page.contactHref,
     SKILLS_CLASS: page.active === "skills" ? activeClass : idleClass,
     SKILLS_CURRENT: page.active === "skills" ? ' aria-current="page"' : "",

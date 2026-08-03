@@ -52,6 +52,42 @@ body > footer {
   backdrop-filter: blur(18px);
 }
 
+.site-header nav {
+  transition: min-height 240ms ease, background 240ms ease, border-color 240ms ease, border-radius 240ms ease;
+}
+
+.site-header.is-compact nav {
+  min-height: 3.25rem;
+  border-color: rgba(134, 239, 172, 0.12);
+  border-radius: 1rem;
+  background: rgba(8, 10, 9, 0.84);
+}
+
+.site-header [data-nav-section].is-active {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.site-footer__top {
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  color: rgb(212 212 216);
+  transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.site-footer__top:hover,
+.site-footer__top:focus-visible {
+  border-color: rgba(134, 239, 172, 0.28);
+  color: rgb(134 239 172);
+  transform: translateY(-2px);
+  outline: none;
+}
+
 .section-kicker::before {
   content: "";
   display: inline-block;

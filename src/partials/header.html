@@ -22,9 +22,9 @@
         </a>
 
         <div class="hidden items-center gap-1 md:flex">
-          <a class="rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white" href="{{PRIMARY_HREF}}">{{PRIMARY_LABEL}}</a>
-          <a class="{{SKILLS_CLASS}}" href="skills.html"{{SKILLS_CURRENT}}>Erfahrungen</a>
-          <a class="{{PROJECTS_CLASS}}" href="projekte.html"{{PROJECTS_CURRENT}}>Projekte</a>
+          <a class="rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white" href="{{PRIMARY_HREF}}" data-nav-section="about">{{PRIMARY_LABEL}}</a>
+          <a class="{{SKILLS_CLASS}}" href="{{SKILLS_HREF}}"{{SKILLS_CURRENT}} data-nav-section="experience">Erfahrungen</a>
+          <a class="{{PROJECTS_CLASS}}" href="{{PROJECTS_HREF}}"{{PROJECTS_CURRENT}} data-nav-section="projects">Projekte</a>
           <a class="ml-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-green-300" href="{{CONTACT_HREF}}">
             Kontakt
           </a>
@@ -46,8 +46,8 @@
 
       <div id="mobile-menu" class="glass mt-2 hidden rounded-2xl p-3 md:hidden">
         <a class="block rounded-xl px-4 py-3 text-sm text-zinc-200 hover:bg-white/5" href="{{PRIMARY_HREF}}">{{PRIMARY_LABEL}}</a>
-        <a class="{{MOBILE_SKILLS_CLASS}}" href="skills.html"{{MOBILE_SKILLS_CURRENT}}>Erfahrungen</a>
-        <a class="{{MOBILE_PROJECTS_CLASS}}" href="projekte.html"{{MOBILE_PROJECTS_CURRENT}}>Projekte</a>
+        <a class="{{MOBILE_SKILLS_CLASS}}" href="{{SKILLS_HREF}}"{{MOBILE_SKILLS_CURRENT}}>Erfahrungen</a>
+        <a class="{{MOBILE_PROJECTS_CLASS}}" href="{{PROJECTS_HREF}}"{{MOBILE_PROJECTS_CURRENT}}>Projekte</a>
         <a class="mt-2 block rounded-xl bg-white px-4 py-3 text-center text-sm font-semibold text-black" href="{{CONTACT_HREF}}">Kontakt</a>
       </div>
     </div>
