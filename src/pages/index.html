@@ -3,12 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Webdesign & More – Julian Becker | beckerbyte aus Hockenheim</title>
+  <title>Webdesign &amp; More – Julian Becker | beckerbyte aus Hockenheim</title>
   <meta
     name="description"
     content="Privates, nichtkommerzielles Portfolio von Julian Becker zu Webentwicklung, Systemintegration und Creative Tech."
   >
   <link rel="canonical" href="https://www.beckerbyte.com/">
+  <meta name="theme-color" content="#050706">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="Digitale Lösungen, klar gebaut. | beckerbyte">
+  <meta property="og:description" content="Privates Creative-Tech-Portfolio von Julian Becker zu Webentwicklung, Systemintegration und Motion Design.">
+  <meta property="og:url" content="https://www.beckerbyte.com/">
+  <meta name="twitter:card" content="summary">
   <link rel="icon" href="./assets/img/favicon-v2.png" type="image/png">
   <script src="./assets/js/shared.js" defer></script>
   <script src="./assets/js/index.js" defer></script>
@@ -59,7 +66,7 @@
 
           <div class="hero-animate hero-delay-5 mt-10 flex flex-col gap-3 sm:flex-row">
             <a
-              href="projekte.html"
+              href="#projects"
               class="inline-flex items-center justify-center gap-2 rounded-full bg-green-300 px-6 py-3.5 font-semibold text-black transition hover:-translate-y-0.5 hover:bg-green-200"
             >
               Projekte ansehen
@@ -71,84 +78,53 @@
               href="#contact"
               class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3.5 font-semibold text-white transition hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/10"
             >
-              Projekt besprechen
+              Kontakt aufnehmen
             </a>
           </div>
         </div>
 
-        <div id="code-card-stage" class="code-card-stage hero-parallax__card hero-animate hero-delay-5 lg:justify-self-end">
-          <div id="code-card" class="code-card glass relative overflow-hidden rounded-[2rem] p-5 shadow-glow sm:p-7" role="region" aria-label="Interaktive Code-Karte">
-            <div class="code-card-swoosh" aria-hidden="true"></div>
-            <div class="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-green-300/15 blur-3xl"></div>
-            <div class="absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-sky-300/10 blur-3xl"></div>
-
-            <div class="code-card-inner relative rounded-[1.35rem] border border-white/10 bg-black/50 p-6">
-              <div class="mb-7 flex items-center justify-between">
-                <div class="window-controls flex gap-1.5" aria-label="Fenstersteuerung">
-                  <button
-                    id="code-card-close"
-                    class="window-dot window-dot--close"
-                    type="button"
-                    aria-label="Code-Karte schließen"
-                    title="Schließen"
-                  ></button>
-                  <button
-                    id="code-card-minimize"
-                    class="window-dot window-dot--minimize"
-                    type="button"
-                    aria-label="Code-Karte minimieren"
-                    title="Minimieren"
-                  ></button>
-                  <button
-                    id="code-card-maximize"
-                    class="window-dot window-dot--maximize"
-                    type="button"
-                    aria-label="Code-Karte vergrößern"
-                    aria-expanded="false"
-                    title="Vergrößern"
-                  ></button>
-                </div>
-                <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">beckerbyte.dev</span>
-              </div>
-
-              <div class="code-card-content">
-                <pre class="min-h-[252px] overflow-hidden whitespace-pre-wrap font-mono text-[12px] leading-7 text-zinc-300 sm:text-sm"><code id="typing-code" aria-label="Code-Beispiel"><span class="text-sky-300">const</span> developer = {
-  name: <span class="text-green-300">"beckerbyte"</span>,
-  focus: [
-    <span class="text-green-300">"Webentwicklung"</span>,
-    <span class="text-green-300">"Systemintegration"</span>,
-    <span class="text-green-300">"Creative Tech"</span>
-  ],
-  mindset: <span class="text-green-300">"build useful things"</span>
-};</code><span id="typing-cursor" class="typing-cursor" aria-hidden="true"></span></pre>
-
-                <div class="mt-8 grid grid-cols-3 gap-3 border-t border-white/10 pt-5 text-center">
-                <div>
-                  <strong class="block text-lg text-white">Clean</strong>
-                  <span class="text-[11px] text-zinc-500">Code</span>
-                </div>
-                <div>
-                  <strong class="block text-lg text-white">Fast</strong>
-                  <span class="text-[11px] text-zinc-500">Delivery</span>
-                </div>
-                <div>
-                  <strong class="block text-lg text-white">Solid</strong>
-                  <span class="text-[11px] text-zinc-500">Systems</span>
-                </div>
-              </div>
-              </div>
-            </div>
+        <div class="system-stage hero-animate hero-delay-5 lg:justify-self-end" data-system-stage>
+          <div class="system-stage__frame" aria-hidden="true">
+            <video
+              class="system-stage__video"
+              data-atmosphere-video
+              data-desktop-webm="./assets/video/hero/hero-desktop.webm"
+              data-desktop-mp4="./assets/video/hero/hero-desktop.mp4"
+              data-desktop-poster="./assets/video/hero/hero-desktop-poster.webp"
+              data-tablet-webm="./assets/video/hero/hero-tablet.webm"
+              data-tablet-mp4="./assets/video/hero/hero-tablet.mp4"
+              data-tablet-poster="./assets/video/hero/hero-tablet-poster.webp"
+              data-mobile-webm="./assets/video/hero/hero-mobile.webm"
+              data-mobile-mp4="./assets/video/hero/hero-mobile.mp4"
+              data-mobile-poster="./assets/video/hero/hero-mobile-poster.webp"
+              muted
+              loop
+              playsinline
+              preload="none"
+              tabindex="-1"
+            ></video>
+            <canvas id="system-canvas" class="system-stage__canvas"></canvas>
+            <div class="system-stage__vignette"></div>
+            <div class="system-stage__scanline"></div>
           </div>
 
-          <button
-            id="code-card-reopen"
-            class="code-card-reopen"
-            type="button"
-            aria-label="Code-Karte wieder öffnen"
-          >
-            <span class="font-mono text-xs uppercase tracking-[0.2em]">Codekarte öffnen</span>
-            <span aria-hidden="true">↗</span>
-          </button>
+          <div class="system-stage__hud" aria-hidden="true">
+            <span class="system-stage__index">SYS / 00</span>
+            <span class="system-stage__state" data-system-state>CORE ONLINE</span>
+            <span class="system-stage__metric" data-system-metric>24 NODES</span>
+          </div>
+
+          <div class="system-stage__legend" aria-hidden="true">
+            <span><i class="system-stage__dot system-stage__dot--green"></i>Web</span>
+            <span><i class="system-stage__dot system-stage__dot--blue"></i>Systems</span>
+            <span><i class="system-stage__dot system-stage__dot--white"></i>Motion</span>
+          </div>
+
+          <noscript>
+            <div class="system-stage__fallback" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </noscript>
         </div>
         </div>
       </div>
@@ -165,7 +141,7 @@
     <section id="about" class="py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="reveal max-w-3xl">
-          <p class="section-kicker font-mono text-xs uppercase tracking-[0.24em] text-zinc-400">Was ich mache</p>
+          <p class="section-kicker font-mono text-xs uppercase tracking-[0.24em] text-zinc-400">01 / Was ich mache</p>
           <h2 class="mt-5 text-4xl font-bold tracking-tight sm:text-6xl">
             Technik ohne unnötigen Ballast.
           </h2>
@@ -176,11 +152,14 @@
         </div>
 
         <div class="mt-14 grid gap-5 md:grid-cols-3">
-          <article class="glass reveal rounded-3xl p-7 transition hover:-translate-y-1 hover:border-green-300/25">
+          <article class="service-card service-card--web glass reveal rounded-3xl p-7" tabindex="0">
             <div class="mb-8 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-green-300/10 text-green-300">
               <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
                 <path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
+            </div>
+            <div class="service-visual service-visual--web" aria-hidden="true">
+              <span></span><span></span><span></span>
             </div>
             <h3 class="text-xl font-semibold">Webentwicklung</h3>
             <p class="mt-3 leading-7 text-zinc-400">
@@ -188,12 +167,16 @@
             </p>
           </article>
 
-          <article class="glass reveal rounded-3xl p-7 transition hover:-translate-y-1 hover:border-sky-300/25">
+          <article class="service-card service-card--systems glass reveal rounded-3xl p-7" tabindex="0">
             <div class="mb-8 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-300/10 text-sky-300">
               <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
                 <rect x="3" y="4" width="18" height="12" rx="2"></rect>
                 <path d="M8 20h8M12 16v4" stroke-linecap="round"></path>
               </svg>
+            </div>
+            <div class="service-visual service-visual--systems" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+              <i></i><i></i><i></i>
             </div>
             <h3 class="text-xl font-semibold">Systemintegration</h3>
             <p class="mt-3 leading-7 text-zinc-400">
@@ -201,11 +184,14 @@
             </p>
           </article>
 
-          <article class="glass reveal rounded-3xl p-7 transition hover:-translate-y-1 hover:border-violet-300/25">
+          <article class="service-card service-card--creative glass reveal rounded-3xl p-7" tabindex="0">
             <div class="mb-8 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-300/10 text-violet-300">
               <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
                 <path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
+            </div>
+            <div class="service-visual service-visual--creative" aria-hidden="true">
+              <span></span><span></span><span></span>
             </div>
             <h3 class="text-xl font-semibold">Creative Tech</h3>
             <p class="mt-3 leading-7 text-zinc-400">
@@ -214,22 +200,33 @@
           </article>
         </div>
 
-        <div class="reveal mt-5 flex flex-wrap gap-3 rounded-3xl border border-white/10 bg-white/[0.025] p-5">
-          <span class="rounded-full border border-white/10 px-4 py-2 font-mono text-xs text-zinc-300">HTML</span>
-          <span class="rounded-full border border-white/10 px-4 py-2 font-mono text-xs text-zinc-300">CSS</span>
-          <span class="rounded-full border border-white/10 px-4 py-2 font-mono text-xs text-zinc-300">JavaScript</span>
-          <span class="rounded-full border border-white/10 px-4 py-2 font-mono text-xs text-zinc-300">Tailwind CSS</span>
-          <span class="rounded-full border border-white/10 px-4 py-2 font-mono text-xs text-zinc-300">VS Code</span>
-          <span class="rounded-full border border-white/10 px-4 py-2 font-mono text-xs text-zinc-300">SAP</span>
-          <span class="rounded-full border border-white/10 px-4 py-2 font-mono text-xs text-zinc-300">After Effects</span>
-        </div>
+        <section class="tech-system reveal mt-5" aria-label="Technologien und Werkzeuge">
+          <div class="tech-system__header">
+            <span>TECH MATRIX / 13 MODULES</span>
+            <a href="skills.html">Alle Erfahrungen ansehen ↗</a>
+          </div>
+          <div class="tech-system__grid">
+            <div class="tech-cluster tech-cluster--web">
+              <span class="tech-cluster__label">01 / Interface</span>
+              <ul><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Tailwind CSS</li></ul>
+            </div>
+            <div class="tech-cluster tech-cluster--systems">
+              <span class="tech-cluster__label">02 / Systems</span>
+              <ul><li>Python</li><li>Java</li><li>SQL</li><li>HeidiSQL</li><li>Cisco Packet Tracer</li><li>Arduino</li><li>SAP</li></ul>
+            </div>
+            <div class="tech-cluster tech-cluster--creative">
+              <span class="tech-cluster__label">03 / Creative</span>
+              <ul><li>After Effects</li><li>VS Code</li></ul>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
 
     <section id="experience" class="timeline-section py-24 sm:py-32">
       <div class="mx-auto max-w-6xl px-6 lg:px-8">
         <div class="reveal text-center">
-          <p class="font-mono text-xs uppercase tracking-[0.24em] text-green-300">Entwicklung</p>
+          <p class="font-mono text-xs uppercase tracking-[0.24em] text-green-300">02 / Entwicklung</p>
           <h2 class="mt-5 text-4xl font-bold tracking-tight sm:text-6xl">Mein Weg.</h2>
           <p class="mx-auto mt-5 max-w-2xl leading-7 text-zinc-400">
             Stationen, Werkzeuge und aktuelle Lernfelder auf meinem Weg in die Systemintegration.
@@ -244,12 +241,12 @@
             <div class="hidden md:block"></div>
             <div class="timeline-card timeline-card--right glass rounded-3xl p-7 md:ml-10">
               <span class="font-mono text-sm text-green-300">Aktuell</span>
-              <h3 class="mt-3 text-2xl font-semibold">Programmierung, Datenbanken & Hardware</h3>
+              <h3 class="mt-3 text-2xl font-semibold">Programmierung, Datenbanken &amp; Hardware</h3>
               <p class="mt-3 leading-7 text-zinc-400">
                 Praxisnahe Lernfelder in Python, Java und SQL – ergänzt durch HeidiSQL,
                 Cisco Packet Tracer und Arduino.
               </p>
-              <ul class="timeline-skills" aria-label="Aktuelle Lernfelder">
+              <ul class="timeline-skills">
                 <li class="timeline-skill">Python</li>
                 <li class="timeline-skill">Java</li>
                 <li class="timeline-skill">SQL</li>
@@ -277,7 +274,7 @@
             <div class="hidden md:block"></div>
             <div class="timeline-card timeline-card--right glass rounded-3xl p-7 md:ml-10">
               <span class="font-mono text-sm text-sky-300">2023</span>
-              <h3 class="mt-3 text-2xl font-semibold">VS Code & Web-Workflow</h3>
+              <h3 class="mt-3 text-2xl font-semibold">VS Code &amp; Web-Workflow</h3>
               <p class="mt-3 leading-7 text-zinc-400">
                 Regelmäßige Entwicklung mit Visual Studio Code und Ausbau moderner Frontend-Workflows.
               </p>
@@ -299,14 +296,77 @@
       </div>
     </section>
 
-    <section id="contact" class="py-24 sm:py-32">
+    <section id="projects" class="projects-section py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="glass reveal overflow-hidden rounded-[2rem]">
+        <div class="projects-section__heading reveal">
+          <div>
+            <p class="section-kicker font-mono text-xs uppercase tracking-[0.24em] text-zinc-400">03 / Projekte</p>
+            <h2 class="mt-5 max-w-4xl text-4xl font-bold tracking-tight sm:text-6xl">Gebaut, geprüft,<br><span>weitergedacht.</span></h2>
+          </div>
+          <p>Reale Arbeiten und Lernprojekte – ohne erfundene Cases oder künstliche Erfolgszahlen.</p>
+        </div>
+
+        <div class="project-deck mt-14">
+          <article class="home-project home-project--portfolio reveal" data-project-tilt tabindex="0">
+            <div class="home-project__visual home-project__visual--portfolio" aria-hidden="true">
+              <div class="portfolio-preview__bar"><i></i><i></i><i></i><span>beckerbyte.com</span></div>
+              <div class="portfolio-preview__grid">
+                <span>BUILD</span>
+                <strong>Digitale Lösungen,<br>klar gebaut.</strong>
+                <div><i></i><i></i><i></i></div>
+              </div>
+              <small>LIVE SYSTEM PREVIEW / 2026</small>
+            </div>
+            <div class="home-project__content">
+              <div class="home-project__meta"><span>01 / Web · Portfolio</span><span>Aktiv</span></div>
+              <h3>beckerbyte.com</h3>
+              <p>Persönliche Portfolio-Website mit responsivem Aufbau, eigener visueller Identität und Fokus auf klare Nutzerführung.</p>
+              <ul><li>HTML</li><li>Tailwind CSS</li><li>JavaScript</li></ul>
+              <div class="home-project__links">
+                <a href="https://www.beckerbyte.com/" target="_blank" rel="noopener noreferrer">Website öffnen ↗</a>
+                <a href="https://github.com/beckerbyte/beckerbyte.github.io" target="_blank" rel="noopener noreferrer">Repository ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="home-project home-project--analyzer reveal" data-project-tilt tabindex="0">
+            <div class="home-project__visual home-project__visual--terminal" aria-hidden="true">
+              <div class="terminal-preview__bar"><span>text_analyzer.py</span><i>Python 3.13</i></div>
+              <pre><code><b>from</b> collections <b>import</b> Counter
+
+<b>def</b> analyze_text(text):
+    words = text.lower().split()
+    <b>return</b> Counter(words)</code></pre>
+              <div class="terminal-preview__result"><span>$</span> 5 Wörter · 39 Zeichen · 1 Satz</div>
+            </div>
+            <div class="home-project__content">
+              <div class="home-project__meta"><span>02 / Python · CLI</span><span>Repository</span></div>
+              <h3>Text-Analyzer</h3>
+              <p>Schlankes Python-Skript zur lexikalischen Textanalyse. Zählt Wörter, Zeichen und Satzzeichen und liefert kompakte Basisstatistiken.</p>
+              <ul><li>Python</li><li>CLI</li><li>Textanalyse</li></ul>
+              <div class="home-project__links">
+                <a href="https://github.com/beckerbyte/Text-Analyzer" target="_blank" rel="noopener noreferrer">Repository öffnen ↗</a>
+                <a href="projekte.html#text-analyzer-project">Details ansehen →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="projects-section__more reveal">
+          <span>02 reale Projekte dokumentiert</span>
+          <a href="projekte.html">Projektarchiv öffnen →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="contact-panel glass reveal overflow-hidden rounded-[2rem]">
           <div class="grid lg:grid-cols-[0.85fr_1.15fr]">
             <div class="relative border-b border-white/10 p-8 sm:p-12 lg:border-b-0 lg:border-r">
               <div class="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-green-300/10 blur-3xl"></div>
               <div class="relative">
-                <p class="font-mono text-xs uppercase tracking-[0.24em] text-green-300">Kontakt</p>
+                <p class="font-mono text-xs uppercase tracking-[0.24em] text-green-300">04 / Kontakt</p>
                 <h2 class="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
                   Lass uns Ideen austauschen.
                 </h2>
@@ -328,11 +388,15 @@
                     Sauberes Ergebnis
                   </div>
                 </div>
+
+                <div class="contact-shutdown" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><i></i>
+                </div>
               </div>
             </div>
 
-            <form action="https://getform.io/f/bgdlryza" method="POST" class="p-8 sm:p-12">
-              <input type="hidden" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
+            <form action="https://getform.io/f/bgdlryza" method="POST" class="p-8 sm:p-12" data-contact-form>
+              <input type="hidden" name="_gotcha" class="hidden" tabindex="-1">
               <div class="grid gap-6 sm:grid-cols-2">
                 <div>
                   <label for="name" class="mb-2 block text-sm font-medium text-zinc-300">Name</label>
@@ -391,12 +455,14 @@
               <button
                 type="submit"
                 class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 font-semibold text-black transition hover:bg-green-300 sm:w-auto"
+                data-submit-button
               >
-                Nachricht senden
+                <span data-submit-label>Nachricht senden</span>
                 <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                   <path d="m5 12 14-7-4 14-3-6-7-1Z" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
               </button>
+              <p class="contact-form__status mt-4 text-sm text-zinc-400" role="status" aria-live="polite" data-form-status></p>
             </form>
           </div>
         </div>

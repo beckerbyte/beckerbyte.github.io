@@ -54,9 +54,9 @@
         </a>
 
         <div class="hidden items-center gap-1 md:flex">
-          <a class="rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white" href="index.html">Home</a>
-          <a class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white" href="skills.html" aria-current="page">Erfahrungen</a>
-          <a class="rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white" href="projekte.html">Projekte</a>
+          <a class="rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white" href="index.html" data-nav-section="about">Home</a>
+          <a class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white" href="skills.html" aria-current="page" data-nav-section="experience">Erfahrungen</a>
+          <a class="rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white" href="projekte.html" data-nav-section="projects">Projekte</a>
           <a class="ml-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-green-300" href="index.html#contact">
             Kontakt
           </a>
@@ -656,18 +656,24 @@
     </section>
   </main>
 
-  <footer class="border-t border-white/10 py-10">
-    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 text-sm text-zinc-500 sm:flex-row lg:px-8">
-      <div>
-        © <span id="year">2026</span> Julian Becker · beckerbyte
+  <footer class="site-footer border-t border-white/10 py-10">
+    <div class="mx-auto grid max-w-7xl gap-8 px-6 text-sm text-zinc-500 sm:grid-cols-[auto_1fr_auto] sm:items-center lg:px-8">
+      <div class="flex items-center gap-4">
+        <img src="./assets/img/header.png" alt="beckerbyte" class="h-6 w-auto max-w-[150px] object-contain opacity-70" data-fallback-next>
+        <span class="hidden">beckerbyte</span>
       </div>
 
-      <div class="flex items-center gap-5">
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-3 sm:justify-center">
         <a href="https://github.com/beckerbyte" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">GitHub</a>
         <a href="https://www.linkedin.com/in/beckerbyte/" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">LinkedIn</a>
         <a href="https://discord.com/users/270226761256534027" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">Discord</a>
         <a href="impressum.html" class="transition hover:text-white">Impressum</a>
         <a href="datenschutz.html" class="transition hover:text-white">Datenschutz</a>
+      </div>
+
+      <div class="flex items-center justify-between gap-5 sm:justify-end">
+        <span>© <span id="year">2026</span> Julian Becker</span>
+        <a href="#main" class="site-footer__top" aria-label="Zurück nach oben">↑</a>
       </div>
     </div>
   </footer>
