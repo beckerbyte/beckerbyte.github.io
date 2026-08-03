@@ -8,7 +8,7 @@
     name="description"
     content="Ausgewählte Projekte von Julian Becker: Webentwicklung, Python-Tools und digitale Lösungen."
   >
-  <link rel="canonical" href="https://www.beckerbyte.com/projekte.html">
+  <link rel="canonical" href="https://www.beckerbyte.com/projekte">
   <link rel="icon" href="./assets/img/favicon-v2.png" type="image/png">
   <script src="./assets/js/shared.js" defer></script>
   <script src="./assets/js/projects.js" defer></script>
@@ -46,15 +46,16 @@
 
       <div class="projects-shell projects-hero__layout">
         <div class="projects-hero__copy">
-          <a href="index.html" class="page-back-link projects-back">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-            Zur Homepage
-          </a>
+          <nav class="site-breadcrumb" aria-label="Breadcrumb">
+            <ol>
+              <li><a href="/">Start</a></li>
+              <li aria-current="page">Projekte</li>
+            </ol>
+          </nav>
 
           <p class="projects-kicker">Ausgewählte Arbeiten · 2026</p>
-          <h1 aria-label="Gebaut, getestet, weitergedacht.">
+          <h1>
+            <span class="sr-only">Gebaut, getestet, weitergedacht.</span>
             <span class="projects-hero__line projects-hero__line--one" aria-hidden="true">Gebaut,</span>
             <span class="projects-hero__line projects-hero__line--two" aria-hidden="true">getestet,</span>
             <span class="projects-hero__line projects-hero__line--three projects-hero__line--accent" aria-hidden="true">weitergedacht.</span>
@@ -136,7 +137,7 @@
                 und Fokus auf klare Nutzerführung.
               </p>
 
-              <div class="mt-7">
+              <div class="mt-7 flex flex-wrap gap-3">
                 <a
                   href="https://github.com/beckerbyte/beckerbyte.github.io"
                   target="_blank"
@@ -147,6 +148,12 @@
                   <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path d="M7 17 17 7M8 7h9v9" stroke-linecap="round" stroke-linejoin="round"></path>
                   </svg>
+                </a>
+                <a
+                  href="/skills#web"
+                  class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
+                >
+                  Web-Skills ansehen <span aria-hidden="true">→</span>
                 </a>
               </div>
             </div>
@@ -174,7 +181,7 @@
                 </div>
 
                 <div class="python-window__editor">
-                  <ol class="python-code" aria-label="Python-Codebeispiel">
+                  <ol class="python-code">
                     <li><code><b>from</b> collections <b>import</b> Counter</code></li>
                     <li><code></code></li>
                     <li><code><b>def</b> <em>analyze_text</em>(text):</code></li>
@@ -182,7 +189,7 @@
                     <li><code>    <b>return</b> Counter(words)</code></li>
                   </ol>
 
-                  <div class="python-terminal" aria-label="Beispielausgabe des Text-Analyzers">
+                  <section class="python-terminal" aria-label="Beispielausgabe des Text-Analyzers">
                     <div class="python-terminal__bar">
                       <span>TERMINAL</span>
                       <span>python</span>
@@ -191,7 +198,7 @@
                     <p><span class="python-label">Text:</span> Python macht Textanalyse übersichtlich.</p>
                     <p class="python-result">✓ 5 Wörter · 39 Zeichen · 1 Satz</p>
                     <p><span class="python-prompt">›</span><span class="python-cursor" aria-hidden="true"></span></p>
-                  </div>
+                  </section>
                 </div>
               </div>
             </div>
@@ -231,6 +238,12 @@
                     <path d="M12 3v12M7 10l5 5 5-5M5 21h14" stroke-linecap="round" stroke-linejoin="round"></path>
                   </svg>
                 </a>
+                <a
+                  href="/skills#systems"
+                  class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
+                >
+                  Python &amp; Systeme ansehen <span aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
           </article>
@@ -251,7 +264,7 @@
 
             <div class="flex flex-col gap-3 border-t border-white/10 p-8 sm:flex-row lg:border-l lg:border-t-0">
               <a
-                href="index.html#contact"
+                href="/#kontakt"
                 class="inline-flex items-center justify-center gap-2 rounded-full bg-green-300 px-6 py-3.5 font-semibold text-black transition hover:bg-green-200"
               >
                 Austausch starten
@@ -261,10 +274,10 @@
               </a>
 
               <a
-                href="skills.html"
+                href="/skills"
                 class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3.5 font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
               >
-                Skills ansehen
+                Skills &amp; Arbeitsweise ansehen
               </a>
             </div>
           </div>

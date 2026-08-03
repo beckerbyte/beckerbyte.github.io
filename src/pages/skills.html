@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Skills & Erfahrungen – Julian Becker | beckerbyte</title>
+  <title>Skills &amp; Erfahrungen – Julian Becker | beckerbyte</title>
   <meta
     name="description"
     content="Technologien, Systeme und Kreativwerkzeuge aus den Bereichen Webentwicklung, Systemintegration und Design."
   >
-  <link rel="canonical" href="https://www.beckerbyte.com/skills.html">
+  <link rel="canonical" href="https://www.beckerbyte.com/skills">
   <link rel="icon" href="./assets/img/favicon-v2.png" type="image/png">
   <script src="./assets/js/shared.js" defer></script>
   <script src="./assets/js/skills.js" defer></script>
@@ -36,14 +36,14 @@
     <section class="skills-hero" data-skills-parallax>
       <div class="skills-shell skills-hero__grid">
         <div class="skills-hero__copy reveal">
-          <a href="index.html" class="page-back-link back-link">
-            <svg class="back-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-            Zur Homepage
-          </a>
+          <nav class="site-breadcrumb" aria-label="Breadcrumb">
+            <ol>
+              <li><a href="/">Start</a></li>
+              <li aria-current="page">Skills &amp; Erfahrungen</li>
+            </ol>
+          </nav>
 
-          <p class="skills-kicker">Erfahrungen & Arbeitsweise</p>
+          <p class="skills-kicker">Erfahrungen &amp; Arbeitsweise</p>
           <h1 class="skills-title">
             Nicht nur Tools.
             <span>Ein Arbeitsmodell.</span>
@@ -61,7 +61,7 @@
           </nav>
         </div>
 
-        <div class="capability-map reveal" data-skills-parallax-map aria-label="Kompetenzmodell: Webentwicklung, Systeme und Creative Tech">
+        <div class="capability-map reveal" data-skills-parallax-map role="img" aria-label="Kompetenzmodell: Webentwicklung, Systeme und Creative Tech">
           <div class="capability-map__grid" aria-hidden="true"></div>
           <div class="capability-map__orbit capability-map__orbit--outer" aria-hidden="true"></div>
           <div class="capability-map__orbit capability-map__orbit--inner" aria-hidden="true"></div>
@@ -130,7 +130,7 @@
               </p>
             </header>
 
-            <div class="web-workbench" aria-label="Visuelle Webentwicklungs-Workbench">
+            <div class="web-workbench" role="group" aria-label="Visuelle Webentwicklungs-Workbench">
               <div class="web-workbench__browser">
                 <div class="web-browser__bar" aria-hidden="true">
                   <div><i></i><i></i><i></i></div>
@@ -146,7 +146,7 @@
                     <small data-design-kicker>PORTFOLIO · CLEAN · PERSONAL</small>
                     <strong data-design-title>Digitale Arbeiten, klar präsentiert.</strong>
                     <p data-design-copy>Projekte, Kompetenzen und Persönlichkeit in einer ruhigen, fokussierten Oberfläche.</p>
-                    <a href="projekte.html#portfolio-project" data-design-link>Portfolio öffnen →</a>
+                    <a href="/projekte#portfolio-project" data-design-link>Portfolio öffnen →</a>
                   </div>
                   <div class="web-browser__cards" role="group" aria-label="Beispiel-Homepage auswählen">
                     <button class="web-design-card is-active" type="button" data-design-option="portfolio" aria-pressed="true">
@@ -200,35 +200,35 @@
               </div>
             </div>
 
-            <ol class="process-line" aria-label="Webentwicklungsprozess">
+            <ol class="process-line">
               <li><span>01</span><strong>Semantik</strong><small>HTML</small></li>
               <li><span>02</span><strong>Layout</strong><small>CSS</small></li>
               <li><span>03</span><strong>Interaktion</strong><small>JavaScript</small></li>
-              <li><span>04</span><strong>System</strong><small>Tailwind & Build</small></li>
+              <li><span>04</span><strong>System</strong><small>Tailwind &amp; Build</small></li>
             </ol>
 
-            <div class="tool-row" aria-label="Webtechnologien">
-              <div class="tool">
+            <ul class="tool-row">
+              <li class="tool">
                 <img src="./assets/img/html-logo.png" alt="" data-fallback-next>
                 <span>HTML</span>
                 <strong>Struktur</strong>
-              </div>
-              <div class="tool">
+              </li>
+              <li class="tool">
                 <img src="./assets/img/css-logo.png" alt="" data-fallback-next>
                 <span>CSS</span>
                 <strong>Layout</strong>
-              </div>
-              <div class="tool">
+              </li>
+              <li class="tool">
                 <img src="./assets/img/javascript-logo.png" alt="" data-fallback-next>
                 <span>JavaScript</span>
                 <strong>Verhalten</strong>
-              </div>
-              <div class="tool">
+              </li>
+              <li class="tool">
                 <img src="./assets/img/tailwind-logo.png" alt="" data-fallback-next>
                 <span>Tailwind</span>
                 <strong>System</strong>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </article>
 
@@ -269,7 +269,7 @@
                 </div>
               </div>
 
-              <div class="systems-swipe-cue" aria-label="Drei Systemthemen horizontal durchblättern">
+              <div class="systems-swipe-cue">
                 <span><i aria-hidden="true">↔</i> Seitlich wischen</span>
                 <div class="systems-swipe-cue__progress" aria-hidden="true">
                   <i class="is-active" data-system-dot></i>
@@ -289,7 +289,7 @@
                     <span>Netzwerk-Labor</span>
                     <h4>Cisco Packet Tracer</h4>
                     <p>IPv4, Subnetting, Switching, Routing und grundlegende Netzwerkdiagnose.</p>
-                    <ul aria-label="Netzwerk-Lernfelder">
+                    <ul>
                       <li>IPv4</li><li>VLAN</li><li>Routing</li><li>Ping</li>
                     </ul>
                     <button class="systems-visual__expand" type="button" data-system-expand="network" aria-label="Netzwerk-Labor groß öffnen">
@@ -304,10 +304,10 @@
                     alt="Schematische SQL-Datenbank mit Tabellen und Abfrage"
                   >
                   <figcaption>
-                    <span>Daten & Abfragen</span>
+                    <span>Daten &amp; Abfragen</span>
                     <h4>SQL mit HeidiSQL</h4>
                     <p>Relationale Daten verstehen, Tabellen strukturieren und Abfragen nachvollziehen.</p>
-                    <ul aria-label="Datenbank-Lernfelder">
+                    <ul>
                       <li>SELECT</li><li>JOIN</li><li>Tabellen</li><li>Relationen</li>
                     </ul>
                     <button class="systems-visual__expand" type="button" data-system-expand="database" aria-label="Datenbank-Labor groß öffnen">
@@ -322,10 +322,10 @@
                     alt="Schematische Verbindung von Python-Skript, Arduino und Sensor"
                   >
                   <figcaption>
-                    <span>Code & Hardware</span>
+                    <span>Code &amp; Hardware</span>
                     <h4>Python und Arduino</h4>
                     <p>Kleine Automatisierungen entwickeln und das Zusammenspiel mit Hardware erproben.</p>
-                    <ul aria-label="Automatisierungs-Lernfelder">
+                    <ul>
                       <li>Python</li><li>Arduino</li><li>Sensorik</li><li>Logik</li>
                     </ul>
                     <button class="systems-visual__expand" type="button" data-system-expand="automation" aria-label="Automatisierungs-Labor groß öffnen">
@@ -368,7 +368,7 @@
                             <li><b>03</b><strong>Prüfen</strong><small>Ping, Routing und Fehlerquellen untersuchen</small></li>
                           </ol>
                         </section>
-                        <aside>
+                        <aside aria-label="Praxisziel Netzwerk">
                           <span>Praxisziel</span>
                           <strong>Eine kleine Topologie aufbauen und nachvollziehbar diagnostizieren.</strong>
                           <p>So entsteht das Grundverständnis dafür, warum ein Dienst erreichbar ist – oder an welcher Stelle die Verbindung scheitert.</p>
@@ -380,7 +380,7 @@
                   <article class="system-detail__panel" data-system-detail="database" hidden>
                     <header class="system-detail__header">
                       <div>
-                        <span>02 · Daten & Abfragen</span>
+                        <span>02 · Daten &amp; Abfragen</span>
                         <h3>SQL mit HeidiSQL</h3>
                       </div>
                       <p>Datenbanken speichern Informationen nicht als lose Liste, sondern als miteinander verbundene Tabellen mit klaren Beziehungen.</p>
@@ -404,7 +404,7 @@
                             <li><b>03</b><strong>Validieren</strong><small>Ergebnis und Datenqualität kontrollieren</small></li>
                           </ol>
                         </section>
-                        <aside>
+                        <aside aria-label="Praxisziel Datenbank">
                           <span>Praxisziel</span>
                           <strong>Eine relationale Struktur verstehen und belastbare Abfragen formulieren.</strong>
                           <p>HeidiSQL dient dabei als sichtbare Arbeitsoberfläche für Tabellen, Beziehungen, Daten und Abfrageergebnisse.</p>
@@ -416,7 +416,7 @@
                   <article class="system-detail__panel" data-system-detail="automation" hidden>
                     <header class="system-detail__header">
                       <div>
-                        <span>03 · Code & Hardware</span>
+                        <span>03 · Code &amp; Hardware</span>
                         <h3>Python und Arduino</h3>
                       </div>
                       <p>Automatisierung verbindet Messwerte aus der realen Welt mit Logik im Programm und einer sichtbaren Reaktion der Hardware.</p>
@@ -440,7 +440,7 @@
                             <li><b>03</b><strong>Steuern</strong><small>Reaktion auslösen und Verhalten testen</small></li>
                           </ol>
                         </section>
-                        <aside>
+                        <aside aria-label="Praxisziel Automatisierung">
                           <span>Praxisziel</span>
                           <strong>Eine einfache Sensor-Aktor-Logik entwickeln und erklären können.</strong>
                           <p>Damit wird greifbar, wie Software, Schnittstellen und Hardware als gemeinsames System arbeiten.</p>
@@ -462,7 +462,7 @@
                   <strong>Flexus Mobile Solutions</strong>
                   <p>Verbindung zwischen Prozess, System und praktischer Nutzung.</p>
                 </div>
-                <aside>
+                <aside aria-label="Systemintegration Fokus">
                   <span>Fokus</span>
                   <p>Technik nicht isoliert betrachten: Netzwerk, Daten, Software und Prozess greifen ineinander.</p>
                 </aside>
@@ -492,7 +492,7 @@
               </header>
 
               <div class="ae-workspace">
-                <div class="ae-composition" aria-label="Scrollgesteuerte Motion-Graphics-Komposition">
+                <div class="ae-composition" role="img" aria-label="Scrollgesteuerte Motion-Graphics-Komposition">
                   <div class="ae-composition__toolbar">
                     <div>
                       <span class="ae-app">Ae</span>
@@ -523,7 +523,7 @@
                     </div>
                     <div class="ae-timeline__tracks">
                       <div><span>◆ Typography</span><i></i></div>
-                      <div><span>◉ Light & Glow</span><i></i></div>
+                      <div><span>◉ Light &amp; Glow</span><i></i></div>
                       <div><span>▱ Shape Layers</span><i></i></div>
                       <div><span>⌁ Camera Depth</span><i></i></div>
                       <b class="ae-playhead"></b>
@@ -531,13 +531,13 @@
                   </div>
                 </div>
 
-                <aside class="ae-inspector">
+                <aside class="ae-inspector" aria-label="Motion-Graphics Details">
                   <div class="ae-inspector__header">
                     <img src="./assets/img/after-effects-logo.png" alt="">
                     <div><span>Motion Graphics</span><strong>Adobe After Effects</strong></div>
                   </div>
 
-                  <ol class="ae-phases" aria-label="Ablauf der Scrollanimation">
+                  <ol class="ae-phases">
                     <li data-ae-phase="1"><span>01</span><div><strong>Ebenen</strong><small>Tiefe und räumliche Staffelung</small></div></li>
                     <li data-ae-phase="2"><span>02</span><div><strong>Masken</strong><small>Gezielte Enthüllung der Typografie</small></div></li>
                     <li data-ae-phase="3"><span>03</span><div><strong>Licht</strong><small>Glow, Farbe und Atmosphäre</small></div></li>
@@ -595,8 +595,8 @@
             </p>
           </div>
           <div class="skills-cta__actions">
-            <a href="projekte.html" class="button button--primary">Projekte ansehen <span aria-hidden="true">↗</span></a>
-            <a href="index.html#contact" class="button button--secondary">Austauschen</a>
+            <a href="/projekte" class="button button--primary">Fähigkeiten in Projekten ansehen <span aria-hidden="true">→</span></a>
+            <a href="/#kontakt" class="button button--secondary">Austauschen</a>
           </div>
         </section>
       </div>

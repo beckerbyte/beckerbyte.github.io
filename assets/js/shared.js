@@ -72,7 +72,7 @@ if (siteHeader) {
 }
 
 const sectionNavigation = [...document.querySelectorAll("[data-nav-section]")]
-  .filter((link) => link.getAttribute("href")?.startsWith("#"));
+  .filter((link) => document.getElementById(link.dataset.navSection));
 
 if (sectionNavigation.length && "IntersectionObserver" in window) {
   const sections = sectionNavigation
@@ -103,26 +103,58 @@ document.querySelectorAll("[data-fallback-next]").forEach((image) => {
   });
 });
 
-const closeMobileMenu = () => {
-  mobileMenu?.classList.add("hidden");
-  menuButton?.setAttribute("aria-expanded", "false");
+const closeMobileMenu = ({ restoreFocus = false } = {}) => {
+  if (!mobileMenu || !menuButton) return;
+  mobileMenu.classList.add("hidden");
+  mobileMenu.inert = true;
+  menuButton.setAttribute("aria-expanded", "false");
+  menuButton.setAttribute("aria-label", "Navigation öffnen");
+  document.documentElement.classList.remove("mobile-menu-open");
+  if (restoreFocus) menuButton.focus();
 };
 
 menuButton?.addEventListener("click", () => {
-  const isOpen = !mobileMenu?.classList.contains("hidden");
-  mobileMenu?.classList.toggle("hidden");
-  menuButton.setAttribute("aria-expanded", String(!isOpen));
+  if (!mobileMenu) return;
+  const isOpen = !mobileMenu.classList.contains("hidden");
+
+  if (isOpen) {
+    closeMobileMenu();
+    return;
+  }
+
+  mobileMenu.classList.remove("hidden");
+  mobileMenu.inert = false;
+  menuButton.setAttribute("aria-expanded", "true");
+  menuButton.setAttribute("aria-label", "Navigation schließen");
+  document.documentElement.classList.add("mobile-menu-open");
   siteHeader?.classList.remove("is-hidden");
+  window.requestAnimationFrame(() => mobileMenu.querySelector("a")?.focus());
 });
 
 mobileMenu?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", closeMobileMenu);
 });
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
+document.addEventListener("pointerdown", (event) => {
+  if (
+    mobileMenu &&
+    menuButton &&
+    !mobileMenu.classList.contains("hidden") &&
+    !mobileMenu.contains(event.target) &&
+    !menuButton.contains(event.target)
+  ) {
     closeMobileMenu();
   }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeMobileMenu({ restoreFocus: true });
+  }
+});
+
+window.addEventListener("resize", () => {
+  if (window.matchMedia("(min-width: 768px)").matches) closeMobileMenu();
 });
 
 const year = document.getElementById("year");
