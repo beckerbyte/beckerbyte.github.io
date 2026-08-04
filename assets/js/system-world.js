@@ -4,6 +4,7 @@ const connection = navigator.connection || navigator.mozConnection || navigator.
 
 if (!reducedMotion && !connection?.saveData) {
   const cleanups = [];
+  const resumes = [];
   const palettes = {
     home: [0.55, 1.0, 0.68],
     profile: [0.62, 0.79, 1.0],
@@ -181,6 +182,13 @@ if (!reducedMotion && !connection?.saveData) {
       frame = requestAnimationFrame(render);
     };
 
+    const resume = () => {
+      if (!active || document.hidden || destroyed) return;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(render);
+    };
+    resumes.push(resume);
+
     const observer = new IntersectionObserver(([entry]) => {
       active = entry.isIntersecting;
       cancelAnimationFrame(frame);
@@ -210,5 +218,13 @@ if (!reducedMotion && !connection?.saveData) {
   reducedMotionQuery.addEventListener("change", (event) => {
     if (event.matches) cleanupAll();
   });
-  window.addEventListener("pagehide", cleanupAll, { once: true });
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) resumes.forEach((resume) => resume());
+  });
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) resumes.forEach((resume) => resume());
+  });
+  window.addEventListener("pagehide", (event) => {
+    if (!event.persisted) cleanupAll();
+  });
 }

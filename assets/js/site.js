@@ -29,6 +29,11 @@ window.addEventListener("scroll", () => {
 }, { passive: true });
 updateScrollState();
 
+window.addEventListener("pageshow", () => {
+  root.classList.remove("is-leaving");
+  updateScrollState();
+});
+
 if (finePointer.matches && !reducedMotion.matches) {
   window.addEventListener("pointermove", (event) => {
     root.style.setProperty("--mx", String((event.clientX / window.innerWidth - .5) * 2));

@@ -66,6 +66,13 @@ for (const [file] of Object.entries(pages)) {
     errors.push(`${file}: Szenen benötigen je genau einen Zustand, ein Poster und ein Video (${sceneCount}/${mediaStateCount}/${posterCount}/${videoCount})`);
   }
 
+  if (file === "index.html") {
+    const homeScene = html.match(/<div class="system-scene[^"]*"[^>]*data-scene="home"[^>]*>/)?.[0] || "";
+    if (html.includes('data-frame-story="home"')) errors.push("index.html: Startseiten-Hero darf nicht als Sticky-Frame-Story ausgeliefert werden");
+    if (!homeScene.includes('data-preferred-media="video"')) errors.push("index.html: Startseiten-Hero benötigt den stabilen Video-/Posterpfad");
+    if (homeScene.includes("data-frame-root=")) errors.push("index.html: Startseiten-Hero darf keine Frame-Sequenz initialisieren");
+  }
+
   const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
   const duplicates = ids.filter((id, index) => ids.indexOf(id) !== index);
   if (duplicates.length) errors.push(`${file}: doppelte IDs ${[...new Set(duplicates)].join(", ")}`);
