@@ -1,6 +1,8 @@
 import { nav, normalizeInternalPath, site } from "./site-data.mjs";
 
 const arrow = '<span aria-hidden="true">↗</span>';
+const assetVersion = "__ASSET_VERSION__";
+const versionedAsset = (path) => `${path}?v=${assetVersion}`;
 
 export const escapeHtml = (value = "") => String(value)
   .replaceAll("&", "&amp;")
@@ -145,10 +147,10 @@ export const layout = ({ active, title, description, route, sceneName, body, noi
   <meta name="theme-color" content="#070a0f">
   <link rel="icon" href="/assets/img/favicon-v2.png" type="image/png">
   <link rel="preload" href="/assets/img/header.png" as="image">
-  <link rel="stylesheet" href="/assets/css/site.css">
-  <script type="module" src="/assets/js/media-controller.js"></script>
-  <script type="module" src="/assets/js/site.js"></script>
-  <script type="module" src="/assets/js/system-world.js"></script>${structuredData(schema)}
+  <link rel="stylesheet" href="${versionedAsset("/assets/css/site.css")}">
+  <script type="module" src="${versionedAsset("/assets/js/media-controller.js")}"></script>
+  <script type="module" src="${versionedAsset("/assets/js/site.js")}"></script>
+  <script type="module" src="${versionedAsset("/assets/js/system-world.js")}"></script>${structuredData(schema)}
 </head>
 <body data-page="${active}" data-scene="${sceneName}">
   <a class="skip-link" href="#main">Zum Inhalt springen</a>

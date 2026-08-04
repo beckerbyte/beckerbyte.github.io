@@ -5,6 +5,12 @@ import { normalizeInternalPath, site } from "../src/site-data.mjs";
 
 const errors = [];
 const checkedAssets = new Set();
+const versionedAssets = [
+  "/assets/css/site.css",
+  "/assets/js/media-controller.js",
+  "/assets/js/site.js",
+  "/assets/js/system-world.js"
+];
 const staleHtmlOutputs = ["skills.html", "projekte.html", "impressum.html", "datenschutz.html"];
 const directoryRoutes = Object.keys(pages)
   .filter((file) => file.endsWith("/index.html"))
@@ -58,6 +64,19 @@ for (const [file] of Object.entries(pages)) {
   if (!html.includes('class="skip-link"')) errors.push(`${file}: Skip-Link fehlt`);
   if (!html.includes('/assets/js/media-controller.js')) errors.push(`${file}: zentraler Media Controller fehlt`);
 
+  const assetVersions = new Set();
+  for (const asset of versionedAssets) {
+    const escapedAsset = asset.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const match = html.match(new RegExp(`["']${escapedAsset}\\?v=([0-9a-f]{12})["']`));
+    if (!match) {
+      errors.push(`${file}: versionierte Asset-URL fehlt für ${asset}`);
+    } else {
+      assetVersions.add(match[1]);
+    }
+  }
+  if (assetVersions.size > 1) errors.push(`${file}: CSS und JavaScript verwenden unterschiedliche Asset-Versionen`);
+  if (html.includes("__ASSET_VERSION__")) errors.push(`${file}: nicht ersetzter Asset-Versionsplatzhalter`);
+
   const sceneCount = [...html.matchAll(/class="system-scene(?:\s|\")/g)].length;
   const mediaStateCount = [...html.matchAll(/data-media-state="poster"/g)].length;
   const posterCount = [...html.matchAll(/data-media-layer="poster"/g)].length;
@@ -104,7 +123,7 @@ for (const [file] of Object.entries(pages)) {
   }
 
   for (const match of html.matchAll(/(?:src|srcset)="(\/assets\/[^"]+)"/g)) {
-    checkedAssets.add(match[1].slice(1));
+    checkedAssets.add(new URL(match[1], site.origin).pathname.slice(1));
   }
 }
 
