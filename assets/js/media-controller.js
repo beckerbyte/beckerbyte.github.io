@@ -286,13 +286,23 @@ class SceneController {
 
   resize() {
     if (!this.inRange || saveData || reducedMotion.matches) return;
-    if (this.sequence) {
+    if (this.sequence?.story) {
       const changed = this.sequence.configure();
       if (changed) this.sequence.activate();
       return;
     }
     this.switchVideoFormat();
     this.playVideo();
+  }
+
+  resume() {
+    if (!this.inRange) return;
+    if (saveData || reducedMotion.matches) {
+      this.setState("reduced");
+      return;
+    }
+    if (this.sequence?.active) this.sequence.update();
+    else this.playVideo();
   }
 
   destroy() {
@@ -327,9 +337,13 @@ window.addEventListener("scroll", () => {
 document.addEventListener("visibilitychange", () => {
   for (const controller of controllers) {
     if (document.hidden) controller.video?.pause();
-    else if (controller.inRange && !controller.sequence) controller.playVideo();
-    else controller.sequence?.update();
+    else controller.resume();
   }
+});
+
+window.addEventListener("pageshow", (event) => {
+  if (!event.persisted) return;
+  controllers.forEach((controller) => controller.resume());
 });
 
 reducedMotion.addEventListener("change", () => {
@@ -344,9 +358,7 @@ reducedMotion.addEventListener("change", () => {
 });
 
 document.addEventListener("media:pause", () => controllers.forEach((controller) => controller.video?.pause()));
-document.addEventListener("media:resume", () => controllers.forEach((controller) => {
-  if (controller.inRange && !controller.sequence) controller.playVideo();
-}));
+document.addEventListener("media:resume", () => controllers.forEach((controller) => controller.resume()));
 
 let debugInterval = 0;
 if (["localhost", "127.0.0.1"].includes(window.location.hostname)) {
@@ -365,8 +377,9 @@ if (["localhost", "127.0.0.1"].includes(window.location.hostname)) {
   }, 1500);
 }
 
-window.addEventListener("pagehide", () => {
+window.addEventListener("pagehide", (event) => {
+  if (event.persisted) return;
   observer.disconnect();
   clearInterval(debugInterval);
   controllers.forEach((controller) => controller.destroy());
-}, { once: true });
+});

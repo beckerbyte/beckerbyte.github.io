@@ -135,7 +135,7 @@ html[data-quality="reduced"] .system-scene__effects { display: none; }
 .button--secondary:hover { border-color: var(--signal); color: var(--signal); }
 .home-hero__legend { position: absolute; right: 0; bottom: 2.5rem; display: flex; gap: 2rem; color: var(--muted); font-family: ui-monospace, monospace; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; }
 .home-hero__legend b { margin-right: .4rem; color: var(--signal); font-weight: 500; }
-.scroll-cue { position: absolute; bottom: 2rem; left: 4vw; display: flex; align-items: center; gap: 1rem; color: var(--muted); font-family: ui-monospace, monospace; font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; writing-mode: vertical-rl; }
+.scroll-cue { position: absolute; bottom: 2rem; left: max(1rem, calc((100vw - var(--shell)) / 2 - 3rem)); display: flex; align-items: center; gap: 1rem; color: var(--muted); font-family: ui-monospace, monospace; font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; writing-mode: vertical-rl; }
 .scroll-cue i { display: block; width: 1px; height: 3.5rem; overflow: hidden; background: var(--line); }
 .scroll-cue i::after { display: block; width: 1px; height: 50%; content: ""; animation: scan 2s infinite; background: var(--signal); }
 @keyframes scan { from { transform: translateY(-110%); } to { transform: translateY(220%); } }
@@ -494,6 +494,7 @@ html.is-leaving .page-transition { transform: scaleX(1); transition: transform .
   .project-hero.frame-story { min-height: 135svh; }
   .hero-stage { min-height: 100svh; }
   .home-hero__inner, .page-hero__inner, .project-hero__inner { min-height: 100svh; }
+  .home-hero .hero-stage, .home-hero__inner { min-height: max(100svh, 46rem); }
   .home-hero__copy { padding-block: calc(var(--header-height) + 7rem) 4.5rem; }
   .home-hero h1, .page-hero h1, .project-hero h1, .not-found h1 { max-width: 10ch; font-size: clamp(2.75rem, 13vw, 4.75rem); line-height: .94; letter-spacing: -.065em; }
   .home-hero .lede, .page-hero .lede, .project-hero .lede { max-width: 34rem; font-size: clamp(1rem, 4.4vw, 1.2rem); line-height: 1.55; }
@@ -552,6 +553,7 @@ html.is-leaving .page-transition { transform: scaleX(1); transition: transform .
   .lede { margin-top: 1rem; font-size: .95rem; }
   .button-row { margin-top: 1.25rem; }
   .frame-story, .project-hero.frame-story { min-height: 130svh; }
+  .home-hero .hero-stage, .home-hero__inner { min-height: max(100svh, 32rem); }
 }
 
 @media (hover: none), (pointer: coarse) {

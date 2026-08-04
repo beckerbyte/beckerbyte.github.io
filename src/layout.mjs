@@ -76,7 +76,7 @@ export const breadcrumbs = (items) => `
   </nav>`;
 
 export const scene = (name, label, options = {}) => {
-  const { compact = false, priority = false } = options;
+  const { compact = false, priority = false, frameSequence = true } = options;
   const mediaRoot = `/assets/media/system/${name}/${name}`;
   const frameSequences = {
     home: [72, 54, 42],
@@ -85,7 +85,7 @@ export const scene = (name, label, options = {}) => {
     portfolio: [48, 36, 30],
     analyzer: [48, 36, 30]
   };
-  const frames = compact ? null : frameSequences[name];
+  const frames = compact || !frameSequence ? null : frameSequences[name];
   return `
     <div class="system-scene${compact ? " system-scene--compact" : ""}" data-scene="${name}" data-media-state="poster" data-preferred-media="${frames ? "frames" : "video"}"${frames ? ` data-frame-root="/assets/media/frames/${name}" data-frame-count-desktop="${frames[0]}" data-frame-count-tablet="${frames[1]}" data-frame-count-mobile="${frames[2]}"` : ""} aria-hidden="true">
       <picture class="system-scene__poster" data-media-layer="poster">
