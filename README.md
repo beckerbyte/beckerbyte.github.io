@@ -36,6 +36,8 @@ Die versionierten Frame-Sequenzen lassen sich reproduzierbar aus den gerätespez
 
 Die kanonischen Routen werden als Verzeichnisse mit `index.html` erzeugt und enden mit einem Slash. Frühere `.html`-Adressen werden ausschließlich über die serverseitige `_redirects`-Konfiguration permanent weitergeleitet.
 
+Der Build versieht die zentralen CSS- und JavaScript-Dateien automatisch mit einer gemeinsamen inhaltsbasierten Version. Dadurch können Browser und CDN kein veraltetes Design mit neuem HTML kombinieren.
+
 ## Projektstruktur
 
 ```text
