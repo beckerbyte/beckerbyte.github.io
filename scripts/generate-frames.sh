@@ -27,10 +27,14 @@ for scene in home skills archive; do
   generate_sequence "$scene" mobile 42 8.3333 540 960
 done
 
+for scene in profile contact; do
+  generate_sequence "$scene" desktop 72 14.2857 1152 648
+done
+
 for scene in portfolio analyzer; do
   generate_sequence "$scene" desktop 48 9.5238 1152 648
   generate_sequence "$scene" tablet 36 7.1429 768 768
   generate_sequence "$scene" mobile 30 5.9524 540 960
 done
 
-echo "Frame-Sequenzen für Home, Skills, Archiv und zwei Projektseiten erzeugt."
+echo "Responsive Frame-Sequenzen und Desktop-Sequenzen für Profil und Kontakt erzeugt."

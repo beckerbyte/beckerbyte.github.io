@@ -133,9 +133,12 @@ class FrameSequence {
 
   activate() {
     if (!this.context || !this.story || saveData || reducedMotion.matches) return false;
-    this.active = true;
     this.configure();
-    if (!this.count) return false;
+    if (!this.count) {
+      this.active = false;
+      return false;
+    }
+    this.active = true;
     this.resize();
     this.warm(0);
     this.update();
@@ -288,7 +291,7 @@ class SceneController {
     if (!this.inRange || saveData || reducedMotion.matches) return;
     if (this.sequence?.story) {
       const changed = this.sequence.configure();
-      if (changed) this.sequence.activate();
+      if (changed && !this.sequence.activate()) this.playVideo();
       return;
     }
     this.switchVideoFormat();

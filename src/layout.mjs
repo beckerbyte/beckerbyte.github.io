@@ -3,6 +3,15 @@ import { nav, normalizeInternalPath, site } from "./site-data.mjs";
 const arrow = '<span aria-hidden="true">↗</span>';
 const assetVersion = "__ASSET_VERSION__";
 const versionedAsset = (path) => `${path}?v=${assetVersion}`;
+const frameSequences = {
+  home: [72, 54, 42],
+  profile: [72, 0, 0],
+  skills: [72, 54, 42],
+  archive: [72, 54, 42],
+  contact: [72, 0, 0],
+  portfolio: [48, 36, 30],
+  analyzer: [48, 36, 30]
+};
 
 export const escapeHtml = (value = "") => String(value)
   .replaceAll("&", "&amp;")
@@ -80,13 +89,6 @@ export const breadcrumbs = (items) => `
 export const scene = (name, label, options = {}) => {
   const { compact = false, priority = false, frameSequence = true } = options;
   const mediaRoot = `/assets/media/system/${name}/${name}`;
-  const frameSequences = {
-    home: [72, 54, 42],
-    skills: [72, 54, 42],
-    archive: [72, 54, 42],
-    portfolio: [48, 36, 30],
-    analyzer: [48, 36, 30]
-  };
   const frames = compact || !frameSequence ? null : frameSequences[name];
   return `
     <div class="system-scene${compact ? " system-scene--compact" : ""}" data-scene="${name}" data-media-state="poster" data-preferred-media="${frames ? "frames" : "video"}"${frames ? ` data-frame-root="/assets/media/frames/${name}" data-frame-count-desktop="${frames[0]}" data-frame-count-tablet="${frames[1]}" data-frame-count-mobile="${frames[2]}"` : ""} aria-hidden="true">
@@ -108,7 +110,7 @@ export const action = (href, label, variant = "primary", external = false) => `
 export const tags = (items) => `<ul class="tag-list">${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
 
 export const pageIntro = ({ index, kicker, title, copy, sceneName, sceneLabel }) => `
-  <section class="page-hero${["skills", "archive"].includes(sceneName) ? " frame-story" : ""}"${["skills", "archive"].includes(sceneName) ? ` data-frame-story="${sceneName}"` : ""}>
+  <section class="page-hero frame-story" data-frame-story="${sceneName}"${["profile", "contact"].includes(sceneName) ? " data-desktop-frame-story" : ""}>
     <div class="hero-stage">
       ${scene(sceneName, sceneLabel, { priority: true })}
       <div class="shell page-hero__inner">
