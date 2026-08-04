@@ -1,4 +1,4 @@
-import { nav, site } from "./site-data.mjs";
+import { nav, normalizeInternalPath, site } from "./site-data.mjs";
 
 const arrow = '<span aria-hidden="true">↗</span>';
 
@@ -23,15 +23,15 @@ export const header = (active) => `
         <img src="/assets/img/header.png" width="411" height="71" alt="beckerbyte">
       </a>
       ${navigation(active)}
-      <a class="header-contact" href="/kontakt">Projekt besprechen ${arrow}</a>
+      <a class="header-contact" href="/kontakt/">Projekt besprechen ${arrow}</a>
       <details class="mobile-nav" data-mobile-nav>
         <summary aria-label="Navigation öffnen"><span>Menü</span><i aria-hidden="true"></i></summary>
         <div class="mobile-nav__panel">
           ${navigation(active, "mobile-nav__links", "Mobile Hauptnavigation")}
           <div class="mobile-nav__meta">
             ${site.socials.map((item) => `<a href="${item.href}" target="_blank" rel="noopener noreferrer">${item.label} ${arrow}</a>`).join("\n            ")}
-            <a href="/impressum">Impressum</a>
-            <a href="/datenschutz">Datenschutz</a>
+            <a href="/impressum/">Impressum</a>
+            <a href="/datenschutz/">Datenschutz</a>
           </div>
         </div>
       </details>
@@ -57,8 +57,8 @@ export const footer = () => `
           ${site.socials.map((item) => `<a href="${item.href}" target="_blank" rel="noopener noreferrer">${item.label} ${arrow}</a>`).join("\n          ")}
         </nav>
         <nav aria-label="Rechtliches">
-          <a href="/impressum">Impressum</a>
-          <a href="/datenschutz">Datenschutz</a>
+          <a href="/impressum/">Impressum</a>
+          <a href="/datenschutz/">Datenschutz</a>
         </nav>
       </div>
       <div class="site-footer__bottom">
@@ -71,7 +71,7 @@ export const footer = () => `
 export const breadcrumbs = (items) => `
   <nav class="breadcrumbs" aria-label="Brotkrümelnavigation">
     <ol>
-      ${items.map((item, index) => `<li>${item.href && index < items.length - 1 ? `<a href="${item.href}">${escapeHtml(item.label)}</a>` : `<span${index === items.length - 1 ? ' aria-current="page"' : ""}>${escapeHtml(item.label)}</span>`}</li>`).join("\n      ")}
+      ${items.map((item, index) => `<li>${item.href && index < items.length - 1 ? `<a href="${normalizeInternalPath(item.href)}">${escapeHtml(item.label)}</a>` : `<span${index === items.length - 1 ? ' aria-current="page"' : ""}>${escapeHtml(item.label)}</span>`}</li>`).join("\n      ")}
     </ol>
   </nav>`;
 
@@ -92,7 +92,7 @@ export const scene = (name, label, options = {}) => {
 };
 
 export const action = (href, label, variant = "primary", external = false) => `
-  <a class="button button--${variant}" href="${href}"${external ? ' target="_blank" rel="noopener noreferrer"' : ""}>${escapeHtml(label)} ${arrow}</a>`;
+  <a class="button button--${variant}" href="${normalizeInternalPath(href)}"${external ? ' target="_blank" rel="noopener noreferrer"' : ""}>${escapeHtml(label)} ${arrow}</a>`;
 
 export const tags = (items) => `<ul class="tag-list">${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
 
@@ -112,7 +112,7 @@ export const pageIntro = ({ index, kicker, title, copy, sceneName, sceneLabel })
 const structuredData = (data) => data ? `\n  <script type="application/ld+json">${JSON.stringify(data)}</script>` : "";
 
 export const layout = ({ active, title, description, route, sceneName, body, noindex = false, schema = null }) => {
-  const canonical = `${site.origin}${route}`;
+  const canonical = `${site.origin}${normalizeInternalPath(route)}`;
   const mediaRoot = `${site.origin}/assets/media/system/${sceneName}/${sceneName}-desktop-poster.webp`;
   return `<!DOCTYPE html>
 <html lang="de" data-motion="pending">
@@ -147,6 +147,3 @@ export const layout = ({ active, title, description, route, sceneName, body, noi
 </body>
 </html>\n`;
 };
-
-export const redirectPage = (target, label) => `<!DOCTYPE html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=${target}"><link rel="canonical" href="${site.origin}${target}"><title>Weiterleitung – beckerbyte</title></head><body><p>Diese Seite ist umgezogen. <a href="${target}">Weiter zu ${label}</a>.</p></body></html>\n`;

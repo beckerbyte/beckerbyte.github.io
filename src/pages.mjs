@@ -1,4 +1,4 @@
-import { projects, site, skills, timeline, workPrinciples } from "./site-data.mjs";
+import { normalizeInternalPath, projects, site, skills, timeline, workPrinciples } from "./site-data.mjs";
 import { action, breadcrumbs, layout, pageIntro, scene, tags } from "./layout.mjs";
 
 const siteSchema = {
@@ -20,10 +20,10 @@ const projectModule = (project, featured = false) => `
     </div>
     <div class="project-module__body">
       <p class="eyebrow">${project.category}</p>
-      <h3><a href="/projekte/${project.slug}">${project.title}</a></h3>
+      <h3><a href="${normalizeInternalPath(`/projekte/${project.slug}`)}">${project.title}</a></h3>
       <p>${project.summary}</p>
       ${tags(project.tools.slice(0, featured ? 6 : 4))}
-      <a class="text-link" href="/projekte/${project.slug}">Fallstudie öffnen <span aria-hidden="true">→</span></a>
+      <a class="text-link" href="${normalizeInternalPath(`/projekte/${project.slug}`)}">Fallstudie öffnen <span aria-hidden="true">→</span></a>
     </div>
   </article>`;
 
@@ -47,8 +47,8 @@ const home = layout({
           <h1>Ich verbinde<br><em>Code, Systeme</em><br>und Bewegung.</h1>
           <p class="lede">Ich bin Julian Becker. Diese Website dokumentiert, wie aus technischen Lernfeldern verständliche, visuelle und funktionierende Systeme werden.</p>
           <div class="button-row">
-            ${action("/projekte", "Projekte erkunden")}
-            ${action("/profil", "Profil ansehen", "secondary")}
+            ${action("/projekte/", "Projekte erkunden")}
+            ${action("/profil/", "Profil ansehen", "secondary")}
           </div>
         </div>
         <div class="home-hero__legend">
@@ -69,10 +69,10 @@ const home = layout({
           <p>Die Seiten zeigen reale Lernwege, zwei veröffentlichte Projekte und die Werkzeuge dahinter – mit klaren Übergängen statt isolierter Themenkästen.</p>
         </div>
         <ol class="system-map">
-          <li data-reveal><a href="/profil"><span>01</span><strong>Profil</strong><small>Weg, Haltung, Erfahrung</small><i>→</i></a></li>
-          <li data-reveal><a href="/skills"><span>02</span><strong>Skills &amp; Erfahrung</strong><small>Felder, Tools, Verbindungen</small><i>→</i></a></li>
-          <li data-reveal><a href="/projekte"><span>03</span><strong>Projekte</strong><small>Reale Arbeiten im Detail</small><i>→</i></a></li>
-          <li data-reveal><a href="/kontakt"><span>04</span><strong>Kontakt</strong><small>Gedanken austauschen</small><i>→</i></a></li>
+          <li data-reveal><a href="/profil/"><span>01</span><strong>Profil</strong><small>Weg, Haltung, Erfahrung</small><i>→</i></a></li>
+          <li data-reveal><a href="/skills/"><span>02</span><strong>Skills &amp; Erfahrung</strong><small>Felder, Tools, Verbindungen</small><i>→</i></a></li>
+          <li data-reveal><a href="/projekte/"><span>03</span><strong>Projekte</strong><small>Reale Arbeiten im Detail</small><i>→</i></a></li>
+          <li data-reveal><a href="/kontakt/"><span>04</span><strong>Kontakt</strong><small>Gedanken austauschen</small><i>→</i></a></li>
         </ol>
       </div>
     </section>
@@ -86,7 +86,7 @@ const home = layout({
         <div class="project-stack">
           ${projects.map((project, index) => projectModule(project, index === 0)).join("\n")}
         </div>
-        <div class="section-action" data-reveal>${action("/projekte", "Projektarchiv öffnen", "secondary")}</div>
+        <div class="section-action" data-reveal>${action("/projekte/", "Projektarchiv öffnen", "secondary")}</div>
       </div>
     </section>
 
@@ -94,7 +94,7 @@ const home = layout({
       <div class="shell skill-signal__grid">
         <div data-reveal><p class="eyebrow">Arbeitsfelder / 03</p><h2>Von der Oberfläche bis zum physischen Signal.</h2></div>
         <div class="skill-signal__list">
-          ${skills.map((skill) => `<a href="/skills#${skill.id}" data-reveal><span>${skill.index}</span><strong>${skill.title.replaceAll("&", "&amp;")}</strong><small>${skill.statement}</small><i aria-hidden="true">→</i></a>`).join("\n")}
+          ${skills.map((skill) => `<a href="${normalizeInternalPath(`/skills/#${skill.id}`)}" data-reveal><span>${skill.index}</span><strong>${skill.title.replaceAll("&", "&amp;")}</strong><small>${skill.statement}</small><i aria-hidden="true">→</i></a>`).join("\n")}
         </div>
       </div>
     </section>
@@ -105,7 +105,7 @@ const home = layout({
         <p class="eyebrow">Offener Kanal / 04</p>
         <h2>Ein Gedanke,<br>ein Projekt oder<br>einfach Austausch?</h2>
         <p>Schreib mir direkt oder nutze das Kontaktformular. Ich freue mich über konkrete Fragen ebenso wie über fachlichen Austausch.</p>
-        ${action("/kontakt", "Kontakt aufnehmen")}
+        ${action("/kontakt/", "Kontakt aufnehmen")}
       </div>
     </section>`
 });
@@ -114,7 +114,7 @@ const profile = layout({
   active: "profile",
   title: "Profil – Julian Becker | beckerbyte",
   description: "Profil, Lernweg und Arbeitsweise von Julian Becker: Systemintegration, Webentwicklung, Programmierung und Motion Design.",
-  route: "/profil",
+  route: "/profil/",
   sceneName: "profile",
   schema: siteSchema,
   body: `
@@ -144,14 +144,14 @@ const profile = layout({
         </ol>
       </div>
     </section>
-    <section class="next-chapter"><div class="shell" data-reveal><p class="eyebrow">Nächste Ebene</p><h2>Die Felder hinter dem Weg.</h2>${action("/skills", "Skills & Erfahrung öffnen")}</div></section>`
+    <section class="next-chapter"><div class="shell" data-reveal><p class="eyebrow">Nächste Ebene</p><h2>Die Felder hinter dem Weg.</h2>${action("/skills/", "Skills & Erfahrung öffnen")}</div></section>`
 });
 
 const skillsPage = layout({
   active: "skills",
   title: "Skills & Erfahrung – beckerbyte",
   description: "Skills und Erfahrung von Julian Becker in Webentwicklung, Systemintegration, Python, Java, SQL, Arduino und Motion Design.",
-  route: "/skills",
+  route: "/skills/",
   sceneName: "skills",
   body: `
     ${pageIntro({ index: "02", kicker: "Skills & Erfahrung", title: "Fünf Felder.<br><em>Ein technisches System.</em>", copy: "Werkzeuge werden interessant, wenn sie eine Aufgabe lösen und sich mit anderen Ebenen verbinden. Diese Übersicht zeigt den aktuellen Stand – nicht ein erfundenes Expertenprofil.", sceneName: "skills", sceneLabel: "Fünf vernetzte technische Module" })}
@@ -180,27 +180,27 @@ const skillsPage = layout({
         </div>
       </div>
     </section>
-    <section class="next-chapter"><div class="shell" data-reveal><p class="eyebrow">In Anwendung</p><h2>Wo die Werkzeuge zusammenkommen.</h2>${action("/projekte", "Projekte ansehen")}</div></section>`
+    <section class="next-chapter"><div class="shell" data-reveal><p class="eyebrow">In Anwendung</p><h2>Wo die Werkzeuge zusammenkommen.</h2>${action("/projekte/", "Projekte ansehen")}</div></section>`
 });
 
 const projectsPage = layout({
   active: "projects",
   title: "Projekte – beckerbyte",
   description: "Projektarchiv von beckerbyte mit dem Portfolio und Text Analyzer Pro – inklusive Zielen, Vorgehen, Funktionen und Technologien.",
-  route: "/projekte",
+  route: "/projekte/",
   sceneName: "archive",
   body: `
     ${pageIntro({ index: "03", kicker: "Projektarchiv", title: "Reale Arbeit.<br><em>Offen dokumentiert.</em>", copy: "Dieses Archiv zeigt ausschließlich veröffentlichte eigene Projekte. Jede Fallstudie beschreibt den tatsächlichen Stand, die verwendeten Werkzeuge und die Entscheidungen dahinter.", sceneName: "archive", sceneLabel: "Abstraktes Archiv mit zwei aktiven Projektmodulen" })}
     <section class="section archive-intro"><div class="shell section-heading section-heading--split" data-reveal><div><p class="eyebrow">Archiv / 02 Einträge</p><h2>Zwei Projekte,<br>zwei Blickwinkel.</h2></div><p>Eine Website als wachsendes System. Eine Python-Anwendung für sichtbare Textdaten.</p></div></section>
     <section class="archive-projects"><div class="shell project-stack">${projects.map((project, index) => projectModule(project, index === 0)).join("\n")}</div></section>
-    <section class="section archive-note"><div class="shell archive-note__inner" data-reveal><span>Hinweis</span><p>Das Portfolio dokumentiert Lern- und Freizeitprojekte. Es werden keine Kundenreferenzen oder entgeltlichen Leistungen dargestellt.</p>${action("/kontakt", "Fachlich austauschen", "secondary")}</div></section>`
+    <section class="section archive-note"><div class="shell archive-note__inner" data-reveal><span>Hinweis</span><p>Das Portfolio dokumentiert Lern- und Freizeitprojekte. Es werden keine Kundenreferenzen oder entgeltlichen Leistungen dargestellt.</p>${action("/kontakt/", "Fachlich austauschen", "secondary")}</div></section>`
 });
 
 const projectDetail = (project) => layout({
   active: "projects",
   title: `${project.title} – Projekt | beckerbyte`,
   description: project.summary,
-  route: `/projekte/${project.slug}`,
+  route: normalizeInternalPath(`/projekte/${project.slug}`),
   sceneName: project.scene,
   schema: {
     "@context": "https://schema.org",
@@ -209,13 +209,13 @@ const projectDetail = (project) => layout({
     description: project.summary,
     author: { "@type": "Person", name: site.owner },
     codeRepository: project.repo,
-    url: `${site.origin}/projekte/${project.slug}`
+    url: `${site.origin}${normalizeInternalPath(`/projekte/${project.slug}`)}`
   },
   body: `
     <section class="project-hero">
       ${scene(project.scene, `${project.title}: räumliche Projektdarstellung`, { priority: true })}
       <div class="shell project-hero__inner">
-        ${breadcrumbs([{ label: "Start", href: "/" }, { label: "Projekte", href: "/projekte" }, { label: project.title }])}
+        ${breadcrumbs([{ label: "Start", href: "/" }, { label: "Projekte", href: "/projekte/" }, { label: project.title }])}
         <div class="project-hero__copy" data-reveal>
           <p class="eyebrow">${project.category} · ${project.status}</p>
           <h1>${project.title}</h1>
@@ -236,14 +236,14 @@ const projectDetail = (project) => layout({
         </div>
       </div>
     </section>
-    <section class="project-next"><div class="shell" data-reveal><p class="eyebrow">Weiter im Archiv</p><h2>${projects.find((item) => item.slug !== project.slug).title}</h2>${action(`/projekte/${projects.find((item) => item.slug !== project.slug).slug}`, "Nächste Fallstudie")}</div></section>`
+    <section class="project-next"><div class="shell" data-reveal><p class="eyebrow">Weiter im Archiv</p><h2>${projects.find((item) => item.slug !== project.slug).title}</h2>${action(normalizeInternalPath(`/projekte/${projects.find((item) => item.slug !== project.slug).slug}`), "Nächste Fallstudie")}</div></section>`
 });
 
 const contact = layout({
   active: "contact",
   title: "Kontakt – beckerbyte",
   description: "Kontakt zu Julian Becker über E-Mail, Formular, GitHub, LinkedIn oder Discord.",
-  route: "/kontakt",
+  route: "/kontakt/",
   sceneName: "contact",
   body: `
     ${pageIntro({ index: "04", kicker: "Kontakt", title: "Ein offener Kanal<br><em>für gute Fragen.</em>", copy: "Du möchtest dich über Technik, ein Projekt oder einen Lernweg austauschen? Schreib mir über das Formular oder direkt per E-Mail.", sceneName: "contact", sceneLabel: "Abstraktes Portal für einen offenen Kommunikationskanal" })}
@@ -268,7 +268,7 @@ const contact = layout({
           <input type="hidden" name="_gotcha" value="">
           <div class="form-consent">
             <input id="privacy-consent" type="checkbox" name="privacy-consent" required>
-            <label for="privacy-consent">Ich habe die <a href="/datenschutz">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Angaben zur Beantwortung der Anfrage zu.</label>
+            <label for="privacy-consent">Ich habe die <a href="/datenschutz/">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Angaben zur Beantwortung der Anfrage zu.</label>
           </div>
           <div class="form-submit"><button class="button button--primary" type="submit">Nachricht senden <span aria-hidden="true">↗</span></button><p role="status" aria-live="polite" data-form-status>Alle Pflichtfelder sind markiert.</p></div>
         </form>
@@ -279,17 +279,17 @@ const contact = layout({
 const legalIntro = (title, copy) => `<section class="legal-hero"><div class="shell">${breadcrumbs([{ label: "Start", href: "/" }, { label: title }])}<p class="eyebrow">Rechtliches</p><h1>${title}</h1><p class="lede">${copy}</p></div></section>`;
 
 const imprint = layout({
-  active: "imprint", title: "Anbieterhinweis – beckerbyte", description: "Anbieterhinweis zur privaten, nichtkommerziellen Portfolio-Website beckerbyte.", route: "/impressum", sceneName: "legal", noindex: true,
+  active: "imprint", title: "Anbieterhinweis – beckerbyte", description: "Anbieterhinweis zur privaten, nichtkommerziellen Portfolio-Website beckerbyte.", route: "/impressum/", sceneName: "legal", noindex: true,
   body: `${legalIntro("Anbieterhinweis", "Kontakt und Angaben zur privaten Portfolio-Website beckerbyte.")}<section class="legal-layout"><div class="shell legal-layout__grid"><aside>${scene("legal", "Ruhige abstrakte Systemstruktur", { compact: true })}</aside><article class="legal-copy">
     <div class="legal-lead"><p>beckerbyte ist eine private, nichtkommerzielle Portfolio-Website. Sie dient der Dokumentation eigener Lern- und Freizeitprojekte sowie dem fachlichen Austausch. Über diese Website werden keine entgeltlichen Leistungen angeboten oder vermittelt.</p></div>
     <section><span>01</span><p class="eyebrow">Verantwortlich</p><h2>Julian Becker</h2><p>Kontakt: <a href="mailto:kontakt@beckerbyte.com">kontakt@beckerbyte.com</a></p></section>
     <section><span>02</span><p class="eyebrow">Hinweis</p><h2>Nichtkommerzieller Betrieb</h2><p>Diese Seite ist kein geschäftsmäßiges Angebot im Sinne eines auf Dauer angelegten entgeltlichen digitalen Dienstes. Sollte sich die Nutzung künftig ändern, werden die Anbieterangaben vor Aufnahme einer kommerziellen Tätigkeit entsprechend ergänzt.</p></section>
-    <div class="legal-next"><p>Weitere rechtliche Informationen:</p>${action("/datenschutz", "Datenschutz", "secondary")}</div>
+    <div class="legal-next"><p>Weitere rechtliche Informationen:</p>${action("/datenschutz/", "Datenschutz", "secondary")}</div>
   </article></div></section>`
 });
 
 const privacy = layout({
-  active: "privacy", title: "Datenschutzerklärung – beckerbyte", description: "Datenschutzerklärung von beckerbyte.", route: "/datenschutz", sceneName: "legal", noindex: true,
+  active: "privacy", title: "Datenschutzerklärung – beckerbyte", description: "Datenschutzerklärung von beckerbyte.", route: "/datenschutz/", sceneName: "legal", noindex: true,
   body: `${legalIntro("Datenschutz", "Informationen zur Verarbeitung personenbezogener Daten auf beckerbyte.")}<section class="legal-layout"><div class="shell legal-layout__grid"><aside>${scene("legal", "Ruhige abstrakte Systemstruktur", { compact: true })}</aside><article class="legal-copy">
     <div class="legal-lead"><p>Diese private, nichtkommerzielle Website verarbeitet personenbezogene Daten nur, soweit dies für die technische Bereitstellung, Sicherheit und Beantwortung von Kontaktanfragen erforderlich ist. Es findet keine eigene Reichweitenanalyse und keine werbliche Profilbildung statt.</p></div>
     <section><span>01</span><p class="eyebrow">01</p><h2>Verantwortlicher</h2><p>Julian Becker<br>E-Mail: <a href="mailto:kontakt@beckerbyte.com">kontakt@beckerbyte.com</a></p></section>
@@ -300,13 +300,13 @@ const privacy = layout({
     <section><span>06</span><p class="eyebrow">06</p><h2>Cookies und Analyse</h2><p>Die Website setzt selbst keine Tracking- oder Werbe-Cookies ein. Eine eigene Reichweitenanalyse oder Erstellung personenbezogener Nutzungsprofile findet nicht statt. Technisch notwendige Sicherheits- und Netzwerkfunktionen der genannten Dienstleister bleiben hiervon unberührt.</p></section>
     <section><span>07</span><p class="eyebrow">07</p><h2>Rechte betroffener Personen</h2><p>Betroffene Personen haben nach Maßgabe der gesetzlichen Voraussetzungen insbesondere Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Zudem besteht ein Beschwerderecht bei einer Datenschutzaufsichtsbehörde. Zur Ausübung der Rechte genügt eine Nachricht an die oben genannte E-Mail-Adresse.</p></section>
     <section><span>→</span><p class="eyebrow">Stand</p><p>23. Juli 2026</p></section>
-    <div class="legal-next"><p>Weitere Angaben zum Betreiber:</p>${action("/impressum", "Anbieterhinweis", "secondary")}</div>
+    <div class="legal-next"><p>Weitere Angaben zum Betreiber:</p>${action("/impressum/", "Anbieterhinweis", "secondary")}</div>
   </article></div></section>`
 });
 
 const notFound = layout({
-  active: "notfound", title: "404 – Seite nicht gefunden | beckerbyte", description: "Die angeforderte Seite wurde nicht gefunden.", route: "/404", sceneName: "notfound", noindex: true,
-  body: `<section class="not-found">${scene("notfound", "Unterbrochene abstrakte Systemverbindung", { priority: true })}<div class="shell not-found__inner"><p class="eyebrow">Fehlercode / 404</p><h1>Diese Verbindung<br><em>endet hier.</em></h1><p>Die angeforderte Adresse existiert nicht oder wurde verschoben. Über die Startseite findest du zurück ins System.</p><div class="button-row">${action("/", "Zur Startseite")}${action("/projekte", "Projekte öffnen", "secondary")}</div></div></section>`
+  active: "notfound", title: "404 – Seite nicht gefunden | beckerbyte", description: "Die angeforderte Seite wurde nicht gefunden.", route: "/404/", sceneName: "notfound", noindex: true,
+  body: `<section class="not-found">${scene("notfound", "Unterbrochene abstrakte Systemverbindung", { priority: true })}<div class="shell not-found__inner"><p class="eyebrow">Fehlercode / 404</p><h1>Diese Verbindung<br><em>endet hier.</em></h1><p>Die angeforderte Adresse existiert nicht oder wurde verschoben. Über die Startseite findest du zurück ins System.</p><div class="button-row">${action("/", "Zur Startseite")}${action("/projekte/", "Projekte öffnen", "secondary")}</div></div></section>`
 });
 
 export const pages = {

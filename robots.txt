@@ -1,8 +1,8 @@
 User-agent: *
 Allow: /
-Disallow: /impressum
-Disallow: /datenschutz
-Disallow: /404
+Disallow: /impressum/
+Disallow: /datenschutz/
+Disallow: /404/
 
 User-agent: GPTBot
 Disallow: /

@@ -12,11 +12,24 @@ export const site = {
   ]
 };
 
+export const normalizeInternalPath = (value) => {
+  if (!value || value === "/") return "/";
+  if (/^[a-z][a-z\d+.-]*:/i.test(value) || value.startsWith("//")) return value;
+
+  const match = value.match(/^([^?#]*)([?#].*)?$/);
+  const rawPathname = match?.[1] || "/";
+  const suffix = match?.[2] || "";
+  const pathname = rawPathname.startsWith("/") ? rawPathname : `/${rawPathname}`;
+
+  if (pathname.includes(".")) return `${pathname}${suffix}`;
+  return `${pathname.replace(/\/+$/, "")}/${suffix}`;
+};
+
 export const nav = [
-  { key: "profile", label: "Profil", href: "/profil" },
-  { key: "skills", label: "Skills & Erfahrung", href: "/skills" },
-  { key: "projects", label: "Projekte", href: "/projekte" },
-  { key: "contact", label: "Kontakt", href: "/kontakt" }
+  { key: "profile", label: "Profil", href: normalizeInternalPath("/profil/") },
+  { key: "skills", label: "Skills & Erfahrung", href: normalizeInternalPath("/skills/") },
+  { key: "projects", label: "Projekte", href: normalizeInternalPath("/projekte/") },
+  { key: "contact", label: "Kontakt", href: normalizeInternalPath("/kontakt/") }
 ];
 
 export const timeline = [
@@ -54,7 +67,7 @@ export const skills = [
     statement: "Interfaces, die ihre Struktur zeigen.",
     copy: "Semantisches HTML, responsive CSS-Systeme und JavaScript-Interaktion bilden gemeinsam verständliche Oberflächen.",
     tools: ["HTML", "CSS", "JavaScript", "Tailwind CSS", "VS Code"],
-    projectHref: "/projekte/beckerbyte-portfolio"
+    projectHref: normalizeInternalPath("/projekte/beckerbyte-portfolio/")
   },
   {
     id: "systems",
@@ -63,7 +76,7 @@ export const skills = [
     statement: "Technik im Zusammenhang betrachten.",
     copy: "Netzwerke, Datenbanken und Prozesskontext werden nicht isoliert, sondern als verbundene Abläufe verstanden.",
     tools: ["Cisco Packet Tracer", "HeidiSQL", "SAP", "Flexus Mobile Solutions"],
-    projectHref: "/projekte"
+    projectHref: normalizeInternalPath("/projekte/")
   },
   {
     id: "code-data",
@@ -72,7 +85,7 @@ export const skills = [
     statement: "Logik wird überprüfbar, wenn Daten sichtbar werden.",
     copy: "Python, Java und SQL dienen als aktuelle Lernfelder für Logik, Datenverarbeitung und nachvollziehbare Programme.",
     tools: ["Python", "Java", "SQL"],
-    projectHref: "/projekte/text-analyzer"
+    projectHref: normalizeInternalPath("/projekte/text-analyzer/")
   },
   {
     id: "hardware",
@@ -81,7 +94,7 @@ export const skills = [
     statement: "Code endet nicht am Bildschirm.",
     copy: "Arduino verbindet Programmabläufe mit Sensoren, Ausgängen und konkreten Reaktionen physischer Komponenten.",
     tools: ["Arduino", "Sensorik", "Automatisierung"],
-    projectHref: "/projekte"
+    projectHref: normalizeInternalPath("/projekte/")
   },
   {
     id: "creative",
@@ -90,7 +103,7 @@ export const skills = [
     statement: "Bewegung erklärt räumliche Zusammenhänge.",
     copy: "Motion Design und technische Gestaltung machen Zustände, Übergänge und Hierarchien visuell erfahrbar.",
     tools: ["Adobe After Effects", "Motion Graphics", "Visuelle Systeme"],
-    projectHref: "/projekte/beckerbyte-portfolio"
+    projectHref: normalizeInternalPath("/projekte/beckerbyte-portfolio/")
   }
 ];
 
@@ -116,7 +129,7 @@ export const projects = [
     repo: "https://github.com/beckerbyte/beckerbyte.github.io",
     live: "https://www.beckerbyte.com/",
     download: null,
-    relatedSkill: "/skills#web"
+    relatedSkill: normalizeInternalPath("/skills/#web")
   },
   {
     slug: "text-analyzer",
@@ -140,7 +153,7 @@ export const projects = [
     repo: "https://github.com/beckerbyte/Text-Analyzer",
     live: null,
     download: "https://github.com/beckerbyte/beckerbyte.github.io/releases/latest/download/Text-Analyzer.zip",
-    relatedSkill: "/skills#code-data"
+    relatedSkill: normalizeInternalPath("/skills/#code-data")
   }
 ];
 
