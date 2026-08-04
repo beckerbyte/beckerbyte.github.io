@@ -97,7 +97,8 @@ em { color: var(--signal); font-style: normal; }
 
 .home-hero, .page-hero, .project-hero, .not-found { position: relative; min-height: 100svh; overflow: clip; isolation: isolate; }
 .hero-stage { position: relative; min-height: 100svh; overflow: hidden; isolation: isolate; }
-.frame-story { min-height: 175svh; --hero-progress: 0; }
+.frame-story { --hero-progress: 0; }
+.page-hero.frame-story { min-height: 175svh; }
 .frame-story > .hero-stage { position: sticky; z-index: 0; top: 0; height: 100svh; }
 .project-hero.frame-story { min-height: 155svh; }
 .system-scene { --scene-position: center; position: absolute; z-index: -2; inset: 0; overflow: hidden; background: #080b10; pointer-events: none; }
@@ -462,7 +463,7 @@ html.is-leaving .page-transition { transform: scaleX(1); transition: transform .
   .project-hero__number { right: -2vw; font-size: clamp(16rem, 38vw, 27rem); }
   .system-scene__veil { background: linear-gradient(90deg, rgba(7,10,15,.94), rgba(7,10,15,.58) 58%, rgba(7,10,15,.24)), linear-gradient(0deg, var(--night), transparent 42%, rgba(7,10,15,.42)); }
   .system-scene[data-scene] { --scene-position: 61% 48%; }
-  .frame-story { min-height: 160svh; }
+  .page-hero.frame-story { min-height: 160svh; }
   .project-hero.frame-story { min-height: 145svh; }
   .page-hero__inner { padding-block: calc(var(--header-height) + 5rem) 4.5rem; }
   .timeline li { grid-template-columns: minmax(7rem, .35fr) 1.65fr; }
@@ -489,7 +490,7 @@ html.is-leaving .page-transition { transform: scaleX(1); transition: transform .
   .mobile-nav summary { position: relative; z-index: 121; min-width: 5rem; min-height: 2.75rem; }
   .mobile-nav__links a { display: flex; min-height: 3.75rem; align-items: center; padding: .75rem 0; font-size: clamp(1.7rem, 8vw, 2.6rem); }
   .mobile-nav__meta a { min-height: 2.75rem; display: inline-flex; align-items: center; }
-  .frame-story { min-height: 145svh; }
+  .page-hero.frame-story { min-height: 145svh; }
   .project-hero.frame-story { min-height: 135svh; }
   .hero-stage { min-height: 100svh; }
   .home-hero__inner, .page-hero__inner, .project-hero__inner { min-height: 100svh; }
@@ -551,8 +552,13 @@ html.is-leaving .page-transition { transform: scaleX(1); transition: transform .
   .home-hero h1, .page-hero h1, .project-hero h1 { font-size: clamp(2.5rem, 9vw, 4.4rem); }
   .lede { margin-top: 1rem; font-size: .95rem; }
   .button-row { margin-top: 1.25rem; }
-  .frame-story, .project-hero.frame-story { min-height: 130svh; }
+  .page-hero.frame-story, .project-hero.frame-story { min-height: 130svh; }
   .home-hero .hero-stage, .home-hero__inner { min-height: max(100svh, 32rem); }
+}
+
+@media (max-width: 74.99rem) {
+  .page-hero[data-desktop-frame-story] { min-height: 100svh; }
+  .page-hero[data-desktop-frame-story] > .hero-stage { position: relative; }
 }
 
 @media (hover: none), (pointer: coarse) {
@@ -564,7 +570,7 @@ html.is-leaving .page-transition { transform: scaleX(1); transition: transform .
   html { scroll-behavior: auto; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   [data-reveal] { opacity: 1; transform: none; clip-path: none; }
-  .frame-story, .project-hero.frame-story { min-height: 100svh; }
+  .page-hero.frame-story, .project-hero.frame-story { min-height: 100svh; }
   .frame-story > .hero-stage { position: relative; }
   .system-scene__video, .system-scene__frames, .system-scene__canvas { display: none; }
   [data-media-state] .system-scene__poster { opacity: 1; visibility: visible; }

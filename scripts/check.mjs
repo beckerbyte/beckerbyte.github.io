@@ -16,6 +16,12 @@ const directoryRoutes = Object.keys(pages)
   .filter((file) => file.endsWith("/index.html"))
   .map((file) => file.replace(/\/index\.html$/, ""));
 const internalRoutes = new Set(["/", ...directoryRoutes.map((route) => normalizeInternalPath(`/${route}`))]);
+const pageFrameStories = new Map([
+  ["profil/index.html", "profile"],
+  ["skills/index.html", "skills"],
+  ["projekte/index.html", "archive"],
+  ["kontakt/index.html", "contact"]
+]);
 
 const exists = async (path) => {
   try {
@@ -92,6 +98,21 @@ for (const [file] of Object.entries(pages)) {
     if (homeScene.includes("data-frame-root=")) errors.push("index.html: Startseiten-Hero darf keine Frame-Sequenz initialisieren");
   }
 
+  if (pageFrameStories.has(file)) {
+    const sceneName = pageFrameStories.get(file);
+    const pageHero = html.match(/<section class="page-hero frame-story"[^>]*>/)?.[0] || "";
+    const pageScene = html.match(new RegExp(`<div class="system-scene[^"]*"[^>]*data-scene="${sceneName}"[^>]*>`))?.[0] || "";
+    if (!pageHero.includes(`data-frame-story="${sceneName}"`)) errors.push(`${file}: Desktop-Hero benötigt eine Frame-Story für ${sceneName}`);
+    if (!pageScene.includes('data-preferred-media="frames"')) errors.push(`${file}: Desktop-Hero benötigt Frames als bevorzugten Medienzustand`);
+    if (!pageScene.includes(`data-frame-root="/assets/media/frames/${sceneName}"`)) errors.push(`${file}: Frame-Wurzel für ${sceneName} fehlt`);
+    if (["profile", "contact"].includes(sceneName)) {
+      if (!pageHero.includes("data-desktop-frame-story")) errors.push(`${file}: Frame-Story darf das bestehende Mobile-Verhalten nicht verändern`);
+      if (!pageScene.includes('data-frame-count-tablet="0"') || !pageScene.includes('data-frame-count-mobile="0"')) {
+        errors.push(`${file}: Profil und Kontakt dürfen Frames nur auf Desktop aktivieren`);
+      }
+    }
+  }
+
   const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
   const duplicates = ids.filter((id, index) => ids.indexOf(id) !== index);
   if (duplicates.length) errors.push(`${file}: doppelte IDs ${[...new Set(duplicates)].join(", ")}`);
@@ -163,8 +184,10 @@ for (const scene of scenes) {
 
 const frameSequences = {
   home: { desktop: 72, tablet: 54, mobile: 42 },
+  profile: { desktop: 72 },
   skills: { desktop: 72, tablet: 54, mobile: 42 },
   archive: { desktop: 72, tablet: 54, mobile: 42 },
+  contact: { desktop: 72 },
   portfolio: { desktop: 48, tablet: 36, mobile: 30 },
   analyzer: { desktop: 48, tablet: 36, mobile: 30 }
 };
@@ -195,6 +218,13 @@ if (/background(?:-image)?\s*:[^;]*assets\/media\/system/i.test(siteCss)) {
 const revealVariantTwoRule = siteCss.match(/\[data-reveal-variant="2"\]\s*\{([^}]*)\}/)?.[1] || "";
 if (/clip-path\s*:/i.test(revealVariantTwoRule)) {
   errors.push("assets/css/site.css: Reveal-Variante 2 darf ihre eigene Observer-Fläche nicht beschneiden");
+}
+const pageFrameStoryRule = siteCss.match(/\.page-hero\.frame-story\s*\{([^}]*)\}/)?.[1] || "";
+if (!/min-height\s*:\s*1[1-9][0-9]svh/i.test(pageFrameStoryRule)) {
+  errors.push("assets/css/site.css: Desktop-Frame-Story benötigt eine Scrollstrecke über 100svh");
+}
+if (!/\.page-hero\[data-desktop-frame-story\]\s*>\s*\.hero-stage\s*\{\s*position:\s*relative;/i.test(siteCss)) {
+  errors.push("assets/css/site.css: Desktop-exklusive Frame-Stories benötigen unterhalb des Breakpoints einen statischen Mobile-Hero");
 }
 
 const cname = (await readFile("CNAME", "utf8")).trim();
@@ -250,4 +280,5 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`${Object.keys(pages).length} HTML-Seiten geprüft: Routing, exklusive Medienzustände und 15 gerätespezifische Frame-Sequenzen sind konsistent.`);
+const checkedFrameSequences = Object.values(frameSequences).reduce((total, counts) => total + Object.keys(counts).length, 0);
+console.log(`${Object.keys(pages).length} HTML-Seiten geprüft: Routing, exklusive Medienzustände und ${checkedFrameSequences} gerätespezifische Frame-Sequenzen sind konsistent.`);
