@@ -1,7 +1,9 @@
-const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const reducedMotion = reducedMotionQuery.matches;
 const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
 
 if (!reducedMotion && !connection?.saveData) {
+  const cleanups = [];
   const palettes = {
     home: [0.55, 1.0, 0.68],
     profile: [0.62, 0.79, 1.0],
@@ -55,9 +57,9 @@ if (!reducedMotion && !connection?.saveData) {
         float d = length(point);
         if (d > .5) discard;
         float glow = smoothstep(.5, .0, d);
-        gl_FragColor = vec4(uColor, glow * vDepth * .75);
+        gl_FragColor = vec4(uColor, glow * vDepth * .34);
       } else {
-        gl_FragColor = vec4(uColor, vDepth * .13);
+        gl_FragColor = vec4(uColor, vDepth * .065);
       }
     }
   `;
@@ -81,7 +83,7 @@ if (!reducedMotion && !connection?.saveData) {
 
   const createGeometry = (name, compact) => {
     const random = randomFactory(hash(name));
-    const count = compact ? 54 : 95;
+    const count = compact ? 30 : window.innerWidth < 768 ? 42 : window.innerWidth < 1200 ? 54 : 68;
     const points = [];
     const sizes = [];
     for (let index = 0; index < count; index += 1) {
@@ -127,6 +129,7 @@ if (!reducedMotion && !connection?.saveData) {
     const lineBuffer = gl.createBuffer();
     let active = false;
     let frame = 0;
+    let destroyed = false;
 
     gl.useProgram(glProgram);
     gl.enable(gl.BLEND);
@@ -134,7 +137,9 @@ if (!reducedMotion && !connection?.saveData) {
     gl.uniform3fv(color, palettes[sceneName] || palettes.home);
 
     const resize = () => {
-      const ratio = Math.min(window.devicePixelRatio || 1, window.innerWidth < 768 ? 1 : 1.5);
+      const quality = document.documentElement.dataset.quality;
+      const qualityScale = quality === "reduced" ? .68 : quality === "balanced" ? .84 : 1;
+      const ratio = Math.min(window.devicePixelRatio || 1, (window.innerWidth < 768 ? 1.2 : window.innerWidth < 1200 ? 1.4 : 1.75) * qualityScale);
       const width = Math.max(1, Math.floor(canvas.clientWidth * ratio));
       const height = Math.max(1, Math.floor(canvas.clientHeight * ratio));
       if (canvas.width !== width || canvas.height !== height) {
@@ -152,7 +157,7 @@ if (!reducedMotion && !connection?.saveData) {
     };
 
     const render = (now) => {
-      if (!active || document.hidden) return;
+      if (!active || document.hidden || destroyed) return;
       resize();
       const styles = getComputedStyle(document.documentElement);
       const x = Number.parseFloat(styles.getPropertyValue("--mx")) || 0;
@@ -181,11 +186,29 @@ if (!reducedMotion && !connection?.saveData) {
       cancelAnimationFrame(frame);
       if (active) frame = requestAnimationFrame(render);
     }, { rootMargin: "20% 0px", threshold: .01 });
+    const resizeObserver = new ResizeObserver(resize);
     observer.observe(canvas);
-    window.addEventListener("resize", resize, { passive: true });
+    resizeObserver.observe(canvas);
+    cleanups.push(() => {
+      destroyed = true;
+      active = false;
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      resizeObserver.disconnect();
+      gl.deleteBuffer(pointBuffer);
+      gl.deleteBuffer(sizeBuffer);
+      gl.deleteBuffer(lineBuffer);
+      gl.deleteProgram(glProgram);
+    });
   };
 
   document.querySelectorAll("[data-system-world]").forEach((canvas) => {
     try { startWorld(canvas); } catch { canvas.hidden = true; }
   });
+
+  const cleanupAll = () => cleanups.splice(0).forEach((cleanup) => cleanup());
+  reducedMotionQuery.addEventListener("change", (event) => {
+    if (event.matches) cleanupAll();
+  });
+  window.addEventListener("pagehide", cleanupAll, { once: true });
 }

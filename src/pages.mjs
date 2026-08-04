@@ -35,27 +35,29 @@ const home = layout({
   sceneName: "home",
   schema: siteSchema,
   body: `
-    <section class="home-hero">
-      ${scene("home", "Abstrakte vernetzte Systemwelt", { priority: true })}
-      <div class="shell home-hero__inner">
-        <div class="home-hero__signal" data-reveal>
-          <span class="status-dot" aria-hidden="true"></span>
-          Privates Portfolio · ${site.location}
-        </div>
-        <div class="home-hero__copy" data-reveal>
-          <p class="eyebrow">Creative Tech · Web · Systeme</p>
-          <h1>Ich verbinde<br><em>Code, Systeme</em><br>und Bewegung.</h1>
-          <p class="lede">Ich bin Julian Becker. Diese Website dokumentiert, wie aus technischen Lernfeldern verständliche, visuelle und funktionierende Systeme werden.</p>
-          <div class="button-row">
-            ${action("/projekte/", "Projekte erkunden")}
-            ${action("/profil/", "Profil ansehen", "secondary")}
+    <section class="home-hero frame-story" data-frame-story="home">
+      <div class="hero-stage">
+        ${scene("home", "Abstrakte vernetzte Systemwelt", { priority: true })}
+        <div class="shell home-hero__inner">
+          <div class="home-hero__signal" data-reveal>
+            <span class="status-dot" aria-hidden="true"></span>
+            Privates Portfolio · ${site.location}
+          </div>
+          <div class="home-hero__copy" data-reveal>
+            <p class="eyebrow">Creative Tech · Web · Systeme</p>
+            <h1>Ich verbinde<br><em>Code, Systeme</em><br>und Bewegung.</h1>
+            <p class="lede">Ich bin Julian Becker. Diese Website dokumentiert, wie aus technischen Lernfeldern verständliche, visuelle und funktionierende Systeme werden.</p>
+            <div class="button-row">
+              ${action("/projekte/", "Projekte erkunden")}
+              ${action("/profil/", "Profil ansehen", "secondary")}
+            </div>
+          </div>
+          <div class="home-hero__legend">
+            <span><b>01</b> Struktur</span><span><b>02</b> Logik</span><span><b>03</b> Bewegung</span>
           </div>
         </div>
-        <div class="home-hero__legend">
-          <span><b>01</b> Struktur</span><span><b>02</b> Logik</span><span><b>03</b> Bewegung</span>
-        </div>
+        <a class="scroll-cue" href="#orientation"><span>System betreten</span><i aria-hidden="true"></i></a>
       </div>
-      <a class="scroll-cue" href="#orientation"><span>System betreten</span><i aria-hidden="true"></i></a>
     </section>
 
     <section class="orientation section" id="orientation">
@@ -212,17 +214,19 @@ const projectDetail = (project) => layout({
     url: `${site.origin}${normalizeInternalPath(`/projekte/${project.slug}`)}`
   },
   body: `
-    <section class="project-hero">
-      ${scene(project.scene, `${project.title}: räumliche Projektdarstellung`, { priority: true })}
-      <div class="shell project-hero__inner">
-        ${breadcrumbs([{ label: "Start", href: "/" }, { label: "Projekte", href: "/projekte/" }, { label: project.title }])}
-        <div class="project-hero__copy" data-reveal>
-          <p class="eyebrow">${project.category} · ${project.status}</p>
-          <h1>${project.title}</h1>
-          <p class="lede">${project.summary}</p>
-          ${tags(project.tools)}
+    <section class="project-hero frame-story" data-frame-story="${project.scene}">
+      <div class="hero-stage">
+        ${scene(project.scene, `${project.title}: räumliche Projektdarstellung`, { priority: true })}
+        <div class="shell project-hero__inner">
+          ${breadcrumbs([{ label: "Start", href: "/" }, { label: "Projekte", href: "/projekte/" }, { label: project.title }])}
+          <div class="project-hero__copy" data-reveal>
+            <p class="eyebrow">${project.category} · ${project.status}</p>
+            <h1>${project.title}</h1>
+            <p class="lede">${project.summary}</p>
+            ${tags(project.tools)}
+          </div>
+          <span class="project-hero__number" aria-hidden="true">${project.index}</span>
         </div>
-        <span class="project-hero__number" aria-hidden="true">${project.index}</span>
       </div>
     </section>
     <section class="section case-study">
@@ -306,7 +310,7 @@ const privacy = layout({
 
 const notFound = layout({
   active: "notfound", title: "404 – Seite nicht gefunden | beckerbyte", description: "Die angeforderte Seite wurde nicht gefunden.", route: "/404/", sceneName: "notfound", noindex: true,
-  body: `<section class="not-found">${scene("notfound", "Unterbrochene abstrakte Systemverbindung", { priority: true })}<div class="shell not-found__inner"><p class="eyebrow">Fehlercode / 404</p><h1>Diese Verbindung<br><em>endet hier.</em></h1><p>Die angeforderte Adresse existiert nicht oder wurde verschoben. Über die Startseite findest du zurück ins System.</p><div class="button-row">${action("/", "Zur Startseite")}${action("/projekte/", "Projekte öffnen", "secondary")}</div></div></section>`
+  body: `<section class="not-found">${scene("notfound", "Unterbrochene abstrakte Systemverbindung", { priority: true })}<div class="shell not-found__inner"><p class="eyebrow">Fehlercode / 404</p><h1>Diese Verbindung<br><em>endet hier.</em></h1><p>Die angeforderte Adresse existiert nicht oder wurde verschoben. Über die Startseite findest du zurück ins System.</p><div class="button-row">${action("/", "Zur Startseite")}${action("/skills/", "Skills öffnen", "secondary")}${action("/projekte/", "Projekte öffnen", "secondary")}${action("/kontakt/", "Kontakt", "secondary")}</div></div></section>`
 });
 
 export const pages = {

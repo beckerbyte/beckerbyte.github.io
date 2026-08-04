@@ -1,22 +1,25 @@
 const root = document.documentElement;
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-const narrowScreen = window.matchMedia("(max-width: 47.99rem)");
-const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-const saveData = Boolean(connection?.saveData);
+const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
 
 root.dataset.motion = reducedMotion.matches ? "reduced" : "full";
 root.classList.add("has-js");
+reducedMotion.addEventListener("change", () => {
+  root.dataset.motion = reducedMotion.matches ? "reduced" : "full";
+});
 
 const header = document.querySelector("[data-site-header]");
-let lastScroll = window.scrollY;
 let scrollTick = false;
 
 const updateScrollState = () => {
   const current = window.scrollY;
   root.style.setProperty("--scroll", String(current));
   header?.classList.toggle("is-compact", current > 20);
-  header?.classList.toggle("is-hidden", current > lastScroll && current > 180 && !document.querySelector("[data-mobile-nav][open]"));
-  lastScroll = current;
+  document.querySelectorAll("[data-frame-story]").forEach((story) => {
+    const rect = story.getBoundingClientRect();
+    const distance = Math.max(1, story.offsetHeight - window.innerHeight);
+    story.style.setProperty("--hero-progress", String(Math.min(1, Math.max(0, -rect.top / distance))));
+  });
   scrollTick = false;
 };
 
@@ -26,10 +29,12 @@ window.addEventListener("scroll", () => {
 }, { passive: true });
 updateScrollState();
 
-window.addEventListener("pointermove", (event) => {
-  root.style.setProperty("--mx", String((event.clientX / window.innerWidth - .5) * 2));
-  root.style.setProperty("--my", String((event.clientY / window.innerHeight - .5) * 2));
-}, { passive: true });
+if (finePointer.matches && !reducedMotion.matches) {
+  window.addEventListener("pointermove", (event) => {
+    root.style.setProperty("--mx", String((event.clientX / window.innerWidth - .5) * 2));
+    root.style.setProperty("--my", String((event.clientY / window.innerHeight - .5) * 2));
+  }, { passive: true });
+}
 
 const reveal = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -41,58 +46,57 @@ const reveal = new IntersectionObserver((entries) => {
 
 document.querySelectorAll("[data-reveal]").forEach((element, index) => {
   element.style.transitionDelay = reducedMotion.matches ? "0ms" : `${Math.min(index % 4, 3) * 55}ms`;
+  element.dataset.revealVariant = String(index % 4);
   reveal.observe(element);
 });
 
 document.querySelectorAll("[data-mobile-nav]").forEach((details) => {
-  details.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => details.removeAttribute("open")));
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") details.removeAttribute("open");
-  });
-});
+  const summary = details.querySelector("summary");
+  const main = document.querySelector("main");
+  const footer = document.querySelector("footer");
+  let previousFocus = null;
 
-const chooseFormat = () => {
-  if (narrowScreen.matches) return "mobile";
-  if (window.matchMedia("(max-width: 74.99rem)").matches) return "tablet";
-  return "desktop";
-};
-
-const prepareVideo = (video) => {
-  if (saveData || reducedMotion.matches || video.dataset.loaded) return;
-  const sceneName = video.dataset.atmosphere;
-  const format = chooseFormat();
-  const rootPath = `/assets/media/system/${sceneName}/${sceneName}-${format}`;
-  const webm = document.createElement("source");
-  webm.src = `${rootPath}.webm`;
-  webm.type = "video/webm";
-  const mp4 = document.createElement("source");
-  mp4.src = `${rootPath}.mp4`;
-  mp4.type = "video/mp4";
-  video.append(webm, mp4);
-  video.dataset.loaded = "true";
-  video.load();
-  video.addEventListener("playing", () => video.classList.add("is-playing"), { once: true });
-  video.play().catch(() => {});
-};
-
-const videoObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    const video = entry.target;
-    if (entry.isIntersecting) {
-      prepareVideo(video);
-      if (video.dataset.loaded) video.play().catch(() => {});
+  const close = () => details.removeAttribute("open");
+  const sync = () => {
+    const open = details.open;
+    summary?.setAttribute("aria-expanded", String(open));
+    summary?.setAttribute("aria-label", open ? "Navigation schließen" : "Navigation öffnen");
+    document.body.classList.toggle("nav-open", open);
+    if (open) {
+      previousFocus = document.activeElement;
+      main?.setAttribute("inert", "");
+      footer?.setAttribute("inert", "");
+      document.dispatchEvent(new Event("media:pause"));
+      details.querySelector("a")?.focus();
     } else {
-      video.pause();
+      main?.removeAttribute("inert");
+      footer?.removeAttribute("inert");
+      document.dispatchEvent(new Event("media:resume"));
+      if (previousFocus && previousFocus !== document.body) previousFocus.focus();
+    }
+  };
+
+  details.addEventListener("toggle", sync);
+  details.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
+  window.addEventListener("keydown", (event) => {
+    if (!details.open) return;
+    if (event.key === "Escape") {
+      close();
+      return;
+    }
+    if (event.key !== "Tab") return;
+    const focusable = [...details.querySelectorAll("summary, a[href]")].filter((item) => !item.hidden);
+    const first = focusable[0];
+    const last = focusable.at(-1);
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last?.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first?.focus();
     }
   });
-}, { rootMargin: "30% 0px", threshold: .01 });
-
-document.querySelectorAll("[data-atmosphere]").forEach((video) => videoObserver.observe(video));
-
-document.addEventListener("visibilitychange", () => {
-  document.querySelectorAll("[data-atmosphere]").forEach((video) => {
-    if (document.hidden) video.pause();
-  });
+  sync();
 });
 
 document.querySelectorAll("[data-contact-form]").forEach((form) => {

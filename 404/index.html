@@ -19,6 +19,7 @@
   <link rel="icon" href="/assets/img/favicon-v2.png" type="image/png">
   <link rel="preload" href="/assets/img/header.png" as="image">
   <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="module" src="/assets/js/media-controller.js"></script>
   <script type="module" src="/assets/js/site.js"></script>
   <script type="module" src="/assets/js/system-world.js"></script>
 </head>
@@ -60,18 +61,21 @@
     </div>
   </header>
   <main id="main"><section class="not-found">
-    <div class="system-scene" data-scene="notfound" aria-hidden="true">
-      <picture class="system-scene__poster">
+    <div class="system-scene" data-scene="notfound" data-media-state="poster" data-preferred-media="video" aria-hidden="true">
+      <picture class="system-scene__poster" data-media-layer="poster">
         <source media="(max-width: 47.99rem)" srcset="/assets/media/system/notfound/notfound-mobile-poster.webp">
         <source media="(max-width: 74.99rem)" srcset="/assets/media/system/notfound/notfound-tablet-poster.webp">
         <img src="/assets/media/system/notfound/notfound-desktop-poster.webp" alt="" width="1920" height="1080" fetchpriority="high">
       </picture>
-      <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-atmosphere="notfound"></video>
-      <canvas class="system-scene__canvas" data-system-world="notfound" role="img" aria-label="Unterbrochene abstrakte Systemverbindung"></canvas>
+      <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-media-layer="video" data-atmosphere="notfound" aria-hidden="true"></video>
+
+      <canvas class="system-scene__canvas system-scene__effects" data-media-layer="effects" data-system-world="notfound" aria-hidden="true"></canvas>
       <div class="system-scene__veil"></div>
     </div><div class="shell not-found__inner"><p class="eyebrow">Fehlercode / 404</p><h1>Diese Verbindung<br><em>endet hier.</em></h1><p>Die angeforderte Adresse existiert nicht oder wurde verschoben. Über die Startseite findest du zurück ins System.</p><div class="button-row">
   <a class="button button--primary" href="/">Zur Startseite <span aria-hidden="true">↗</span></a>
-  <a class="button button--secondary" href="/projekte/">Projekte öffnen <span aria-hidden="true">↗</span></a></div></div></section></main>
+  <a class="button button--secondary" href="/skills/">Skills öffnen <span aria-hidden="true">↗</span></a>
+  <a class="button button--secondary" href="/projekte/">Projekte öffnen <span aria-hidden="true">↗</span></a>
+  <a class="button button--secondary" href="/kontakt/">Kontakt <span aria-hidden="true">↗</span></a></div></div></section></main>
 
   <footer class="site-footer">
     <div class="shell">

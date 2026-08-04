@@ -19,6 +19,7 @@
   <link rel="icon" href="/assets/img/favicon-v2.png" type="image/png">
   <link rel="preload" href="/assets/img/header.png" as="image">
   <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="module" src="/assets/js/media-controller.js"></script>
   <script type="module" src="/assets/js/site.js"></script>
   <script type="module" src="/assets/js/system-world.js"></script>
 </head>
@@ -66,14 +67,15 @@
       <li><span aria-current="page">Anbieterhinweis</span></li>
     </ol>
   </nav><p class="eyebrow">Rechtliches</p><h1>Anbieterhinweis</h1><p class="lede">Kontakt und Angaben zur privaten Portfolio-Website beckerbyte.</p></div></section><section class="legal-layout"><div class="shell legal-layout__grid"><aside>
-    <div class="system-scene system-scene--compact" data-scene="legal" aria-hidden="true">
-      <picture class="system-scene__poster">
+    <div class="system-scene system-scene--compact" data-scene="legal" data-media-state="poster" data-preferred-media="video" aria-hidden="true">
+      <picture class="system-scene__poster" data-media-layer="poster">
         <source media="(max-width: 47.99rem)" srcset="/assets/media/system/legal/legal-mobile-poster.webp">
         <source media="(max-width: 74.99rem)" srcset="/assets/media/system/legal/legal-tablet-poster.webp">
         <img src="/assets/media/system/legal/legal-desktop-poster.webp" alt="" width="1920" height="1080" loading="lazy">
       </picture>
-      <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-atmosphere="legal"></video>
-      <canvas class="system-scene__canvas" data-system-world="legal" role="img" aria-label="Ruhige abstrakte Systemstruktur"></canvas>
+      <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-media-layer="video" data-atmosphere="legal" aria-hidden="true"></video>
+
+      <canvas class="system-scene__canvas system-scene__effects" data-media-layer="effects" data-system-world="legal" aria-hidden="true"></canvas>
       <div class="system-scene__veil"></div>
     </div></aside><article class="legal-copy">
     <div class="legal-lead"><p>beckerbyte ist eine private, nichtkommerzielle Portfolio-Website. Sie dient der Dokumentation eigener Lern- und Freizeitprojekte sowie dem fachlichen Austausch. Über diese Website werden keine entgeltlichen Leistungen angeboten oder vermittelt.</p></div>

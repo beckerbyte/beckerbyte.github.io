@@ -19,6 +19,7 @@
   <link rel="icon" href="/assets/img/favicon-v2.png" type="image/png">
   <link rel="preload" href="/assets/img/header.png" as="image">
   <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="module" src="/assets/js/media-controller.js"></script>
   <script type="module" src="/assets/js/site.js"></script>
   <script type="module" src="/assets/js/system-world.js"></script>
 </head>
@@ -62,23 +63,26 @@
   <main id="main">
 
   <section class="page-hero">
+    <div class="hero-stage">
 
-    <div class="system-scene" data-scene="contact" aria-hidden="true">
-      <picture class="system-scene__poster">
+    <div class="system-scene" data-scene="contact" data-media-state="poster" data-preferred-media="video" aria-hidden="true">
+      <picture class="system-scene__poster" data-media-layer="poster">
         <source media="(max-width: 47.99rem)" srcset="/assets/media/system/contact/contact-mobile-poster.webp">
         <source media="(max-width: 74.99rem)" srcset="/assets/media/system/contact/contact-tablet-poster.webp">
         <img src="/assets/media/system/contact/contact-desktop-poster.webp" alt="" width="1920" height="1080" fetchpriority="high">
       </picture>
-      <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-atmosphere="contact"></video>
-      <canvas class="system-scene__canvas" data-system-world="contact" role="img" aria-label="Abstraktes Portal für einen offenen Kommunikationskanal"></canvas>
+      <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-media-layer="video" data-atmosphere="contact" aria-hidden="true"></video>
+
+      <canvas class="system-scene__canvas system-scene__effects" data-media-layer="effects" data-system-world="contact" aria-hidden="true"></canvas>
       <div class="system-scene__veil"></div>
     </div>
-    <div class="shell page-hero__inner">
-      <div class="page-index" aria-hidden="true">04</div>
-      <div class="page-hero__copy" data-reveal>
-        <p class="eyebrow">Kontakt</p>
-        <h1>Ein offener Kanal<br><em>für gute Fragen.</em></h1>
-        <p class="lede">Du möchtest dich über Technik, ein Projekt oder einen Lernweg austauschen? Schreib mir über das Formular oder direkt per E-Mail.</p>
+      <div class="shell page-hero__inner">
+        <div class="page-index" aria-hidden="true">04</div>
+        <div class="page-hero__copy" data-reveal>
+          <p class="eyebrow">Kontakt</p>
+          <h1>Ein offener Kanal<br><em>für gute Fragen.</em></h1>
+          <p class="lede">Du möchtest dich über Technik, ein Projekt oder einen Lernweg austauschen? Schreib mir über das Formular oder direkt per E-Mail.</p>
+        </div>
       </div>
     </div>
   </section>

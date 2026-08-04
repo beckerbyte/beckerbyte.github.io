@@ -13,7 +13,7 @@ beckerbyte dokumentiert reale Lern- und Freizeitprojekte in Webentwicklung, Syst
 | Bereich | Umsetzung |
 | --- | --- |
 | Oberfläche | Semantisches HTML, CSS und Vanilla JavaScript |
-| Bewegung | Progressive Video-Layer und leichtgewichtiges WebGL |
+| Bewegung | Exklusive Poster-/Video-/Frame-Zustände, Scrollsequenzen und leichtgewichtiges WebGL |
 | Build | Abhängigkeitsfreier Node.js-Generator |
 | Qualität | Struktur-, Link- und Build-Checks |
 | Bereitstellung | Statische Website über GitHub Pages und Cloudflare |
@@ -28,19 +28,28 @@ npm run build
 npm run check
 ```
 
+Die versionierten Frame-Sequenzen lassen sich reproduzierbar aus den gerätespezifischen lokalen Videos erzeugen:
+
+```bash
+./scripts/generate-frames.sh
+```
+
 Die kanonischen Routen werden als Verzeichnisse mit `index.html` erzeugt und enden mit einem Slash. Frühere `.html`-Adressen werden ausschließlich über die serverseitige `_redirects`-Konfiguration permanent weitergeleitet.
 
 ## Projektstruktur
 
 ```text
 assets/css/site.css       globales Designsystem
-assets/js/site.js         Navigation, Reveal, Videos und Formularzustände
-assets/js/system-world.js progressive WebGL-Systemwelt
+assets/js/site.js         Navigation, Reveal, Fokusführung und Formularzustände
+assets/js/media-controller.js exklusiver Medienzustand und Frame-Loader
+assets/js/system-world.js progressive WebGL-Effektebene
 assets/media/system/      responsive lokale Video- und Poster-Assets
+assets/media/frames/      seiten- und gerätespezifische Scrollsequenzen
 src/site-data.mjs         Fakten, Skills und Projekte
 src/layout.mjs            gemeinsame Seitenstruktur
 src/pages.mjs             Seitenausgaben
 scripts/build.mjs         statischer Generator
+scripts/generate-frames.sh reproduzierbare Frame-Erzeugung
 scripts/check.mjs         Konsistenzprüfung
 ```
 
