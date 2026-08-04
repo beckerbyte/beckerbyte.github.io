@@ -19,6 +19,7 @@
   <link rel="icon" href="/assets/img/favicon-v2.png" type="image/png">
   <link rel="preload" href="/assets/img/header.png" as="image">
   <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="module" src="/assets/js/media-controller.js"></script>
   <script type="module" src="/assets/js/site.js"></script>
   <script type="module" src="/assets/js/system-world.js"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Julian Becker","url":"https://www.beckerbyte.com","email":"mailto:kontakt@beckerbyte.com","sameAs":["https://github.com/beckerbyte","https://www.linkedin.com/in/beckerbyte/","https://discord.com/users/270226761256534027"],"knowsAbout":["Webentwicklung","Systemintegration","Python","Java","SQL","Arduino","Motion Design"]}</script>
@@ -61,39 +62,42 @@
     </div>
   </header>
   <main id="main">
-    <section class="home-hero">
+    <section class="home-hero frame-story" data-frame-story="home">
+      <div class="hero-stage">
 
-    <div class="system-scene" data-scene="home" aria-hidden="true">
-      <picture class="system-scene__poster">
+    <div class="system-scene" data-scene="home" data-media-state="poster" data-preferred-media="frames" data-frame-root="/assets/media/frames/home" data-frame-count-desktop="72" data-frame-count-tablet="54" data-frame-count-mobile="42" aria-hidden="true">
+      <picture class="system-scene__poster" data-media-layer="poster">
         <source media="(max-width: 47.99rem)" srcset="/assets/media/system/home/home-mobile-poster.webp">
         <source media="(max-width: 74.99rem)" srcset="/assets/media/system/home/home-tablet-poster.webp">
         <img src="/assets/media/system/home/home-desktop-poster.webp" alt="" width="1920" height="1080" fetchpriority="high">
       </picture>
-      <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-atmosphere="home"></video>
-      <canvas class="system-scene__canvas" data-system-world="home" role="img" aria-label="Abstrakte vernetzte Systemwelt"></canvas>
+      <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-media-layer="video" data-atmosphere="home" aria-hidden="true"></video>
+      <canvas class="system-scene__frames" data-media-layer="frames" aria-hidden="true"></canvas>
+      <canvas class="system-scene__canvas system-scene__effects" data-media-layer="effects" data-system-world="home" aria-hidden="true"></canvas>
       <div class="system-scene__veil"></div>
     </div>
-      <div class="shell home-hero__inner">
-        <div class="home-hero__signal" data-reveal>
-          <span class="status-dot" aria-hidden="true"></span>
-          Privates Portfolio · Hockenheim
-        </div>
-        <div class="home-hero__copy" data-reveal>
-          <p class="eyebrow">Creative Tech · Web · Systeme</p>
-          <h1>Ich verbinde<br><em>Code, Systeme</em><br>und Bewegung.</h1>
-          <p class="lede">Ich bin Julian Becker. Diese Website dokumentiert, wie aus technischen Lernfeldern verständliche, visuelle und funktionierende Systeme werden.</p>
-          <div class="button-row">
+        <div class="shell home-hero__inner">
+          <div class="home-hero__signal" data-reveal>
+            <span class="status-dot" aria-hidden="true"></span>
+            Privates Portfolio · Hockenheim
+          </div>
+          <div class="home-hero__copy" data-reveal>
+            <p class="eyebrow">Creative Tech · Web · Systeme</p>
+            <h1>Ich verbinde<br><em>Code, Systeme</em><br>und Bewegung.</h1>
+            <p class="lede">Ich bin Julian Becker. Diese Website dokumentiert, wie aus technischen Lernfeldern verständliche, visuelle und funktionierende Systeme werden.</p>
+            <div class="button-row">
 
   <a class="button button--primary" href="/projekte/">Projekte erkunden <span aria-hidden="true">↗</span></a>
 
   <a class="button button--secondary" href="/profil/">Profil ansehen <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div class="home-hero__legend">
+            <span><b>01</b> Struktur</span><span><b>02</b> Logik</span><span><b>03</b> Bewegung</span>
           </div>
         </div>
-        <div class="home-hero__legend">
-          <span><b>01</b> Struktur</span><span><b>02</b> Logik</span><span><b>03</b> Bewegung</span>
-        </div>
+        <a class="scroll-cue" href="#orientation"><span>System betreten</span><i aria-hidden="true"></i></a>
       </div>
-      <a class="scroll-cue" href="#orientation"><span>System betreten</span><i aria-hidden="true"></i></a>
     </section>
 
     <section class="orientation section" id="orientation">
@@ -126,14 +130,15 @@
   <article class="project-module project-module--featured" data-reveal>
     <div class="project-module__media">
 
-    <div class="system-scene system-scene--compact" data-scene="portfolio" aria-hidden="true">
-      <picture class="system-scene__poster">
+    <div class="system-scene system-scene--compact" data-scene="portfolio" data-media-state="poster" data-preferred-media="video" aria-hidden="true">
+      <picture class="system-scene__poster" data-media-layer="poster">
         <source media="(max-width: 47.99rem)" srcset="/assets/media/system/portfolio/portfolio-mobile-poster.webp">
         <source media="(max-width: 74.99rem)" srcset="/assets/media/system/portfolio/portfolio-tablet-poster.webp">
         <img src="/assets/media/system/portfolio/portfolio-desktop-poster.webp" alt="" width="1920" height="1080" loading="lazy">
       </picture>
-      <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-atmosphere="portfolio"></video>
-      <canvas class="system-scene__canvas" data-system-world="portfolio" role="img" aria-label="beckerbyte.com: abstrakte Systemdarstellung"></canvas>
+      <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-media-layer="video" data-atmosphere="portfolio" aria-hidden="true"></video>
+
+      <canvas class="system-scene__canvas system-scene__effects" data-media-layer="effects" data-system-world="portfolio" aria-hidden="true"></canvas>
       <div class="system-scene__veil"></div>
     </div>
       <span class="project-module__number">01</span>
@@ -151,14 +156,15 @@
   <article class="project-module" data-reveal>
     <div class="project-module__media">
 
-    <div class="system-scene system-scene--compact" data-scene="analyzer" aria-hidden="true">
-      <picture class="system-scene__poster">
+    <div class="system-scene system-scene--compact" data-scene="analyzer" data-media-state="poster" data-preferred-media="video" aria-hidden="true">
+      <picture class="system-scene__poster" data-media-layer="poster">
         <source media="(max-width: 47.99rem)" srcset="/assets/media/system/analyzer/analyzer-mobile-poster.webp">
         <source media="(max-width: 74.99rem)" srcset="/assets/media/system/analyzer/analyzer-tablet-poster.webp">
         <img src="/assets/media/system/analyzer/analyzer-desktop-poster.webp" alt="" width="1920" height="1080" loading="lazy">
       </picture>
-      <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-atmosphere="analyzer"></video>
-      <canvas class="system-scene__canvas" data-system-world="analyzer" role="img" aria-label="Text Analyzer Pro: abstrakte Systemdarstellung"></canvas>
+      <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-media-layer="video" data-atmosphere="analyzer" aria-hidden="true"></video>
+
+      <canvas class="system-scene__canvas system-scene__effects" data-media-layer="effects" data-system-world="analyzer" aria-hidden="true"></canvas>
       <div class="system-scene__veil"></div>
     </div>
       <span class="project-module__number">02</span>
@@ -193,14 +199,15 @@
 
     <section class="contact-portal">
 
-    <div class="system-scene system-scene--compact" data-scene="contact" aria-hidden="true">
-      <picture class="system-scene__poster">
+    <div class="system-scene system-scene--compact" data-scene="contact" data-media-state="poster" data-preferred-media="video" aria-hidden="true">
+      <picture class="system-scene__poster" data-media-layer="poster">
         <source media="(max-width: 47.99rem)" srcset="/assets/media/system/contact/contact-mobile-poster.webp">
         <source media="(max-width: 74.99rem)" srcset="/assets/media/system/contact/contact-tablet-poster.webp">
         <img src="/assets/media/system/contact/contact-desktop-poster.webp" alt="" width="1920" height="1080" loading="lazy">
       </picture>
-      <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-atmosphere="contact"></video>
-      <canvas class="system-scene__canvas" data-system-world="contact" role="img" aria-label="Abstraktes Signalportal für Kontakt"></canvas>
+      <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-media-layer="video" data-atmosphere="contact" aria-hidden="true"></video>
+
+      <canvas class="system-scene__canvas system-scene__effects" data-media-layer="effects" data-system-world="contact" aria-hidden="true"></canvas>
       <div class="system-scene__veil"></div>
     </div>
       <div class="shell contact-portal__inner" data-reveal>

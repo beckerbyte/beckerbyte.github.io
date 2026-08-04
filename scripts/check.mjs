@@ -56,6 +56,15 @@ for (const [file] of Object.entries(pages)) {
   if (!html.includes("<title>")) errors.push(`${file}: title fehlt`);
   if (!html.includes('name="description"')) errors.push(`${file}: description fehlt`);
   if (!html.includes('class="skip-link"')) errors.push(`${file}: Skip-Link fehlt`);
+  if (!html.includes('/assets/js/media-controller.js')) errors.push(`${file}: zentraler Media Controller fehlt`);
+
+  const sceneCount = [...html.matchAll(/class="system-scene(?:\s|\")/g)].length;
+  const mediaStateCount = [...html.matchAll(/data-media-state="poster"/g)].length;
+  const posterCount = [...html.matchAll(/data-media-layer="poster"/g)].length;
+  const videoCount = [...html.matchAll(/data-media-layer="video"/g)].length;
+  if (sceneCount !== mediaStateCount || sceneCount !== posterCount || sceneCount !== videoCount) {
+    errors.push(`${file}: Szenen benötigen je genau einen Zustand, ein Poster und ein Video (${sceneCount}/${mediaStateCount}/${posterCount}/${videoCount})`);
+  }
 
   const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
   const duplicates = ids.filter((id, index) => ids.indexOf(id) !== index);
@@ -126,6 +135,38 @@ for (const scene of scenes) {
   }
 }
 
+const frameSequences = {
+  home: { desktop: 72, tablet: 54, mobile: 42 },
+  skills: { desktop: 72, tablet: 54, mobile: 42 },
+  archive: { desktop: 72, tablet: 54, mobile: 42 },
+  portfolio: { desktop: 48, tablet: 36, mobile: 30 },
+  analyzer: { desktop: 48, tablet: 36, mobile: 30 }
+};
+
+for (const [scene, counts] of Object.entries(frameSequences)) {
+  for (const [format, expectedCount] of Object.entries(counts)) {
+    const directory = `assets/media/frames/${scene}/${format}`;
+    try {
+      const frames = (await readdir(directory)).filter((file) => /^frame-\d{4}\.webp$/.test(file)).sort();
+      if (frames.length !== expectedCount) errors.push(`${directory}: ${frames.length} statt ${expectedCount} Frames`);
+      if (frames[0] !== "frame-0001.webp" || frames.at(-1) !== `frame-${String(expectedCount).padStart(4, "0")}.webp`) {
+        errors.push(`${directory}: Frame-Nummerierung ist unvollständig`);
+      }
+      for (const frame of frames) {
+        const details = await stat(join(directory, frame));
+        if (!details.size) errors.push(`${directory}/${frame}: ist leer`);
+      }
+    } catch {
+      errors.push(`${directory}: Frame-Sequenz fehlt`);
+    }
+  }
+}
+
+const siteCss = await readFile("assets/css/site.css", "utf8");
+if (/background(?:-image)?\s*:[^;]*assets\/media\/system/i.test(siteCss)) {
+  errors.push("assets/css/site.css: Szenenposter darf nicht zusätzlich als CSS-Hintergrund eingebunden sein");
+}
+
 const cname = (await readFile("CNAME", "utf8")).trim();
 const canonicalHost = new URL(site.origin).hostname;
 if (cname !== canonicalHost) errors.push(`Host-Konflikt: CNAME=${cname}, site.origin=${canonicalHost}`);
@@ -179,4 +220,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`${Object.keys(pages).length} HTML-Seiten geprüft: keine Routenkollisionen, Meta-Refreshes, Redirect-Zyklen oder Host-/Slash-Abweichungen.`);
+console.log(`${Object.keys(pages).length} HTML-Seiten geprüft: Routing, exklusive Medienzustände und 15 gerätespezifische Frame-Sequenzen sind konsistent.`);

@@ -78,15 +78,24 @@ export const breadcrumbs = (items) => `
 export const scene = (name, label, options = {}) => {
   const { compact = false, priority = false } = options;
   const mediaRoot = `/assets/media/system/${name}/${name}`;
+  const frameSequences = {
+    home: [72, 54, 42],
+    skills: [72, 54, 42],
+    archive: [72, 54, 42],
+    portfolio: [48, 36, 30],
+    analyzer: [48, 36, 30]
+  };
+  const frames = compact ? null : frameSequences[name];
   return `
-    <div class="system-scene${compact ? " system-scene--compact" : ""}" data-scene="${name}" aria-hidden="true">
-      <picture class="system-scene__poster">
+    <div class="system-scene${compact ? " system-scene--compact" : ""}" data-scene="${name}" data-media-state="poster" data-preferred-media="${frames ? "frames" : "video"}"${frames ? ` data-frame-root="/assets/media/frames/${name}" data-frame-count-desktop="${frames[0]}" data-frame-count-tablet="${frames[1]}" data-frame-count-mobile="${frames[2]}"` : ""} aria-hidden="true">
+      <picture class="system-scene__poster" data-media-layer="poster">
         <source media="(max-width: 47.99rem)" srcset="${mediaRoot}-mobile-poster.webp">
         <source media="(max-width: 74.99rem)" srcset="${mediaRoot}-tablet-poster.webp">
         <img src="${mediaRoot}-desktop-poster.webp" alt="" width="1920" height="1080"${priority ? ' fetchpriority="high"' : ' loading="lazy"'}>
       </picture>
-      <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-atmosphere="${name}"></video>
-      <canvas class="system-scene__canvas" data-system-world="${name}" role="img" aria-label="${escapeHtml(label)}"></canvas>
+      <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-media-layer="video" data-atmosphere="${name}" aria-hidden="true"></video>
+      ${frames ? '<canvas class="system-scene__frames" data-media-layer="frames" aria-hidden="true"></canvas>' : ''}
+      <canvas class="system-scene__canvas system-scene__effects" data-media-layer="effects" data-system-world="${name}" aria-hidden="true"></canvas>
       <div class="system-scene__veil"></div>
     </div>`;
 };
@@ -97,14 +106,16 @@ export const action = (href, label, variant = "primary", external = false) => `
 export const tags = (items) => `<ul class="tag-list">${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
 
 export const pageIntro = ({ index, kicker, title, copy, sceneName, sceneLabel }) => `
-  <section class="page-hero">
-    ${scene(sceneName, sceneLabel, { priority: true })}
-    <div class="shell page-hero__inner">
-      <div class="page-index" aria-hidden="true">${index}</div>
-      <div class="page-hero__copy" data-reveal>
-        <p class="eyebrow">${escapeHtml(kicker)}</p>
-        <h1>${title}</h1>
-        <p class="lede">${escapeHtml(copy)}</p>
+  <section class="page-hero${["skills", "archive"].includes(sceneName) ? " frame-story" : ""}"${["skills", "archive"].includes(sceneName) ? ` data-frame-story="${sceneName}"` : ""}>
+    <div class="hero-stage">
+      ${scene(sceneName, sceneLabel, { priority: true })}
+      <div class="shell page-hero__inner">
+        <div class="page-index" aria-hidden="true">${index}</div>
+        <div class="page-hero__copy" data-reveal>
+          <p class="eyebrow">${escapeHtml(kicker)}</p>
+          <h1>${title}</h1>
+          <p class="lede">${escapeHtml(copy)}</p>
+        </div>
       </div>
     </div>
   </section>`;
@@ -135,6 +146,7 @@ export const layout = ({ active, title, description, route, sceneName, body, noi
   <link rel="icon" href="/assets/img/favicon-v2.png" type="image/png">
   <link rel="preload" href="/assets/img/header.png" as="image">
   <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="module" src="/assets/js/media-controller.js"></script>
   <script type="module" src="/assets/js/site.js"></script>
   <script type="module" src="/assets/js/system-world.js"></script>${structuredData(schema)}
 </head>

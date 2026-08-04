@@ -19,6 +19,7 @@
   <link rel="icon" href="/assets/img/favicon-v2.png" type="image/png">
   <link rel="preload" href="/assets/img/header.png" as="image">
   <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="module" src="/assets/js/media-controller.js"></script>
   <script type="module" src="/assets/js/site.js"></script>
   <script type="module" src="/assets/js/system-world.js"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Julian Becker","url":"https://www.beckerbyte.com","email":"mailto:kontakt@beckerbyte.com","sameAs":["https://github.com/beckerbyte","https://www.linkedin.com/in/beckerbyte/","https://discord.com/users/270226761256534027"],"knowsAbout":["Webentwicklung","Systemintegration","Python","Java","SQL","Arduino","Motion Design"]}</script>
@@ -63,23 +64,26 @@
   <main id="main">
 
   <section class="page-hero">
+    <div class="hero-stage">
 
-    <div class="system-scene" data-scene="profile" aria-hidden="true">
-      <picture class="system-scene__poster">
+    <div class="system-scene" data-scene="profile" data-media-state="poster" data-preferred-media="video" aria-hidden="true">
+      <picture class="system-scene__poster" data-media-layer="poster">
         <source media="(max-width: 47.99rem)" srcset="/assets/media/system/profile/profile-mobile-poster.webp">
         <source media="(max-width: 74.99rem)" srcset="/assets/media/system/profile/profile-tablet-poster.webp">
         <img src="/assets/media/system/profile/profile-desktop-poster.webp" alt="" width="1920" height="1080" fetchpriority="high">
       </picture>
-      <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-atmosphere="profile"></video>
-      <canvas class="system-scene__canvas" data-system-world="profile" role="img" aria-label="Räumliche Darstellung eines wachsenden technischen Systems"></canvas>
+      <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-media-layer="video" data-atmosphere="profile" aria-hidden="true"></video>
+
+      <canvas class="system-scene__canvas system-scene__effects" data-media-layer="effects" data-system-world="profile" aria-hidden="true"></canvas>
       <div class="system-scene__veil"></div>
     </div>
-    <div class="shell page-hero__inner">
-      <div class="page-index" aria-hidden="true">01</div>
-      <div class="page-hero__copy" data-reveal>
-        <p class="eyebrow">Profil · Julian Becker</p>
-        <h1>Technik verstehen.<br><em>Zusammenhänge bauen.</em></h1>
-        <p class="lede">Mein Weg verbindet Systemintegration mit Webentwicklung, Code, Daten und visueller Bewegung. Nicht als fertige Schubladen, sondern als fortlaufendes Lernsystem.</p>
+      <div class="shell page-hero__inner">
+        <div class="page-index" aria-hidden="true">01</div>
+        <div class="page-hero__copy" data-reveal>
+          <p class="eyebrow">Profil · Julian Becker</p>
+          <h1>Technik verstehen.<br><em>Zusammenhänge bauen.</em></h1>
+          <p class="lede">Mein Weg verbindet Systemintegration mit Webentwicklung, Code, Daten und visueller Bewegung. Nicht als fertige Schubladen, sondern als fortlaufendes Lernsystem.</p>
+        </div>
       </div>
     </div>
   </section>
