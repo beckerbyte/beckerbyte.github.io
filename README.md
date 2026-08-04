@@ -2,7 +2,7 @@
 
 Privates, nichtkommerzielles Creative-Tech-Portfolio von Julian Becker.
 
-[Website öffnen](https://www.beckerbyte.com/) · [Projekte ansehen](https://www.beckerbyte.com/projekte) · [Kontakt](https://www.beckerbyte.com/kontakt)
+[Website öffnen](https://www.beckerbyte.com/) · [Projekte ansehen](https://www.beckerbyte.com/projekte/) · [Kontakt](https://www.beckerbyte.com/kontakt/)
 
 ## Über das Projekt
 
@@ -28,7 +28,7 @@ npm run build
 npm run check
 ```
 
-Die kanonischen Routen werden als Verzeichnisse mit `index.html` erzeugt. Frühere `.html`-Adressen bleiben als clientseitige Fallback-Weiterleitungen bestehen.
+Die kanonischen Routen werden als Verzeichnisse mit `index.html` erzeugt und enden mit einem Slash. Frühere `.html`-Adressen werden ausschließlich über die serverseitige `_redirects`-Konfiguration permanent weitergeleitet.
 
 ## Projektstruktur
 
@@ -46,7 +46,7 @@ scripts/check.mjs         Konsistenzprüfung
 
 ## Sicherheit und Datenschutz
 
-Die Website ist statisch und enthält kein eigenes Backend oder Tracking. Das Kontaktformular wird über Forminit (ehemals Getform) übermittelt. Details stehen in der [Datenschutzerklärung](https://www.beckerbyte.com/datenschutz).
+Die Website ist statisch und enthält kein eigenes Backend oder Tracking. Das Kontaktformular wird über Forminit (ehemals Getform) übermittelt. Details stehen in der [Datenschutzerklärung](https://www.beckerbyte.com/datenschutz/).
 
 ## Kontakt
 

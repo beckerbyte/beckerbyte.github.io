@@ -112,12 +112,20 @@ document.querySelectorAll("[data-contact-form]").forEach((form) => {
   });
 });
 
+const normalizePathname = (pathname) => {
+  if (!pathname || pathname === "/") return "/";
+  if (pathname.includes(".")) return pathname;
+  return `${pathname.replace(/\/+$/, "")}/`;
+};
+
 document.querySelectorAll("a[href]").forEach((link) => {
   link.addEventListener("click", (event) => {
     if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     if (link.target || link.hasAttribute("download")) return;
     const url = new URL(link.href, window.location.href);
-    if (url.origin !== window.location.origin || url.pathname === window.location.pathname || reducedMotion.matches) return;
+    const currentPath = normalizePathname(window.location.pathname);
+    const targetPath = normalizePathname(url.pathname);
+    if (url.origin !== window.location.origin || targetPath === currentPath || reducedMotion.matches) return;
     event.preventDefault();
     root.classList.add("is-leaving");
     window.setTimeout(() => { window.location.href = url.href; }, 220);

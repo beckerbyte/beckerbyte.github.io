@@ -1,16 +1,51 @@
-import { access, readFile, stat } from "node:fs/promises";
+import { access, readFile, readdir, stat } from "node:fs/promises";
+import { join } from "node:path";
 import { pages } from "../src/pages.mjs";
+import { normalizeInternalPath, site } from "../src/site-data.mjs";
 
 const errors = [];
 const checkedAssets = new Set();
-const internalLinks = new Set(["/", ...Object.keys(pages)
+const staleHtmlOutputs = ["skills.html", "projekte.html", "impressum.html", "datenschutz.html"];
+const directoryRoutes = Object.keys(pages)
   .filter((file) => file.endsWith("/index.html"))
-  .map((file) => `/${file.replace(/\/index\.html$/, "")}`)]);
+  .map((file) => file.replace(/\/index\.html$/, ""));
+const internalRoutes = new Set(["/", ...directoryRoutes.map((route) => normalizeInternalPath(`/${route}`))]);
+
+const exists = async (path) => {
+  try {
+    await access(path);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+const collectHtmlFiles = async (directory = ".") => {
+  const files = [];
+  const entries = await readdir(directory, { withFileTypes: true });
+  for (const entry of entries) {
+    if ([".git", ".media-tmp", "node_modules"].includes(entry.name)) continue;
+    const path = join(directory, entry.name);
+    if (entry.isDirectory()) files.push(...await collectHtmlFiles(path));
+    if (entry.isFile() && entry.name.endsWith(".html")) files.push(path.replace(/^\.\//, ""));
+  }
+  return files;
+};
+
+for (const file of staleHtmlOutputs) {
+  if (await exists(file)) errors.push(`Veraltete kollidierende Build-Ausgabe existiert: ${file}`);
+}
+
+for (const route of directoryRoutes) {
+  if (route === "404") continue; // GitHub Pages benötigt zusätzlich die inhaltlich identische 404.html.
+  const conflictingFile = `${route}.html`;
+  if (await exists(conflictingFile)) {
+    errors.push(`Routenkollision: ${route}/index.html und ${conflictingFile} existieren gleichzeitig`);
+  }
+}
 
 for (const [file] of Object.entries(pages)) {
-  try {
-    await access(file);
-  } catch {
+  if (!await exists(file)) {
     errors.push(`${file}: fehlt`);
     continue;
   }
@@ -26,14 +61,41 @@ for (const [file] of Object.entries(pages)) {
   const duplicates = ids.filter((id, index) => ids.indexOf(id) !== index);
   if (duplicates.length) errors.push(`${file}: doppelte IDs ${[...new Set(duplicates)].join(", ")}`);
 
+  const canonicalMatch = html.match(/<link rel="canonical" href="([^"]+)">/);
+  const openGraphMatch = html.match(/<meta property="og:url" content="([^"]+)">/);
+  if (!canonicalMatch) {
+    errors.push(`${file}: Canonical fehlt`);
+  } else {
+    const canonical = new URL(canonicalMatch[1]);
+    if (canonical.origin !== site.origin) errors.push(`${file}: falscher Canonical-Host ${canonical.origin}`);
+    if (canonical.pathname !== "/" && !canonical.pathname.endsWith("/")) errors.push(`${file}: Canonical ohne Slash ${canonical.href}`);
+    if (canonical.pathname.includes(".html") || canonical.pathname.includes("/index.html")) errors.push(`${file}: nichtkanonische Canonical-URL ${canonical.href}`);
+  }
+  if (!openGraphMatch) errors.push(`${file}: Open-Graph-URL fehlt`);
+  if (canonicalMatch && openGraphMatch && canonicalMatch[1] !== openGraphMatch[1]) errors.push(`${file}: Canonical und Open-Graph-URL weichen ab`);
+
   for (const match of html.matchAll(/href="(\/[^"]*)"/g)) {
-    const href = match[1].split("#")[0];
-    if (href.startsWith("/assets/") || href === "/404" || internalLinks.has(href)) continue;
-    errors.push(`${file}: internes Ziel ${href} fehlt im Build`);
+    const href = match[1];
+    const target = new URL(href, site.origin);
+    const pathname = target.pathname;
+    if (pathname.startsWith("/assets/")) continue;
+    if (pathname !== "/" && !pathname.includes(".") && !pathname.endsWith("/")) {
+      errors.push(`${file}: interner Link ohne Slash ${href}`);
+    }
+    if (!pathname.includes(".") && !internalRoutes.has(normalizeInternalPath(pathname))) {
+      errors.push(`${file}: internes Ziel ${href} fehlt im Build`);
+    }
   }
 
   for (const match of html.matchAll(/(?:src|srcset)="(\/assets\/[^"]+)"/g)) {
     checkedAssets.add(match[1].slice(1));
+  }
+}
+
+for (const htmlFile of await collectHtmlFiles()) {
+  const html = await readFile(htmlFile, "utf8");
+  if (/<meta\s+[^>]*http-equiv=["']?refresh["']?/i.test(html)) {
+    errors.push(`${htmlFile}: Meta-Refresh ist nicht erlaubt`);
   }
 }
 
@@ -64,9 +126,57 @@ for (const scene of scenes) {
   }
 }
 
+const cname = (await readFile("CNAME", "utf8")).trim();
+const canonicalHost = new URL(site.origin).hostname;
+if (cname !== canonicalHost) errors.push(`Host-Konflikt: CNAME=${cname}, site.origin=${canonicalHost}`);
+
+const sitemap = await readFile("sitemap.xml", "utf8");
+for (const match of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) {
+  const url = new URL(match[1]);
+  if (url.origin !== site.origin) errors.push(`Sitemap: falscher Host ${url.origin}`);
+  if (url.pathname !== "/" && !url.pathname.endsWith("/")) errors.push(`Sitemap: URL ohne Slash ${url.href}`);
+  if (url.pathname.includes(".html") || url.pathname.includes("/index.html")) errors.push(`Sitemap: nichtkanonische URL ${url.href}`);
+}
+
+const redirectFile = await readFile("_redirects", "utf8");
+const redirects = new Map();
+for (const [index, rawLine] of redirectFile.split("\n").entries()) {
+  const line = rawLine.trim();
+  if (!line || line.startsWith("#")) continue;
+  const [source, target, status] = line.split(/\s+/);
+  if (!source || !target) {
+    errors.push(`_redirects:${index + 1}: unvollständige Regel`);
+    continue;
+  }
+  if (redirects.has(source)) errors.push(`_redirects:${index + 1}: doppelte Quelle ${source}`);
+  if (source === target) errors.push(`_redirects:${index + 1}: Selbstweiterleitung ${source}`);
+  if (!target.includes(".") && normalizeInternalPath(target) !== target) errors.push(`_redirects:${index + 1}: Ziel ohne Slash ${target}`);
+  if (status !== "301") errors.push(`_redirects:${index + 1}: Legacy-Redirect muss 301 sein`);
+  redirects.set(source, target);
+}
+
+for (const source of redirects.keys()) {
+  const seen = new Set();
+  let current = source;
+  let steps = 0;
+  while (redirects.has(current)) {
+    if (seen.has(current)) {
+      errors.push(`Redirect-Zyklus ab ${source}`);
+      break;
+    }
+    seen.add(current);
+    current = redirects.get(current);
+    steps += 1;
+    if (steps > 1) {
+      errors.push(`Redirect-Kette mit mehr als einer internen Stufe ab ${source}`);
+      break;
+    }
+  }
+}
+
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
 
-console.log(`${Object.keys(pages).length} HTML-Seiten geprüft: Struktur, IDs, interne Ziele und responsive Medien sind konsistent.`);
+console.log(`${Object.keys(pages).length} HTML-Seiten geprüft: keine Routenkollisionen, Meta-Refreshes, Redirect-Zyklen oder Host-/Slash-Abweichungen.`);
