@@ -2,3 +2,4 @@
 
 assets/downloads/*.zip
 node_modules/
+.media-tmp/
