@@ -192,6 +192,10 @@ const siteCss = await readFile("assets/css/site.css", "utf8");
 if (/background(?:-image)?\s*:[^;]*assets\/media\/system/i.test(siteCss)) {
   errors.push("assets/css/site.css: Szenenposter darf nicht zusätzlich als CSS-Hintergrund eingebunden sein");
 }
+const revealVariantTwoRule = siteCss.match(/\[data-reveal-variant="2"\]\s*\{([^}]*)\}/)?.[1] || "";
+if (/clip-path\s*:/i.test(revealVariantTwoRule)) {
+  errors.push("assets/css/site.css: Reveal-Variante 2 darf ihre eigene Observer-Fläche nicht beschneiden");
+}
 
 const cname = (await readFile("CNAME", "utf8")).trim();
 const canonicalHost = new URL(site.origin).hostname;

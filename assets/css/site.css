@@ -142,10 +142,9 @@ html[data-quality="reduced"] .system-scene__effects { display: none; }
 
 [data-reveal] { opacity: 0; transform: translateY(2rem); transition: opacity .75s var(--ease), transform .75s var(--ease); }
 [data-reveal-variant="1"] { transform: translateX(1.6rem); }
-[data-reveal-variant="2"] { transform: none; clip-path: inset(0 100% 0 0); transition: opacity .65s var(--ease), clip-path .8s var(--ease); }
+[data-reveal-variant="2"] { transform: translateX(-1.6rem); }
 [data-reveal-variant="3"] { transform: translateY(1rem) scale(.975); }
 [data-reveal].is-visible { opacity: 1; transform: none; }
-[data-reveal-variant="2"].is-visible { clip-path: inset(0); }
 
 .section-heading h2, .profile-intro h2, .principles h2, .connection-section h2, .contact-details h2, .form-heading h2 { margin: .8rem 0 0; font-size: clamp(2.4rem, 5vw, 5rem); font-weight: 560; letter-spacing: -.055em; line-height: .98; }
 .section-heading--split { display: grid; grid-template-columns: 1.4fr .7fr; gap: 8vw; align-items: end; }
