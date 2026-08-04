@@ -35,9 +35,9 @@ const home = layout({
   sceneName: "home",
   schema: siteSchema,
   body: `
-    <section class="home-hero">
+    <section class="home-hero frame-story" data-frame-story="home" data-desktop-frame-story>
       <div class="hero-stage">
-        ${scene("home", "Abstrakte vernetzte Systemwelt", { priority: true, frameSequence: false })}
+        ${scene("home", "Abstrakte vernetzte Systemwelt", { priority: true, desktopOnlyFrames: true })}
         <div class="shell home-hero__inner">
           <div class="home-hero__signal" data-reveal>
             <span class="status-dot" aria-hidden="true"></span>

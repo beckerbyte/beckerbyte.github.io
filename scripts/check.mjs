@@ -93,10 +93,17 @@ for (const [file] of Object.entries(pages)) {
 
   if (file === "index.html") {
     const homeScene = html.match(/<div class="system-scene[^"]*"[^>]*data-scene="home"[^>]*>/)?.[0] || "";
-    if (html.includes('data-frame-story="home"')) errors.push("index.html: Startseiten-Hero darf nicht als Sticky-Frame-Story ausgeliefert werden");
-    if (!homeScene.includes('data-preferred-media="video"')) errors.push("index.html: Startseiten-Hero benötigt den stabilen Video-/Posterpfad");
-    if (homeScene.includes("data-frame-root=")) errors.push("index.html: Startseiten-Hero darf keine Frame-Sequenz initialisieren");
+    const homeHero = html.match(/<section class="home-hero frame-story"[^>]*>/)?.[0] || "";
+    if (!homeHero.includes('data-frame-story="home"') || !homeHero.includes("data-desktop-frame-story")) errors.push("index.html: Startseiten-Hero benötigt eine Desktop-Frame-Story");
+    if (!homeScene.includes('data-preferred-media="frames"')) errors.push("index.html: Startseiten-Hero benötigt Frames als bevorzugten Desktop-Medienzustand");
+    if (!homeScene.includes('data-frame-count-desktop="72"') || !homeScene.includes('data-frame-count-tablet="0"') || !homeScene.includes('data-frame-count-mobile="0"')) {
+      errors.push("index.html: Startseiten-Frames dürfen nur auf Desktop aktiv sein");
+    }
   }
+
+  const footerLead = html.match(/<div class="site-footer__lead">[\s\S]*?<\/div>/)?.[0] || "";
+  if (!footerLead.includes('class="site-footer__next"')) errors.push(`${file}: Footer-Weiterleitung fehlt`);
+  if (footerLead.includes('href="mailto:')) errors.push(`${file}: Footer darf keinen Mailto-Link als primäre Weiterleitung verwenden`);
 
   if (pageFrameStories.has(file)) {
     const sceneName = pageFrameStories.get(file);

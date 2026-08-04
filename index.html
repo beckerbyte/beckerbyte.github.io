@@ -18,10 +18,10 @@
   <meta name="theme-color" content="#070a0f">
   <link rel="icon" href="/assets/img/favicon-v2.png" type="image/png">
   <link rel="preload" href="/assets/img/header.png" as="image">
-  <link rel="stylesheet" href="/assets/css/site.css?v=03d545ef02e6">
-  <script type="module" src="/assets/js/media-controller.js?v=03d545ef02e6"></script>
-  <script type="module" src="/assets/js/site.js?v=03d545ef02e6"></script>
-  <script type="module" src="/assets/js/system-world.js?v=03d545ef02e6"></script>
+  <link rel="stylesheet" href="/assets/css/site.css?v=afd46db02ff1">
+  <script type="module" src="/assets/js/media-controller.js?v=afd46db02ff1"></script>
+  <script type="module" src="/assets/js/site.js?v=afd46db02ff1"></script>
+  <script type="module" src="/assets/js/system-world.js?v=afd46db02ff1"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Julian Becker","url":"https://www.beckerbyte.com","email":"mailto:kontakt@beckerbyte.com","sameAs":["https://github.com/beckerbyte","https://www.linkedin.com/in/beckerbyte/","https://discord.com/users/270226761256534027"],"knowsAbout":["Webentwicklung","Systemintegration","Python","Java","SQL","Arduino","Motion Design"]}</script>
 </head>
 <body data-page="home" data-scene="home">
@@ -62,17 +62,17 @@
     </div>
   </header>
   <main id="main">
-    <section class="home-hero">
+    <section class="home-hero frame-story" data-frame-story="home" data-desktop-frame-story>
       <div class="hero-stage">
 
-    <div class="system-scene" data-scene="home" data-media-state="poster" data-preferred-media="video" aria-hidden="true">
+    <div class="system-scene" data-scene="home" data-media-state="poster" data-preferred-media="frames" data-frame-root="/assets/media/frames/home" data-frame-count-desktop="72" data-frame-count-tablet="0" data-frame-count-mobile="0" aria-hidden="true">
       <picture class="system-scene__poster" data-media-layer="poster">
         <source media="(max-width: 47.99rem)" srcset="/assets/media/system/home/home-mobile-poster.webp">
         <source media="(max-width: 74.99rem)" srcset="/assets/media/system/home/home-tablet-poster.webp">
         <img src="/assets/media/system/home/home-desktop-poster.webp" alt="" width="1920" height="1080" fetchpriority="high">
       </picture>
       <video class="system-scene__video" muted loop playsinline preload="none" tabindex="-1" data-media-layer="video" data-atmosphere="home" aria-hidden="true"></video>
-
+      <canvas class="system-scene__frames" data-media-layer="frames" aria-hidden="true"></canvas>
       <canvas class="system-scene__canvas system-scene__effects" data-media-layer="effects" data-system-world="home" aria-hidden="true"></canvas>
       <div class="system-scene__veil"></div>
     </div>
@@ -222,8 +222,8 @@
   <footer class="site-footer">
     <div class="shell">
       <div class="site-footer__lead">
-        <p class="eyebrow">Nächster Knotenpunkt</p>
-        <a class="site-footer__mail" href="mailto:kontakt@beckerbyte.com">kontakt@beckerbyte.com <span aria-hidden="true">↗</span></a>
+        <p class="eyebrow">Weiter im System</p>
+        <a class="site-footer__next" href="/profil/">Profil entdecken <span aria-hidden="true">↗</span></a>
       </div>
       <div class="site-footer__grid">
         <div>

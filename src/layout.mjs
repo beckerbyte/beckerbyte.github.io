@@ -12,6 +12,16 @@ const frameSequences = {
   portfolio: [48, 36, 30],
   analyzer: [48, 36, 30]
 };
+const footerNext = {
+  home: { href: "/profil/", label: "Profil entdecken" },
+  profile: { href: "/skills/", label: "Skills & Erfahrung ansehen" },
+  skills: { href: "/projekte/", label: "Projekte entdecken" },
+  projects: { href: "/kontakt/", label: "Kontakt aufnehmen" },
+  contact: { href: "/", label: "Zur Startseite" },
+  imprint: { href: "/", label: "Zur Startseite" },
+  privacy: { href: "/", label: "Zur Startseite" },
+  notfound: { href: "/", label: "Zur Startseite" }
+};
 
 export const escapeHtml = (value = "") => String(value)
   .replaceAll("&", "&amp;")
@@ -49,12 +59,14 @@ export const header = (active) => `
     </div>
   </header>`;
 
-export const footer = () => `
+export const footer = (active) => {
+  const next = footerNext[active] || footerNext.home;
+  return `
   <footer class="site-footer">
     <div class="shell">
       <div class="site-footer__lead">
-        <p class="eyebrow">Nächster Knotenpunkt</p>
-        <a class="site-footer__mail" href="mailto:${site.email}">${site.email} ${arrow}</a>
+        <p class="eyebrow">Weiter im System</p>
+        <a class="site-footer__next" href="${next.href}">${escapeHtml(next.label)} ${arrow}</a>
       </div>
       <div class="site-footer__grid">
         <div>
@@ -78,6 +90,7 @@ export const footer = () => `
       </div>
     </div>
   </footer>`;
+};
 
 export const breadcrumbs = (items) => `
   <nav class="breadcrumbs" aria-label="Brotkrümelnavigation">
@@ -87,9 +100,10 @@ export const breadcrumbs = (items) => `
   </nav>`;
 
 export const scene = (name, label, options = {}) => {
-  const { compact = false, priority = false, frameSequence = true } = options;
+  const { compact = false, priority = false, frameSequence = true, desktopOnlyFrames = false } = options;
   const mediaRoot = `/assets/media/system/${name}/${name}`;
-  const frames = compact || !frameSequence ? null : frameSequences[name];
+  const configuredFrames = compact || !frameSequence ? null : frameSequences[name];
+  const frames = configuredFrames && desktopOnlyFrames ? [configuredFrames[0], 0, 0] : configuredFrames;
   return `
     <div class="system-scene${compact ? " system-scene--compact" : ""}" data-scene="${name}" data-media-state="poster" data-preferred-media="${frames ? "frames" : "video"}"${frames ? ` data-frame-root="/assets/media/frames/${name}" data-frame-count-desktop="${frames[0]}" data-frame-count-tablet="${frames[1]}" data-frame-count-mobile="${frames[2]}"` : ""} aria-hidden="true">
       <picture class="system-scene__poster" data-media-layer="poster">
@@ -158,7 +172,7 @@ export const layout = ({ active, title, description, route, sceneName, body, noi
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
   ${header(active)}
   <main id="main">${body}</main>
-  ${footer()}
+  ${footer(active)}
   <div class="page-transition" aria-hidden="true"></div>
 </body>
 </html>\n`;
