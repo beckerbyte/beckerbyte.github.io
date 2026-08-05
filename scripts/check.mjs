@@ -22,6 +22,19 @@ const pageFrameStories = new Map([
   ["projekte/index.html", "archive"],
   ["kontakt/index.html", "contact"]
 ]);
+const expectedFooterTargets = new Map([
+  ["index.html", "/profil/"],
+  ["profil/index.html", "/projekte/"],
+  ["skills/index.html", "/kontakt/"],
+  ["projekte/index.html", "/profil/"],
+  ["projekte/beckerbyte-portfolio/index.html", "/profil/"],
+  ["projekte/text-analyzer/index.html", "/profil/"],
+  ["kontakt/index.html", "/"],
+  ["impressum/index.html", "/"],
+  ["datenschutz/index.html", "/"],
+  ["404.html", "/"],
+  ["404/index.html", "/"]
+]);
 
 const exists = async (path) => {
   try {
@@ -94,16 +107,20 @@ for (const [file] of Object.entries(pages)) {
   if (file === "index.html") {
     const homeScene = html.match(/<div class="system-scene[^"]*"[^>]*data-scene="home"[^>]*>/)?.[0] || "";
     const homeHero = html.match(/<section class="home-hero frame-story"[^>]*>/)?.[0] || "";
-    if (!homeHero.includes('data-frame-story="home"') || !homeHero.includes("data-desktop-frame-story")) errors.push("index.html: Startseiten-Hero benötigt eine Desktop-Frame-Story");
-    if (!homeScene.includes('data-preferred-media="frames"')) errors.push("index.html: Startseiten-Hero benötigt Frames als bevorzugten Desktop-Medienzustand");
-    if (!homeScene.includes('data-frame-count-desktop="72"') || !homeScene.includes('data-frame-count-tablet="0"') || !homeScene.includes('data-frame-count-mobile="0"')) {
-      errors.push("index.html: Startseiten-Frames dürfen nur auf Desktop aktiv sein");
+    if (!homeHero.includes('data-frame-story="home"')) errors.push("index.html: Startseiten-Hero benötigt eine responsive Frame-Story");
+    if (!homeScene.includes('data-preferred-media="frames"')) errors.push("index.html: Startseiten-Hero benötigt Frames als bevorzugten Medienzustand");
+    if (!homeScene.includes('data-frame-count-desktop="72"') || !homeScene.includes('data-frame-count-tablet="54"') || !homeScene.includes('data-frame-count-mobile="42"')) {
+      errors.push("index.html: Startseiten-Frames fehlen für mindestens ein Geräteformat");
     }
   }
 
   const footerLead = html.match(/<div class="site-footer__lead">[\s\S]*?<\/div>/)?.[0] || "";
   if (!footerLead.includes('class="site-footer__next"')) errors.push(`${file}: Footer-Weiterleitung fehlt`);
   if (footerLead.includes('href="mailto:')) errors.push(`${file}: Footer darf keinen Mailto-Link als primäre Weiterleitung verwenden`);
+  const expectedFooterTarget = expectedFooterTargets.get(file);
+  if (expectedFooterTarget && !footerLead.includes(`href="${expectedFooterTarget}"`)) {
+    errors.push(`${file}: Footer-Ziel muss ${expectedFooterTarget} sein und darf den letzten Seiten-CTA nicht duplizieren`);
+  }
 
   if (pageFrameStories.has(file)) {
     const sceneName = pageFrameStories.get(file);
@@ -112,11 +129,8 @@ for (const [file] of Object.entries(pages)) {
     if (!pageHero.includes(`data-frame-story="${sceneName}"`)) errors.push(`${file}: Desktop-Hero benötigt eine Frame-Story für ${sceneName}`);
     if (!pageScene.includes('data-preferred-media="frames"')) errors.push(`${file}: Desktop-Hero benötigt Frames als bevorzugten Medienzustand`);
     if (!pageScene.includes(`data-frame-root="/assets/media/frames/${sceneName}"`)) errors.push(`${file}: Frame-Wurzel für ${sceneName} fehlt`);
-    if (["profile", "contact"].includes(sceneName)) {
-      if (!pageHero.includes("data-desktop-frame-story")) errors.push(`${file}: Frame-Story darf das bestehende Mobile-Verhalten nicht verändern`);
-      if (!pageScene.includes('data-frame-count-tablet="0"') || !pageScene.includes('data-frame-count-mobile="0"')) {
-        errors.push(`${file}: Profil und Kontakt dürfen Frames nur auf Desktop aktivieren`);
-      }
+    if (["profile", "contact"].includes(sceneName) && (!pageScene.includes('data-frame-count-tablet="54"') || !pageScene.includes('data-frame-count-mobile="42"'))) {
+      errors.push(`${file}: Profil und Kontakt benötigen responsive Frame-Sequenzen`);
     }
   }
 
@@ -191,10 +205,10 @@ for (const scene of scenes) {
 
 const frameSequences = {
   home: { desktop: 72, tablet: 54, mobile: 42 },
-  profile: { desktop: 72 },
+  profile: { desktop: 72, tablet: 54, mobile: 42 },
   skills: { desktop: 72, tablet: 54, mobile: 42 },
   archive: { desktop: 72, tablet: 54, mobile: 42 },
-  contact: { desktop: 72 },
+  contact: { desktop: 72, tablet: 54, mobile: 42 },
   portfolio: { desktop: 48, tablet: 36, mobile: 30 },
   analyzer: { desktop: 48, tablet: 36, mobile: 30 }
 };
@@ -230,8 +244,8 @@ const pageFrameStoryRule = siteCss.match(/\.page-hero\.frame-story\s*\{([^}]*)\}
 if (!/min-height\s*:\s*1[1-9][0-9]svh/i.test(pageFrameStoryRule)) {
   errors.push("assets/css/site.css: Desktop-Frame-Story benötigt eine Scrollstrecke über 100svh");
 }
-if (!/\.page-hero\[data-desktop-frame-story\]\s*>\s*\.hero-stage\s*\{\s*position:\s*relative;/i.test(siteCss)) {
-  errors.push("assets/css/site.css: Desktop-exklusive Frame-Stories benötigen unterhalb des Breakpoints einen statischen Mobile-Hero");
+if (!/transition-delay:\s*0ms\s*!important/i.test(siteCss) || !/\.system-scene__effects\s*\{\s*display:\s*none;/i.test(siteCss)) {
+  errors.push("assets/css/site.css: Mobile Animationen benötigen unmittelbare Reveals und deaktivierte WebGL-Effekte");
 }
 
 const cname = (await readFile("CNAME", "utf8")).trim();
