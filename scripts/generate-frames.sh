@@ -21,14 +21,10 @@ generate_sequence() {
     "${destination}/frame-%04d.webp"
 }
 
-for scene in home skills archive; do
+for scene in home profile skills archive contact; do
   generate_sequence "$scene" desktop 72 14.2857 1152 648
   generate_sequence "$scene" tablet 54 10.7143 768 768
   generate_sequence "$scene" mobile 42 8.3333 540 960
-done
-
-for scene in profile contact; do
-  generate_sequence "$scene" desktop 72 14.2857 1152 648
 done
 
 for scene in portfolio analyzer; do
@@ -37,4 +33,4 @@ for scene in portfolio analyzer; do
   generate_sequence "$scene" mobile 30 5.9524 540 960
 done
 
-echo "Responsive Frame-Sequenzen und Desktop-Sequenzen für Profil und Kontakt erzeugt."
+echo "Responsive Frame-Sequenzen für alle fünf Hauptszenen und zwei Projektseiten erzeugt."

@@ -5,18 +5,18 @@ const assetVersion = "__ASSET_VERSION__";
 const versionedAsset = (path) => `${path}?v=${assetVersion}`;
 const frameSequences = {
   home: [72, 54, 42],
-  profile: [72, 0, 0],
+  profile: [72, 54, 42],
   skills: [72, 54, 42],
   archive: [72, 54, 42],
-  contact: [72, 0, 0],
+  contact: [72, 54, 42],
   portfolio: [48, 36, 30],
   analyzer: [48, 36, 30]
 };
 const footerNext = {
   home: { href: "/profil/", label: "Profil entdecken" },
-  profile: { href: "/skills/", label: "Skills & Erfahrung ansehen" },
-  skills: { href: "/projekte/", label: "Projekte entdecken" },
-  projects: { href: "/kontakt/", label: "Kontakt aufnehmen" },
+  profile: { href: "/projekte/", label: "Projekte entdecken" },
+  skills: { href: "/kontakt/", label: "Kontakt aufnehmen" },
+  projects: { href: "/profil/", label: "Profil entdecken" },
   contact: { href: "/", label: "Zur Startseite" },
   imprint: { href: "/", label: "Zur Startseite" },
   privacy: { href: "/", label: "Zur Startseite" },
@@ -100,10 +100,9 @@ export const breadcrumbs = (items) => `
   </nav>`;
 
 export const scene = (name, label, options = {}) => {
-  const { compact = false, priority = false, frameSequence = true, desktopOnlyFrames = false } = options;
+  const { compact = false, priority = false, frameSequence = true } = options;
   const mediaRoot = `/assets/media/system/${name}/${name}`;
-  const configuredFrames = compact || !frameSequence ? null : frameSequences[name];
-  const frames = configuredFrames && desktopOnlyFrames ? [configuredFrames[0], 0, 0] : configuredFrames;
+  const frames = compact || !frameSequence ? null : frameSequences[name];
   return `
     <div class="system-scene${compact ? " system-scene--compact" : ""}" data-scene="${name}" data-media-state="poster" data-preferred-media="${frames ? "frames" : "video"}"${frames ? ` data-frame-root="/assets/media/frames/${name}" data-frame-count-desktop="${frames[0]}" data-frame-count-tablet="${frames[1]}" data-frame-count-mobile="${frames[2]}"` : ""} aria-hidden="true">
       <picture class="system-scene__poster" data-media-layer="poster">
@@ -124,7 +123,7 @@ export const action = (href, label, variant = "primary", external = false) => `
 export const tags = (items) => `<ul class="tag-list">${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
 
 export const pageIntro = ({ index, kicker, title, copy, sceneName, sceneLabel }) => `
-  <section class="page-hero frame-story" data-frame-story="${sceneName}"${["profile", "contact"].includes(sceneName) ? " data-desktop-frame-story" : ""}>
+  <section class="page-hero frame-story" data-frame-story="${sceneName}">
     <div class="hero-stage">
       ${scene(sceneName, sceneLabel, { priority: true })}
       <div class="shell page-hero__inner">
