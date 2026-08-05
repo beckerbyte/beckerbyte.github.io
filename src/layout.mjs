@@ -16,7 +16,6 @@ const footerNext = {
   home: { href: "/profil/", label: "Profil entdecken" },
   profile: { href: "/projekte/", label: "Projekte entdecken" },
   skills: { href: "/kontakt/", label: "Kontakt aufnehmen" },
-  projects: { href: "/profil/", label: "Profil entdecken" },
   contact: { href: "/", label: "Zur Startseite" },
   imprint: { href: "/", label: "Zur Startseite" },
   privacy: { href: "/", label: "Zur Startseite" },
@@ -61,13 +60,14 @@ export const header = (active) => `
 
 export const footer = (active) => {
   const next = footerNext[active] || footerNext.home;
+  const showNext = active !== "projects";
   return `
   <footer class="site-footer">
     <div class="shell">
-      <div class="site-footer__lead">
+      ${showNext ? `<div class="site-footer__lead">
         <p class="eyebrow">Weiter im System</p>
         <a class="site-footer__next" href="${next.href}">${escapeHtml(next.label)} ${arrow}</a>
-      </div>
+      </div>` : ""}
       <div class="site-footer__grid">
         <div>
           <img src="/assets/img/header.png" width="411" height="71" alt="beckerbyte">

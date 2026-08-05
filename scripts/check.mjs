@@ -26,14 +26,16 @@ const expectedFooterTargets = new Map([
   ["index.html", "/profil/"],
   ["profil/index.html", "/projekte/"],
   ["skills/index.html", "/kontakt/"],
-  ["projekte/index.html", "/profil/"],
-  ["projekte/beckerbyte-portfolio/index.html", "/profil/"],
-  ["projekte/text-analyzer/index.html", "/profil/"],
   ["kontakt/index.html", "/"],
   ["impressum/index.html", "/"],
   ["datenschutz/index.html", "/"],
   ["404.html", "/"],
   ["404/index.html", "/"]
+]);
+const projectPagesWithoutFooterLead = new Set([
+  "projekte/index.html",
+  "projekte/beckerbyte-portfolio/index.html",
+  "projekte/text-analyzer/index.html"
 ]);
 
 const exists = async (path) => {
@@ -115,11 +117,15 @@ for (const [file] of Object.entries(pages)) {
   }
 
   const footerLead = html.match(/<div class="site-footer__lead">[\s\S]*?<\/div>/)?.[0] || "";
-  if (!footerLead.includes('class="site-footer__next"')) errors.push(`${file}: Footer-Weiterleitung fehlt`);
-  if (footerLead.includes('href="mailto:')) errors.push(`${file}: Footer darf keinen Mailto-Link als primäre Weiterleitung verwenden`);
-  const expectedFooterTarget = expectedFooterTargets.get(file);
-  if (expectedFooterTarget && !footerLead.includes(`href="${expectedFooterTarget}"`)) {
-    errors.push(`${file}: Footer-Ziel muss ${expectedFooterTarget} sein und darf den letzten Seiten-CTA nicht duplizieren`);
+  if (projectPagesWithoutFooterLead.has(file)) {
+    if (footerLead) errors.push(`${file}: Projektseiten dürfen keinen Block „Weiter im System“ enthalten`);
+  } else {
+    if (!footerLead.includes('class="site-footer__next"')) errors.push(`${file}: Footer-Weiterleitung fehlt`);
+    if (footerLead.includes('href="mailto:')) errors.push(`${file}: Footer darf keinen Mailto-Link als primäre Weiterleitung verwenden`);
+    const expectedFooterTarget = expectedFooterTargets.get(file);
+    if (expectedFooterTarget && !footerLead.includes(`href="${expectedFooterTarget}"`)) {
+      errors.push(`${file}: Footer-Ziel muss ${expectedFooterTarget} sein und darf den letzten Seiten-CTA nicht duplizieren`);
+    }
   }
 
   if (pageFrameStories.has(file)) {
